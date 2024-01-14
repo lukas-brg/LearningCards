@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+carddown.egg-info/
+build/
+dist/
+static_github/
+*.egg-info

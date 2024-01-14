@@ -1,0 +1,39 @@
+[mdparser]
+checkbox_disabled = false
+footnote_min_indent = 4
+ignore_empty_lines = true
+ignore_inline_tokens = []
+list_item_chars = [ "-", "+", "*",]
+prettyprint_inline_code = false
+prettyprint_multiline_code = false
+table_align = "left"
+tabsize = 4
+
+[cardloader]
+card_separator = "hr"
+collapse = true
+file_extension_warning = true
+length_warning = 30
+
+[document]
+align = "center"
+body_class = "markdown-body"
+default_theme = "dark"
+indent_html = 2
+lang = "en"
+margin = 55
+open_file = false
+overwrite_warning = false
+scripts = [ "script.js",]
+static_folder = "./static"
+table_of_contents = false
+toc_max_heading = 3
+toc_max_heading_cards = 1
+toc_show_back_headings_cards = false
+
+    [document.themes]
+    light = [ "base.css", "light.css",]
+    dark = [ "base.css", "dark.css",]
+    raw = [ "base.css",]
+    none = []
+    pdf = [ "base.css", "light.css", "pdf_export.css",]

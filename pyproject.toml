@@ -1,0 +1,37 @@
+[build-system]
+requires = [
+    "setuptools>=60",
+    "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "carddown"
+
+description = "Terminal-based Markdown renderer that extends the Markdown syntax to support the inclusion of learning cards."
+
+readme = "readme.md"
+
+requires-python = ">=3.10"
+dependencies = [
+   "pdfkit", "toml", "appdirs"
+]
+
+version = "1.0.0"
+
+
+
+[project.scripts]
+carddown = "carddown_parser:main"
+carddown-config = "carddown_parser:carddown_config"
+
+# ... other project metadata fields as listed in:
+#     https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["carddown_parser", "carddown_parser.mdparser", "carddown_parser.config"]
+
+[tool.setuptools.package-data]
+"carddown_parser" = ["static/*"]
+"carddown_parser.mdparser" = ["*.json"]
+"carddown_parser.config" = ["*.toml"]
