@@ -4,16 +4,17 @@ Carddown is a terminal-based Markdown renderer that extends the Markdown syntax 
 
 It is able to render arbitrary markdown files that may or may not contain any learning cards and supports the entire markdown syntax as specified [here](https://www.markdownguide.org/cheat-sheet/).
 
-An input .md file is converted into a standalone .html file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements.
+An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements.
 
 
 
 # Installation
 
 
-This project requires **Python 3.10** or higher to be installed on your system.
+This project requires **Python 3.10 or higher** to be installed on your system.
 
 Clone this repository and run this in the project top-level directory:
+
 ```
 pip install .
 ```
@@ -33,7 +34,7 @@ python3 -m pip install --upgrade pip
 At the very least you need to provide a path to an input file:
 
 ```
-carddown [input_file]
+carddown [INPUT_FILE]
 ```
 
 A corresponding HTML file is then created in the same directory as the input file and all the default parameters are applied.
@@ -43,7 +44,7 @@ A corresponding HTML file is then created in the same directory as the input fil
 It is also possible to specify the path to the output file and its name:
 
 ```
-carddown [input_file] [output_file?]
+carddown [INPUT_FILE] [OUTPUT_FILE?]
 ```
 
 <br/>
@@ -106,7 +107,6 @@ This is the front side of the card. It can contain any markdown syntax
 This text is on the back side.
 
 {END}
-
 ```
 
 
@@ -143,7 +143,6 @@ This card contains displays multiple choices of which one or more have to be mar
 This text will be revealed after the choice is confirmed.
 
 {END}
-
 ```
 
 
@@ -163,7 +162,6 @@ What is 1+1?
 1+1={2}
 
 {END}
-
 ```
 
 The answer is contained inside `{CURLY_BRACES}`. If there are none, the whole back side will be regarded as the correct answer.
