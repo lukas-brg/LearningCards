@@ -7,6 +7,7 @@ It is able to render arbitrary markdown files that may or may not contain any le
 An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements.
 
 
+<br/>
 
 # Installation
 
@@ -28,6 +29,8 @@ On Ubuntu 22.04 there have been some issues with setuptools, so you might need t
 python3 -m pip install --upgrade pip
 ```
 
+
+<br/>
 
 # Usage
 
@@ -165,6 +168,9 @@ What is 1+1?
 ```
 
 The answer is contained inside `{CURLY_BRACES}`. If there are none, the whole back side will be regarded as the correct answer.
+
+
+<br/>
 
 **Note**: You can find some more practical examples in [examples/cards.md](https://raw.githubusercontent.com/lukas-brg/LearningCards/main/examples/cards.md) and look at the result by downloading [examples/cards.html](./examples/cards.html) and opening it in a web browser.
 
