@@ -11,6 +11,8 @@ An input .md file is converted into a standalone .html file, which, when opened 
 # Installation
 
 
+This project required **Python 3.10** or higher to be installed on your system.
+
 Clone this repository and run this in the project top-level directory:
 ```
 pip install .
