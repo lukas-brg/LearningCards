@@ -563,13 +563,15 @@ def parse_blockrule(parse_func: Callable, start: int, lines: list[str], **kwargs
 
 
 
-def parse_markdown(lines: list[str]|str, paragraph=True, add_linebreak=True) -> list[HtmlNode]:
+def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) -> list[HtmlNode]:
     parsed_elems = []
     i = 0
     p = HtmlNode("p")
     
     if isinstance(lines, str):
-        lines = lines.splitlines(False)
+        lines = markdown.splitlines(False)
+    else:
+        lines = markdown
 
     while i < len(lines):
         line = lines[i]
