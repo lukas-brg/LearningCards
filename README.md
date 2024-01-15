@@ -68,7 +68,7 @@ Additionally there are a number of flags and parameters:
 - `--margin` --> Total margin in percent
 - `--title` -->  Title of the HTML document. If this parameter is not provided, one will be generated based on the name of the input file. 
 
-`carddown -h/--help` lists every available flag or parameter.
+`carddown -h/--help` lists every available flag and parameter.
 
 <br/>
 
