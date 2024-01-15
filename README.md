@@ -168,7 +168,7 @@ What is 1+1?
 
 The correct answer is contained inside `{BRACKETS}`
 
-**Note**: You will find some more practical examples in `./examples/cards.md` and you can also look at the result by downloading `./examples/cards.html` and opening it in a web browser.
+**Note**: You can find some more practical examples in `./examples/cards.md` and look at the result by downloading `./examples/cards.html` and opening it in a web browser.
 
 <br/>
 
