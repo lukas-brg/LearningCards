@@ -92,7 +92,7 @@ def get_filepaths(args, output_file_extension):
     name, extension = name.rsplit(".", 1)
    
     if config.cardloader.file_extension_warning and extension != "md":
-        show_warning_msg("File ending '.{extension}' detected. Only markdown files are supported.")
+        show_warning_msg(f"File ending '.{extension}' detected. Only markdown files are supported.")
         if input("Continue? <y/N> ") != "y":
             sys.exit()
     
