@@ -55,7 +55,6 @@ Additionally there are a number of flags and parameters:
 -   `--show-answers` / `-sh` --> Answers are shown right away
 -   `--open` / `-o` --> Opens the output file with default webbrowser
 -   `--toc` --> Automatically generates a table of contents based on the headings
--   `--no-toc` -> Don't include table of contents
 
 
 **Parameters:**
@@ -64,6 +63,7 @@ Additionally there are a number of flags and parameters:
 - `--theme` --> Choose theme out of 'light', 'dark', 'raw', 'none'
 - `--align` --> Aligns the body to the 'left' or 'center'
 - `--margin` --> Total margin in percent
+- `--title` -->  Title of the HTML document. If this parameter is not provided, one will be generated based on the name of the input file. 
 
 `carddown -h/--help` lists every available flag or parameter.
 
