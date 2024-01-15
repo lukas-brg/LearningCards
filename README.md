@@ -166,7 +166,7 @@ What is 1+1?
 
 ```
 
-The correct answer is contained inside `{BRACKETS}`
+The answer is contained inside `{CURLY_BRACES}`. If there are none, the whole back side will be regarded as the correct answer.
 
 **Note**: You can find some more practical examples in [examples/cards.md](https://raw.githubusercontent.com/lukas-brg/LearningCards/main/examples/cards.md) and look at the result by downloading [examples/cards.html](./examples/cards.html) and opening it in a web browser.
 
