@@ -41,7 +41,7 @@ A corresponding HTML file is then created in the same directory as the input fil
 It is also possible to specify the path to the output file and its name:
 
 ```
-carddown [input_file] [output_file]
+carddown [input_file] [output_file?]
 ```
 
 <br/>
