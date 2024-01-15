@@ -2,7 +2,7 @@ import os, sys, json, traceback
 import appdirs
 import toml
 
-ENABLE_DEBUG = True
+ENABLE_DEBUG = False
 
 CONFIG_FILE_NAME = "config.toml"
 

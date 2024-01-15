@@ -167,6 +167,12 @@ def alignment_css(padding_left, padding_right):
             padding-left: {padding_left};
             padding-right: {padding_right}
     }}
+
+    @media only screen and (orientation: portrait) {{
+    .{config.document.body_class} {{
+            padding: 50px;
+    }}
+}} 
     """
 
 
