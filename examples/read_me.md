@@ -4,29 +4,40 @@ Carddown is a terminal-based Markdown renderer that extends the Markdown syntax 
 
 It is able to render arbitrary markdown files that may or may not contain any learning cards and supports the entire markdown syntax as specified [here](https://www.markdownguide.org/cheat-sheet/).
 
-An input .md file is converted into a standalone .html file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements.
+An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements.
 
 
+<br/>
 
 # Installation
 
-To run Carddown requires Python 3.10 or higher installed on your system.
+
+This project requires **Python 3.10 or higher** to be installed on your system.
 
 Clone this repository and run this in the project top-level directory:
+
 ```
 pip install .
 ```
 
 After installation the application can be started from anywhere by running `carddown ...args` in the command line.
 
+**Note:**
+On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work:
 
+```
+python3 -m pip install --upgrade pip
+```
+
+
+<br/>
 
 # Usage
 
 At the very least you need to provide a path to an input file:
 
 ```
-carddown [input_file]
+carddown [INPUT_FILE]
 ```
 
 A corresponding HTML file is then created in the same directory as the input file and all the default parameters are applied.
@@ -36,12 +47,12 @@ A corresponding HTML file is then created in the same directory as the input fil
 It is also possible to specify the path to the output file and its name:
 
 ```
-carddown [input_file] [output_file]
+carddown [INPUT_FILE] [OUTPUT_FILE?]
 ```
 
 <br/>
 
-Additionally there are a number of optional flags and parameters:
+Additionally there are a number of flags and parameters:
 
 **Flags:**
 
@@ -52,29 +63,28 @@ Additionally there are a number of optional flags and parameters:
 -   `--toc` --> Automatically generates a table of contents based on the headings
 
 
-
 **Parameters:**
 
 - `--lang` --> Specifies language. Currently 'de' and 'en' are supported
 - `--theme` --> Choose theme out of 'light', 'dark', 'raw', 'none'
 - `--align` --> Aligns the body to the 'left' or 'center'
 - `--margin` --> Total margin in percent
-- `--title` --> Title of the HTML document. If this parameter is not provided, one will be generated based on the name of the input file.
+- `--title` -->  Title of the HTML document. If this parameter is not provided, one will be generated based on the name of the input file. 
 
-`carddown -h/--help` lists every available flag or parameter.
+`carddown -h/--help` lists every available flag and parameter.
 
 <br/>
 
 ## Learning Cards
 
-The Learning cards are split into a front side and a back side. The front side contains the question, while the back side, that  is not revealed until a click on a button, contains the answer.
+The Learning cards are split into a front side and a back side. The front side contains the question, while the back side, which is not revealed until a click on a button, contains the answer.
 
 The learning card specific syntax uses three types of tags, all of which are wrapped in `{CURLY_BRACES}`:
 
 1. Every card starts with a start tag, that is at the end of an H1 heading, which serves as the card title.
    - The exact tag depends on the learning card type
 2. The `{BACK}` tag marks the point where the back side begins.
-   - If this tag is omitted, only the H1 heading makes up the front side, the rest will appear on the back side
+   - If this tag is omitted, only the H1 heading makes up the front side, the rest will be on the back side
 3. The end of a card is defined by using the {END} tag:
    - The `{END}` tag can be omitted for subsequent cards or when a card is at the end of file.
 
@@ -103,7 +113,6 @@ This text is on the back side.
 
 
 
-
 If you don't need much text on the front side you can also use this format:
 
 
@@ -126,7 +135,7 @@ The rest will appear on the back side
 
 # Multiple Choice Card {MULTI}
 
-This card  displays multiple choices of which one or more have to be marked as correct.
+This card contains displays multiple choices of which one or more have to be marked as correct.
 
 {BACK}
 
@@ -137,7 +146,6 @@ This card  displays multiple choices of which one or more have to be marked as c
 This text will be revealed after the choice is confirmed.
 
 {END}
-
 
 
 
@@ -159,9 +167,12 @@ What is 1+1?
 {END}
 
 
+The answer is contained inside `{CURLY_BRACES}`. If there are none, the whole back side will be regarded as the correct answer.
 
-The correct answer is contained inside `{BRACKETS}`
 
+<br/>
+
+**Note**: You can find some more practical examples in [examples/cards.md](https://raw.githubusercontent.com/lukas-brg/LearningCards/main/examples/cards.md) and look at the result by downloading [examples/cards.html](./examples/cards.html) and opening it in a web browser.
 
 <br/>
 
@@ -185,7 +196,7 @@ For user convenience, a user config file containing the default settings can aut
 carddown-config --make-usr 
 ```
 
-The path to the config file will be a printed to the terminal, so you can open it and edit the parameters according to your needs. The file will automatically be loaded on startup.
+The path to the config file will be a printed to the terminal, so you can open it and edit the parameters according to your needs. The file will automatically be loaded by carddown.
 
 <br/>
 
@@ -202,7 +213,7 @@ carddown-config --rm-usr
 
 ### Using a Custom Configuration to Render a Single File
 
-When using carddown to render a Markdown file, you can use the `--config [CONFIG_PATH]` parameter to use a custom config file and apply it just to this specific markdown file.
+When using carddown to reder a Markdown file, you can use the `--config [CONFIG_PATH]` parameter to use a custom config file and apply it just to this specific markdown file.
 
 Example:
 

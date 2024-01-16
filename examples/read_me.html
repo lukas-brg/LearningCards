@@ -7,6 +7,10 @@
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css&amp;skin=default"></script>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/16.0.0/octicons.min.css">
+
     </head>
 
   <body class="markdown-body">
@@ -18,27 +22,61 @@
       .
       <br/>
     </p>
-    <p>An input .md file is converted into a standalone .html file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements. <br/></p>
+    <p>An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements. <br/></p>
+    <p><br/> <br/></p>
     <h1>Installation</h1>
-    <p>To run Carddown requires Python 3.10 or higher installed on your system. <br/></p>
+    <p>This project requires <b>Python 3.10 or higher</b> to be installed on your system. <br/></p>
     <p>Clone this repository and run this in the project top-level directory: <br/></p>
-    <div class="multiline">
-      <code name="multiline-code-block">pip&nbsp;install&nbsp;. <br/></code>
+    <div class="multiline" id="code-div_88ba1ae374c0ed0785a0682d32da36e291aedc91">
+      <code name="multiline-code-block" id="code-block_88ba1ae374c0ed0785a0682d32da36e291aedc91">pip&nbsp;install&nbsp;. <br/></code>
+      <div class="copy-notification" id="copy-notification_88ba1ae374c0ed0785a0682d32da36e291aedc91">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_88ba1ae374c0ed0785a0682d32da36e291aedc91" data-clipboard-target="#code-block_88ba1ae374c0ed0785a0682d32da36e291aedc91"><i class="fas fa-copy copy-icon"></i></button>
+      <div class="copy-notification" id="copy-notification_88ba1ae374c0ed0785a0682d32da36e291aedc91">
+        Copied!
+      </div>
     </div>
     <p>After installation the application can be started from anywhere by running <code id="inline" style="white-space: nowrap">carddown ...args</code> in the command line. <br/></p>
+    <p><b>Note:</b> <br/> On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work: <br/></p>
+    <div class="multiline" id="code-div_de743111577d30c142b4f670663c821b86e68067">
+      <code name="multiline-code-block" id="code-block_de743111577d30c142b4f670663c821b86e68067">python3&nbsp;-m&nbsp;pip&nbsp;install&nbsp;--upgrade&nbsp;pip <br/></code>
+      <div class="copy-notification" id="copy-notification_de743111577d30c142b4f670663c821b86e68067">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_de743111577d30c142b4f670663c821b86e68067" data-clipboard-target="#code-block_de743111577d30c142b4f670663c821b86e68067"><i class="fas fa-copy copy-icon"></i></button>
+      <div class="copy-notification" id="copy-notification_de743111577d30c142b4f670663c821b86e68067">
+        Copied!
+      </div>
+    </div>
+    <p><br/> <br/></p>
     <h1>Usage</h1>
     <p>At the very least you need to provide a path to an input file: <br/></p>
-    <div class="multiline">
-      <code name="multiline-code-block">carddown&nbsp;[input_file] <br/></code>
+    <div class="multiline" id="code-div_da2b4be3766b1acbee3c241698fcaf5b7d03085d">
+      <code name="multiline-code-block" id="code-block_da2b4be3766b1acbee3c241698fcaf5b7d03085d">carddown&nbsp;[INPUT_FILE] <br/></code>
+      <div class="copy-notification" id="copy-notification_da2b4be3766b1acbee3c241698fcaf5b7d03085d">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_da2b4be3766b1acbee3c241698fcaf5b7d03085d" data-clipboard-target="#code-block_da2b4be3766b1acbee3c241698fcaf5b7d03085d"><i class="fas fa-copy copy-icon"></i></button>
+      <div class="copy-notification" id="copy-notification_da2b4be3766b1acbee3c241698fcaf5b7d03085d">
+        Copied!
+      </div>
     </div>
     <p>A corresponding HTML file is then created in the same directory as the input file and all the default parameters are applied. <br/></p>
     <p><br/> <br/></p>
     <p>It is also possible to specify the path to the output file and its name: <br/></p>
-    <div class="multiline">
-      <code name="multiline-code-block">carddown&nbsp;[input_file]&nbsp;[output_file] <br/></code>
+    <div class="multiline" id="code-div_a06cfc82a3e033930357c4223b0047e067da7a2c">
+      <code name="multiline-code-block" id="code-block_a06cfc82a3e033930357c4223b0047e067da7a2c">carddown&nbsp;[INPUT_FILE]&nbsp;[OUTPUT_FILE?] <br/></code>
+      <div class="copy-notification" id="copy-notification_a06cfc82a3e033930357c4223b0047e067da7a2c">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_a06cfc82a3e033930357c4223b0047e067da7a2c" data-clipboard-target="#code-block_a06cfc82a3e033930357c4223b0047e067da7a2c"><i class="fas fa-copy copy-icon"></i></button>
+      <div class="copy-notification" id="copy-notification_a06cfc82a3e033930357c4223b0047e067da7a2c">
+        Copied!
+      </div>
     </div>
     <p><br/> <br/></p>
-    <p>Additionally there are a number of optional flags and parameters: <br/></p>
+    <p>Additionally there are a number of flags and parameters: <br/></p>
     <p><b>Flags:</b> <br/></p>
     <ul>
       <li>
@@ -92,11 +130,11 @@
         Title of the HTML document. If this parameter is not provided, one will be generated based on the name of the input file.
       </li>
     </ul>
-    <p><code id="inline" style="white-space: nowrap">carddown -h/--help</code> lists every available flag or parameter. <br/></p>
+    <p><code id="inline" style="white-space: nowrap">carddown -h/--help</code> lists every available flag and parameter. <br/></p>
     <p><br/> <br/></p>
     <h2>Learning Cards</h2>
     <p>
-      The Learning cards are split into a front side and a back side. The front side contains the question, while the back side, that  is not revealed until a click on a button, contains the answer.
+      The Learning cards are split into a front side and a back side. The front side contains the question, while the back side, which is not revealed until a click on a button, contains the answer.
       <br/>
     </p>
     <p>The learning card specific syntax uses three types of tags, all of which are wrapped in <code id="inline" style="white-space: nowrap">{CURLY_BRACES}</code> : <br/></p>
@@ -107,7 +145,7 @@
       </ul>
       <li>The <code id="inline" style="white-space: nowrap">{BACK}</code> tag marks the point where the back side begins.</li>
       <ul>
-        <li>If this tag is omitted, only the H1 heading makes up the front side, the rest will appear on the back side</li>
+        <li>If this tag is omitted, only the H1 heading makes up the front side, the rest will be on the back side</li>
       </ul>
       <li>The end of a card is defined by using the {END} tag:</li>
       <ul>
@@ -157,7 +195,7 @@
     <div class="card MultipleChoiceCard" id="2">
       <div class="front MultipleChoiceCard">
         <h1>Multiple Choice Card</h1>
-        <p>This card displays multiple choices of which one or more have to be marked as correct. <br/></p>
+        <p>This card contains displays multiple choices of which one or more have to be marked as correct. <br/></p>
       </div>
       <div class="back MultipleChoiceCard">
         <div class="answer">
@@ -200,7 +238,22 @@
       </div>
       <hr/>
     </div>
-    <p>The correct answer is contained inside <code id="inline" style="white-space: nowrap">{BRACKETS}</code> <br/></p>
+    <p>
+      The answer is contained inside
+      <code id="inline" style="white-space: nowrap">{CURLY_BRACES}</code>
+      . If there are none, the whole back side will be regarded as the correct answer.
+      <br/>
+    </p>
+    <p><br/> <br/></p>
+    <p>
+      <b>Note</b>
+      : You can find some more practical examples in
+      <a href="https://raw.githubusercontent.com/lukas-brg/LearningCards/main/examples/cards.md" title="">examples/cards.md</a>
+      and look at the result by downloading
+      <a href="http://./examples/cards.html" title="">examples/cards.html</a>
+      and opening it in a web browser.
+      <br/>
+    </p>
     <p><br/> <br/></p>
     <h2>Configuration</h2>
     <p>
@@ -223,10 +276,17 @@
       For user convenience, a user config file containing the default settings can automatically be generated, at a location that is determined platform independently, by running the following command:
       <br/>
     </p>
-    <div class="multiline">
-      <code name="multiline-code-block">carddown-config&nbsp;--make-usr&nbsp; <br/></code>
+    <div class="multiline" id="code-div_8f82122e862fcd8c6f4ef8734929598302c992d4">
+      <code name="multiline-code-block" id="code-block_8f82122e862fcd8c6f4ef8734929598302c992d4">carddown-config&nbsp;--make-usr&nbsp; <br/></code>
+      <div class="copy-notification" id="copy-notification_8f82122e862fcd8c6f4ef8734929598302c992d4">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_8f82122e862fcd8c6f4ef8734929598302c992d4" data-clipboard-target="#code-block_8f82122e862fcd8c6f4ef8734929598302c992d4"><i class="fas fa-copy copy-icon"></i></button>
+      <div class="copy-notification" id="copy-notification_8f82122e862fcd8c6f4ef8734929598302c992d4">
+        Copied!
+      </div>
     </div>
-    <p>The path to the config file will be a printed to the terminal, so you can open it and edit the parameters according to your needs. The file will automatically be loaded on startup. <br/></p>
+    <p>The path to the config file will be a printed to the terminal, so you can open it and edit the parameters according to your needs. The file will automatically be loaded by carddown. <br/></p>
     <p><br/> <br/></p>
     <h3>Undoing the Configurations made</h3>
     <p>
@@ -236,24 +296,45 @@
       again and choose to overwrite the existing config file to bring it back to its defaults or remove the user config file entirely by running:
       <br/>
     </p>
-    <div class="multiline">
-      <code name="multiline-code-block">carddown-config&nbsp;--rm-usr <br/></code>
+    <div class="multiline" id="code-div_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8">
+      <code name="multiline-code-block" id="code-block_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8">carddown-config&nbsp;--rm-usr <br/></code>
+      <div class="copy-notification" id="copy-notification_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8" data-clipboard-target="#code-block_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8"><i class="fas fa-copy copy-icon"></i></button>
+      <div class="copy-notification" id="copy-notification_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8">
+        Copied!
+      </div>
     </div>
     <p><br/> <br/></p>
     <h3>Using a Custom Configuration to Render a Single File</h3>
     <p>
-      When using carddown to render a Markdown file, you can use the
+      When using carddown to reder a Markdown file, you can use the
       <code id="inline" style="white-space: nowrap">--config [CONFIG_PATH]</code>
       parameter to use a custom config file and apply it just to this specific markdown file.
       <br/>
     </p>
     <p>Example: <br/></p>
-    <div class="multiline">
-      <code name="multiline-code-block">carddown&nbsp;--config&nbsp;[CONFIG_PATH]&nbsp;[MARKDOWN_PATH]&nbsp;[OUTPUT_PATH?] <br/></code>
+    <div class="multiline" id="code-div_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9">
+      <code name="multiline-code-block" id="code-block_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9">carddown&nbsp;--config&nbsp;[CONFIG_PATH]&nbsp;[MARKDOWN_PATH]&nbsp;[OUTPUT_PATH?] <br/></code>
+      <div class="copy-notification" id="copy-notification_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9" data-clipboard-target="#code-block_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9"><i class="fas fa-copy copy-icon"></i></button>
+      <div class="copy-notification" id="copy-notification_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9">
+        Copied!
+      </div>
     </div>
     <p>To create such a config file easily, there is a command which can generate a default config file at any given location: <br/></p>
-    <div class="multiline">
-      <code name="multiline-code-block">carddown-config&nbsp;--make&nbsp;[PATH?] <br/></code>
+    <div class="multiline" id="code-div_76d5bb11cc0c36205b8449b2741fdcc8efda8433">
+      <code name="multiline-code-block" id="code-block_76d5bb11cc0c36205b8449b2741fdcc8efda8433">carddown-config&nbsp;--make&nbsp;[PATH?] <br/></code>
+      <div class="copy-notification" id="copy-notification_76d5bb11cc0c36205b8449b2741fdcc8efda8433">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_76d5bb11cc0c36205b8449b2741fdcc8efda8433" data-clipboard-target="#code-block_76d5bb11cc0c36205b8449b2741fdcc8efda8433"><i class="fas fa-copy copy-icon"></i></button>
+      <div class="copy-notification" id="copy-notification_76d5bb11cc0c36205b8449b2741fdcc8efda8433">
+        Copied!
+      </div>
     </div>
     <p>If no path is provided the file will be created in the current working directory. <br/></p>
   </body>
@@ -308,12 +389,48 @@ body h2 {
     padding-left: 1.5%;
     padding-top: 1.5%;
     padding-bottom: 1.5%;
-
+    position: relative;
     width: 100%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin-top: 2%;
+}
+
+.btn-copy {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    color: #a3aeba;
+    border: none;
+    border-radius: 6px;
+    padding: 6px;
+    margin-right: 10px;
+    margin-top: 9px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-copy:hover {
+    background-color: #30363d;
+}
+
+.copy-notification {
+    display: none;
+    position: absolute;
+    background-color: #6e7681;
+    color: white;
+    padding: 6px;
+    border-radius: 8px;
+    top: 50%;
+
+    font-size: 12px;
+    top: 0;
+    right: 30px;
+    margin-right: 10px;
+    margin-top: 11px;
 }
 
 #inline {
@@ -947,6 +1064,8 @@ const redColor = "red";
 // light mode color: rgb(36, 41, 47)
 // dark mode color: rgb(201, 209, 217)
 
+const CHECK_MARK = "&#10004;";
+
 function multiOnClick(id) {
     let form = document.getElementsByName("multiform" + id)[0];
     let btn = document.getElementById("multi_btn" + id);
@@ -1025,6 +1144,37 @@ function answerOnClick(id) {
         btn.value = locals["check_answer"];
     }
 }
+
+function initializeClipboard(button) {
+    let originalText = button.innerHTML;
+    let clipboard = new ClipboardJS(button, {
+        target: function (trigger) {
+            return trigger.parentElement.querySelector("code");
+        },
+    });
+
+    clipboard.on("success", function (event) {
+        let notification = event.trigger.previousElementSibling;
+        console.log("copied:" + event.text);
+
+        event.trigger.innerHTML = CHECK_MARK;
+        event.trigger.style.color = greenColor;
+
+        notification.style.display = "block";
+
+        setTimeout(function () {
+            event.trigger.innerHTML = originalText;
+            event.trigger.style.color = "";
+            notification.style.display = "none";
+        }, 1500);
+
+        event.clearSelection();
+    });
+}
+
+document.querySelectorAll(".btn-copy").forEach(function (button) {
+    initializeClipboard(button);
+});
 
 function lightOrDark(color) {
     // source: https://gist.github.com/krabs-github/ec56e4f1c12cddf86ae9c551aa9d9e04

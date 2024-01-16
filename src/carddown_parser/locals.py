@@ -6,7 +6,8 @@ locals = {
         "hide_backside" : "R&uuml;ckseite ausblenden",
         "check_answer" : "Pr&uuml;fen",
         "toc" : "Inhalte",
-        "card" : "Karte"
+        "card" : "Karte",
+        "copied" : "Kopiert!"
     },
     
     "en": {
@@ -15,7 +16,8 @@ locals = {
         "hide_backside" : "Hide Backside",
         "check_answer" : "Check Answer",
         "toc" : "Contents",
-        "card" : "Card"
+        "card" : "Card",
+        "copied" : "Copied!"
     }
 
 }

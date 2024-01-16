@@ -88,6 +88,8 @@ const redColor = "red";
 // light mode color: rgb(36, 41, 47)
 // dark mode color: rgb(201, 209, 217)
 
+const CHECK_MARK = "&#10004;";
+
 function multiOnClick(id) {
     let form = document.getElementsByName("multiform" + id)[0];
     let btn = document.getElementById("multi_btn" + id);
@@ -166,6 +168,37 @@ function answerOnClick(id) {
         btn.value = locals["check_answer"];
     }
 }
+
+function initializeClipboard(button) {
+    let originalText = button.innerHTML;
+    let clipboard = new ClipboardJS(button, {
+        target: function (trigger) {
+            return trigger.parentElement.querySelector("code");
+        },
+    });
+
+    clipboard.on("success", function (event) {
+        let notification = event.trigger.previousElementSibling;
+        console.log("copied:" + event.text);
+
+        event.trigger.innerHTML = CHECK_MARK;
+        event.trigger.style.color = greenColor;
+
+        notification.style.display = "block";
+
+        setTimeout(function () {
+            event.trigger.innerHTML = originalText;
+            event.trigger.style.color = "";
+            notification.style.display = "none";
+        }, 1500);
+
+        event.clearSelection();
+    });
+}
+
+document.querySelectorAll(".btn-copy").forEach(function (button) {
+    initializeClipboard(button);
+});
 
 function lightOrDark(color) {
     // source: https://gist.github.com/krabs-github/ec56e4f1c12cddf86ae9c551aa9d9e04

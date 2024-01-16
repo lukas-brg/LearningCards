@@ -290,6 +290,7 @@ def _parse_list(lines: list[str], start: int, prev_spaces: int, parent: HtmlNode
     return i
 
 
+
 def parse_list(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     tag = get_list_tag(lines[start])
     
@@ -305,6 +306,7 @@ def parse_list(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     return (list, end)
 
 
+
 def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     lang = lines[start].strip().replace("```", "")
     end = find_line(lines, start+1, function=is_multiline_code)
@@ -315,6 +317,7 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     
     name="multiline-code-block"
     
+    
     if config.mdparser.prettyprint_multiline_code or lang != "":
         lang_str = f" lang-{lang}" if lang else ""
         code = HtmlNode("code", set_class=f"prettyprint{lang_str}", name=name)
@@ -324,7 +327,18 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     for line in code_lines:
         code.add_children(TextNode(line, preserve_whitespace=True), SelfClosingTag("br"))
 
-    code_div = HtmlNode("div", code, set_class="multiline")
+    id_hash = hashlib.sha1((code.get_inner_text()+str(start)).encode("utf-8")).hexdigest()
+
+    code.properties["id"] = "code-block_" + id_hash
+    
+    copy_icon = HtmlNode("i", set_class="fas fa-copy copy-icon")
+    
+
+    copy_btn = HtmlNode("button", copy_icon, set_class="btn-copy", id=f"copy-button_{id_hash}")
+    copy_btn.properties["data-clipboard-target"] = f"#{code.properties['id']}"
+    copy_notification = HtmlNode("div", get_locals()["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")
+    
+    code_div = HtmlNode("div", code, copy_notification, copy_btn, copy_notification, set_class="multiline", id=f"code-div_{id_hash}")
     return (code_div, end+1)
 
     
@@ -593,6 +607,7 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             code, i = parse_blockrule(parse_func=parse_multiline_code, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(code)
+            
         
         elif is_list(line): # List
             list, i = parse_blockrule(parse_func=parse_list, lines=lines, start=i)
