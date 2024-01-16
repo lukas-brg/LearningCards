@@ -1,12 +1,12 @@
-import re, hashlib, traceback
-from typing import Generator, Callable, Optional
+import re, traceback
+from typing import Generator, Callable
 
 
 from ..config import get_config, ENABLE_DEBUG
 from .tokens import InlineToken
 from .htmltree import HtmlNode, SelfClosingTag, WhiteSpaceNode, TextNode
 from ..errors import try_read_file, MarkdownSyntaxError, show_warning_msg
-from .utils import leading_whitespaces, multiline_strip, find_line, enumerate_at
+from .utils import leading_whitespaces, multiline_strip, find_line, enumerate_at, get_hash
 from ..locals import get_locals
 
 config = get_config()
@@ -107,14 +107,13 @@ def find_headings(root_node: HtmlNode, max_lvl=3) -> list[tuple[int, HtmlNode]]:
     
             text = node.get_inner_text()
             
-            # Don't show back headings since they could spoil the answer
             if text.strip() == "" \
                     or (in_card_back and not config.document.toc_show_back_headings_cards) \
                     or (in_card and heading_lvl > config.document.toc_max_heading_cards):
                 continue
             
             if "id" not in node.properties:
-                id =  "h-" + hashlib.sha1(text.encode("utf-8")).hexdigest()[:8] + str(count)
+                id = f"h-{get_hash(text, truncate=8)}{count}"
                 node.properties["id"] = id
             else:
                 id = node.properties["id"]
@@ -230,7 +229,7 @@ def parse_inline(line: str) -> list[HtmlNode]:
 
 
 def handle_tasklist_item(line: str, parent: HtmlNode):
-    hash = hashlib.sha1(line.encode('utf-8')).hexdigest()[:8]
+    hash = get_hash(line, truncate=8)
     id=f"task_list_checkbox-{hash}" 
     line = line.strip()
     
@@ -327,7 +326,7 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     for line in code_lines:
         code.add_children(TextNode(line, preserve_whitespace=True), SelfClosingTag("br"))
 
-    id_hash = hashlib.sha1((code.get_inner_text()+str(start)).encode("utf-8")).hexdigest()
+    id_hash = get_hash(code.get_inner_text(), start)
 
     code.properties["id"] = "code-block_" + id_hash
     
@@ -342,7 +341,6 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     return (code_div, end+1)
 
     
-
 
 def get_alignments(header: str) -> list[dict[str, str]]:
     table_head_separator_pattern = r"^(\|[-\s]+)+"

@@ -1,4 +1,8 @@
+import hashlib
+
 from ..config import get_config
+
+
 
 config = get_config()
 
@@ -17,6 +21,13 @@ def find_subclasses(cls: type):
     _find(cls, classes)
     
     return classes
+
+
+def get_hash(*data: any, truncate=0):
+    data_str = ''.join(str(s) for s in data)
+    hash = hashlib.sha1(data_str.encode("utf-8")).hexdigest()
+    end = truncate or len(hash)
+    return hash[:end]
 
 
 def leading_whitespaces(string: str):
