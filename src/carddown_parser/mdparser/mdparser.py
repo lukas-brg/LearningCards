@@ -568,7 +568,7 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
     i = 0
     p = HtmlNode("p")
     
-    if isinstance(lines, str):
+    if isinstance(markdown, str):
         lines = markdown.splitlines(False)
     else:
         lines = markdown

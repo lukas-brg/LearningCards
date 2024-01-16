@@ -7,6 +7,9 @@ def show_exception_msg(e: Exception):
 def show_warning_msg(msg: str):
     print("Warning: " + msg)
 
+def debug_print(*msg: str):
+    if ENABLE_DEBUG:
+        print(*msg)
 
 def try_read_file(filepath: str, error_msg: str=None, exit=True) -> str:
     try:

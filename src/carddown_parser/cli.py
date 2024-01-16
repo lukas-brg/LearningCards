@@ -5,7 +5,7 @@ import webbrowser
 from .config.config import load_configs, Config, CFG_PATHS, ENABLE_DEBUG, APP_CONFIG_PATH, USR_CONFIG_PATH
 from .mdparser.htmltree import HtmlFile
 from .cardloader import CardLoader
-from .errors import MarkdownSyntaxError, show_exception_msg, show_warning_msg, CardSyntaxError
+from .errors import MarkdownSyntaxError, show_exception_msg, show_warning_msg, CardSyntaxError, debug_print
 
 
 config = Config.get_config()
@@ -16,6 +16,51 @@ DEBUG_DEFAULT_FILE = "examples/test2.md"
 def get_static_folder():
     return os.path.join(PACKAGE_DIR, config.document.static_folder) if not os.path.isabs(config.document.static_folder) else config.document.static_folder
 
+
+def get_next_filename(filepath):
+    filename, file_extension = os.path.splitext(filepath)
+    base_filename = filename
+    count = 1
+    while os.path.exists(f"{base_filename}({count}){file_extension}"):
+        count += 1
+    return f"{base_filename}({count}){file_extension}"
+
+def existing_file_prompt(filepath):
+    while os.path.exists(filepath):
+        print(f"The file '{filepath}' already exists.")
+        print("Choose an option:")
+        print("1. Abort")
+        print("2. Rename the file")
+        print("3. Overwrite the existing file")
+        print("4. Automatically rename the file (e.g., 'your_file(1).txt')")
+
+        choice = input("Enter the number of your choice: ")
+
+        if choice == '1':
+            print("Aborting. No changes will be made.")
+            return None
+
+        elif choice == '2':
+            new_filename = input("Enter the new filename: ")
+            base_dir = os.path.dirname(filepath)
+            filepath = os.path.join(base_dir, new_filename)
+
+        elif choice == '3':
+            confirm_overwrite = input(f"Are you sure you want to overwrite '{filepath}'? (yes/no): ")
+            if confirm_overwrite.lower() == 'yes':
+                print("Overwriting the existing file.")
+                return filepath
+            else:
+                print("Operation canceled. No changes will be made.")
+
+        elif choice == '4':
+            filepath = get_next_filename(filepath)
+            print(f"Automatically renaming the file to '{os.path.basename(filepath)}'.")
+
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+    return filepath
 
 
 def get_args():
@@ -281,9 +326,13 @@ def carddown_config():
 
 def main():
     args = get_args()
+    
     if args.shuffle:
         args.cards = True
 
+    debug_print("Started application")
+    debug_print("Args:", args)
+    
     load_configs(args)
 
     if args.export:
