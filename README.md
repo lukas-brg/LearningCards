@@ -203,7 +203,7 @@ The path to the config file will be a printed to the terminal, so you can open i
 ### Undoing the Configurations made
 
 If you want to restore the defaults, you can either run 
-`carddown-config --make-usr` again and chose to overwrite the existing config file to bring it back to its defaults or remove the user config file entirely by running:
+`carddown-config --make-usr` again and choose to overwrite the existing config file to bring it back to its defaults or remove the user config file entirely by running:
 
 ```
 carddown-config --rm-usr
