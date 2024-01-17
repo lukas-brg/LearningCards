@@ -27,17 +27,20 @@ var locals = LOCALS[lang];
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
+const toc_up = '<i class="fa-solid fa-chevron-up"></i>';
+const toc_down = '<i class="fa-solid fa-chevron-down"></i>';
+
 var tocBtn = document.getElementById("toc-btn");
 if (tocBtn) {
     var content = document.getElementsByClassName("toc-content")[0];
     content.style.display = "block";
-    tocBtn.innerText = "∧";
+
     tocBtn.addEventListener("click", () => {
         if (content.style.display === "block") {
-            tocBtn.innerText = "∨";
+            tocBtn.innerHTML = toc_down;
             content.style.display = "none";
         } else {
-            tocBtn.innerText = "∧";
+            tocBtn.innerHTML = toc_up;
             content.style.display = "block";
         }
     });

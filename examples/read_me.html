@@ -14,7 +14,34 @@
     </head>
 
   <body class="markdown-body">
-    <h1>Description</h1>
+    <div class="toc">
+      <span><h1>Contents <button id="toc-btn"><i class="fa-solid fa-chevron-up"></i></button></h1></span>
+      <div class="toc-content">
+        <ul>
+          <li><a href="#h-55f8ebc80">Description</a></li>
+          <li><a href="#h-c81b79df1">Installation</a></li>
+          <li><a href="#h-0bb186422">Usage</a></li>
+          <ul>
+            <li><a href="#h-965b1b7c3">Learning Cards</a></li>
+            <ul>
+              <li><a href="#h-b0e8894e4">Learning Card Types</a></li>
+              <ul>
+                <li><a href="#h-a043d5835">Standard Card</a></li>
+                <li><a href="#h-77cd9abb6">Multiple Choice Card</a></li>
+                <li><a href="#h-7306b7807">Answer Card</a></li>
+              </ul>
+            </ul>
+            <li><a href="#h-754164858">Configuration</a></li>
+            <ul>
+              <li><a href="#h-4c12f5df9">Creating a User Config File</a></li>
+              <li><a href="#h-aa23999d10">Undoing the Configurations made</a></li>
+              <li><a href="#h-88b8c27b11">Using a Custom Configuration to Render a Single File</a></li>
+            </ul>
+          </ul>
+        </ul>
+      </div>
+    </div>
+    <h1 id="h-55f8ebc80">Description</h1>
     <p>Carddown is a terminal-based Markdown renderer that extends the Markdown syntax to support the inclusion of learning cards. <br/></p>
     <p>
       It is able to render arbitrary markdown files that may or may not contain any learning cards and supports the entire markdown syntax as specified
@@ -24,7 +51,7 @@
     </p>
     <p>An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements. <br/></p>
     <p><br/> <br/></p>
-    <h1>Installation</h1>
+    <h1 id="h-c81b79df1">Installation</h1>
     <p>This project requires <b>Python 3.10 or higher</b> to be installed on your system. <br/></p>
     <p>Clone this repository and run this in the project top-level directory: <br/></p>
     <div class="multiline" id="code-div_88ba1ae374c0ed0785a0682d32da36e291aedc91">
@@ -32,7 +59,7 @@
       <div class="copy-notification" id="copy-notification_88ba1ae374c0ed0785a0682d32da36e291aedc91">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_88ba1ae374c0ed0785a0682d32da36e291aedc91" data-clipboard-target="#code-block_88ba1ae374c0ed0785a0682d32da36e291aedc91"><i class="fa-regular fa-copy copy-icon"></i></button>
+      <button class="btn-copy" id="copy-button_88ba1ae374c0ed0785a0682d32da36e291aedc91" data-clipboard-target="#code-block_88ba1ae374c0ed0785a0682d32da36e291aedc91"><i class="fa-regular fa-copy"></i></button>
       <div class="copy-notification" id="copy-notification_88ba1ae374c0ed0785a0682d32da36e291aedc91">
         Copied!
       </div>
@@ -44,20 +71,20 @@
       <div class="copy-notification" id="copy-notification_de743111577d30c142b4f670663c821b86e68067">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_de743111577d30c142b4f670663c821b86e68067" data-clipboard-target="#code-block_de743111577d30c142b4f670663c821b86e68067"><i class="fa-regular fa-copy copy-icon"></i></button>
+      <button class="btn-copy" id="copy-button_de743111577d30c142b4f670663c821b86e68067" data-clipboard-target="#code-block_de743111577d30c142b4f670663c821b86e68067"><i class="fa-regular fa-copy"></i></button>
       <div class="copy-notification" id="copy-notification_de743111577d30c142b4f670663c821b86e68067">
         Copied!
       </div>
     </div>
     <p><br/> <br/></p>
-    <h1>Usage</h1>
+    <h1 id="h-0bb186422">Usage</h1>
     <p>At the very least you need to provide a path to an input file: <br/></p>
     <div class="multiline" id="code-div_da2b4be3766b1acbee3c241698fcaf5b7d03085d">
       <code name="multiline-code-block" id="code-block_da2b4be3766b1acbee3c241698fcaf5b7d03085d">carddown&nbsp;[INPUT_FILE] <br/></code>
       <div class="copy-notification" id="copy-notification_da2b4be3766b1acbee3c241698fcaf5b7d03085d">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_da2b4be3766b1acbee3c241698fcaf5b7d03085d" data-clipboard-target="#code-block_da2b4be3766b1acbee3c241698fcaf5b7d03085d"><i class="fa-regular fa-copy copy-icon"></i></button>
+      <button class="btn-copy" id="copy-button_da2b4be3766b1acbee3c241698fcaf5b7d03085d" data-clipboard-target="#code-block_da2b4be3766b1acbee3c241698fcaf5b7d03085d"><i class="fa-regular fa-copy"></i></button>
       <div class="copy-notification" id="copy-notification_da2b4be3766b1acbee3c241698fcaf5b7d03085d">
         Copied!
       </div>
@@ -70,7 +97,7 @@
       <div class="copy-notification" id="copy-notification_a06cfc82a3e033930357c4223b0047e067da7a2c">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_a06cfc82a3e033930357c4223b0047e067da7a2c" data-clipboard-target="#code-block_a06cfc82a3e033930357c4223b0047e067da7a2c"><i class="fa-regular fa-copy copy-icon"></i></button>
+      <button class="btn-copy" id="copy-button_a06cfc82a3e033930357c4223b0047e067da7a2c" data-clipboard-target="#code-block_a06cfc82a3e033930357c4223b0047e067da7a2c"><i class="fa-regular fa-copy"></i></button>
       <div class="copy-notification" id="copy-notification_a06cfc82a3e033930357c4223b0047e067da7a2c">
         Copied!
       </div>
@@ -132,7 +159,7 @@
     </ul>
     <p><code id="inline" style="white-space: nowrap">carddown -h/--help</code> lists every available flag and parameter. <br/></p>
     <p><br/> <br/></p>
-    <h2>Learning Cards</h2>
+    <h2 id="h-965b1b7c3">Learning Cards</h2>
     <p>
       The Learning cards are split into a front side and a back side. The front side contains the question, while the back side, which is not revealed until a click on a button, contains the answer.
       <br/>
@@ -153,9 +180,9 @@
       </ul>
     </ol>
     <p><br/> <br/></p>
-    <h3>Learning Card Types</h3>
+    <h3 id="h-b0e8894e4">Learning Card Types</h3>
     <p>There are three basic card types: <br/></p>
-    <h4>Standard Card</h4>
+    <h4 id="h-a043d5835">Standard Card</h4>
     <div class="card QuestionCard" id="0">
       <div class="front QuestionCard">
         <h1>This is the card title</h1>
@@ -191,7 +218,7 @@
     </div>
     <p><b>Note:</b> This format where there is no <code id="inline" style="white-space: nowrap">{END}</code> tag works for every card type. <br/></p>
     <p><br/> <br/></p>
-    <h4>Multiple Choice Card</h4>
+    <h4 id="h-77cd9abb6">Multiple Choice Card</h4>
     <div class="card MultipleChoiceCard" id="2">
       <div class="front MultipleChoiceCard">
         <h1>Multiple Choice Card</h1>
@@ -217,7 +244,7 @@
       <hr/>
     </div>
     <p><br/> <br/></p>
-    <h4>Answer Card</h4>
+    <h4 id="h-7306b7807">Answer Card</h4>
     <p>This card includes a textbox in which the user must input an answer. <br/></p>
     <div class="card AnswerCard" id="3">
       <div class="front AnswerCard">
@@ -255,7 +282,7 @@
       <br/>
     </p>
     <p><br/> <br/></p>
-    <h2>Configuration</h2>
+    <h2 id="h-754164858">Configuration</h2>
     <p>
       Carddown uses
       <code id="inline" style="white-space: nowrap">.toml</code>
@@ -270,7 +297,7 @@
     </p>
     <p>Run <code id="inline" style="white-space: nowrap">carddown-config --help</code> to list out every option regarding configuration. <br/></p>
     <p><br/> <br/></p>
-    <h3>Creating a User Config File</h3>
+    <h3 id="h-4c12f5df9">Creating a User Config File</h3>
     <p>Carddown already uses an application config file located within the project directory. However, users can create their own config file. <br/></p>
     <p>
       For user convenience, a user config file containing the default settings can automatically be generated, at a location that is determined platform independently, by running the following command:
@@ -281,14 +308,14 @@
       <div class="copy-notification" id="copy-notification_8f82122e862fcd8c6f4ef8734929598302c992d4">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_8f82122e862fcd8c6f4ef8734929598302c992d4" data-clipboard-target="#code-block_8f82122e862fcd8c6f4ef8734929598302c992d4"><i class="fa-regular fa-copy copy-icon"></i></button>
+      <button class="btn-copy" id="copy-button_8f82122e862fcd8c6f4ef8734929598302c992d4" data-clipboard-target="#code-block_8f82122e862fcd8c6f4ef8734929598302c992d4"><i class="fa-regular fa-copy"></i></button>
       <div class="copy-notification" id="copy-notification_8f82122e862fcd8c6f4ef8734929598302c992d4">
         Copied!
       </div>
     </div>
     <p>The path to the config file will be a printed to the terminal, so you can open it and edit the parameters according to your needs. The file will automatically be loaded by carddown. <br/></p>
     <p><br/> <br/></p>
-    <h3>Undoing the Configurations made</h3>
+    <h3 id="h-aa23999d10">Undoing the Configurations made</h3>
     <p>
       If you want to restore the defaults, you can either run
       <br/>
@@ -301,13 +328,13 @@
       <div class="copy-notification" id="copy-notification_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8" data-clipboard-target="#code-block_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8"><i class="fa-regular fa-copy copy-icon"></i></button>
+      <button class="btn-copy" id="copy-button_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8" data-clipboard-target="#code-block_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8"><i class="fa-regular fa-copy"></i></button>
       <div class="copy-notification" id="copy-notification_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8">
         Copied!
       </div>
     </div>
     <p><br/> <br/></p>
-    <h3>Using a Custom Configuration to Render a Single File</h3>
+    <h3 id="h-88b8c27b11">Using a Custom Configuration to Render a Single File</h3>
     <p>
       When using carddown to reder a Markdown file, you can use the
       <code id="inline" style="white-space: nowrap">--config [CONFIG_PATH]</code>
@@ -320,7 +347,7 @@
       <div class="copy-notification" id="copy-notification_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9" data-clipboard-target="#code-block_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9"><i class="fa-regular fa-copy copy-icon"></i></button>
+      <button class="btn-copy" id="copy-button_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9" data-clipboard-target="#code-block_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9"><i class="fa-regular fa-copy"></i></button>
       <div class="copy-notification" id="copy-notification_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9">
         Copied!
       </div>
@@ -331,7 +358,7 @@
       <div class="copy-notification" id="copy-notification_76d5bb11cc0c36205b8449b2741fdcc8efda8433">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_76d5bb11cc0c36205b8449b2741fdcc8efda8433" data-clipboard-target="#code-block_76d5bb11cc0c36205b8449b2741fdcc8efda8433"><i class="fa-regular fa-copy copy-icon"></i></button>
+      <button class="btn-copy" id="copy-button_76d5bb11cc0c36205b8449b2741fdcc8efda8433" data-clipboard-target="#code-block_76d5bb11cc0c36205b8449b2741fdcc8efda8433"><i class="fa-regular fa-copy"></i></button>
       <div class="copy-notification" id="copy-notification_76d5bb11cc0c36205b8449b2741fdcc8efda8433">
         Copied!
       </div>
@@ -365,9 +392,16 @@
 #toc-btn {
     float: right;
     border: none;
+    color: #909aa6;
     width: 60px;
     height: 35px;
-    font-size: 20px;
+    font-size: 30px;
+    background-color: transparent;
+}
+
+#toc-btn:hover {
+    background-color: #30363d;
+    border-radius: 5px;
 }
 
 body h1,
@@ -1007,17 +1041,20 @@ var locals = LOCALS[lang];
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
+const toc_up = '<i class="fa-solid fa-chevron-up"></i>';
+const toc_down = '<i class="fa-solid fa-chevron-down"></i>';
+
 var tocBtn = document.getElementById("toc-btn");
 if (tocBtn) {
     var content = document.getElementsByClassName("toc-content")[0];
     content.style.display = "block";
-    tocBtn.innerText = "∧";
+
     tocBtn.addEventListener("click", () => {
         if (content.style.display === "block") {
-            tocBtn.innerText = "∨";
+            tocBtn.innerHTML = toc_down;
             content.style.display = "none";
         } else {
-            tocBtn.innerText = "∧";
+            tocBtn.innerHTML = toc_up;
             content.style.display = "block";
         }
     });

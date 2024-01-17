@@ -102,7 +102,10 @@ def find_headings(root_node: HtmlNode, max_lvl=3) -> list[tuple[int, HtmlNode]]:
                 in_card = True
             else:
                 in_card = any(node.search_parents_by_property(set_class="card"))
-            
+
+            if in_card and not config.document.toc_include_cards:
+                continue
+
             heading_lvl = headings[tag]
     
             text = node.get_inner_text()
@@ -156,8 +159,8 @@ def make_table_of_contents(root_node: HtmlNode, max_lvl=3) -> list[HtmlNode]:
     if count > len(items):
         show_warning_msg("Something went wrong creating the table of contents")
         return []
-
-    heading = HtmlNode("h1", get_locals()["toc"], HtmlNode("button", "Hide", id="toc-btn"))
+    
+    heading = HtmlNode("h1", get_locals()["toc"], HtmlNode("button", HtmlNode("i", set_class="fa-solid fa-chevron-up"), id="toc-btn"))
     content_div = HtmlNode("div", *uls, set_class="toc-content")
     return [HtmlNode("div", HtmlNode("span", heading),  content_div, set_class="toc")]
 
@@ -330,7 +333,7 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
 
     code.properties["id"] = "code-block_" + id_hash
     
-    copy_icon = HtmlNode("i", set_class="fa-regular fa-copy copy-icon")
+    copy_icon = HtmlNode("i", set_class="fa-regular fa-copy")
     
     copy_btn = HtmlNode("button", copy_icon, set_class="btn-copy", id=f"copy-button_{id_hash}")
     copy_btn.properties["data-clipboard-target"] = f"#{code.properties['id']}"
