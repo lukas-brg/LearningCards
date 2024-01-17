@@ -113,7 +113,7 @@ def find_headings(root_node: HtmlNode, max_lvl=3) -> list[tuple[int, HtmlNode]]:
                 continue
             
             if "id" not in node.properties:
-                id = f"h-{get_hash(text, truncate=8)}{count}"
+                id = f"h-{get_hash(text, max_length=8)}{count}"
                 node.properties["id"] = id
             else:
                 id = node.properties["id"]
@@ -229,7 +229,7 @@ def parse_inline(line: str) -> list[HtmlNode]:
 
 
 def handle_tasklist_item(line: str, parent: HtmlNode):
-    hash = get_hash(line, truncate=8)
+    hash = get_hash(line, max_length=8)
     id=f"task_list_checkbox-{hash}" 
     line = line.strip()
     
@@ -332,7 +332,6 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     
     copy_icon = HtmlNode("i", set_class="fas fa-copy copy-icon")
     
-
     copy_btn = HtmlNode("button", copy_icon, set_class="btn-copy", id=f"copy-button_{id_hash}")
     copy_btn.properties["data-clipboard-target"] = f"#{code.properties['id']}"
     copy_notification = HtmlNode("div", get_locals()["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")

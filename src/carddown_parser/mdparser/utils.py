@@ -23,10 +23,10 @@ def find_subclasses(cls: type):
     return classes
 
 
-def get_hash(*data: any, truncate=0):
-    data_str = ''.join(str(s) for s in data)
+def get_hash(*data: any, max_length=None) -> str:
+    data_str = ''.join(str(d) for d in data)
     hash = hashlib.sha1(data_str.encode("utf-8")).hexdigest()
-    end = truncate or len(hash)
+    end = max_length or len(hash)
     return hash[:end]
 
 
