@@ -137,6 +137,16 @@ Center aligned columns
 | engine | engine to be used for processing templates. Handlebars is the default. |
 | ext    | extension to
 
+
+Mixed alignments
+
+| Left   Alignment  | Center Alignment   | Right Alignment |
+| :---------------- | :------: | ----: |
+| Python Hat        |   True   | 23.99 |
+| SQL Hat           |   True   | 23.99 |
+| Codecademy Tee    |  False   | 19.99 |
+| Codecademy Hoodie |  False   | 42.99 |
+
 ## Links
 
 [link text](http://dev.nodeca.com)

@@ -65,7 +65,7 @@
               <div class="copy-notification" id="copy-notification_e9c665081a3c14c293d2392dabca0b5b7bc2b662">
                 Copied!
               </div>
-              <button class="btn-copy" id="copy-button_e9c665081a3c14c293d2392dabca0b5b7bc2b662" data-clipboard-target="#code-block_e9c665081a3c14c293d2392dabca0b5b7bc2b662"><i class="fas fa-copy copy-icon"></i></button>
+              <button class="btn-copy" id="copy-button_e9c665081a3c14c293d2392dabca0b5b7bc2b662" data-clipboard-target="#code-block_e9c665081a3c14c293d2392dabca0b5b7bc2b662"><i class="fa-regular fa-copy copy-icon"></i></button>
               <div class="copy-notification" id="copy-notification_e9c665081a3c14c293d2392dabca0b5b7bc2b662">
                 Copied!
               </div>
@@ -397,6 +397,10 @@ input[type="text"] {
     margin: 0;
     color: #c6c9cd;
     border-left: 0.3em solid #696b6e;
+}
+
+.copy-icon {
+    shape-rendering: crispEdges;
 }
 
 .content,
@@ -1071,7 +1075,7 @@ function initializeClipboard(button) {
         console.log("copied:" + event.text);
 
         event.trigger.innerHTML = CHECK_MARK;
-        event.trigger.style.color = greenColor;
+        event.trigger.style.color = "#3fb950";
 
         notification.style.display = "block";
 

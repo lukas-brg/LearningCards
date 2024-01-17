@@ -143,6 +143,10 @@ input[type="text"] {
     border-left: 0.3em solid #696b6e;
 }
 
+.copy-icon {
+    shape-rendering: crispEdges;
+}
+
 .content,
 .multicontent,
 .answer-content {

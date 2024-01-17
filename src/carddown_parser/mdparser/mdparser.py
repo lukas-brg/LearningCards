@@ -330,7 +330,7 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
 
     code.properties["id"] = "code-block_" + id_hash
     
-    copy_icon = HtmlNode("i", set_class="fas fa-copy copy-icon")
+    copy_icon = HtmlNode("i", set_class="fa-regular fa-copy copy-icon")
     
     copy_btn = HtmlNode("button", copy_icon, set_class="btn-copy", id=f"copy-button_{id_hash}")
     copy_btn.properties["data-clipboard-target"] = f"#{code.properties['id']}"

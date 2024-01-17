@@ -105,7 +105,7 @@
       <div class="copy-notification" id="copy-notification_37c31c4f0e9977be47065b27e3c95e0b1ed18d07">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_37c31c4f0e9977be47065b27e3c95e0b1ed18d07" data-clipboard-target="#code-block_37c31c4f0e9977be47065b27e3c95e0b1ed18d07"><i class="fas fa-copy copy-icon"></i></button>
+      <button class="btn-copy" id="copy-button_37c31c4f0e9977be47065b27e3c95e0b1ed18d07" data-clipboard-target="#code-block_37c31c4f0e9977be47065b27e3c95e0b1ed18d07"><i class="fa-regular fa-copy copy-icon"></i></button>
       <div class="copy-notification" id="copy-notification_37c31c4f0e9977be47065b27e3c95e0b1ed18d07">
         Copied!
       </div>
@@ -127,7 +127,7 @@
       <div class="copy-notification" id="copy-notification_a41c5c01580d01d4bb390b1967ee89a0c5187533">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_a41c5c01580d01d4bb390b1967ee89a0c5187533" data-clipboard-target="#code-block_a41c5c01580d01d4bb390b1967ee89a0c5187533"><i class="fas fa-copy copy-icon"></i></button>
+      <button class="btn-copy" id="copy-button_a41c5c01580d01d4bb390b1967ee89a0c5187533" data-clipboard-target="#code-block_a41c5c01580d01d4bb390b1967ee89a0c5187533"><i class="fa-regular fa-copy copy-icon"></i></button>
       <div class="copy-notification" id="copy-notification_a41c5c01580d01d4bb390b1967ee89a0c5187533">
         Copied!
       </div>
@@ -222,6 +222,38 @@
         <tr>
           <td style="text-align:center">ext</td>
           <td style="text-align:center">extension to</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Mixed alignments <br/></p>
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:left"><b>Left Alignment</b></th>
+          <th style="text-align:center"><b>Center Alignment</b></th>
+          <th style="text-align:right"><b>Right Alignment</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left">Python Hat</td>
+          <td style="text-align:center">True</td>
+          <td style="text-align:right">23.99</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">SQL Hat</td>
+          <td style="text-align:center">True</td>
+          <td style="text-align:right">23.99</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">Codecademy Tee</td>
+          <td style="text-align:center">False</td>
+          <td style="text-align:right">19.99</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">Codecademy Hoodie</td>
+          <td style="text-align:center">False</td>
+          <td style="text-align:right">42.99</td>
         </tr>
       </tbody>
     </table>
@@ -448,6 +480,10 @@ input[type="text"] {
     margin: 0;
     color: #c6c9cd;
     border-left: 0.3em solid #696b6e;
+}
+
+.copy-icon {
+    shape-rendering: crispEdges;
 }
 
 .content,
@@ -1122,7 +1158,7 @@ function initializeClipboard(button) {
         console.log("copied:" + event.text);
 
         event.trigger.innerHTML = CHECK_MARK;
-        event.trigger.style.color = greenColor;
+        event.trigger.style.color = "#3fb950";
 
         notification.style.display = "block";
 

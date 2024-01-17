@@ -182,7 +182,7 @@ function initializeClipboard(button) {
         console.log("copied:" + event.text);
 
         event.trigger.innerHTML = CHECK_MARK;
-        event.trigger.style.color = greenColor;
+        event.trigger.style.color = "#3fb950";
 
         notification.style.display = "block";
 
