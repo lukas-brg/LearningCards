@@ -1,0 +1,19 @@
+{
+    "de": {
+        "show_backside": "R&uuml;ckseite einblenden",
+        "hide_backside": "R&uuml;ckseite ausblenden",
+        "check_answer": "Pr&uuml;fen",
+        "toc": "Inhaltsverzeichnis",
+        "card": "Karte",
+        "copied": "Kopiert!"
+    },
+
+    "en": {
+        "show_backside": "Show Backside",
+        "hide_backside": "Hide Backside",
+        "check_answer": "Check Answer",
+        "toc": "Table Of Contents",
+        "card": "Card",
+        "copied": "Copied!"
+    }
+}

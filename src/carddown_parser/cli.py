@@ -204,6 +204,8 @@ def export(args):
 
     print(f"Sucessfully exported '{input_file}' to '{output_file}'")
 
+
+
 def alignment_css(margin, align):
     width = 100 - margin
     width_fhd = int(width / 100 * 1920)

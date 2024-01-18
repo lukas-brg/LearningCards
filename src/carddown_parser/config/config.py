@@ -13,28 +13,8 @@ USR_CONFIG_PATH = os.path.join(appdirs.user_config_dir("carddown"), CONFIG_FILE_
 CFG_PATHS = [APP_CONFIG_PATH, USR_CONFIG_PATH]
 
 
-LOCALS = {
-    "de" : {
-        "show_backside" : "R&uuml;ckseite einblenden",
-        "hide_backside" : "R&uuml;ckseite ausblenden",
-        "check_answer" : "Pr&uuml;fen",
-        "toc" : "Inhalte",
-        "card" : "Karte",
-        "copied" : "Kopiert!"
-    },
-    
-    "en": {
-        
-        "show_backside" : "Show Backside",
-        "hide_backside" : "Hide Backside",
-        "check_answer" : "Check Answer",
-        "toc" : "Contents",
-        "card" : "Card",
-        "copied" : "Copied!"
-    }
-
-}
-
+with open(os.path.join(os.path.dirname(__file__), "locals.json"), encoding="utf-8") as f:
+    LOCALS = json.load(f)
 
 class Subconfig():
     

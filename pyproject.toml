@@ -34,4 +34,4 @@ packages = ["carddown_parser", "carddown_parser.mdparser", "carddown_parser.conf
 [tool.setuptools.package-data]
 "carddown_parser" = ["static/*"]
 "carddown_parser.mdparser" = ["*.json"]
-"carddown_parser.config" = ["*.toml"]
+"carddown_parser.config" = ["*.toml", "*.json"]
