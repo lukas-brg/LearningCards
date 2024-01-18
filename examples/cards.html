@@ -255,16 +255,7 @@
 
     <style>
         .markdown-body {
-    box-sizing: border-box;
-
     padding: 45px;
-    padding-left: 20%;
-    padding-right: 20%;
-}
-@media (max-width: 767px) {
-    .markdown-body {
-        padding: 15px;
-    }
 }
 
 .toc {
@@ -486,6 +477,8 @@ a {
 }
 
 /*
+source: https://github.com/sindresorhus/github-markdown-css/tree/main
+
 MIT License
 
 Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
@@ -899,15 +892,27 @@ li.L9 {
 
         
     .markdown-body { 
-            padding-left: 25.0%;
-            padding-right: 25.0%
+        width: 50%;    
+        padding: 0;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    
+    @media only screen and (max-width: 960px) {
+        .markdown-body {
+            width: 92%;
+        }
+    }
+    
+    @media only screen and (min-width: 961px) and (max-width: 1920px){
+        .markdown-body {
+            width: 960px;
+            max-width: 92%;
+      
+        }
     }
 
-    @media only screen and (orientation: portrait) {
-    .markdown-body {
-            padding: 50px;
-    }
-} 
+
     
     </style>
     

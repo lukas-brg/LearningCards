@@ -380,7 +380,11 @@ def parse_table(lines: list[str], start: int) -> tuple[HtmlNode, int]:
    
     alignments = get_alignments(lines[start+1])
     top_row_matches = re.findall(table_cols_pattern, lines[start])
-    top_row_cols = [HtmlNode("th", HtmlNode("b", *parse_inline(col.strip())), **align) for col, align in zip(top_row_matches, alignments)]
+    top_row_cols = [
+        HtmlNode("th", HtmlNode("b", *parse_inline(col.strip())), **align) 
+        for col, align in zip(top_row_matches, alignments)
+    ]
+    
     
     top_row.add_children(*top_row_cols)
     head.add_children(top_row)
@@ -400,7 +404,11 @@ def parse_table(lines: list[str], start: int) -> tuple[HtmlNode, int]:
         if len(row_matches) != num_cols:
             raise MarkdownSyntaxError("Inconsistent number of columns in table.")
 
-        cols = [HtmlNode("td", *parse_inline(col.strip()), **align) for col, align in zip(row_matches, alignments)]
+        cols = [
+                HtmlNode("td", *parse_inline(col.strip()), **align) 
+                for col, align in zip(row_matches, alignments)
+            ]
+        
         tr.add_children(*cols)
         tbody.add_children(tr)
   

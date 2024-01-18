@@ -204,23 +204,36 @@ def export(args):
 
     print(f"Sucessfully exported '{input_file}' to '{output_file}'")
 
+def alignment_css(margin, align):
+    width = 100 - margin
+    width_fhd = int(width / 100 * 1920)
 
-def alignment_css(padding_left, padding_right):
-    
     return f"""
     .{config.document.body_class} {{ 
-            padding-left: {padding_left};
-            padding-right: {padding_right}
+        width: {width}%;    
+        padding: 0;
+        margin-right: auto;
+        margin-left: {'auto' if align == "center" else '15px'};
+    }}
+    
+    @media only screen and (max-width: {width_fhd}px) {{
+        .{config.document.body_class} {{
+            width: 92%;
+        }}
+    }}
+    
+    @media only screen and (min-width: {width_fhd+1}px) and (max-width: 1920px){{
+        .{config.document.body_class} {{
+            width: {width_fhd}px;
+            max-width: 92%;
+      
+        }}
     }}
 
-    @media only screen and (orientation: portrait) {{
-    .{config.document.body_class} {{
-            padding: 50px;
-    }}
-}} 
+
     """
 
-
+    
 
 def to_html(args):
     
@@ -235,12 +248,8 @@ def to_html(args):
     
     if css_path := args.css:
         styles.append(css_path)
-
-    if config.document.align == "left":
-       align_style = alignment_css("15px", f"{config.document.margin}%")
-    else:
-        align_style = alignment_css(f"{config.document.margin  / 2}%", f"{config.document.margin / 2}%")
     
+    align_style = alignment_css(config.document.margin, config.document.align)
 
     html = HtmlFile(scripts, styles, title, align_style)
 

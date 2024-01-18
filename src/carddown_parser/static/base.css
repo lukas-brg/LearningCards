@@ -1,14 +1,5 @@
 .markdown-body {
-    box-sizing: border-box;
-
     padding: 45px;
-    padding-left: 20%;
-    padding-right: 20%;
-}
-@media (max-width: 767px) {
-    .markdown-body {
-        padding: 15px;
-    }
 }
 
 .toc {
