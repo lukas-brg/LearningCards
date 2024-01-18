@@ -6,8 +6,8 @@ from .mdparser.htmltree import HtmlNode, SelfClosingTag
 from .mdparser import parse_markdown
 from .mdparser.utils import find_subclasses
 from .errors import CardSyntaxError
-from .config import get_config
-from .locals import get_locals, get_local
+from .config import get_config, get_local, get_locals
+
 
 config = get_config()
 

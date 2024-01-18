@@ -87,14 +87,28 @@ body h2 {
     background-color: #6e7681;
     color: white;
     padding: 6px;
-    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 7px;
     top: 50%;
 
     font-size: 12px;
     top: 0;
-    right: 30px;
-    margin-right: 10px;
+    right: 42px;
+    margin-right: 0px;
     margin-top: 11px;
+    shape-rendering: crispEdges;
+}
+
+.copy-notification::before {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 6px 0 6px 6px;
+    border-color: transparent transparent transparent #6e7681;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
 }
 
 #inline {

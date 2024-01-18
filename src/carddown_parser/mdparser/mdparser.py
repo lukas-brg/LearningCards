@@ -7,7 +7,7 @@ from .tokens import InlineToken
 from .htmltree import HtmlNode, SelfClosingTag, WhiteSpaceNode, TextNode
 from ..errors import try_read_file, MarkdownSyntaxError, show_warning_msg
 from .utils import leading_whitespaces, multiline_strip, find_line, enumerate_at, get_hash
-from ..locals import get_locals
+from ..config import get_locals
 
 config = get_config()
 

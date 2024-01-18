@@ -226,7 +226,7 @@ The custom ID can be used to [Link](#custom_id) to the heading.
 - [ ] This list item is unchecked 
   - [x] Task lists can also be nested
 
-### Latex Equations
+## Latex Equations
 
 $$F(x) = \int^a_b \frac{1}{3}x^3$$
 

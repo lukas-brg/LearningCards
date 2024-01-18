@@ -65,7 +65,7 @@
               <div class="copy-notification" id="copy-notification_e9c665081a3c14c293d2392dabca0b5b7bc2b662">
                 Copied!
               </div>
-              <button class="btn-copy" id="copy-button_e9c665081a3c14c293d2392dabca0b5b7bc2b662" data-clipboard-target="#code-block_e9c665081a3c14c293d2392dabca0b5b7bc2b662"><i class="fa-regular fa-copy copy-icon"></i></button>
+              <button class="btn-copy" id="copy-button_e9c665081a3c14c293d2392dabca0b5b7bc2b662" data-clipboard-target="#code-block_e9c665081a3c14c293d2392dabca0b5b7bc2b662"><i class="fa-regular fa-copy"></i></button>
               <div class="copy-notification" id="copy-notification_e9c665081a3c14c293d2392dabca0b5b7bc2b662">
                 Copied!
               </div>
@@ -278,9 +278,16 @@
 #toc-btn {
     float: right;
     border: none;
+    color: #909aa6;
     width: 60px;
     height: 35px;
-    font-size: 20px;
+    font-size: 30px;
+    background-color: transparent;
+}
+
+#toc-btn:hover {
+    background-color: #30363d;
+    border-radius: 5px;
 }
 
 body h1,
@@ -336,14 +343,28 @@ body h2 {
     background-color: #6e7681;
     color: white;
     padding: 6px;
-    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 7px;
     top: 50%;
 
     font-size: 12px;
     top: 0;
-    right: 30px;
-    margin-right: 10px;
+    right: 42px;
+    margin-right: 0px;
     margin-top: 11px;
+    shape-rendering: crispEdges;
+}
+
+.copy-notification::before {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 6px 0 6px 6px;
+    border-color: transparent transparent transparent #6e7681;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
 }
 
 #inline {
@@ -920,17 +941,20 @@ var locals = LOCALS[lang];
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
+const toc_up = '<i class="fa-solid fa-chevron-up"></i>';
+const toc_down = '<i class="fa-solid fa-chevron-down"></i>';
+
 var tocBtn = document.getElementById("toc-btn");
 if (tocBtn) {
     var content = document.getElementsByClassName("toc-content")[0];
     content.style.display = "block";
-    tocBtn.innerText = "∧";
+
     tocBtn.addEventListener("click", () => {
         if (content.style.display === "block") {
-            tocBtn.innerText = "∨";
+            tocBtn.innerHTML = toc_down;
             content.style.display = "none";
         } else {
-            tocBtn.innerText = "∧";
+            tocBtn.innerHTML = toc_up;
             content.style.display = "block";
         }
     });

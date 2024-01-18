@@ -2,6 +2,8 @@ import os, sys, json, traceback
 import appdirs
 import toml
 
+
+
 ENABLE_DEBUG = False
 
 CONFIG_FILE_NAME = "config.toml"
@@ -9,6 +11,29 @@ CONFIG_FILE_NAME = "config.toml"
 APP_CONFIG_PATH = os.path.join(os.path.dirname(__file__), CONFIG_FILE_NAME)
 USR_CONFIG_PATH = os.path.join(appdirs.user_config_dir("carddown"), CONFIG_FILE_NAME)
 CFG_PATHS = [APP_CONFIG_PATH, USR_CONFIG_PATH]
+
+
+LOCALS = {
+    "de" : {
+        "show_backside" : "R&uuml;ckseite einblenden",
+        "hide_backside" : "R&uuml;ckseite ausblenden",
+        "check_answer" : "Pr&uuml;fen",
+        "toc" : "Inhalte",
+        "card" : "Karte",
+        "copied" : "Kopiert!"
+    },
+    
+    "en": {
+        
+        "show_backside" : "Show Backside",
+        "hide_backside" : "Hide Backside",
+        "check_answer" : "Check Answer",
+        "toc" : "Contents",
+        "card" : "Card",
+        "copied" : "Copied!"
+    }
+
+}
 
 
 class Subconfig():
@@ -221,6 +246,16 @@ def get_config():
     return Config.get_config()
 
 
+def get_locals():
+    config = get_config()
+    return LOCALS[config.document.lang]
+
+
+def get_local(key: str) -> str:
+    return get_locals()[key]
+
+
+
 def load_configs(args):
    
     config = get_config()
@@ -256,9 +291,10 @@ def load_configs(args):
         config.document.open_file = args.open
     
     if args.lang is not None:
-        if args.lang != "de" and args.lang != "en":
-            print(f"Warning: Invalid lang option '{args.lang}'")
-        else:
+        if args.lang not in LOCALS:
+            print(f"Warning: Invalid lang option '{args.lang}'. Only {list(LOCALS.keys())} are supported.")
+            print(f"         Using default language '{config.document.lang}'")
+        else: 
             config.document.lang = args.lang
 
     if args.margin is not None:
