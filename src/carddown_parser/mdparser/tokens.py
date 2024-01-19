@@ -149,15 +149,11 @@ class CodeToken(InlineToken):
     pattern = r"`([^`]+)`"
     parse_content = False
 
-    properties = {
-        "id" : "inline",
-        "style" :  "white-space: nowrap",
-    }
-
+  
     def to_html(self) -> HtmlNode:
         if config.mdparser.prettyprint_inline_code:
-            return HtmlNode(self.tag, set_class="prettyprint", **self.properties)
-        return HtmlNode(self.tag, **self.properties)
+            return HtmlNode(self.tag, set_class="prettyprint inline")
+        return HtmlNode(self.tag, **self.properties, set_class="inline")
 
 
 class PrettyPrintCodeToken(InlineToken):
@@ -167,8 +163,8 @@ class PrettyPrintCodeToken(InlineToken):
 
     properties = {
         "id" : "inline",
-        "style" :  "white-space: nowrap",
-        "set_class" : "prettyprint"
+     
+        "set_class" : "prettyprint inline"
     }
 
     

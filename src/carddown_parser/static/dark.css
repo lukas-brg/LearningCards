@@ -2,10 +2,6 @@
     background-color: #161b22;
 }
 
-#inline {
-    background-color: #2f3640;
-}
-
 .focused {
     background-color: #403f47;
 }
@@ -277,6 +273,10 @@ The above copyright notice and this permission notice shall be included in all c
     font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco,
         Consolas, monospace;
     border: 0 !important;
+}
+
+.inline {
+    background-color: #2f3640;
 }
 
 .pln {

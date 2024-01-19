@@ -65,21 +65,14 @@
     <h2 id="h-1831c9c65">Blockquotes</h2>
     <div class="blockquote-div">
       <blockquote>
-        <p>A blockquote starts with <code id="inline" style="white-space: nowrap">></code> symbol <br/> Blockquotes can also be nested... <br/></p>
+        <p>A blockquote starts with <code class="inline">></code> symbol <br/> Blockquotes can also be nested... <br/></p>
         <blockquote><p>...by using additional greater-than signs right next to each other... <br/></p></blockquote>
       </blockquote>
     </div>
     <h2 id="h-57c9502a6">Lists</h2>
     <p><b>Unordered</b> <br/></p>
     <ul>
-      <li>
-        Create a list by starting a line with
-        <code id="inline" style="white-space: nowrap">+</code>
-        ,
-        <code id="inline" style="white-space: nowrap">-</code>
-        , or
-        <code id="inline" style="white-space: nowrap">*</code>
-      </li>
+      <li>Create a list by starting a line with <code class="inline">+</code> , <code class="inline">-</code> , or <code class="inline">*</code></li>
       <li>Sub-lists are made by indenting 2 spaces:</li>
       <ul>
         <li>Marker character change forces new list start:</li>
@@ -97,7 +90,7 @@
       <li>Consectetur adipiscing elit</li>
       <li>Integer molestie lorem at massa</li>
       <li>You can use sequential numbers...</li>
-      <li>...or keep all the numbers as <code id="inline" style="white-space: nowrap">1.</code></li>
+      <li>...or keep all the numbers as <code class="inline">1.</code></li>
     </ol>
     <p>Start numbering with offset: <br/></p>
     <ol start="57">
@@ -110,14 +103,7 @@
     </ol>
     <p><b>Unordered and ordered lists can also be mixed:</b> <br/></p>
     <ul>
-      <li>
-        Create a list by starting a line with
-        <code id="inline" style="white-space: nowrap">+</code>
-        ,
-        <code id="inline" style="white-space: nowrap">-</code>
-        , or
-        <code id="inline" style="white-space: nowrap">*</code>
-      </li>
+      <li>Create a list by starting a line with <code class="inline">+</code> , <code class="inline">-</code> , or <code class="inline">*</code></li>
       <li>Sub-lists are made by indenting 2 spaces:</li>
       <ul>
         <li>Marker character change forces new list start:</li>
@@ -130,7 +116,7 @@
       <li>Very easy!</li>
     </ul>
     <h2 id="h-adac69377">Code</h2>
-    <p>Inline <code id="inline" style="white-space: nowrap">code</code> <br/></p>
+    <p>Inline <code class="inline">code</code> <br/></p>
     <p>Block code "fences" <br/></p>
     <div class="multiline" id="code-div_37c31c4f0e9977be47065b27e3c95e0b1ed18d07">
       <code name="multiline-code-block" id="code-block_37c31c4f0e9977be47065b27e3c95e0b1ed18d07">Sample&nbsp;text&nbsp;here... <br/></code>
@@ -299,11 +285,11 @@
     <img alt="Stormtroopocat" src="https://octodex.github.com/images/stormtroopocat.jpg" title="The Stormtroopocat" width="500"/>
     <br/>
     <p>Like links, Images also have a footnote style syntax <br/></p>
-    <p><code id="inline" style="white-space: nowrap">![Alt text][id]</code> <br/></p>
+    <p><code class="inline">![Alt text][id]</code> <br/></p>
     <h2 id="h-ab2e26dd11">Plugins</h2>
     <p>
       The killer feature of
-      <code id="inline" style="white-space: nowrap">markdown-it</code>
+      <code class="inline">markdown-it</code>
       is very effective support of
       <br/>
       <a href="https://www.npmjs.org/browse/keyword/markdown-it-plugin" title="">syntax plugins</a>
@@ -474,7 +460,7 @@ body h2 {
     transform: translateY(-50%);
 }
 
-#inline {
+.inline {
     font-family: monospace !important;
 
     border-radius: 5px;
@@ -567,10 +553,6 @@ h6 > a,
 
 .multiline {
     background-color: #161b22;
-}
-
-#inline {
-    background-color: #2f3640;
 }
 
 .focused {
@@ -846,6 +828,10 @@ The above copyright notice and this permission notice shall be included in all c
     border: 0 !important;
 }
 
+.inline {
+    background-color: #2f3640;
+}
+
 .pln {
     color: #e6e9ed;
 }
@@ -1030,11 +1016,10 @@ li.L9 {
     }
 
     @media only screen 
-    and (max-width: 480px) and (orientation: portrait) {
+    and (max-device-width: 480px) and (orientation: portrait) {
         .markdown-body {
-            
             width: 90%;
-            font-size: 16px;      
+            font-size: 25px;      
         }
   
     }

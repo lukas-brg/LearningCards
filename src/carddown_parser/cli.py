@@ -191,7 +191,7 @@ def export(args):
         
         loader = try_parse_file(loader, input_file)
         
-        html = HtmlFile(style_files=styles, title=title)
+        html = HtmlFile(style_files=styles, title=title, lang=config.document.lang)
         if args.shuffle:
             loader.cards.shuffle()
 
@@ -233,11 +233,10 @@ def alignment_css(margin, align):
     }}
 
     @media only screen 
-    and (max-width: 480px) and (orientation: portrait) {{
+    and (max-device-width: 480px) and (orientation: portrait) {{
         .{config.document.body_class} {{
-            
             width: 90%;
-            font-size: 16px;      
+            font-size: 25px;      
         }}
   
     }}
@@ -262,7 +261,7 @@ def to_html(args):
     
     align_style = alignment_css(config.document.margin, config.document.align)
 
-    html = HtmlFile(scripts, styles, title, align_style)
+    html = HtmlFile(scripts, style_files=styles, title=title, style_str=align_style, lang=config.document.lang)
 
     if args.cards:
         html.body.add_children(*loader.get_cards(shuffle=args.shuffle))

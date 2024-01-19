@@ -157,7 +157,7 @@ class WhiteSpaceNode(TextNode):
 
 
 class HtmlFile:
-    def __init__(self, script_files=None, style_files=None, title="", style_str="", head_str="", script_str=""):
+    def __init__(self, script_files=None, style_files=None, title="", style_str="", head_str="", script_str="", charset="utf-8", lang="en"):
         self.body = HtmlNode('body', set_class=config.document.body_class)
         self.script_files = script_files or []
         self.style_files = style_files or []
@@ -165,6 +165,8 @@ class HtmlFile:
         self.style_str = style_str
         self.head_str = head_str
         self.script_str = script_str
+        self.charset = charset
+        self.lang = lang
 
     def __str__(self):
         return self.create_document()
@@ -179,9 +181,9 @@ class HtmlFile:
         
         return f"""
 <!DOCTYPE html>
-<html lang="{config.document.lang}">
+<html lang="{self.lang}">
     <head>
-        <meta charset="utf-8">
+        <meta charset="{self.charset}">
         <title>{self.title}</title>
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css&amp;skin=default"></script>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>

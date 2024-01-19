@@ -64,7 +64,7 @@
         Copied!
       </div>
     </div>
-    <p>After installation the application can be started from anywhere by running <code id="inline" style="white-space: nowrap">carddown ...args</code> in the command line. <br/></p>
+    <p>After installation the application can be started from anywhere by running <code class="inline">carddown ...args</code> in the command line. <br/></p>
     <p><b>Note:</b> <br/> On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work: <br/></p>
     <div class="multiline" id="code-div_de743111577d30c142b4f670663c821b86e68067">
       <code name="multiline-code-block" id="code-block_de743111577d30c142b4f670663c821b86e68067">python3&nbsp;-m&nbsp;pip&nbsp;install&nbsp;--upgrade&nbsp;pip <br/></code>
@@ -106,77 +106,45 @@
     <p>Additionally there are a number of flags and parameters: <br/></p>
     <p><b>Flags:</b> <br/></p>
     <ul>
-      <li>
-        
-        <code id="inline" style="white-space: nowrap">--cards</code>
-        /
-        <code id="inline" style="white-space: nowrap">-c</code>
-        
-        <span>&#10230;</span>
-        Renders the cards only, no markdown
-      </li>
-      <li>
-        
-        <code id="inline" style="white-space: nowrap">--shuffle</code>
-        /
-        <code id="inline" style="white-space: nowrap">-s</code>
-        
-        <span>&#10230;</span>
-        Render the cards only in a random order
-      </li>
-      <li>
-        
-        <code id="inline" style="white-space: nowrap">--show-answers</code>
-        /
-        <code id="inline" style="white-space: nowrap">-sh</code>
-        
-        <span>&#10230;</span>
-        Answers are shown right away
-      </li>
-      <li>
-        
-        <code id="inline" style="white-space: nowrap">--open</code>
-        /
-        <code id="inline" style="white-space: nowrap">-o</code>
-        
-        <span>&#10230;</span>
-        Opens the output file with default webbrowser
-      </li>
-      <li><code id="inline" style="white-space: nowrap">--toc</code> <span>&#10230;</span> Automatically generates a table of contents based on the headings</li>
+      <li><code class="inline">--cards</code> / <code class="inline">-c</code> <span>&#10230;</span> Renders the cards only, no markdown</li>
+      <li><code class="inline">--shuffle</code> / <code class="inline">-s</code> <span>&#10230;</span> Render the cards only in a random order</li>
+      <li><code class="inline">--show-answers</code> / <code class="inline">-sh</code> <span>&#10230;</span> Answers are shown right away</li>
+      <li><code class="inline">--open</code> / <code class="inline">-o</code> <span>&#10230;</span> Opens the output file with default webbrowser</li>
+      <li><code class="inline">--toc</code> <span>&#10230;</span> Automatically generates a table of contents based on the headings</li>
     </ul>
     <p><b>Parameters:</b> <br/></p>
     <ul>
-      <li><code id="inline" style="white-space: nowrap">--lang</code> <span>&#10230;</span> Specifies language. Currently 'de' and 'en' are supported</li>
-      <li><code id="inline" style="white-space: nowrap">--theme</code> <span>&#10230;</span> Choose theme out of 'light', 'dark', 'raw', 'none'</li>
-      <li><code id="inline" style="white-space: nowrap">--align</code> <span>&#10230;</span> Aligns the body to the 'left' or 'center'</li>
-      <li><code id="inline" style="white-space: nowrap">--margin</code> <span>&#10230;</span> Total margin in percent</li>
+      <li><code class="inline">--lang</code> <span>&#10230;</span> Specifies language. Currently 'de' and 'en' are supported</li>
+      <li><code class="inline">--theme</code> <span>&#10230;</span> Choose theme out of 'light', 'dark', 'raw', 'none'</li>
+      <li><code class="inline">--align</code> <span>&#10230;</span> Aligns the body to the 'left' or 'center'</li>
+      <li><code class="inline">--margin</code> <span>&#10230;</span> Total margin in percent</li>
       <li>
-        <code id="inline" style="white-space: nowrap">--title</code>
+        <code class="inline">--title</code>
         
         <span>&#10230;</span>
         Title of the HTML document. If this parameter is not provided, one will be generated based on the name of the input file.
       </li>
     </ul>
-    <p><code id="inline" style="white-space: nowrap">carddown -h/--help</code> lists every available flag and parameter. <br/></p>
+    <p><code class="inline">carddown -h/--help</code> lists every available flag and parameter. <br/></p>
     <p><br/> <br/></p>
     <h2 id="h-965b1b7c3">Learning Cards</h2>
     <p>
       The Learning cards are split into a front side and a back side. The front side contains the question, while the back side, which is not revealed until a click on a button, contains the answer.
       <br/>
     </p>
-    <p>The learning card specific syntax uses three types of tags, all of which are wrapped in <code id="inline" style="white-space: nowrap">{CURLY_BRACES}</code> : <br/></p>
+    <p>The learning card specific syntax uses three types of tags, all of which are wrapped in <code class="inline">{CURLY_BRACES}</code> : <br/></p>
     <ol start="1">
       <li>Every card starts with a start tag, that is at the end of an H1 heading, which serves as the card title.</li>
       <ul>
         <li>The exact tag depends on the learning card type</li>
       </ul>
-      <li>The <code id="inline" style="white-space: nowrap">{BACK}</code> tag marks the point where the back side begins.</li>
+      <li>The <code class="inline">{BACK}</code> tag marks the point where the back side begins.</li>
       <ul>
         <li>If this tag is omitted, only the H1 heading makes up the front side, the rest will be on the back side</li>
       </ul>
       <li>The end of a card is defined by using the {END} tag:</li>
       <ul>
-        <li>The <code id="inline" style="white-space: nowrap">{END}</code> tag can be omitted for subsequent cards or when a card is at the end of file.</li>
+        <li>The <code class="inline">{END}</code> tag can be omitted for subsequent cards or when a card is at the end of file.</li>
       </ul>
     </ol>
     <p><br/> <br/></p>
@@ -216,7 +184,7 @@
       </div>
       <hr/>
     </div>
-    <p><b>Note:</b> This format where there is no <code id="inline" style="white-space: nowrap">{END}</code> tag works for every card type. <br/></p>
+    <p><b>Note:</b> This format where there is no <code class="inline">{END}</code> tag works for every card type. <br/></p>
     <p><br/> <br/></p>
     <h4 id="h-77cd9abb6">Multiple Choice Card</h4>
     <div class="card MultipleChoiceCard" id="2">
@@ -265,12 +233,7 @@
       </div>
       <hr/>
     </div>
-    <p>
-      The answer is contained inside
-      <code id="inline" style="white-space: nowrap">{CURLY_BRACES}</code>
-      . If there are none, the whole back side will be regarded as the correct answer.
-      <br/>
-    </p>
+    <p>The answer is contained inside <code class="inline">{CURLY_BRACES}</code> . If there are none, the whole back side will be regarded as the correct answer. <br/></p>
     <p><br/> <br/></p>
     <p>
       <b>Note</b>
@@ -285,9 +248,9 @@
     <h2 id="h-754164858">Configuration</h2>
     <p>
       Carddown uses
-      <code id="inline" style="white-space: nowrap">.toml</code>
+      <code class="inline">.toml</code>
       files for configuration and provides a second entry point called
-      <code id="inline" style="white-space: nowrap">carddown-config</code>
+      <code class="inline">carddown-config</code>
       to handle all things related to configuration.
       <br/>
     </p>
@@ -295,7 +258,7 @@
       A config file does not need to contain every available parameter. When using a custom config file, the parameters within it overwrite the defaults, while the remaining parameters follow the default settings.
       <br/>
     </p>
-    <p>Run <code id="inline" style="white-space: nowrap">carddown-config --help</code> to list out every option regarding configuration. <br/></p>
+    <p>Run <code class="inline">carddown-config --help</code> to list out every option regarding configuration. <br/></p>
     <p><br/> <br/></p>
     <h3 id="h-4c12f5df9">Creating a User Config File</h3>
     <p>Carddown already uses an application config file located within the project directory. However, users can create their own config file. <br/></p>
@@ -319,7 +282,7 @@
     <p>
       If you want to restore the defaults, you can either run
       <br/>
-      <code id="inline" style="white-space: nowrap">carddown-config --make-usr</code>
+      <code class="inline">carddown-config --make-usr</code>
       again and choose to overwrite the existing config file to bring it back to its defaults or remove the user config file entirely by running:
       <br/>
     </p>
@@ -337,7 +300,7 @@
     <h3 id="h-88b8c27b11">Using a Custom Configuration to Render a Single File</h3>
     <p>
       When using carddown to reder a Markdown file, you can use the
-      <code id="inline" style="white-space: nowrap">--config [CONFIG_PATH]</code>
+      <code class="inline">--config [CONFIG_PATH]</code>
       parameter to use a custom config file and apply it just to this specific markdown file.
       <br/>
     </p>
@@ -473,7 +436,7 @@ body h2 {
     transform: translateY(-50%);
 }
 
-#inline {
+.inline {
     font-family: monospace !important;
 
     border-radius: 5px;
@@ -566,10 +529,6 @@ h6 > a,
 
 .multiline {
     background-color: #161b22;
-}
-
-#inline {
-    background-color: #2f3640;
 }
 
 .focused {
@@ -845,6 +804,10 @@ The above copyright notice and this permission notice shall be included in all c
     border: 0 !important;
 }
 
+.inline {
+    background-color: #2f3640;
+}
+
 .pln {
     color: #e6e9ed;
 }
@@ -1029,11 +992,10 @@ li.L9 {
     }
 
     @media only screen 
-    and (max-width: 480px) and (orientation: portrait) {
+    and (max-device-width: 480px) and (orientation: portrait) {
         .markdown-body {
-            
             width: 90%;
-            font-size: 16px;      
+            font-size: 25px;      
         }
   
     }

@@ -103,7 +103,7 @@ body h2 {
     transform: translateY(-50%);
 }
 
-#inline {
+.inline {
     font-family: monospace !important;
 
     border-radius: 5px;
