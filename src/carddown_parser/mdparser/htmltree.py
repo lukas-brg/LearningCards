@@ -31,6 +31,31 @@ class HtmlNode:
                 yield node
 
 
+    def remove_from_tree(self):
+        if not self.parent:
+           
+            return
+        self.parent.children.remove(self)
+        
+        self.parent = None
+
+    
+    def replace_in_tree(self, node: HtmlNode|str):
+        if not self.parent:
+            return
+        
+        if isinstance(node, str):
+            node = TextNode(node)
+
+        for i, c in enumerate(self.parent.children):
+            if c is self:
+                self.parent.children[i] = node
+                break
+        
+        node.parent = self.parent
+        self.parent = None
+
+
     def add_children(self, *children: HtmlNode|str):
         """Always use either the HtmlNode constructor or this method to add children to a node,
            as it automatically sets the children's parent attributes

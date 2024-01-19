@@ -1,6 +1,6 @@
 import random, json
 from .mdparser import parse_markdown
-from .mdparser.htmltree import  SelfClosingTag, HtmlNode
+from .mdparser.htmltree import  SelfClosingTag, HtmlNode, TextNode
 from .mdparser.mdparser import make_table_of_contents
 from .cards import LearningCard
 from .errors import try_read_file
@@ -78,40 +78,52 @@ class CardLoader:
         return i + 1
     
 
-    def get_card_footnotes(self, cards_html):
-    
-        container = HtmlNode("container")
-        container.children = self.html
-        cards_container = HtmlNode("container")
+
+    def process_footnotes(self, cards_only=False) -> list[HtmlNode]:
         
-        cards_container.children = cards_html
-    
-        footnotes = container.search_by_property("set_class", "footnote", substring_search=False)
-        card_footnotes = []
-        for fn in footnotes:
-            a = next(fn.search_by_property("href", "#ref", substring_search=True, find_all=False))
-            id = a.properties["href"].replace("#", "")
+        if cards_only:
+            root_node = HtmlNode("root", *self.cards.get_cards_html())
+        else:
+            root_node = HtmlNode("root", *self.html)
 
-            if any(cards_container.search_by_property("id", id, substring_search=False, find_all=False)):
-                card_footnotes.append(fn)
-
-        if not card_footnotes:
-            return []
+        refs = root_node.search_by_property("set_class", "footnote-ref")
+        footnote_divs = list(root_node.search_by_property("set_class", "footnotes-div"))
         
 
-        div = HtmlNode("div", *card_footnotes, set_class="footnotes-div")
-        return [div]
-    
+        for footnote_div in footnote_divs:
+            footnote_div.remove_from_tree()
+
+        div_container = HtmlNode("container", *footnote_divs)
+
+        display_div = HtmlNode("div", set_class="footnotes-div")
+
+        for count, fn_ref in enumerate(refs, 1):
+            fn_text = fn_ref.properties["id"].replace("ref-", "")
+           
+            fn_ref.children[0].replace_in_tree(TextNode(f"[{count}]"))
+            fn_id = f"footnote-{fn_text}"
+
+            fn = next(div_container.search_by_property("id", fn_id, substring_search=False, find_all=False))
+            fn_container = fn.parent.parent
+            fn.children[0].replace_in_tree(f"{count}.")
+            display_div.add_children(fn_container)
+
+        if display_div.children:
+            root_node.add_children(display_div)
+      
+        return root_node.children
+
+
+
 
     def get_cards(self, shuffle=False):
         if shuffle:
             self.cards.shuffle()
-        cards_html = self.cards.get_cards_html()
-        footnotes = self.get_card_footnotes(cards_html)
-        cards_html.extend(footnotes)
+        
+        cards_html = self.process_footnotes(cards_only=True)
         
         if config.document.table_of_contents:
-            container = HtmlNode("container", *self.cards.get_cards_html())
+            container = HtmlNode("container", *cards_html)
             toc_div = make_table_of_contents(container, config.document.toc_max_heading)
             doc = toc_div + cards_html
             return doc
@@ -124,17 +136,20 @@ class CardLoader:
 
 
     def get_cards_and_markdown(self):
+        self.html = self.process_footnotes()
         if config.document.table_of_contents:
             container = HtmlNode("container", *self.html)
             toc_div = make_table_of_contents(container, config.document.toc_max_heading)
             doc = toc_div + self.html 
             return doc
-        return self.html
-
-    def parse_file(self, card_file: str):
-        # card_file is the filename of Markdown-File with cards
         
-        lines = try_read_file(card_file)
+        return self.html
+       
+       
+
+    def parse_file(self, input_file: str):
+        
+        lines = try_read_file(input_file)
         
         lines = lines.splitlines(True)
 
@@ -157,3 +172,4 @@ class CardLoader:
         md_elems = parse_markdown(md_string)
         self.html.extend(md_elems)
         self.markdown.extend(md_elems)
+

@@ -122,7 +122,7 @@ class ImageToken(InlineToken):
 
 class AutomaticLinkToken(InlineToken):
     tag = "a"
-    pattern = r"(?:^|[^(])(https?://[^\s]+)"
+    pattern = r"(?:^|[^(])(https?://[^\s,]+)"
     no_content = True
 
     def to_html(self):

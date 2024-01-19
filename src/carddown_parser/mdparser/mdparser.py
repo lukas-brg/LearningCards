@@ -493,28 +493,12 @@ def parse_block_quote(lines: list[str], start: int, depth=1) -> tuple[HtmlNode, 
     return blockquote, i
 
 
-def get_footnote_indent(lines: list[str], start: int) -> int: 
-    
-    max_len = 0
-    
-    for line in lines[start:]:
-        if line.strip() == "":
-            continue
-        match = re.search(FOOTNOTE_PATTERN, line)
-        
-        if not match and leading_whitespaces(line) < 2:
-            break
-        elif match:
-            max_len = max(max_len, len(match.group(1).strip()))
-    
-    indent = max(max_len+3, config.mdparser.footnote_min_indent)
-    return indent
 
 
 def parse_footnotes(lines: list[str], start: int) -> tuple[HtmlNode, int]:
-    div = HtmlNode("div", set_class="footnotes-div")
-    p = HtmlNode("p", set_class="footnote")
-    indent = get_footnote_indent(lines, start)
+    footnotes_div = HtmlNode("div", set_class="footnotes-div")
+    footnote_div = HtmlNode("div", set_class="footnote")
+    
    
     for i, line in enumerate_at(lines, start):
      
@@ -522,14 +506,14 @@ def parse_footnotes(lines: list[str], start: int) -> tuple[HtmlNode, int]:
             continue
 
         if (leading_whitespaces(line)) >= 2:
-            inline_elems = [WhiteSpaceNode(indent), *parse_inline(line), SelfClosingTag("br")]
+            inline_elems = [WhiteSpaceNode(3), *parse_inline(line)]
         
         elif match := re.search(FOOTNOTE_PATTERN, line):
             
-            if p.children:
-                div.add_children(p)
+            if footnote_div.children:
+                footnotes_div.add_children(footnote_div)
             
-            p = HtmlNode("p", set_class="footnote")
+            footnote_div = HtmlNode("div", set_class="footnote")
             text = match.group(1).strip()
             href = f"#ref-{text}"
             id = f"footnote-{text}"
@@ -537,23 +521,24 @@ def parse_footnotes(lines: list[str], start: int) -> tuple[HtmlNode, int]:
             
             a = HtmlNode("a", "&#8617;", href=href)
             
-            indent_compensated = max(indent - len(text)-1, 1)
+     
             footnote = HtmlNode("span", text,  id=id)
             
             line = re.sub(FOOTNOTE_PATTERN, "", line)
-            inline_elems = [footnote, WhiteSpaceNode(indent_compensated), *parse_inline(line), a, SelfClosingTag("br")]
+            inline_elems = [footnote, *parse_inline(line), a]
                         
         else:
             break
-    
-        p.add_children(*inline_elems)
+            
+        p = HtmlNode("p", *inline_elems, set_class="footnote-paragraph")
+        footnote_div.add_children(p)
 
     end = len(lines) if i >= len(lines) - 1 else i 
     
-    if p.children:
-        div.add_children(p)
+    if footnote_div.children:
+        footnotes_div.add_children(footnote_div)
 
-    return div, end
+    return footnotes_div, end
 
 
 def append_paragraph(elems: list[HtmlNode], p: HtmlNode, use_paragraph: bool) -> HtmlNode:

@@ -199,12 +199,17 @@ Footnote 2 link[^second].
 
 
 
-[^first]: Footnote **can have markup**
+[^first]: Footnotes _can have markup_
 
     and multiple paragraphs.
 
 [^second]: Footnote text.
 
+
+Footnotes are enumerated by their order in the document, regardless of their text[^1].
+
+[^1]: The footnotes can be split up across the document
+    Though they are always displayed at the bottom
 
 ### Definition lists
 

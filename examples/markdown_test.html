@@ -46,7 +46,7 @@
         </ul>
       </div>
     </div>
-    <p><b>Note:</b> This file was copied from <a href="https://markdown-it.github.io/">https://markdown-it.github.io/</a> and modified to adequately demonstrate the markdown syntax supported by this software. <br/></p>
+    <p><b>Note:</b> This file was copied from <a href="https://markdown-it.github.io/">https://markdown-it.github.io/</a>, and has been modified to adequately demonstrate the markdown syntax supported by this software. <br/></p>
     <h1 id="h-5c4db2b60">h1 Heading</h1>
     <h2 id="h-6421ed221">h2 Heading</h2>
     <h3 id="h-6f3edaea2">h3 Heading</h3>
@@ -284,12 +284,9 @@
       <li>H<sub>2</sub> O</li>
     </ul>
     <h3 id="h-ec0c3b7614">Footnotes</h3>
-    <p>Footnote 1 link<sup><a href="#footnote-first" class="footnote-ref" id="ref-first">[first]</a></sup>. <br/></p>
-    <p>Footnote 2 link<sup><a href="#footnote-second" class="footnote-ref" id="ref-second">[second]</a></sup>. <br/></p>
-    <div class="footnotes-div">
-      <p class="footnote"><span id="footnote-first">first:</span> &nbsp;&nbsp; Footnote <b>can have markup</b> <a href="#ref-first">&#8617;</a> <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and multiple paragraphs. <br/></p>
-      <p class="footnote"><span id="footnote-second">second:</span> &nbsp; Footnote text. <a href="#ref-second">&#8617;</a> <br/></p>
-    </div>
+    <p>Footnote 1 link<sup><a href="#footnote-first" class="footnote-ref" id="ref-first">[1]</a></sup>. <br/></p>
+    <p>Footnote 2 link<sup><a href="#footnote-second" class="footnote-ref" id="ref-second">[2]</a></sup>. <br/></p>
+    <p>Footnotes are enumerated by their order in the document, regardless of their text<sup><a href="#footnote-1" class="footnote-ref" id="ref-1">[3]</a></sup>. <br/></p>
     <h3 id="h-b5b2845a15">Definition lists</h3>
     <dl><b><dt>First Term</dt></b> <dd>This is the definition of the first term.</dd> <br/> <b><dt>Second Term</dt></b> <dd>This is one definition of the second term.</dd> <dd>This is another definition of the second term.</dd> <br/> <br/></dl>
     <h3 id="h-06d7d60116">Custom IDs</h3>
@@ -312,6 +309,19 @@
     <h2 id="h-096dec2e18">Latex Equations</h2>
     <p><span class="latex-equation">$$F(x) = \int^a_b \frac{1}{3}x^3$$</span> <br/></p>
     <p><span class="latex-equation">$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$</span> <br/></p>
+    <div class="footnotes-div">
+      <div class="footnote">
+        <p class="footnote-paragraph"><span id="footnote-first">1.</span> Footnotes <em>can have markup</em> <a href="#ref-first">&#8617;</a></p>
+        <p class="footnote-paragraph">&nbsp;&nbsp;&nbsp; and multiple paragraphs.</p>
+      </div>
+      <div class="footnote">
+        <p class="footnote-paragraph"><span id="footnote-second">2.</span> Footnote text. <a href="#ref-second">&#8617;</a></p>
+      </div>
+      <div class="footnote">
+        <p class="footnote-paragraph"><span id="footnote-1">3.</span> The footnotes can be split up across the document <a href="#ref-1">&#8617;</a></p>
+        <p class="footnote-paragraph">&nbsp;&nbsp;&nbsp; Though they are always displayed at the bottom</p>
+      </div>
+    </div>
     <style>
             .markdown-body {
                 padding-top: 20px;
@@ -487,11 +497,15 @@
             }
 
             .footnotes-div {
-                font-family: monospace;
                 margin-top: 60px;
                 margin-bottom: 60px;
                 color: #696b6e;
-                font-size: 14px;
+                font-size: 0.75em;
+                padding-bottom: 20px;
+            }
+
+            .footnote {
+                margin-top: 25px;
             }
 
             a {
@@ -530,7 +544,7 @@
             .footnotes-div {
                 border-top: 1px solid #21262d;
                 border-bottom: 1px solid #21262d;
-                color: #acafb1;
+                color: #7b848e;
             }
 
             /*
