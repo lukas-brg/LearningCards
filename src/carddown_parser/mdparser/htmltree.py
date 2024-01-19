@@ -1,7 +1,6 @@
 from __future__ import annotations
-import  re
+import  re, textwrap
 from typing import Generator
-
 from ..errors import try_read_file
 from ..config import get_config
 
@@ -10,6 +9,7 @@ config = get_config()
 
 # Subtrees starting with these tags are never printed in a single line
 NEWLINE_TAGS = ["div", "ul", "ol", "table", "thead", "tbody", "tr", "body"]
+INLINE_TAGS = ["b", "em", "s", "mark", "sub", "sup", "br"]
 HTML_WHITESPACE = "&nbsp;"
 
 
@@ -112,18 +112,26 @@ class HtmlNode:
         start_tag = f"<{self.tag}{self._props_str()}>"
         end_tag = f"</{self.tag}>"
         
-        if len(children.strip()) < 200 and self.tag not in NEWLINE_TAGS:
+        
+        if (self.tag not in NEWLINE_TAGS and len(children.strip( "\n " )) <= 300) or self.tag in INLINE_TAGS:
             
-            children = re.sub("\n+", "", children)
             children = re.sub(r"\s+", " ", children)
-            
             # Workaround to get superscript and subscript displayed right
             children = re.sub(r"(\S) <sup>", r"\1<sup>", children)
             children = re.sub(r"(\S) <sub>", r"\1<sub>", children)
-            return indentation + start_tag + children.strip() + end_tag
+            
+            html_str = indentation + start_tag + children.strip() + end_tag
+            
+            # Remove spacing between closing tag and punctuation marks
+            pattern = r'(</\w+>)\s+([.,;!?])'
+            replacement = r'\1\2'
+            
+            html_str = re.sub(pattern, replacement, html_str)
+       
+        else:
+            html_str = indentation + start_tag + "\n" + children + "\n" + indentation + end_tag                                                                                           
       
-        return indentation + start_tag + "\n" + children + "\n" + indentation + end_tag                                                                                           
-
+        return html_str
 
 class SelfClosingTag(HtmlNode):
    
@@ -179,6 +187,21 @@ class HtmlFile:
         style = "\n".join(try_read_file(style_path) for style_path in self.style_files)
         script = "\n".join(try_read_file(script_path) for script_path in self.script_files)
         
+        script_section = f"""
+    <script>
+{textwrap.indent(script, ' ' * 12)}
+{textwrap.indent(self.script_str, ' ' * 12)}
+    </script>
+"""
+        style_section = f"""
+    <style>
+{textwrap.indent(style, ' ' * 12)}
+{textwrap.indent(self.style_str, ' ' * 12)}
+    </style>
+"""
+        
+        self.body.add_children(style_section, script_section)
+
         return f"""
 <!DOCTYPE html>
 <html lang="{self.lang}">
@@ -191,23 +214,12 @@ class HtmlFile:
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/16.0.0/octicons.min.css">
-        {self.head_str}
+        {self.head_str} 
     </head>
 
 {self.body}
 
 
-    <style>
-        {style}
 
-        {self.style_str}
-    </style>
-    
-    <script>
-        {script}
-        {self.script_str}
-    </script>
-    
-  
 </html>
 """

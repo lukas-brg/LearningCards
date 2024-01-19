@@ -1,4 +1,9 @@
 
+
+**Note:** This file was copied from https://markdown-it.github.io/, and has been modified to adequately demonstrate the markdown syntax supported by this software.
+
+
+
 # h1 Heading 
 
 ## h2 Heading
@@ -14,17 +19,16 @@
 
 ## Horizontal Rules
 
-
-
 ---
 
 ***
 
 
-## Emphasis
+## Fontstyles
 
 **This is bold text**
 
+==This is marked text==
 
 _This is italic text_
 

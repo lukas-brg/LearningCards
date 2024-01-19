@@ -101,7 +101,7 @@ There are three basic card types:
 
 # This is the card title {CARD}
 
-This is the front side of the card. It can contain any markdown syntax
+This is the front side of the card. It can contain any markdown syntax.
 
 {BACK}
 
@@ -213,7 +213,7 @@ carddown-config --rm-usr
 
 ### Using a Custom Configuration to Render a Single File
 
-When using carddown to reder a Markdown file, you can use the `--config [CONFIG_PATH]` parameter to use a custom config file and apply it just to this specific markdown file.
+When using carddown to render a Markdown file, you can use the `--config [CONFIG_PATH]` parameter to use a custom config file and apply it just to this specific markdown file.
 
 Example:
 

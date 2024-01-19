@@ -61,7 +61,7 @@ for (let btn of document.getElementsByClassName("collapsible")) {
 
 for (let card of document.getElementsByClassName("card")) {
     card.addEventListener("mouseover", () => {
-        btn = card.querySelector('[name="btn"]');
+        btn = card.querySelector(".card-btn");
         focused = document.activeElement;
 
         if (!(focused.name === "answer_field" + card.id)) {
@@ -70,7 +70,7 @@ for (let card of document.getElementsByClassName("card")) {
         btn.classList.add("focused");
     });
     card.addEventListener("mouseout", () => {
-        btn = card.querySelector('[name="btn"]');
+        btn = card.querySelector(".card-btn");
 
         btn.classList.remove("focused");
     });
