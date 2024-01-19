@@ -69,7 +69,7 @@ def toc_list(items: list, parent: HtmlNode, last_lvl: int, start: int) -> int:
         lvl, li = items[i]
    
         if lvl > last_lvl:
-            new_list = HtmlNode("ul")
+            new_list = HtmlNode("ul", set_class="toc-ul")
             i = toc_list(items, new_list, lvl, i)
             parent.add_children(new_list)
         elif lvl == last_lvl:
@@ -130,7 +130,7 @@ def find_headings(root_node: HtmlNode, max_lvl=3) -> list[tuple[int, HtmlNode]]:
             else:
                 last_non_card_heading_lvl = heading_lvl
             
-            a = HtmlNode("a", text, href=href)
+            a = HtmlNode("a", text, href=href, set_class="toc-link")
             li = HtmlNode("li", a)
             items.append((heading_lvl, li))
             count += 1
@@ -151,7 +151,7 @@ def make_table_of_contents(root_node: HtmlNode, max_lvl=3) -> list[HtmlNode]:
     count = 0
     
     while i < len(items) and count <= len(items):
-        ul = HtmlNode("ul")
+        ul = HtmlNode("ul", set_class="toc-ul")
         i = toc_list(items, ul, items[i][0], i)
         uls.append(ul)
         count += 1

@@ -10,32 +10,32 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/16.0.0/octicons.min.css">
-
+        
     </head>
 
   <body class="markdown-body">
     <div class="toc">
       <span><h1>Table Of Contents <button id="toc-btn"><i class="fa-solid fa-chevron-up"></i></button></h1></span>
       <div class="toc-content">
-        <ul>
-          <li><a href="#h-55f8ebc80">Description</a></li>
-          <li><a href="#h-c81b79df1">Installation</a></li>
-          <li><a href="#h-0bb186422">Usage</a></li>
-          <ul>
-            <li><a href="#h-965b1b7c3">Learning Cards</a></li>
-            <ul>
-              <li><a href="#h-b0e8894e4">Learning Card Types</a></li>
-              <ul>
-                <li><a href="#h-a043d5835">Standard Card</a></li>
-                <li><a href="#h-77cd9abb6">Multiple Choice Card</a></li>
-                <li><a href="#h-7306b7807">Answer Card</a></li>
+        <ul class="toc-ul">
+          <li><a href="#h-55f8ebc80" class="toc-link">Description</a></li>
+          <li><a href="#h-c81b79df1" class="toc-link">Installation</a></li>
+          <li><a href="#h-0bb186422" class="toc-link">Usage</a></li>
+          <ul class="toc-ul">
+            <li><a href="#h-965b1b7c3" class="toc-link">Learning Cards</a></li>
+            <ul class="toc-ul">
+              <li><a href="#h-b0e8894e4" class="toc-link">Learning Card Types</a></li>
+              <ul class="toc-ul">
+                <li><a href="#h-a043d5835" class="toc-link">Standard Card</a></li>
+                <li><a href="#h-77cd9abb6" class="toc-link">Multiple Choice Card</a></li>
+                <li><a href="#h-7306b7807" class="toc-link">Answer Card</a></li>
               </ul>
             </ul>
-            <li><a href="#h-754164858">Configuration</a></li>
-            <ul>
-              <li><a href="#h-4c12f5df9">Creating a User Config File</a></li>
-              <li><a href="#h-aa23999d10">Undoing the Configurations made</a></li>
-              <li><a href="#h-88b8c27b11">Using a Custom Configuration to Render a Single File</a></li>
+            <li><a href="#h-754164858" class="toc-link">Configuration</a></li>
+            <ul class="toc-ul">
+              <li><a href="#h-4c12f5df9" class="toc-link">Creating a User Config File</a></li>
+              <li><a href="#h-aa23999d10" class="toc-link">Undoing the Configurations made</a></li>
+              <li><a href="#h-88b8c27b11" class="toc-link">Using a Custom Configuration to Render a Single File</a></li>
             </ul>
           </ul>
         </ul>
@@ -189,7 +189,7 @@
         <p>This is the front side of the card. It can contain any markdown syntax <br/></p>
       </div>
       <div class="back QuestionCard">
-        <button name="btn" class="collapsible">Show Backside</button>
+        <button class="collapsible card-btn">Show Backside</button>
         <div class="content">
           <div class="answer">
             <h2>The back side starts after the back tag</h2>
@@ -206,7 +206,7 @@
         <h1>Only this h1 heading will be on the front side</h1>
       </div>
       <div class="back QuestionCard">
-        <button name="btn" class="collapsible">Show Backside</button>
+        <button class="collapsible card-btn">Show Backside</button>
         <div class="content">
           <div class="answer">
             <p>The rest will appear on the back side <br/></p>
@@ -234,7 +234,7 @@
             <input class="choice" type="checkbox" id="choice4" name="choice4" value="correct" autocomplete="off"/>
             <label name="label" for="choice4">Correct Answer 2 <br/></label>
             <br/>
-            <input value="Check Answer" name="btn" id="multi_btn2" type="submit" class="multi-btn" onclick="multiOnClick(2)"/>
+            <input value="Check Answer" id="multi_btn2" type="submit" class="multi-btn card-btn" onclick="multiOnClick(this)"/>
             <div class="multicontent">
 
             </div>
@@ -256,10 +256,10 @@
           <form action="javascript:void(0);">
             <input type="text" class="answer-input" name="answer_field3" autocomplete="off"/>
             <br/>
-            <input value="Check Answer" name="btn" type="submit" class="answer-btn" id="answer_btn3" onclick="answerOnClick(3)"/>
+            <input value="Check Answer" type="submit" class="answer-btn card-btn" id="answer_btn3" onclick="answerOnClick(this)"/>
           </form>
           <div class="answer-content" name="answer_content3">
-            <p>1+1= <span name="answer3">2</span></p>
+            <p>1+1= <span name="answer3" class="answer-span">2</span></p>
           </div>
         </div>
       </div>
@@ -369,7 +369,8 @@
 
     <style>
         .markdown-body {
-    padding: 45px;
+    padding-top: 20px;
+    padding-bottom: 80px;
 }
 
 .toc {
@@ -498,7 +499,7 @@ input[type="text"] {
     font-size: 17px;
 }
 
-[name="btn"] {
+.card-btn {
     padding: 18px;
     width: 200px;
     height: 60px;
@@ -548,18 +549,19 @@ table {
     font-size: 14px;
 }
 
+a {
+    text-decoration: underline;
+}
+
 h1 > a,
 h2 > a,
 h3 > a,
 h4 > a,
 h5 > a,
 h6 > a,
-.footnote > a {
-    text-decoration: none; /* Remove underline from direct children of headings */
-}
-
-a {
-    text-decoration: underline; /* Apply underline to all other <a> tags */
+.footnote > a,
+.toc-link {
+    text-decoration: none;
 }
 
 .multiline {
@@ -1007,7 +1009,7 @@ li.L9 {
         
     .markdown-body { 
         width: 50%;    
-        padding: 0;
+
         margin-right: auto;
         margin-left: auto;
     }
@@ -1055,10 +1057,7 @@ li.L9 {
 
 const lang = document.documentElement.lang;
 
-var locals = LOCALS[lang];
-
-var coll = document.getElementsByClassName("collapsible");
-var i;
+const locals = LOCALS[lang];
 
 const toc_up = '<i class="fa-solid fa-chevron-up"></i>';
 const toc_down = '<i class="fa-solid fa-chevron-down"></i>';
@@ -1079,13 +1078,13 @@ if (tocBtn) {
     });
 }
 
-for (i = 0; i < coll.length; i++) {
-    (btn = coll[i]).addEventListener("click", function () {
+for (let btn of document.getElementsByClassName("collapsible")) {
+    btn.addEventListener("click", function () {
         this.classList.toggle("active");
         btn.innerText = this.classList.contains("active")
             ? locals["hide_backside"]
             : locals["show_backside"];
-        console.log(this.classList);
+
         var content = this.nextElementSibling;
         if (content.style.display === "block") {
             content.style.display = "none";
@@ -1095,14 +1094,11 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
-var cards = document.getElementsByClassName("card");
-
-for (let card of cards) {
+for (let card of document.getElementsByClassName("card")) {
     card.addEventListener("mouseover", () => {
         btn = card.querySelector('[name="btn"]');
         focused = document.activeElement;
-        // Workaround to fix problem of text input losing focus when moving mouse outside of it
-        // this way textboxes only lose focus when moving to another card
+
         if (!(focused.name === "answer_field" + card.id)) {
             btn.focus();
         }
@@ -1126,9 +1122,9 @@ const redColor = "red";
 
 const CHECK_MARK = "&#10004;";
 
-function multiOnClick(id) {
-    let form = document.getElementsByName("multiform" + id)[0];
-    let btn = document.getElementById("multi_btn" + id);
+function multiOnClick(btn) {
+    let form = btn.parentElement;
+
     let choices = form.getElementsByClassName("choice");
     let content = form.getElementsByClassName("multicontent")[0];
 
@@ -1170,13 +1166,16 @@ function checkAnswer(answer, answerCorrect) {
     return answer === answerCorrect;
 }
 
-function answerOnClick(id) {
-    let answerField = document.getElementsByName("answer_field" + id)[0];
+function answerOnClick(btn) {
+    let form = btn.parentElement;
+
+    let answerField = form.children[0];
+
     let answer = answerField.value;
-    let answerSpan = document.getElementsByName("answer" + id)[0];
+    let answerContent = form.nextElementSibling;
+    let answerSpan = answerContent.querySelector(".answer-span");
     let answerCorrect = answerSpan.innerText;
-    let answerContent = document.getElementsByName("answer_content" + id)[0];
-    let btn = document.getElementById("answer_btn" + id);
+
     btn.classList.toggle("active");
 
     clicked = btn.classList.contains("active");
@@ -1270,6 +1269,7 @@ function lightOrDark(color) {
     }
 }
 
+        
     </script>
     
   

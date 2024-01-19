@@ -157,12 +157,14 @@ class WhiteSpaceNode(TextNode):
 
 
 class HtmlFile:
-    def __init__(self, scripts=None, styles=None, title="", style_str=""):
+    def __init__(self, script_files=None, style_files=None, title="", style_str="", head_str="", script_str=""):
         self.body = HtmlNode('body', set_class=config.document.body_class)
-        self.scripts = scripts or []
-        self.styles = styles or []
+        self.script_files = script_files or []
+        self.style_files = style_files or []
         self.title = title
         self.style_str = style_str
+        self.head_str = head_str
+        self.script_str = script_str
 
     def __str__(self):
         return self.create_document()
@@ -172,8 +174,8 @@ class HtmlFile:
             f.write(str(self))
 
     def create_document(self) -> str:
-        style = "\n".join(try_read_file(style_path) for style_path in self.styles)
-        script = "\n".join(try_read_file(script_path) for script_path in self.scripts)
+        style = "\n".join(try_read_file(style_path) for style_path in self.style_files)
+        script = "\n".join(try_read_file(script_path) for script_path in self.script_files)
         
         return f"""
 <!DOCTYPE html>
@@ -187,7 +189,7 @@ class HtmlFile:
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/16.0.0/octicons.min.css">
-
+        {self.head_str}
     </head>
 
 {self.body}
@@ -201,6 +203,7 @@ class HtmlFile:
     
     <script>
         {script}
+        {self.script_str}
     </script>
     
   

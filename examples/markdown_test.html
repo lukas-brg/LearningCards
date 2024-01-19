@@ -10,38 +10,38 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/16.0.0/octicons.min.css">
-
+        
     </head>
 
   <body class="markdown-body">
     <div class="toc">
-      <span><h1>Contents <button id="toc-btn"><i class="fa-solid fa-chevron-up"></i></button></h1></span>
+      <span><h1>Table Of Contents <button id="toc-btn"><i class="fa-solid fa-chevron-up"></i></button></h1></span>
       <div class="toc-content">
-        <ul>
-          <li><a href="#h-5c4db2b60">h1 Heading</a></li>
-          <ul>
-            <li><a href="#h-6421ed221">h2 Heading</a></li>
-            <ul>
-              <li><a href="#h-6f3edaea2">h3 Heading</a></li>
+        <ul class="toc-ul">
+          <li><a href="#h-5c4db2b60" class="toc-link">h1 Heading</a></li>
+          <ul class="toc-ul">
+            <li><a href="#h-6421ed221" class="toc-link">h2 Heading</a></li>
+            <ul class="toc-ul">
+              <li><a href="#h-6f3edaea2" class="toc-link">h3 Heading</a></li>
             </ul>
-            <li><a href="#h-33488d4b3">Horizontal Rules</a></li>
-            <li><a href="#h-0bbeff654">Emphasis</a></li>
-            <li><a href="#h-1831c9c65">Blockquotes</a></li>
-            <li><a href="#h-57c9502a6">Lists</a></li>
-            <li><a href="#h-adac69377">Code</a></li>
-            <li><a href="#h-193daf138">Tables</a></li>
-            <li><a href="#h-014bcd659">Links</a></li>
-            <li><a href="#h-09e871c910">Images</a></li>
-            <li><a href="#h-ab2e26dd11">Plugins</a></li>
-            <ul>
-              <li><a href="#h-a9b0c65612">Emojies</a></li>
-              <li><a href="#h-900278b313">Subscript / Superscript</a></li>
-              <li><a href="#h-ec0c3b7614">Footnotes</a></li>
-              <li><a href="#h-b5b2845a15">Definition lists</a></li>
-              <li><a href="#h-06d7d60116">Custom IDs</a></li>
+            <li><a href="#h-33488d4b3" class="toc-link">Horizontal Rules</a></li>
+            <li><a href="#h-0bbeff654" class="toc-link">Emphasis</a></li>
+            <li><a href="#h-1831c9c65" class="toc-link">Blockquotes</a></li>
+            <li><a href="#h-57c9502a6" class="toc-link">Lists</a></li>
+            <li><a href="#h-adac69377" class="toc-link">Code</a></li>
+            <li><a href="#h-193daf138" class="toc-link">Tables</a></li>
+            <li><a href="#h-014bcd659" class="toc-link">Links</a></li>
+            <li><a href="#h-09e871c910" class="toc-link">Images</a></li>
+            <li><a href="#h-ab2e26dd11" class="toc-link">Plugins</a></li>
+            <ul class="toc-ul">
+              <li><a href="#h-a9b0c65612" class="toc-link">Emojies</a></li>
+              <li><a href="#h-900278b313" class="toc-link">Subscript / Superscript</a></li>
+              <li><a href="#h-ec0c3b7614" class="toc-link">Footnotes</a></li>
+              <li><a href="#h-b5b2845a15" class="toc-link">Definition lists</a></li>
+              <li><a href="#h-06d7d60116" class="toc-link">Custom IDs</a></li>
             </ul>
-            <li><a href="#h-04b58fe117">Task lists</a></li>
-            <li><a href="#h-096dec2e18">Latex Equations</a></li>
+            <li><a href="#h-04b58fe117" class="toc-link">Task lists</a></li>
+            <li><a href="#h-096dec2e18" class="toc-link">Latex Equations</a></li>
           </ul>
         </ul>
       </div>
@@ -370,7 +370,8 @@
 
     <style>
         .markdown-body {
-    padding: 45px;
+    padding-top: 20px;
+    padding-bottom: 80px;
 }
 
 .toc {
@@ -499,7 +500,7 @@ input[type="text"] {
     font-size: 17px;
 }
 
-[name="btn"] {
+.card-btn {
     padding: 18px;
     width: 200px;
     height: 60px;
@@ -549,18 +550,19 @@ table {
     font-size: 14px;
 }
 
+a {
+    text-decoration: underline;
+}
+
 h1 > a,
 h2 > a,
 h3 > a,
 h4 > a,
 h5 > a,
 h6 > a,
-.footnote > a {
-    text-decoration: none; /* Remove underline from direct children of headings */
-}
-
-a {
-    text-decoration: underline; /* Apply underline to all other <a> tags */
+.footnote > a,
+.toc-link {
+    text-decoration: none;
 }
 
 .multiline {
@@ -1008,7 +1010,7 @@ li.L9 {
         
     .markdown-body { 
         width: 50%;    
-        padding: 0;
+
         margin-right: auto;
         margin-left: auto;
     }
@@ -1056,10 +1058,7 @@ li.L9 {
 
 const lang = document.documentElement.lang;
 
-var locals = LOCALS[lang];
-
-var coll = document.getElementsByClassName("collapsible");
-var i;
+const locals = LOCALS[lang];
 
 const toc_up = '<i class="fa-solid fa-chevron-up"></i>';
 const toc_down = '<i class="fa-solid fa-chevron-down"></i>';
@@ -1080,13 +1079,13 @@ if (tocBtn) {
     });
 }
 
-for (i = 0; i < coll.length; i++) {
-    (btn = coll[i]).addEventListener("click", function () {
+for (let btn of document.getElementsByClassName("collapsible")) {
+    btn.addEventListener("click", function () {
         this.classList.toggle("active");
         btn.innerText = this.classList.contains("active")
             ? locals["hide_backside"]
             : locals["show_backside"];
-        console.log(this.classList);
+
         var content = this.nextElementSibling;
         if (content.style.display === "block") {
             content.style.display = "none";
@@ -1096,14 +1095,11 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
-var cards = document.getElementsByClassName("card");
-
-for (let card of cards) {
+for (let card of document.getElementsByClassName("card")) {
     card.addEventListener("mouseover", () => {
         btn = card.querySelector('[name="btn"]');
         focused = document.activeElement;
-        // Workaround to fix problem of text input losing focus when moving mouse outside of it
-        // this way textboxes only lose focus when moving to another card
+
         if (!(focused.name === "answer_field" + card.id)) {
             btn.focus();
         }
@@ -1127,9 +1123,9 @@ const redColor = "red";
 
 const CHECK_MARK = "&#10004;";
 
-function multiOnClick(id) {
-    let form = document.getElementsByName("multiform" + id)[0];
-    let btn = document.getElementById("multi_btn" + id);
+function multiOnClick(btn) {
+    let form = btn.parentElement;
+
     let choices = form.getElementsByClassName("choice");
     let content = form.getElementsByClassName("multicontent")[0];
 
@@ -1171,13 +1167,16 @@ function checkAnswer(answer, answerCorrect) {
     return answer === answerCorrect;
 }
 
-function answerOnClick(id) {
-    let answerField = document.getElementsByName("answer_field" + id)[0];
+function answerOnClick(btn) {
+    let form = btn.parentElement;
+
+    let answerField = form.children[0];
+
     let answer = answerField.value;
-    let answerSpan = document.getElementsByName("answer" + id)[0];
+    let answerContent = form.nextElementSibling;
+    let answerSpan = answerContent.querySelector(".answer-span");
     let answerCorrect = answerSpan.innerText;
-    let answerContent = document.getElementsByName("answer_content" + id)[0];
-    let btn = document.getElementById("answer_btn" + id);
+
     btn.classList.toggle("active");
 
     clicked = btn.classList.contains("active");
@@ -1271,6 +1270,7 @@ function lightOrDark(color) {
     }
 }
 
+        
     </script>
     
   

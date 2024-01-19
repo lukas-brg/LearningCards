@@ -66,7 +66,7 @@ class LearningCard(ABC):
             parent.add_children(*content)
             return                  
         
-        btn = HtmlNode("button", get_locals()["show_backside"],  name="btn",  set_class="collapsible")
+        btn = HtmlNode("button", get_locals()["show_backside"], set_class="collapsible card-btn")
         content = HtmlNode("div", *content, set_class="content")
         parent.add_children(btn, content, SelfClosingTag('br'))
 
@@ -197,15 +197,15 @@ class AnswerCard(QuestionCard):
         pre_answer_html = parse_markdown(pre_answer, paragraph=pre_answer[-1]=='\n', add_linebreak=False) if pre_answer else []
         post_answer_html = parse_markdown(post_answer, paragraph=post_answer[0]=='\n', add_linebreak=False) if post_answer else []
         input = SelfClosingTag("input", type="text", set_class="answer-input", name=f"answer_field{self.id}", autocomplete="off")
-        answer_span = HtmlNode("span", answer, name=f"answer{self.id}")
+        answer_span = HtmlNode("span", answer, name=f"answer{self.id}", set_class="answer-span")
         
         btn = SelfClosingTag(
                 "input", 
                 value=get_local("check_answer"),  
-                name="btn", type="submit", 
-                set_class="answer-btn", 
+                type="submit", 
+                set_class="answer-btn card-btn", 
                 id=f"answer_btn{self.id}", 
-                onclick=f"answerOnClick({self.id})"
+                onclick=f"answerOnClick(this)"
         )
 
         form = HtmlNode("form", input, SelfClosingTag("br"), btn, action=f"javascript:void(0);")
@@ -267,11 +267,10 @@ class MultipleChoiceCard(QuestionCard):
         submit = SelfClosingTag(
                 "input",  
                 value=get_local("check_answer"), 
-                name="btn", 
                 id=f"multi_btn{self.id}", 
                 type="submit", 
-                set_class="multi-btn", 
-                onclick=f"multiOnClick({self.id})"
+                set_class="multi-btn card-btn", 
+                onclick=f"multiOnClick(this)"
         )
        
         multi_div.add_children(SelfClosingTag("br"), submit)

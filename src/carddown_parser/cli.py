@@ -11,7 +11,7 @@ from .errors import MarkdownSyntaxError, show_exception_msg, show_warning_msg, C
 config = Config.get_config()
 
 PACKAGE_DIR = os.path.dirname(__file__)
-DEBUG_DEFAULT_FILE = "examples/test2.md"
+DEBUG_DEFAULT_FILE = "examples/test.md"
 
 def get_static_folder():
     return os.path.join(PACKAGE_DIR, config.document.static_folder) if not os.path.isabs(config.document.static_folder) else config.document.static_folder
@@ -191,7 +191,7 @@ def export(args):
         
         loader = try_parse_file(loader, input_file)
         
-        html = HtmlFile(styles=styles, title=title)
+        html = HtmlFile(style_files=styles, title=title)
         if args.shuffle:
             loader.cards.shuffle()
 
@@ -213,7 +213,7 @@ def alignment_css(margin, align):
     return f"""
     .{config.document.body_class} {{ 
         width: {width}%;    
-        padding: 0;
+
         margin-right: auto;
         margin-left: {'auto' if align == "center" else '15px'};
     }}

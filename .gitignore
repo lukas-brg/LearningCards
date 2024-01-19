@@ -5,3 +5,5 @@ build/
 dist/
 static_github/
 *.egg-info
+examples/test.md
+examples/test.html

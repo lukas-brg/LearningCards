@@ -22,10 +22,7 @@ const LOCALS = {
 
 const lang = document.documentElement.lang;
 
-var locals = LOCALS[lang];
-
-var coll = document.getElementsByClassName("collapsible");
-var i;
+const locals = LOCALS[lang];
 
 const toc_up = '<i class="fa-solid fa-chevron-up"></i>';
 const toc_down = '<i class="fa-solid fa-chevron-down"></i>';
@@ -46,13 +43,13 @@ if (tocBtn) {
     });
 }
 
-for (i = 0; i < coll.length; i++) {
-    (btn = coll[i]).addEventListener("click", function () {
+for (let btn of document.getElementsByClassName("collapsible")) {
+    btn.addEventListener("click", function () {
         this.classList.toggle("active");
         btn.innerText = this.classList.contains("active")
             ? locals["hide_backside"]
             : locals["show_backside"];
-        console.log(this.classList);
+
         var content = this.nextElementSibling;
         if (content.style.display === "block") {
             content.style.display = "none";
@@ -62,14 +59,11 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
-var cards = document.getElementsByClassName("card");
-
-for (let card of cards) {
+for (let card of document.getElementsByClassName("card")) {
     card.addEventListener("mouseover", () => {
         btn = card.querySelector('[name="btn"]');
         focused = document.activeElement;
-        // Workaround to fix problem of text input losing focus when moving mouse outside of it
-        // this way textboxes only lose focus when moving to another card
+
         if (!(focused.name === "answer_field" + card.id)) {
             btn.focus();
         }
@@ -93,9 +87,9 @@ const redColor = "red";
 
 const CHECK_MARK = "&#10004;";
 
-function multiOnClick(id) {
-    let form = document.getElementsByName("multiform" + id)[0];
-    let btn = document.getElementById("multi_btn" + id);
+function multiOnClick(btn) {
+    let form = btn.parentElement;
+
     let choices = form.getElementsByClassName("choice");
     let content = form.getElementsByClassName("multicontent")[0];
 
@@ -137,13 +131,16 @@ function checkAnswer(answer, answerCorrect) {
     return answer === answerCorrect;
 }
 
-function answerOnClick(id) {
-    let answerField = document.getElementsByName("answer_field" + id)[0];
+function answerOnClick(btn) {
+    let form = btn.parentElement;
+
+    let answerField = form.children[0];
+
     let answer = answerField.value;
-    let answerSpan = document.getElementsByName("answer" + id)[0];
+    let answerContent = form.nextElementSibling;
+    let answerSpan = answerContent.querySelector(".answer-span");
     let answerCorrect = answerSpan.innerText;
-    let answerContent = document.getElementsByName("answer_content" + id)[0];
-    let btn = document.getElementById("answer_btn" + id);
+
     btn.classList.toggle("active");
 
     clicked = btn.classList.contains("active");

@@ -1,5 +1,6 @@
 .markdown-body {
-    padding: 45px;
+    padding-top: 20px;
+    padding-bottom: 80px;
 }
 
 .toc {
@@ -128,7 +129,7 @@ input[type="text"] {
     font-size: 17px;
 }
 
-[name="btn"] {
+.card-btn {
     padding: 18px;
     width: 200px;
     height: 60px;
@@ -178,16 +179,17 @@ table {
     font-size: 14px;
 }
 
+a {
+    text-decoration: underline;
+}
+
 h1 > a,
 h2 > a,
 h3 > a,
 h4 > a,
 h5 > a,
 h6 > a,
-.footnote > a {
-    text-decoration: none; /* Remove underline from direct children of headings */
-}
-
-a {
-    text-decoration: underline; /* Apply underline to all other <a> tags */
+.footnote > a,
+.toc-link {
+    text-decoration: none;
 }
