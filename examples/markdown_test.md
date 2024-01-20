@@ -87,6 +87,17 @@ _This text tests **nested** fontstyles_
 
 **Unordered**
 
+```
++ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    * Ac tristique libero volutpat at
+    + Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
++ Very easy!
+
+```
+
 + Create a list by starting a line with `+`, `-`, or `*`
 + Sub-lists are made by indenting 2 spaces:
   - Marker character change forces new list start:
@@ -97,6 +108,15 @@ _This text tests **nested** fontstyles_
 
 **Ordered**
 
+```
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+
+1. You can use sequential numbers...
+1. ...or keep all the numbers as `1.`
+```
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
 3. Integer molestie lorem at massa
@@ -107,12 +127,31 @@ _This text tests **nested** fontstyles_
 
 Start numbering with offset:
 
-57. foo
-    2. baz
-    1. test
+```
+3.  foo
+    1. baz
+    2. test
+1. bar
+
+```
+
+
+3.  foo
+    1. baz
+    2. test
 1. bar
 
 **Unordered and ordered lists can also be mixed:**
+
+```
++ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    1. Lorem ipsum dolor sit amet
+    2. Consectetur adipiscing elit
+    3. Integer molestie lorem at massa
++ Very easy!
+```
 
 + Create a list by starting a line with `+`, `-`, or `*`
 + Sub-lists are made by indenting 2 spaces:
@@ -205,6 +244,10 @@ You can also link to headings of this document. For this to work all the alphanu
 [Another link to first H1 Heading](#h1-heading)
 ```
 
+[Link to first H1 Heading](#h1heading)
+
+[Another link to first H1 Heading](#h1-heading)
+
 ### Custom IDs
 
 ```
@@ -221,9 +264,7 @@ The custom ID can be used to [Link](#custom_id) to the heading.
 
 
 
-[Link to first H1 Heading](#h1heading)
 
-[Another link to first H1 Heading](#h1-heading)
 
 ## Images
 
