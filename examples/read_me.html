@@ -18,82 +18,82 @@
       <span><h1>Table Of Contents <button id="toc-btn"><i class="fa-solid fa-chevron-up"></i></button></h1></span>
       <div class="toc-content">
         <ul class="toc-ul">
-          <li><a href="#h-55f8ebc80" class="toc-link">Description</a></li>
-          <li><a href="#h-c81b79df1" class="toc-link">Installation</a></li>
-          <li><a href="#h-0bb186422" class="toc-link">Usage</a></li>
+          <li><a href="#h-c9046f7a" class="toc-link">Description</a></li>
+          <li><a href="#h-561f0a3d" class="toc-link">Installation</a></li>
+          <li><a href="#h-0a4e4c29" class="toc-link">Usage</a></li>
           <ul class="toc-ul">
-            <li><a href="#h-965b1b7c3" class="toc-link">Learning Cards</a></li>
+            <li><a href="#h-ee7e8605" class="toc-link">Learning Cards</a></li>
             <ul class="toc-ul">
-              <li><a href="#h-b0e8894e4" class="toc-link">Learning Card Types</a></li>
+              <li><a href="#h-7d612e48" class="toc-link">Learning Card Types</a></li>
               <ul class="toc-ul">
-                <li><a href="#h-a043d5835" class="toc-link">Standard Card</a></li>
-                <li><a href="#h-77cd9abb6" class="toc-link">Multiple Choice Card</a></li>
-                <li><a href="#h-7306b7807" class="toc-link">Answer Card</a></li>
+                <li><a href="#h-c1ad9204" class="toc-link">Standard Card</a></li>
+                <li><a href="#h-69ad71fe" class="toc-link">Multiple Choice Card</a></li>
+                <li><a href="#h-3a9a3523" class="toc-link">Answer Card</a></li>
               </ul>
             </ul>
-            <li><a href="#h-754164858" class="toc-link">Configuration</a></li>
+            <li><a href="#h-b7d64a92" class="toc-link">Configuration</a></li>
             <ul class="toc-ul">
-              <li><a href="#h-4c12f5df9" class="toc-link">Creating a User Config File</a></li>
-              <li><a href="#h-aa23999d10" class="toc-link">Undoing the Configurations made</a></li>
-              <li><a href="#h-88b8c27b11" class="toc-link">Using a Custom Configuration to Render a Single File</a></li>
+              <li><a href="#h-040f3a7c" class="toc-link">Creating a User Config File</a></li>
+              <li><a href="#h-529e8b82" class="toc-link">Undoing the Configurations made</a></li>
+              <li><a href="#h-b6deee18" class="toc-link">Using a Custom Configuration to Render a Single File</a></li>
             </ul>
           </ul>
         </ul>
       </div>
     </div>
-    <h1 id="h-55f8ebc80">Description</h1>
+    <h1 id="h-c9046f7a">Description</h1>
     <p>Carddown is a terminal-based Markdown renderer that extends the Markdown syntax to support the inclusion of learning cards. <br/></p>
-    <p>It is able to render arbitrary markdown files that may or may not contain any learning cards and supports the entire markdown syntax as specified <a href="https://www.markdownguide.org/cheat-sheet/" title="">here</a>. <br/></p>
+    <p>It is able to render arbitrary markdown files that may or may not contain any learning cards and supports the entire markdown syntax as specified <a href="http://https://www.markdownguide.org/cheat-sheet/" title="">here</a>. <br/></p>
     <p>An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements. <br/></p>
     <p><br/> <br/></p>
-    <h1 id="h-c81b79df1">Installation</h1>
+    <h1 id="h-561f0a3d">Installation</h1>
     <p>This project requires <b>Python 3.10 or higher</b> to be installed on your system. <br/></p>
     <p>Clone this repository and run this in the project top-level directory: <br/></p>
-    <div class="multiline" id="code-div_88ba1ae374c0ed0785a0682d32da36e291aedc91">
-      <code name="multiline-code-block" id="code-block_88ba1ae374c0ed0785a0682d32da36e291aedc91">pip&nbsp;install&nbsp;. <br/></code>
-      <div class="copy-notification" id="copy-notification_88ba1ae374c0ed0785a0682d32da36e291aedc91">
+    <div class="multiline" id="code-div_dad0f26d9bdb3a49495a9cfc362bcba32fd3bacacc84646fbff53520a891b375">
+      <code name="multiline-code-block" id="code-block_dad0f26d9bdb3a49495a9cfc362bcba32fd3bacacc84646fbff53520a891b375">pip&nbsp;install&nbsp;. <br/></code>
+      <div class="copy-notification" id="copy-notification_dad0f26d9bdb3a49495a9cfc362bcba32fd3bacacc84646fbff53520a891b375">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_88ba1ae374c0ed0785a0682d32da36e291aedc91" data-clipboard-target="#code-block_88ba1ae374c0ed0785a0682d32da36e291aedc91"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_88ba1ae374c0ed0785a0682d32da36e291aedc91">
+      <button class="btn-copy" id="copy-button_dad0f26d9bdb3a49495a9cfc362bcba32fd3bacacc84646fbff53520a891b375" data-clipboard-target="#code-block_dad0f26d9bdb3a49495a9cfc362bcba32fd3bacacc84646fbff53520a891b375"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_dad0f26d9bdb3a49495a9cfc362bcba32fd3bacacc84646fbff53520a891b375">
         Copied!
       </div>
     </div>
     <p>After installation the application can be started from anywhere by running <code class="inline">carddown ...args</code> in the command line. <br/></p>
     <p><b>Note:</b> <br/> On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work: <br/></p>
-    <div class="multiline" id="code-div_de743111577d30c142b4f670663c821b86e68067">
-      <code name="multiline-code-block" id="code-block_de743111577d30c142b4f670663c821b86e68067">python3&nbsp;-m&nbsp;pip&nbsp;install&nbsp;--upgrade&nbsp;pip <br/></code>
-      <div class="copy-notification" id="copy-notification_de743111577d30c142b4f670663c821b86e68067">
+    <div class="multiline" id="code-div_a1bfe99c46a7f257fab5c6867cfafffce7a0dcb2c975c4d4299b2f016b5455c8">
+      <code name="multiline-code-block" id="code-block_a1bfe99c46a7f257fab5c6867cfafffce7a0dcb2c975c4d4299b2f016b5455c8">python3&nbsp;-m&nbsp;pip&nbsp;install&nbsp;--upgrade&nbsp;pip <br/></code>
+      <div class="copy-notification" id="copy-notification_a1bfe99c46a7f257fab5c6867cfafffce7a0dcb2c975c4d4299b2f016b5455c8">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_de743111577d30c142b4f670663c821b86e68067" data-clipboard-target="#code-block_de743111577d30c142b4f670663c821b86e68067"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_de743111577d30c142b4f670663c821b86e68067">
+      <button class="btn-copy" id="copy-button_a1bfe99c46a7f257fab5c6867cfafffce7a0dcb2c975c4d4299b2f016b5455c8" data-clipboard-target="#code-block_a1bfe99c46a7f257fab5c6867cfafffce7a0dcb2c975c4d4299b2f016b5455c8"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_a1bfe99c46a7f257fab5c6867cfafffce7a0dcb2c975c4d4299b2f016b5455c8">
         Copied!
       </div>
     </div>
     <p><br/> <br/></p>
-    <h1 id="h-0bb186422">Usage</h1>
+    <h1 id="h-0a4e4c29">Usage</h1>
     <p>At the very least you need to provide a path to an input file: <br/></p>
-    <div class="multiline" id="code-div_da2b4be3766b1acbee3c241698fcaf5b7d03085d">
-      <code name="multiline-code-block" id="code-block_da2b4be3766b1acbee3c241698fcaf5b7d03085d">carddown&nbsp;[INPUT_FILE] <br/></code>
-      <div class="copy-notification" id="copy-notification_da2b4be3766b1acbee3c241698fcaf5b7d03085d">
+    <div class="multiline" id="code-div_893fa68c873db44750d50046d00bb8f704a779d381347e8dfd52e88fa29f2523">
+      <code name="multiline-code-block" id="code-block_893fa68c873db44750d50046d00bb8f704a779d381347e8dfd52e88fa29f2523">carddown&nbsp;[INPUT_FILE] <br/></code>
+      <div class="copy-notification" id="copy-notification_893fa68c873db44750d50046d00bb8f704a779d381347e8dfd52e88fa29f2523">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_da2b4be3766b1acbee3c241698fcaf5b7d03085d" data-clipboard-target="#code-block_da2b4be3766b1acbee3c241698fcaf5b7d03085d"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_da2b4be3766b1acbee3c241698fcaf5b7d03085d">
+      <button class="btn-copy" id="copy-button_893fa68c873db44750d50046d00bb8f704a779d381347e8dfd52e88fa29f2523" data-clipboard-target="#code-block_893fa68c873db44750d50046d00bb8f704a779d381347e8dfd52e88fa29f2523"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_893fa68c873db44750d50046d00bb8f704a779d381347e8dfd52e88fa29f2523">
         Copied!
       </div>
     </div>
     <p>A corresponding HTML file is then created in the same directory as the input file and all the default parameters are applied. <br/></p>
     <p><br/> <br/></p>
     <p>It is also possible to specify the path to the output file and its name: <br/></p>
-    <div class="multiline" id="code-div_a06cfc82a3e033930357c4223b0047e067da7a2c">
-      <code name="multiline-code-block" id="code-block_a06cfc82a3e033930357c4223b0047e067da7a2c">carddown&nbsp;[INPUT_FILE]&nbsp;[OUTPUT_FILE?] <br/></code>
-      <div class="copy-notification" id="copy-notification_a06cfc82a3e033930357c4223b0047e067da7a2c">
+    <div class="multiline" id="code-div_61248bce7e22c29644e16d6369db73bb5306a3c688b74d700254722ee6a277e0">
+      <code name="multiline-code-block" id="code-block_61248bce7e22c29644e16d6369db73bb5306a3c688b74d700254722ee6a277e0">carddown&nbsp;[INPUT_FILE]&nbsp;[OUTPUT_FILE?] <br/></code>
+      <div class="copy-notification" id="copy-notification_61248bce7e22c29644e16d6369db73bb5306a3c688b74d700254722ee6a277e0">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_a06cfc82a3e033930357c4223b0047e067da7a2c" data-clipboard-target="#code-block_a06cfc82a3e033930357c4223b0047e067da7a2c"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_a06cfc82a3e033930357c4223b0047e067da7a2c">
+      <button class="btn-copy" id="copy-button_61248bce7e22c29644e16d6369db73bb5306a3c688b74d700254722ee6a277e0" data-clipboard-target="#code-block_61248bce7e22c29644e16d6369db73bb5306a3c688b74d700254722ee6a277e0"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_61248bce7e22c29644e16d6369db73bb5306a3c688b74d700254722ee6a277e0">
         Copied!
       </div>
     </div>
@@ -117,7 +117,7 @@
     </ul>
     <p><code class="inline">carddown -h/--help</code> lists every available flag and parameter. <br/></p>
     <p><br/> <br/></p>
-    <h2 id="h-965b1b7c3">Learning Cards</h2>
+    <h2 id="h-ee7e8605">Learning Cards</h2>
     <p>The Learning cards are split into a front side and a back side. The front side contains the question, while the back side, which is not revealed until a click on a button, contains the answer. <br/></p>
     <p>The learning card specific syntax uses three types of tags, all of which are wrapped in <code class="inline">{CURLY_BRACES}</code> : <br/></p>
     <ol start="1">
@@ -135,19 +135,19 @@
       </ul>
     </ol>
     <p><br/> <br/></p>
-    <h3 id="h-b0e8894e4">Learning Card Types</h3>
+    <h3 id="h-7d612e48">Learning Card Types</h3>
     <p>There are three basic card types: <br/></p>
-    <h4 id="h-a043d5835">Standard Card</h4>
+    <h4 id="h-c1ad9204">Standard Card</h4>
     <div class="card QuestionCard" id="0">
       <div class="front QuestionCard">
-        <h1>This is the card title</h1>
+        <h1 id="h-b3ca7272">This is the card title</h1>
         <p>This is the front side of the card. It can contain any markdown syntax. <br/></p>
       </div>
       <div class="back QuestionCard">
         <button class="collapsible card-btn">Show Backside</button>
         <div class="content">
           <div class="answer">
-            <h2>The back side starts after the back tag</h2>
+            <h2 id="h-0a60dbba">The back side starts after the back tag</h2>
             <p>This text is on the back side. <br/></p>
           </div>
         </div>
@@ -158,7 +158,7 @@
     <p>If you don't need much text on the front side you can also use this format: <br/></p>
     <div class="card QuestionCard" id="1">
       <div class="front QuestionCard">
-        <h1>Only this h1 heading will be on the front side</h1>
+        <h1 id="h-13e842ba">Only this h1 heading will be on the front side</h1>
       </div>
       <div class="back QuestionCard">
         <button class="collapsible card-btn">Show Backside</button>
@@ -173,10 +173,10 @@
     </div>
     <p><b>Note:</b> This format where there is no <code class="inline">{END}</code> tag works for every card type. <br/></p>
     <p><br/> <br/></p>
-    <h4 id="h-77cd9abb6">Multiple Choice Card</h4>
+    <h4 id="h-69ad71fe">Multiple Choice Card</h4>
     <div class="card MultipleChoiceCard" id="2">
       <div class="front MultipleChoiceCard">
-        <h1>Multiple Choice Card</h1>
+        <h1 id="h-69ad71fe1">Multiple Choice Card</h1>
         <p>This card contains displays multiple choices of which one or more have to be marked as correct. <br/></p>
       </div>
       <div class="back MultipleChoiceCard">
@@ -199,11 +199,11 @@
       <hr/>
     </div>
     <p><br/> <br/></p>
-    <h4 id="h-7306b7807">Answer Card</h4>
+    <h4 id="h-3a9a3523">Answer Card</h4>
     <p>This card includes a textbox in which the user must input an answer. <br/></p>
     <div class="card AnswerCard" id="3">
       <div class="front AnswerCard">
-        <h1>Answer Card</h1>
+        <h1 id="h-3a9a35231">Answer Card</h1>
         <p>What is 1+1? <br/></p>
       </div>
       <div class="back AnswerCard">
@@ -221,67 +221,67 @@
     <p>
       <b>Note</b>
       : You can find some more practical examples in
-      <a href="https://raw.githubusercontent.com/lukas-brg/LearningCards/main/examples/cards.md" title="">examples/cards.md</a>
+      <a href="http://https://raw.githubusercontent.com/lukas-brg/LearningCards/main/examples/cards.md" title="">examples/cards.md</a>
       and look at the result by downloading
-      <a href="http://./examples/cards.html" title="">examples/cards.html</a>
+      <a href="./examples/cards.html" title="">examples/cards.html</a>
       and opening it in a web browser.
       <br/>
     </p>
     <p><br/> <br/></p>
-    <h2 id="h-754164858">Configuration</h2>
+    <h2 id="h-b7d64a92">Configuration</h2>
     <p>Carddown uses <code class="inline">.toml</code> files for configuration and provides a second entry point called <code class="inline">carddown-config</code> to handle all things related to configuration. <br/></p>
     <p>A config file does not need to contain every available parameter. When using a custom config file, the parameters within it overwrite the defaults, while the remaining parameters follow the default settings. <br/></p>
     <p>Run <code class="inline">carddown-config --help</code> to list out every option regarding configuration. <br/></p>
     <p><br/> <br/></p>
-    <h3 id="h-4c12f5df9">Creating a User Config File</h3>
+    <h3 id="h-040f3a7c">Creating a User Config File</h3>
     <p>Carddown already uses an application config file located within the project directory. However, users can create their own config file. <br/></p>
     <p>For user convenience, a user config file containing the default settings can automatically be generated, at a location that is determined platform independently, by running the following command: <br/></p>
-    <div class="multiline" id="code-div_8f82122e862fcd8c6f4ef8734929598302c992d4">
-      <code name="multiline-code-block" id="code-block_8f82122e862fcd8c6f4ef8734929598302c992d4">carddown-config&nbsp;--make-usr&nbsp; <br/></code>
-      <div class="copy-notification" id="copy-notification_8f82122e862fcd8c6f4ef8734929598302c992d4">
+    <div class="multiline" id="code-div_dd8bf53e982ec686ed159725bf019a00fd92350394ba672b354b8ca9cb53d86b">
+      <code name="multiline-code-block" id="code-block_dd8bf53e982ec686ed159725bf019a00fd92350394ba672b354b8ca9cb53d86b">carddown-config&nbsp;--make-usr&nbsp; <br/></code>
+      <div class="copy-notification" id="copy-notification_dd8bf53e982ec686ed159725bf019a00fd92350394ba672b354b8ca9cb53d86b">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_8f82122e862fcd8c6f4ef8734929598302c992d4" data-clipboard-target="#code-block_8f82122e862fcd8c6f4ef8734929598302c992d4"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_8f82122e862fcd8c6f4ef8734929598302c992d4">
+      <button class="btn-copy" id="copy-button_dd8bf53e982ec686ed159725bf019a00fd92350394ba672b354b8ca9cb53d86b" data-clipboard-target="#code-block_dd8bf53e982ec686ed159725bf019a00fd92350394ba672b354b8ca9cb53d86b"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_dd8bf53e982ec686ed159725bf019a00fd92350394ba672b354b8ca9cb53d86b">
         Copied!
       </div>
     </div>
     <p>The path to the config file will be a printed to the terminal, so you can open it and edit the parameters according to your needs. The file will automatically be loaded by carddown. <br/></p>
     <p><br/> <br/></p>
-    <h3 id="h-aa23999d10">Undoing the Configurations made</h3>
+    <h3 id="h-529e8b82">Undoing the Configurations made</h3>
     <p>If you want to restore the defaults, you can either run <br/> <code class="inline">carddown-config --make-usr</code> again and choose to overwrite the existing config file to bring it back to its defaults or remove the user config file entirely by running: <br/></p>
-    <div class="multiline" id="code-div_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8">
-      <code name="multiline-code-block" id="code-block_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8">carddown-config&nbsp;--rm-usr <br/></code>
-      <div class="copy-notification" id="copy-notification_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8">
+    <div class="multiline" id="code-div_86466afabb8c88bc6289115bf3315c03fe7058651c5739c9d07e8ec7149cf7a3">
+      <code name="multiline-code-block" id="code-block_86466afabb8c88bc6289115bf3315c03fe7058651c5739c9d07e8ec7149cf7a3">carddown-config&nbsp;--rm-usr <br/></code>
+      <div class="copy-notification" id="copy-notification_86466afabb8c88bc6289115bf3315c03fe7058651c5739c9d07e8ec7149cf7a3">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8" data-clipboard-target="#code-block_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_f7f18fb9cbbc996ea3fda9c4d2a2ce44b3d40df8">
+      <button class="btn-copy" id="copy-button_86466afabb8c88bc6289115bf3315c03fe7058651c5739c9d07e8ec7149cf7a3" data-clipboard-target="#code-block_86466afabb8c88bc6289115bf3315c03fe7058651c5739c9d07e8ec7149cf7a3"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_86466afabb8c88bc6289115bf3315c03fe7058651c5739c9d07e8ec7149cf7a3">
         Copied!
       </div>
     </div>
     <p><br/> <br/></p>
-    <h3 id="h-88b8c27b11">Using a Custom Configuration to Render a Single File</h3>
+    <h3 id="h-b6deee18">Using a Custom Configuration to Render a Single File</h3>
     <p>When using carddown to render a Markdown file, you can use the <code class="inline">--config [CONFIG_PATH]</code> parameter to use a custom config file and apply it just to this specific markdown file. <br/></p>
     <p>Example: <br/></p>
-    <div class="multiline" id="code-div_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9">
-      <code name="multiline-code-block" id="code-block_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9">carddown&nbsp;--config&nbsp;[CONFIG_PATH]&nbsp;[MARKDOWN_PATH]&nbsp;[OUTPUT_PATH?] <br/></code>
-      <div class="copy-notification" id="copy-notification_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9">
+    <div class="multiline" id="code-div_856d5b5dd96671a063cf9a043118a0f80b1031c3b01330e73e20941fb4451d64">
+      <code name="multiline-code-block" id="code-block_856d5b5dd96671a063cf9a043118a0f80b1031c3b01330e73e20941fb4451d64">carddown&nbsp;--config&nbsp;[CONFIG_PATH]&nbsp;[MARKDOWN_PATH]&nbsp;[OUTPUT_PATH?] <br/></code>
+      <div class="copy-notification" id="copy-notification_856d5b5dd96671a063cf9a043118a0f80b1031c3b01330e73e20941fb4451d64">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9" data-clipboard-target="#code-block_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_2fe8e46ad56a55a3ead25b72a6b58bbdc81166d9">
+      <button class="btn-copy" id="copy-button_856d5b5dd96671a063cf9a043118a0f80b1031c3b01330e73e20941fb4451d64" data-clipboard-target="#code-block_856d5b5dd96671a063cf9a043118a0f80b1031c3b01330e73e20941fb4451d64"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_856d5b5dd96671a063cf9a043118a0f80b1031c3b01330e73e20941fb4451d64">
         Copied!
       </div>
     </div>
     <p>To create such a config file easily, there is a command which can generate a default config file at any given location: <br/></p>
-    <div class="multiline" id="code-div_76d5bb11cc0c36205b8449b2741fdcc8efda8433">
-      <code name="multiline-code-block" id="code-block_76d5bb11cc0c36205b8449b2741fdcc8efda8433">carddown-config&nbsp;--make&nbsp;[PATH?] <br/></code>
-      <div class="copy-notification" id="copy-notification_76d5bb11cc0c36205b8449b2741fdcc8efda8433">
+    <div class="multiline" id="code-div_676df52a9b6e78ffc4b0965e2dd3afc6ae743d3d8f8bf2f38b32a165d4bae526">
+      <code name="multiline-code-block" id="code-block_676df52a9b6e78ffc4b0965e2dd3afc6ae743d3d8f8bf2f38b32a165d4bae526">carddown-config&nbsp;--make&nbsp;[PATH?] <br/></code>
+      <div class="copy-notification" id="copy-notification_676df52a9b6e78ffc4b0965e2dd3afc6ae743d3d8f8bf2f38b32a165d4bae526">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_76d5bb11cc0c36205b8449b2741fdcc8efda8433" data-clipboard-target="#code-block_76d5bb11cc0c36205b8449b2741fdcc8efda8433"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_76d5bb11cc0c36205b8449b2741fdcc8efda8433">
+      <button class="btn-copy" id="copy-button_676df52a9b6e78ffc4b0965e2dd3afc6ae743d3d8f8bf2f38b32a165d4bae526" data-clipboard-target="#code-block_676df52a9b6e78ffc4b0965e2dd3afc6ae743d3d8f8bf2f38b32a165d4bae526"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_676df52a9b6e78ffc4b0965e2dd3afc6ae743d3d8f8bf2f38b32a165d4bae526">
         Copied!
       </div>
     </div>
@@ -485,6 +485,10 @@
             .footnote > a,
             .toc-link {
                 text-decoration: none;
+            }
+
+            .multiline {
+                margin-bottom: 35px;
             }
 
             .multiline {

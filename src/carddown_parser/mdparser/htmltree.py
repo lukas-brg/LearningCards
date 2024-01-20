@@ -33,10 +33,9 @@ class HtmlNode:
 
     def remove_from_tree(self):
         if not self.parent:
-           
             return
-        self.parent.children.remove(self)
         
+        self.parent.children.remove(self)
         self.parent = None
 
     
@@ -150,13 +149,13 @@ class HtmlNode:
             # Remove spacing between closing tag and punctuation marks
             pattern = r'(</\w+>)\s+([.,;!?])'
             replacement = r'\1\2'
-            
             html_str = re.sub(pattern, replacement, html_str)
        
         else:
             html_str = indentation + start_tag + "\n" + children + "\n" + indentation + end_tag                                                                                           
       
         return html_str
+
 
 class SelfClosingTag(HtmlNode):
    

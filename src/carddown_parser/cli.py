@@ -4,7 +4,7 @@ import webbrowser
 
 from .config.config import load_configs, Config, CFG_PATHS, ENABLE_DEBUG, APP_CONFIG_PATH, USR_CONFIG_PATH
 from .mdparser.htmltree import HtmlFile
-from .cardloader import CardLoader
+from .fileparser import FileParser
 from .errors import MarkdownSyntaxError, show_exception_msg, show_warning_msg, CardSyntaxError, debug_print
 
 
@@ -25,42 +25,7 @@ def get_next_filename(filepath):
         count += 1
     return f"{base_filename}({count}){file_extension}"
 
-def existing_file_prompt(filepath):
-    while os.path.exists(filepath):
-        print(f"The file '{filepath}' already exists.")
-        print("Choose an option:")
-        print("1. Abort")
-        print("2. Rename the file")
-        print("3. Overwrite the existing file")
-        print("4. Automatically rename the file (e.g., 'your_file(1).txt')")
 
-        choice = input("Enter the number of your choice: ")
-
-        if choice == '1':
-            print("Aborting. No changes will be made.")
-            return None
-
-        elif choice == '2':
-            new_filename = input("Enter the new filename: ")
-            base_dir = os.path.dirname(filepath)
-            filepath = os.path.join(base_dir, new_filename)
-
-        elif choice == '3':
-            confirm_overwrite = input(f"Are you sure you want to overwrite '{filepath}'? (yes/no): ")
-            if confirm_overwrite.lower() == 'yes':
-                print("Overwriting the existing file.")
-                return filepath
-            else:
-                print("Operation canceled. No changes will be made.")
-
-        elif choice == '4':
-            filepath = get_next_filename(filepath)
-            print(f"Automatically renaming the file to '{os.path.basename(filepath)}'.")
-
-        else:
-            print("Invalid choice. Please enter a valid option.")
-
-    return filepath
 
 
 def get_args():
@@ -162,16 +127,16 @@ def get_title(args, name):
 
 
 def try_parse_file(filepath: str,):
-    loader = CardLoader()
+    parser = FileParser()
     try:
-        loader.parse_file(filepath)
+        parser.parse_file(filepath)
     except CardSyntaxError as e:
         show_exception_msg(e)
         sys.exit()
     except MarkdownSyntaxError as e:
         show_exception_msg(e)
         sys.exit()
-    return loader
+    return parser
 
 def export(args):
     args.collapsible = False
@@ -179,8 +144,8 @@ def export(args):
     
     if args.export == "json":
         input_file, output_file, name = get_filepaths(args, "json")
-        loader = try_parse_file(input_file)
-        loader.cards.to_json(output_file, include_styles=args.styles)
+        parser = try_parse_file(input_file)
+        parser.cards.to_json(output_file, include_styles=args.styles)
     
     elif args.export == "pdf":
         config.cardloader.collapse = False
@@ -189,16 +154,16 @@ def export(args):
         title = get_title(args, name)
         styles = load_theme("pdf")
         
-        loader = try_parse_file(loader, input_file)
+        parser = try_parse_file(parser, input_file)
         
         html = HtmlFile(style_files=styles, title=title, lang=config.document.lang)
         if args.shuffle:
-            loader.cards.shuffle()
+            parser.cards.shuffle()
 
         if args.cards:
-            html.body.add_children(*loader.get_cards())
+            html.body.add_children(*parser.get_cards())
         else:
-            html.body.add_children(*loader.get_cards_and_markdown())
+            html.body.add_children(*parser.get_cards_and_markdown())
 
         pdfkit.from_string(str(html), output_file)
 
@@ -249,7 +214,7 @@ def to_html(args):
     
     input_file, output_file, name = get_filepaths(args, "html")
     
-    loader = try_parse_file(input_file)
+    parser = try_parse_file(input_file)
     scripts = load_scripts()
     if not args.theme:
         args.theme = config.document.default_theme
@@ -264,9 +229,9 @@ def to_html(args):
     html = HtmlFile(scripts, style_files=styles, title=title, style_str=align_style, lang=config.document.lang)
 
     if args.cards:
-        html.body.add_children(*loader.get_cards(shuffle=args.shuffle))
+        html.body.add_children(*parser.get_cards(shuffle=args.shuffle))
     else:
-        html.body.add_children(*loader.get_cards_and_markdown())
+        html.body.add_children(*parser.get_cards_and_markdown())
 
     if config.document.overwrite_warning and os.path.exists(output_file):
         if input(f"Warning: file {output_file} already exists.\nAre you sure you want to overwrite it? <y/N> ") != "y":
@@ -286,13 +251,13 @@ def to_html(args):
     
 def carddown_config():
     parser = argparse.ArgumentParser()
-    
-    parser.add_argument("--paths", required=False, action="store_true",  help="Outputs the paths the application is looking for config files")
-    parser.add_argument("--set", required=False, dest="set_conf", default=None, help="Changes config values at the application level. Format: --set attr_1=value_1 attr_2=value_2 ...")
-    parser.add_argument("--reset", required=False, action="store_true", help="Restores the default config values for the application level config file.")
-    parser.add_argument("--make", required=False, action="store_true", help="Creates a config file at the given path or at the current working directory, if no path is specified.")
-    parser.add_argument("--make-usr", required=False, action="store_true", help="Creates a user config file and outputs the location")
-    parser.add_argument("--rm-usr", required=False, action="store_true", help="Removes the user config file")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--paths", required=False, action="store_true",  help="Outputs the paths the application is looking for config files")
+    group.add_argument("--set", required=False, dest="set_conf", default=None, help="Changes config values at the application level. Format: --set attr_1=value_1 attr_2=value_2 ...")
+    group.add_argument("--reset", required=False, action="store_true", help="Restores the default config values for the application level config file.")
+    group.add_argument("--make", required=False, action="store_true", help="Creates a config file at the given path or at the current working directory, if no path is specified.")
+    group.add_argument("--make-usr", required=False, action="store_true", help="Creates a user config file and outputs the location")
+    group.add_argument("--rm-usr", required=False, action="store_true", help="Removes the user config file")
     parser.add_argument("output_dir", nargs='?')
     args = parser.parse_args()
     

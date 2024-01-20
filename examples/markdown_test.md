@@ -2,6 +2,20 @@
 
 **Note:** This file was copied from https://markdown-it.github.io/, and has been modified to adequately demonstrate the markdown syntax supported by this software.
 
+```
+# h1 Heading 
+
+## h2 Heading
+
+### h3 Heading
+
+#### h4 Heading
+
+##### h5 Heading
+
+###### h6 Heading
+
+```
 
 
 # h1 Heading 
@@ -19,12 +33,31 @@
 
 ## Horizontal Rules
 
+
+```
+---
+
+***
+```
+
 ---
 
 ***
 
 
 ## Fontstyles
+
+```
+**This is bold text**
+
+==This is marked text==
+
+_This is italic text_
+
+~~Strikethrough~~
+
+_This text tests **nested** fontstyles_
+```
 
 **This is bold text**
 
@@ -38,6 +71,11 @@ _This text tests **nested** fontstyles_
 
 ## Blockquotes
 
+```
+> A blockquote starts with `>` symbol
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+```
 
 > A blockquote starts with `>` symbol
 > Blockquotes can also be nested...
@@ -94,10 +132,24 @@ Inline `code`
 Block code "fences"
 
 ```
+  ```
+  Sample text here...
+  ```
+```
+
+```
 Sample text here...
 ```
 
 Syntax highlighting
+
+```
+  ```js
+  var foo = function (bar) {
+    return bar++;
+  };
+  ```
+```
 
 ```js
 var foo = function (bar) {
@@ -109,49 +161,32 @@ console.log(foo(5));
 
 ## Tables
 
-Default aligned columns
+```
+| Default Alignment| Left Alignment    | Center Alignment   | Right Alignment |
+| ---------------- | :---------------- | :----------------: | --------------: |
+| Default Alignment| Python Hat        |   True             | 23.99           |
+| Default Alignment| SQL Hat           |   True             | 23.99           |
+| Default Alignment| Codecademy Tee    |  False             | 19.99           |
+| Default Alignment| Codecademy Hoodie |  False             | 42.99           |
+```
 
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-Right aligned columns
-
-| Option | Description |
-| ------:| -----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-Left aligned columns
-
-| Option | Description |
-| :----- | :---------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to
-
-Center aligned columns
-
-| Option | Description |
-| :-----:| :----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to
-
-
-Mixed alignments
-
-| Left   Alignment  | Center Alignment   | Right Alignment |
-| :---------------- | :------: | ----: |
-| Python Hat        |   True   | 23.99 |
-| SQL Hat           |   True   | 23.99 |
-| Codecademy Tee    |  False   | 19.99 |
-| Codecademy Hoodie |  False   | 42.99 |
+| Default Alignment| Left   Alignment  | Center Alignment   | Right Alignment |
+| ---------------- | :---------------- | :----------------: | --------------: |
+| Default Alignment| Python Hat        |   True             | 23.99           |
+| Default Alignment| SQL Hat           |   True             | 23.99           |
+| Default Alignment| Codecademy Tee    |  False             | 19.99           |
+| Default Alignment| Codecademy Hoodie |  False             | 42.99           |
 
 ## Links
+
+```
+[link text](http://dev.nodeca.com)
+
+[link with title](http://nodeca.github.io/pica/demo/ "title text!")
+
+Autoconverted link https://github.com/nodeca/pica 
+
+```
 
 [link text](http://dev.nodeca.com)
 
@@ -160,14 +195,47 @@ Mixed alignments
 Autoconverted link https://github.com/nodeca/pica 
 
 
+### Linking to headings
+
+You can also link to headings of this document. For this to work all the alphanumeric characters that make up the heading text need to be present in the link. The links are also not case sensitive.
+
+```
+[Link to first H1 Heading](#h1heading)
+
+[Another link to first H1 Heading](#h1-heading)
+```
+
+### Custom IDs
+
+```
+#### Headings can have a custom ID {#custom_id}
+
+The custom ID can be used to [Link](#custom_id) to the heading.
+
+```
+
+#### Headings can have a custom ID {#custom_id}
+
+The custom ID can be used to [Link](#custom_id) to the heading.
+
+
+
+
+[Link to first H1 Heading](#h1heading)
+
+[Another link to first H1 Heading](#h1-heading)
+
 ## Images
+
+```
+![Minion](https://octodex.github.com/images/minion.png)
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+```
 
 ![Minion](https://octodex.github.com/images/minion.png)
 ![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
 
-Like links, Images also have a footnote style syntax
 
-`![Alt text][id]`
 
 
 
@@ -179,12 +247,23 @@ The killer feature of `markdown-it` is very effective support of
 
 ### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
 
+```
+Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
+```
+
 Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
 
 
 
 
 ### Subscript / Superscript
+
+
+```
+- 19^th^
+- H~2~O
+
+```
 
 - 19^th^
 - H~2~O
@@ -193,10 +272,30 @@ Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
 
 ### Footnotes
 
+
+```
 Footnote 1 link[^first].
 
 Footnote 2 link[^second].
 
+```
+
+Footnote 1 link[^first].
+
+Footnote 2 link[^second].
+
+
+The corresponding footnotes look like this:
+
+```
+
+[^first]: Footnotes _can have markup_
+
+    and multiple paragraphs.
+
+[^second]: Footnote text.
+
+```
 
 
 [^first]: Footnotes _can have markup_
@@ -213,6 +312,14 @@ Footnotes are enumerated by their order in the document, regardless of their tex
 
 ### Definition lists
 
+```
+First Term
+: This is the definition of the first term.
+
+Second Term
+: This is one definition of the second term.
+: This is another definition of the second term.
+```
 
 First Term
 : This is the definition of the first term.
@@ -221,15 +328,14 @@ Second Term
 : This is one definition of the second term.
 : This is another definition of the second term.
 
-
-### Custom IDs
-
-
-#### Headings can have a custom ID {#custom_id}
-
-The custom ID can be used to [Link](#custom_id) to the heading.
-
 ## Task lists
+
+```
+- [x] This list item is checked
+- [ ] This list item is unchecked 
+  - [x] Task lists can also be nested
+
+```
 
 - [x] This list item is checked
 - [ ] This list item is unchecked 
@@ -237,6 +343,17 @@ The custom ID can be used to [Link](#custom_id) to the heading.
 
 ## Latex Equations
 
-$$F(x) = \int^a_b \frac{1}{3}x^3$$
+```
+$$\int^b_a \frac{1}{3}x^3$$
 
 $$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$
+```
+
+$$\int^b_a \frac{1}{3}x^3$$
+
+$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$
+
+# H1 Heading
+
+This heading's purpose is to test whether the links in the table of contents still work with duplicate headings. Links to "H1 Heading" will only link to the first one, however.
+If you want to link to this specific heading, you need to use a custom id.

@@ -58,111 +58,16 @@ is_multiline_code   = lambda string : re.match(r"^```\s*(\S*)$", string.rstrip()
 get_heading_elem    = lambda h      : HtmlNode(HEADINGS[h])
 
 
+token_types = None
 
-def get_token_types() -> Generator[InlineToken, None, None]:
-    return (TokenType for TokenType in InlineToken.get_all_token_types() if TokenType.__name__ not in config.mdparser.ignore_inline_tokens)
+def get_token_types() -> list[InlineToken]:
+    """Make sure list of TokenTypes to be parsed is only computed once for efficiency"""
+    global token_types
+    if not token_types:
+        token_types = [TokenType for TokenType in InlineToken.get_all_token_types() if TokenType.__name__ not in config.mdparser.ignore_inline_tokens]
+    return token_types
     
 
-def toc_list(items: list, parent: HtmlNode, last_lvl: int, start: int) -> int:
-    i = start
-    while i < len(items):
-        lvl, li = items[i]
-   
-        if lvl > last_lvl:
-            new_list = HtmlNode("ul", set_class="toc-ul")
-            i = toc_list(items, new_list, lvl, i)
-            parent.add_children(new_list)
-        elif lvl == last_lvl:
-            parent.add_children(li)
-            i += 1
-        else:
-            return i      
-
-    return i
-
-
-
-def find_headings(root_node: HtmlNode, max_lvl=3) -> list[tuple[int, HtmlNode]]:
-    headings = {
-            f"h{i}" : i 
-            for i in range(1, max_lvl+1)
-    }
-
-    count = 0
-    
-    items = []
-    last_non_card_heading_lvl = 0
-
-    for node in root_node:
-        tag = node.tag
- 
-        if tag in headings:
- 
-            if in_card_back := any(node.search_parents_by_property(set_class="back")):
-                in_card = True
-            else:
-                in_card = any(node.search_parents_by_property(set_class="card"))
-
-            if in_card and not config.document.toc_include_cards:
-                continue
-
-            heading_lvl = headings[tag]
-    
-            text = node.get_inner_text()
-            
-            if text.strip() == "" \
-                    or (in_card_back and not config.document.toc_show_back_headings_cards) \
-                    or (in_card and heading_lvl > config.document.toc_max_heading_cards):
-                continue
-            
-            if "id" not in node.properties:
-                id = f"h-{get_hash(text, max_length=8)}{count}"
-                node.properties["id"] = id
-            else:
-                id = node.properties["id"]
-            
-            href = f"#{id}"
-            
-            if in_card: 
-                if heading_lvl == 1:
-                    text = f"{get_locals()['card']}: " + text
-                heading_lvl += last_non_card_heading_lvl
-            else:
-                last_non_card_heading_lvl = heading_lvl
-            
-            a = HtmlNode("a", text, href=href, set_class="toc-link")
-            li = HtmlNode("li", a)
-            items.append((heading_lvl, li))
-            count += 1
-  
-    return items
-
-
-
-def make_table_of_contents(root_node: HtmlNode, max_lvl=3) -> list[HtmlNode]:
-    
-    items = find_headings(root_node, max_lvl)
-    if not items:
-        return []
-    
-    uls = []
-    
-    i = 0
-    count = 0
-    
-    while i < len(items) and count <= len(items):
-        ul = HtmlNode("ul", set_class="toc-ul")
-        i = toc_list(items, ul, items[i][0], i)
-        uls.append(ul)
-        count += 1
-    
-    if count > len(items):
-        show_warning_msg("Something went wrong creating the table of contents")
-        return []
-    
-    heading = HtmlNode("h1", get_locals()["toc"], HtmlNode("button", HtmlNode("i", set_class="fa-solid fa-chevron-up"), id="toc-btn"))
-    content_div = HtmlNode("div", *uls, set_class="toc-content")
-    return [HtmlNode("div", HtmlNode("span", heading),  content_div, set_class="toc")]
 
 
 def is_def(lines: list[str], i: int) -> bool:
@@ -498,7 +403,7 @@ def parse_block_quote(lines: list[str], start: int, depth=1) -> tuple[HtmlNode, 
 def parse_footnotes(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     footnotes_div = HtmlNode("div", set_class="footnotes-div")
     footnote_div = HtmlNode("div", set_class="footnote")
-    
+    footnote_links = []
    
     for i, line in enumerate_at(lines, start):
      
@@ -512,8 +417,10 @@ def parse_footnotes(lines: list[str], start: int) -> tuple[HtmlNode, int]:
             
             if footnote_div.children:
                 footnotes_div.add_children(footnote_div)
+
             
             footnote_div = HtmlNode("div", set_class="footnote")
+            
             text = match.group(1).strip()
             href = f"#ref-{text}"
             id = f"footnote-{text}"
@@ -521,11 +428,12 @@ def parse_footnotes(lines: list[str], start: int) -> tuple[HtmlNode, int]:
             
             a = HtmlNode("a", "&#8617;", href=href)
             
+            footnote_links.append(a)
      
             footnote = HtmlNode("span", text,  id=id)
             
             line = re.sub(FOOTNOTE_PATTERN, "", line)
-            inline_elems = [footnote, *parse_inline(line), a]
+            inline_elems = [footnote, *parse_inline(line)]
                         
         else:
             break
@@ -537,6 +445,10 @@ def parse_footnotes(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     
     if footnote_div.children:
         footnotes_div.add_children(footnote_div)
+    
+    # Make link to footnote ref always be at the end of the footnote
+    for fn, a in zip(footnotes_div.children, footnote_links):
+        fn.children[-1].add_children(a)
 
     return footnotes_div, end
 

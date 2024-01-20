@@ -197,3 +197,7 @@ h6 > a,
 .toc-link {
     text-decoration: none;
 }
+
+.multiline {
+    margin-bottom: 35px;
+}
