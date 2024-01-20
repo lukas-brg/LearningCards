@@ -203,18 +203,18 @@ console.log(foo(5));
 ```
 | Default Alignment| Left Alignment    | Center Alignment   | Right Alignment |
 | ---------------- | :---------------- | :----------------: | --------------: |
-| Default Alignment| Python Hat        |   True             | 23.99           |
-| Default Alignment| SQL Hat           |   True             | 23.99           |
-| Default Alignment| Codecademy Tee    |  False             | 19.99           |
-| Default Alignment| Codecademy Hoodie |  False             | 42.99           |
+| False            | Python Hat        |   True             | 23.99           |
+| True             | SQL Hat           |   True             | 23.99           |
+| True             | Codecademy Tee    |  False             | 19.99           |
+| False            | Codecademy Hoodie |  False             | 42.99           |
 ```
 
-| Default Alignment| Left   Alignment  | Center Alignment   | Right Alignment |
+| Default Alignment| Left Alignment    | Center Alignment   | Right Alignment |
 | ---------------- | :---------------- | :----------------: | --------------: |
-| Default Alignment| Python Hat        |   True             | 23.99           |
-| Default Alignment| SQL Hat           |   True             | 23.99           |
-| Default Alignment| Codecademy Tee    |  False             | 19.99           |
-| Default Alignment| Codecademy Hoodie |  False             | 42.99           |
+| False            | Python Hat        |   True             | 23.99           |
+| True             | SQL Hat           |   True             | 23.99           |
+| True             | Codecademy Tee    |  False             | 19.99           |
+| False            | Codecademy Hoodie |  False             | 42.99           |
 
 ## Links
 
@@ -345,6 +345,13 @@ The corresponding footnotes look like this:
 
 [^second]: Footnote text.
 
+```
+Footnotes are enumerated by their order in the document, regardless of their text[^1].
+
+[^1]: The footnotes can be split up across the document
+    Though they are always displayed at the bottom
+
+```
 
 Footnotes are enumerated by their order in the document, regardless of their text[^1].
 

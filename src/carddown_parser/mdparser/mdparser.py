@@ -234,7 +234,7 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     for line in code_lines:
         code.add_children(TextNode(line, preserve_whitespace=True), SelfClosingTag("br"))
 
-    id_hash = get_hash(code.get_inner_text(), start)
+    id_hash = get_hash(code.get_inner_text(), start, max_length=8) + str(start)
 
     code.properties["id"] = "code-block_" + id_hash
     
