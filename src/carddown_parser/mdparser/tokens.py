@@ -102,8 +102,9 @@ class LinkToken(InlineToken):
         if url.startswith("#"):
             url = "#h-" + get_hash(clean_string(url[1:]), max_length=8)
 
-        elif url.startswith("http"):
+        elif not url.startswith("http"):
             url = "http://" + url
+        
         
         return HtmlNode(self.tag, href=url, title=title)
 
