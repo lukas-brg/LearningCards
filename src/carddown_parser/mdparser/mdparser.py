@@ -233,8 +233,7 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     else:
         code = HtmlNode("code", name=name)
 
-    for line in code_lines:
-        code.add_children(TextNode(line, preserve_whitespace=True), SelfClosingTag("br"))
+    code.add_children("\n".join(code_lines)) 
 
     id_hash = get_hash(code.get_inner_text(), start, max_length=8) + str(start)
 
@@ -246,7 +245,7 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     copy_btn.properties["data-clipboard-target"] = f"#{code.properties['id']}"
     copy_notification = HtmlNode("div", get_locals()["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")
     
-    code_div = HtmlNode("div", code, copy_notification, copy_btn, copy_notification, set_class="multiline", id=f"code-div_{id_hash}")
+    code_div = HtmlNode("div", HtmlNode("pre", code, ), copy_notification, copy_btn, copy_notification, id=f"code-div_{id_hash}", set_class="multiline")
     return code_div, end+1
 
     
