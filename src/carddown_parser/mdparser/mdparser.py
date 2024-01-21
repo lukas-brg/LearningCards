@@ -102,7 +102,7 @@ def _parse_inline(line: str, tokens: dict[int, InlineToken], parent: HtmlNode, s
 
     i = start
     text = ""
- 
+
     while i < end:
         
         if i in tokens and parse_content:
@@ -127,6 +127,8 @@ def parse_inline(line: str) -> list[HtmlNode]:
     tokens = find_tokens(line)
     temp_container = HtmlNode("container")
     
+
+
     if not tokens:
         temp_container.add_children(line)
     else:
@@ -190,7 +192,7 @@ def _parse_list(lines: list[str], start: int, prev_spaces: int, parent: HtmlNode
                 handle_tasklist_item(line, parent=parent)
             else:
                 _, li_text = line.strip().split(" ", 1)
-                inline_elems = parse_inline(li_text)
+                inline_elems = parse_inline(li_text.strip())
                 parent.add_children(HtmlNode('li', *inline_elems))
             i += 1
 
@@ -493,7 +495,7 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
         lines = markdown
 
     while i < len(lines):
-        line = lines[i]
+        line = lines[i].rstrip()
         
         if line.strip() == "":
             if not config.mdparser.ignore_empty_lines:

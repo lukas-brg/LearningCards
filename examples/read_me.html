@@ -15,7 +15,7 @@
 
   <body class="markdown-body">
     <div class="toc">
-      <span><h1>Table Of Contents <button id="toc-btn"><i class="fa-solid fa-chevron-up"></i></button></h1></span>
+      <span><h1>Table Of Contents<button id="toc-btn"><i class="fa-solid fa-chevron-up"></i></button></h1></span>
       <div class="toc-content">
         <ul class="toc-ul">
           <li><a href="#h-c9046f7a" class="toc-link">Description</a></li>
@@ -42,15 +42,15 @@
       </div>
     </div>
     <h1 id="h-c9046f7a">Description</h1>
-    <p>Carddown is a terminal-based Markdown renderer that extends the Markdown syntax to support the inclusion of learning cards. <br/></p>
-    <p>It is able to render arbitrary markdown files that may or may not contain any learning cards and supports the entire markdown syntax as specified <a href="https://www.markdownguide.org/cheat-sheet/" title="">here</a>. <br/></p>
-    <p>An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements. <br/></p>
-    <p><br/> <br/></p>
+    <p>Carddown is a terminal-based Markdown renderer that extends the Markdown syntax to support the inclusion of learning cards.<br/></p>
+    <p>It is able to render arbitrary markdown files that may or may not contain any learning cards and supports the entire markdown syntax as specified <a href="https://www.markdownguide.org/cheat-sheet/" title="">here</a>.<br/></p>
+    <p>An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements.<br/></p>
+    <p><br/><br/></p>
     <h1 id="h-561f0a3d">Installation</h1>
-    <p>This project requires <strong>Python 3.10 or higher</strong> to be installed on your system. <br/></p>
-    <p>Clone this repository and run this in the project top-level directory: <br/></p>
+    <p>This project requires <strong>Python 3.10 or higher</strong> to be installed on your system.<br/></p>
+    <p>Clone this repository and run this in the project top-level directory:<br/></p>
     <div class="multiline" id="code-div_dad0f26d18">
-      <code name="multiline-code-block" id="code-block_dad0f26d18">pip&nbsp;install&nbsp;. <br/></code>
+      <code name="multiline-code-block" id="code-block_dad0f26d18">pip&nbsp;install&nbsp;.<br/></code>
       <div class="copy-notification" id="copy-notification_dad0f26d18">
         Copied!
       </div>
@@ -59,10 +59,10 @@
         Copied!
       </div>
     </div>
-    <p>After installation the application can be started from anywhere by running <code class="inline">carddown ...args</code> in the command line. <br/></p>
-    <p><strong>Note:</strong> <br/> On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work: <br/></p>
+    <p>After installation the application can be started from anywhere by running <code class="inline">carddown ...args</code> in the command line.<br/></p>
+    <p><strong>Note:</strong><br/>On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work:<br/></p>
     <div class="multiline" id="code-div_a1bfe99c27">
-      <code name="multiline-code-block" id="code-block_a1bfe99c27">python3&nbsp;-m&nbsp;pip&nbsp;install&nbsp;--upgrade&nbsp;pip <br/></code>
+      <code name="multiline-code-block" id="code-block_a1bfe99c27">python3&nbsp;-m&nbsp;pip&nbsp;install&nbsp;--upgrade&nbsp;pip<br/></code>
       <div class="copy-notification" id="copy-notification_a1bfe99c27">
         Copied!
       </div>
@@ -71,11 +71,11 @@
         Copied!
       </div>
     </div>
-    <p><br/> <br/></p>
+    <p><br/><br/></p>
     <h1 id="h-0a4e4c29">Usage</h1>
-    <p>At the very least you need to provide a path to an input file: <br/></p>
+    <p>At the very least you need to provide a path to an input file:<br/></p>
     <div class="multiline" id="code-div_893fa68c38">
-      <code name="multiline-code-block" id="code-block_893fa68c38">carddown&nbsp;[INPUT_FILE] <br/></code>
+      <code name="multiline-code-block" id="code-block_893fa68c38">carddown&nbsp;[INPUT_FILE]<br/></code>
       <div class="copy-notification" id="copy-notification_893fa68c38">
         Copied!
       </div>
@@ -84,11 +84,11 @@
         Copied!
       </div>
     </div>
-    <p>A corresponding HTML file is then created in the same directory as the input file and all the default parameters are applied. <br/></p>
-    <p><br/> <br/></p>
-    <p>It is also possible to specify the path to the output file and its name: <br/></p>
+    <p>A corresponding HTML file is then created in the same directory as the input file and all the default parameters are applied.<br/></p>
+    <p><br/><br/></p>
+    <p>It is also possible to specify the path to the output file and its name:<br/></p>
     <div class="multiline" id="code-div_61248bce48">
-      <code name="multiline-code-block" id="code-block_61248bce48">carddown&nbsp;[INPUT_FILE]&nbsp;[OUTPUT_FILE?] <br/></code>
+      <code name="multiline-code-block" id="code-block_61248bce48">carddown&nbsp;[INPUT_FILE]&nbsp;[OUTPUT_FILE?]<br/></code>
       <div class="copy-notification" id="copy-notification_61248bce48">
         Copied!
       </div>
@@ -97,9 +97,9 @@
         Copied!
       </div>
     </div>
-    <p><br/> <br/></p>
-    <p>Additionally there are a number of flags and parameters: <br/></p>
-    <p><strong>Flags:</strong> <br/></p>
+    <p><br/><br/></p>
+    <p>Additionally there are a number of flags and parameters:<br/></p>
+    <p><strong>Flags:</strong><br/></p>
     <ul>
       <li><code class="inline">--cards</code> / <code class="inline">-c</code> <span>&#8594;</span> Renders the cards only, no markdown</li>
       <li><code class="inline">--shuffle</code> / <code class="inline">-s</code> <span>&#8594;</span> Render the cards only in a random order</li>
@@ -107,19 +107,19 @@
       <li><code class="inline">--open</code> / <code class="inline">-o</code> <span>&#8594;</span> Opens the output file with default webbrowser</li>
       <li><code class="inline">--toc</code> <span>&#8594;</span> Automatically generates a table of contents based on the headings</li>
     </ul>
-    <p><strong>Parameters:</strong> <br/></p>
+    <p><strong>Parameters:</strong><br/></p>
     <ul>
       <li><code class="inline">--lang</code> <span>&#8594;</span> Specifies language. Currently 'de' and 'en' are supported</li>
       <li><code class="inline">--theme</code> <span>&#8594;</span> Choose theme out of 'light', 'dark', 'raw', 'none'</li>
       <li><code class="inline">--align</code> <span>&#8594;</span> Aligns the body to the 'left' or 'center'</li>
       <li><code class="inline">--margin</code> <span>&#8594;</span> Total margin in percent</li>
-      <li><code class="inline">--title</code> <span>&#8594;</span> Title of the HTML document. If this parameter is not provided, one will be generated based on the name of the input file.</li>
+      <li><code class="inline">--title</code> <span>&#8594;</span>  Title of the HTML document. If this parameter is not provided, one will be generated based on the name of the input file.</li>
     </ul>
-    <p><code class="inline">carddown -h/--help</code> lists every available flag and parameter. <br/></p>
-    <p><br/> <br/></p>
+    <p><code class="inline">carddown -h/--help</code> lists every available flag and parameter.<br/></p>
+    <p><br/><br/></p>
     <h2 id="h-ee7e8605">Learning Cards</h2>
-    <p>The Learning cards are split into a front side and a back side. The front side contains the question, while the back side, which is not revealed until a click on a button, contains the answer. <br/></p>
-    <p>The learning card specific syntax uses three types of tags, all of which are wrapped in <code class="inline">{CURLY_BRACES}</code> : <br/></p>
+    <p>The Learning cards are split into a front side and a back side. The front side contains the question, while the back side, which is not revealed until a click on a button, contains the answer.<br/></p>
+    <p>The learning card specific syntax uses three types of tags, all of which are wrapped in <code class="inline">{CURLY_BRACES}</code>:<br/></p>
     <ol start="1">
       <li>Every card starts with a start tag, that is at the end of an H1 heading, which serves as the card title.</li>
       <ul>
@@ -134,28 +134,28 @@
         <li>The <code class="inline">{END}</code> tag can be omitted for subsequent cards or when a card is at the end of file.</li>
       </ul>
     </ol>
-    <p><br/> <br/></p>
+    <p><br/><br/></p>
     <h3 id="h-7d612e48">Learning Card Types</h3>
-    <p>There are three basic card types: <br/></p>
+    <p>There are three basic card types:<br/></p>
     <h4 id="h-c1ad9204">Standard Card</h4>
     <div class="card QuestionCard" id="0">
       <div class="front QuestionCard">
         <h1 id="h-b3ca7272">This is the card title</h1>
-        <p>This is the front side of the card. It can contain any markdown syntax. <br/></p>
+        <p>This is the front side of the card. It can contain any markdown syntax.<br/></p>
       </div>
       <div class="back QuestionCard">
         <button class="collapsible card-btn">Show Backside</button>
         <div class="content">
           <div class="answer">
             <h2 id="h-0a60dbba">The back side starts after the back tag</h2>
-            <p>This text is on the back side. <br/></p>
+            <p>This text is on the back side.<br/></p>
           </div>
         </div>
         <br/>
       </div>
       <hr/>
     </div>
-    <p>If you don't need much text on the front side you can also use this format: <br/></p>
+    <p>If you don't need much text on the front side you can also use this format:<br/></p>
     <div class="card QuestionCard" id="1">
       <div class="front QuestionCard">
         <h1 id="h-13e842ba">Only this h1 heading will be on the front side</h1>
@@ -164,80 +164,75 @@
         <button class="collapsible card-btn">Show Backside</button>
         <div class="content">
           <div class="answer">
-            <p>The rest will appear on the back side <br/></p>
+            <p>The rest will appear on the back side<br/></p>
           </div>
         </div>
         <br/>
       </div>
       <hr/>
     </div>
-    <p><strong>Note:</strong> This format where there is no <code class="inline">{END}</code> tag works for every card type. <br/></p>
-    <p><br/> <br/></p>
+    <p><strong>Note:</strong> This format where there is no <code class="inline">{END}</code> tag works for every card type.<br/></p>
+    <p><br/><br/></p>
     <h4 id="h-69ad71fe">Multiple Choice Card</h4>
     <div class="card MultipleChoiceCard" id="2">
       <div class="front MultipleChoiceCard">
         <h1 id="h-69ad71fe1">Multiple Choice Card</h1>
-        <p>This card contains displays multiple choices of which one or more have to be marked as correct. <br/></p>
+        <p>This card contains displays multiple choices of which one or more have to be marked as correct.<br/></p>
       </div>
       <div class="back MultipleChoiceCard">
         <div class="answer">
           <form class="multi" name="multiform2" action="javascript:void(0)">
             <input class="choice" type="checkbox" id="choice2" name="choice2" value="correct" autocomplete="off"/>
-            <label name="label" for="choice2">Correct Answer 1 <br/></label>
+            <label name="label" for="choice2">Correct Answer 1<br/></label>
             <input class="choice" type="checkbox" id="choice3" name="choice3" value="incorrect" autocomplete="off"/>
-            <label name="label" for="choice3">Incorrect Answer <br/></label>
+            <label name="label" for="choice3">Incorrect Answer<br/></label>
             <input class="choice" type="checkbox" id="choice4" name="choice4" value="correct" autocomplete="off"/>
-            <label name="label" for="choice4">Correct Answer 2 <br/></label>
+            <label name="label" for="choice4">Correct Answer 2<br/></label>
             <br/>
             <input value="Check Answer" id="multi_btn2" type="submit" class="multi-btn card-btn" onclick="multiOnClick(this)"/>
             <div class="multicontent">
-
             </div>
           </form>
         </div>
       </div>
       <hr/>
     </div>
-    <p><br/> <br/></p>
+    <p><br/><br/></p>
     <h4 id="h-3a9a3523">Answer Card</h4>
-    <p>This card includes a textbox in which the user must input an answer. <br/></p>
+    <p>This card includes a textbox in which the user must input an answer.<br/></p>
     <div class="card AnswerCard" id="3">
       <div class="front AnswerCard">
         <h1 id="h-3a9a35231">Answer Card</h1>
-        <p>What is 1+1? <br/></p>
+        <p>What is 1+1?<br/></p>
       </div>
       <div class="back AnswerCard">
         <div class="answer">
-          <form action="javascript:void(0);"><input type="text" class="answer-input" name="answer_field3" autocomplete="off"/> <br/> <input value="Check Answer" type="submit" class="answer-btn card-btn" id="answer_btn3" onclick="answerOnClick(this)"/></form>
+          <form action="javascript:void(0);">
+            <input type="text" class="answer-input" name="answer_field3" autocomplete="off"/>
+            <br/>
+            <input value="Check Answer" type="submit" class="answer-btn card-btn" id="answer_btn3" onclick="answerOnClick(this)"/>
+          </form>
           <div class="answer-content" name="answer_content3">
-            <p>1+1= <span name="answer3" class="answer-span">2</span></p>
+            <p>1+1=<span name="answer3" class="answer-span">2</span></p>
           </div>
         </div>
       </div>
       <hr/>
     </div>
-    <p>The answer is contained inside <code class="inline">{CURLY_BRACES}</code>. If there are none, the whole back side will be regarded as the correct answer. <br/></p>
-    <p><br/> <br/></p>
-    <p>
-      <strong>Note</strong>
-      : You can find some more practical examples in
-      <a href="https://raw.githubusercontent.com/lukas-brg/LearningCards/main/examples/cards.md" title="">examples/cards.md</a>
-      and look at the result by downloading
-      <a href="http://./examples/cards.html" title="">examples/cards.html</a>
-      and opening it in a web browser.
-      <br/>
-    </p>
-    <p><br/> <br/></p>
+    <p>The answer is contained inside <code class="inline">{CURLY_BRACES}</code>. If there are none, the whole back side will be regarded as the correct answer.<br/></p>
+    <p><br/><br/></p>
+    <p><strong>Note</strong>: You can find some more practical examples in <a href="https://raw.githubusercontent.com/lukas-brg/LearningCards/main/examples/cards.md" title="">examples/cards.md</a> and look at the result by downloading <a href="http://./examples/cards.html" title="">examples/cards.html</a> and opening it in a web browser.<br/></p>
+    <p><br/><br/></p>
     <h2 id="h-b7d64a92">Configuration</h2>
-    <p>Carddown uses <code class="inline">.toml</code> files for configuration and provides a second entry point called <code class="inline">carddown-config</code> to handle all things related to configuration. <br/></p>
-    <p>A config file does not need to contain every available parameter. When using a custom config file, the parameters within it overwrite the defaults, while the remaining parameters follow the default settings. <br/></p>
-    <p>Run <code class="inline">carddown-config --help</code> to list out every option regarding configuration. <br/></p>
-    <p><br/> <br/></p>
+    <p>Carddown uses <code class="inline">.toml</code> files for configuration and provides a second entry point called <code class="inline">carddown-config</code> to handle all things related to configuration.<br/></p>
+    <p>A config file does not need to contain every available parameter. When using a custom config file, the parameters within it overwrite the defaults, while the remaining parameters follow the default settings.<br/></p>
+    <p>Run <code class="inline">carddown-config --help</code> to list out every option regarding configuration.<br/></p>
+    <p><br/><br/></p>
     <h3 id="h-040f3a7c">Creating a User Config File</h3>
-    <p>Carddown already uses an application config file located within the project directory. However, users can create their own config file. <br/></p>
-    <p>For user convenience, a user config file containing the default settings can automatically be generated, at a location that is determined platform independently, by running the following command: <br/></p>
+    <p>Carddown already uses an application config file located within the project directory. However, users can create their own config file.<br/></p>
+    <p>For user convenience, a user config file containing the default settings can automatically be generated, at a location that is determined platform independently, by running the following command:<br/></p>
     <div class="multiline" id="code-div_dd8bf53e27">
-      <code name="multiline-code-block" id="code-block_dd8bf53e27">carddown-config&nbsp;--make-usr&nbsp; <br/></code>
+      <code name="multiline-code-block" id="code-block_dd8bf53e27">carddown-config&nbsp;--make-usr&nbsp;<br/></code>
       <div class="copy-notification" id="copy-notification_dd8bf53e27">
         Copied!
       </div>
@@ -246,12 +241,12 @@
         Copied!
       </div>
     </div>
-    <p>The path to the config file will be a printed to the terminal, so you can open it and edit the parameters according to your needs. The file will automatically be loaded by carddown. <br/></p>
-    <p><br/> <br/></p>
+    <p>The path to the config file will be a printed to the terminal, so you can open it and edit the parameters according to your needs. The file will automatically be loaded by carddown.<br/></p>
+    <p><br/><br/></p>
     <h3 id="h-529e8b82">Undoing the Configurations made</h3>
-    <p>If you want to restore the defaults, you can either run <br/> <code class="inline">carddown-config --make-usr</code> again and choose to overwrite the existing config file to bring it back to its defaults or remove the user config file entirely by running: <br/></p>
+    <p>If you want to restore the defaults, you can either run<br/><code class="inline">carddown-config --make-usr</code> again and choose to overwrite the existing config file to bring it back to its defaults or remove the user config file entirely by running:<br/></p>
     <div class="multiline" id="code-div_86466afa40">
-      <code name="multiline-code-block" id="code-block_86466afa40">carddown-config&nbsp;--rm-usr <br/></code>
+      <code name="multiline-code-block" id="code-block_86466afa40">carddown-config&nbsp;--rm-usr<br/></code>
       <div class="copy-notification" id="copy-notification_86466afa40">
         Copied!
       </div>
@@ -260,12 +255,12 @@
         Copied!
       </div>
     </div>
-    <p><br/> <br/></p>
+    <p><br/><br/></p>
     <h3 id="h-b6deee18">Using a Custom Configuration to Render a Single File</h3>
-    <p>When using carddown to render a Markdown file, you can use the <code class="inline">--config [CONFIG_PATH]</code> parameter to use a custom config file and apply it just to this specific markdown file. <br/></p>
-    <p>Example: <br/></p>
+    <p>When using carddown to render a Markdown file, you can use the <code class="inline">--config [CONFIG_PATH]</code> parameter to use a custom config file and apply it just to this specific markdown file.<br/></p>
+    <p>Example:<br/></p>
     <div class="multiline" id="code-div_856d5b5d52">
-      <code name="multiline-code-block" id="code-block_856d5b5d52">carddown&nbsp;--config&nbsp;[CONFIG_PATH]&nbsp;[MARKDOWN_PATH]&nbsp;[OUTPUT_PATH?] <br/></code>
+      <code name="multiline-code-block" id="code-block_856d5b5d52">carddown&nbsp;--config&nbsp;[CONFIG_PATH]&nbsp;[MARKDOWN_PATH]&nbsp;[OUTPUT_PATH?]<br/></code>
       <div class="copy-notification" id="copy-notification_856d5b5d52">
         Copied!
       </div>
@@ -274,9 +269,9 @@
         Copied!
       </div>
     </div>
-    <p>To create such a config file easily, there is a command which can generate a default config file at any given location: <br/></p>
+    <p>To create such a config file easily, there is a command which can generate a default config file at any given location:<br/></p>
     <div class="multiline" id="code-div_676df52a58">
-      <code name="multiline-code-block" id="code-block_676df52a58">carddown-config&nbsp;--make&nbsp;[PATH?] <br/></code>
+      <code name="multiline-code-block" id="code-block_676df52a58">carddown-config&nbsp;--make&nbsp;[PATH?]<br/></code>
       <div class="copy-notification" id="copy-notification_676df52a58">
         Copied!
       </div>
@@ -285,7 +280,8 @@
         Copied!
       </div>
     </div>
-    <p>If no path is provided the file will be created in the current working directory. <br/></p>
+    <p>If no path is provided the file will be created in the current working directory.<br/></p>
+    
     <style>
             .markdown-body {
                 padding-top: 20px;
@@ -930,21 +926,21 @@
 
 
                 .markdown-body { 
-                    width: 50%;    
+                    width: 53%;    
 
                     margin-right: auto;
                     margin-left: auto;
                 }
     
-                @media only screen and (max-width: 960px) {
+                @media only screen and (max-width: 1017px) {
                     .markdown-body {
                         width: 92%;
                     }
                 }
     
-                @media only screen and (min-width: 961px) and (max-width: 1920px){
+                @media only screen and (min-width: 1018px) and (max-width: 1920px){
                     .markdown-body {
-                        width: 960px;
+                        width: 1017px;
                         max-width: 92%;
       
                     }
@@ -961,6 +957,8 @@
 
     
     </style>
+
+    
     <script>
             const LOCALS = {
                 de: {
@@ -1200,6 +1198,7 @@
 
 
     </script>
+
   </body>
 
 

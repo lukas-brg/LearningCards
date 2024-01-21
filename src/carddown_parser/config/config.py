@@ -5,7 +5,6 @@ import toml
 
 
 ENABLE_DEBUG = False
-
 CONFIG_FILE_NAME = "config.toml"
 
 APP_CONFIG_PATH = os.path.join(os.path.dirname(__file__), CONFIG_FILE_NAME)

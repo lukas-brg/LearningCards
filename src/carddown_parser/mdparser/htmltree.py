@@ -3,13 +3,13 @@ import  re, textwrap
 from typing import Generator
 from ..errors import try_read_file
 from ..config import get_config
-
+from bs4 import BeautifulSoup
 
 config = get_config()
 
 # Subtrees starting with these tags are never printed in a single line
-NEWLINE_TAGS = ["div", "ul", "ol", "table", "thead", "tbody", "tr", "body"]
-INLINE_TAGS = ["b", "em", "s", "mark", "sub", "sup", "br"]
+NEWLINE_TAGS = ["div", "ul", "ol", "table", "thead", "tbody", "tr", "body", "br", "form"]
+INLINE_TAGS = ["b", "em", "s", "mark", "sub", "sup"]
 HTML_WHITESPACE = "&nbsp;"
 
 
@@ -64,7 +64,7 @@ class HtmlNode:
             if not c:
                 continue
             if isinstance(c, str):
-                text_node = TextNode(c.strip())
+                text_node = TextNode(c)
                 text_node.parent = self
                 self.children.append(text_node)
             else:
@@ -129,41 +129,31 @@ class HtmlNode:
         return s
 
 
-
-    def __str__(self, depth=1):
-
-        indentation = ' ' * depth * config.document.indent_html        
-        children = '\n'.join(c.__str__(depth+1) for c in self.children)
+    def __str__(self, depth=1, indent=False):
         start_tag = f"<{self.tag}{self._props_str()}>"
         end_tag = f"</{self.tag}>"
-        
-        
-        if (self.tag not in NEWLINE_TAGS and len(children.strip()) <= 300) or self.tag in INLINE_TAGS:
-            
-            children = re.sub(r"\s+", " ", children)
-            # Workaround to get superscript and subscript displayed right
-            children = re.sub(r"(\S) <sup>", r"\1<sup>", children)
-            children = re.sub(r"(\S) <sub>", r"\1<sub>", children)
-            
-            html_str = indentation + start_tag + children.strip() + end_tag
-            
-            # Remove spacing between closing tag and punctuation marks
-            pattern = r'(</\w+>)\s+([.,;!?])'
-            replacement = r'\1\2'
-            html_str = re.sub(pattern, replacement, html_str)
-       
-        else:
-            html_str = indentation + start_tag + "\n" + children + "\n" + indentation + end_tag                                                                                           
-      
-        return html_str
+        indentation = '  ' * depth
 
+        if not indent and self.tag in NEWLINE_TAGS:
+            children_str = "".join(c.__str__(depth+1) + "\n" for c in self.children)
+            return  f"{indentation}{start_tag}\n{children_str}{indentation}{end_tag}"
+        else:
+            indentation = indentation if not indent else ""
+            children_str = ''.join(c.__str__(depth, indent=True) for c in self.children)
+            return f"{indentation}{start_tag}{children_str}{end_tag}"
+    
 
 class SelfClosingTag(HtmlNode):
    
-    def __str__(self, depth=0):
+    def __str__(self, depth=0, indent=False):
+        
         indentation = ' '* depth * config.document.indent_html 
         children_str = " ".join(str(c) for c in self.children)
         children_str = " " + children_str if len(children_str.strip()) > 0 else ""
+        
+        if indent:
+            return f"<{self.tag}{self._props_str()}{children_str}/>"
+
         return f"{indentation}<{self.tag}{self._props_str()}{children_str}/>"
 
 
@@ -177,10 +167,14 @@ class TextNode(HtmlNode):
         self.children = []
         self.text: str = text
         self.properties = {}
+  
         
-    def __str__(self, depth=0): 
-        text = ' ' * depth * config.document.indent_html + self.text
-        return text
+    def __str__(self, depth=0, indent=False): 
+        if indent:
+            return self.text
+        else:
+            return ' ' * depth * config.document.indent_html + self.text
+      
 
 class WhiteSpaceNode(TextNode):
     def __init__(self, spaces: int):
@@ -201,8 +195,9 @@ class HtmlFile:
         self.charset = charset
         self.lang = lang
 
-    def __str__(self):
+    def __str__(self):    
         return self.create_document()
+    
 
     def save(self, filepath: str):
         with open(filepath, 'w') as f:
@@ -226,6 +221,8 @@ class HtmlFile:
 """
         
         self.body.add_children(style_section, script_section)
+
+     
 
         return f"""
 <!DOCTYPE html>

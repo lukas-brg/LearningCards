@@ -91,6 +91,12 @@ class LinkToken(InlineToken):
     tag = "a"
     patterns = [r"(?:^|[^!])\[(.*?)\]\((.*?)(?:\s*\"(.*?)\")?\)"]
     
+    def on_create(self):
+        # To make sure an ImageToken isn't matched, this token test for either the start of the line or a character that is not '!'
+        # But since it can't be known which it is the start of the match doesn't necessarily equal the start of the token, so it is determined based on the content
+        # The same is done for every token that needs to rule out a character before like this
+        self.start = self.content_start - 1
+    
     def to_html(self):
         url = self.match.group(2)
         title = self.match.group(3) or ""
@@ -129,6 +135,9 @@ class AutomaticLinkToken(InlineToken):
     patterns = [r"(?:^|[^(])(https?://[^\s,]+)"]
     no_content = True
 
+    def on_create(self):
+        self.start, _ = self.match.span(1)
+
     def to_html(self):
         url = self.match.group(1)
         return HtmlNode(self.tag, url, href=url)
@@ -151,7 +160,8 @@ class EmphToken(InlineToken):
         r"(?:^|[^\*])\*([^\*]+)\*"
     ]
     
-
+    def on_create(self):
+        self.start = self.content_start - 1
    
 class StrikeToken(InlineToken):
     tag = "s"
