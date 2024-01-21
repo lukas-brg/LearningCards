@@ -129,6 +129,7 @@ class HtmlNode:
         return s
 
 
+
     def __str__(self, depth=1):
 
         indentation = ' ' * depth * config.document.indent_html        
@@ -137,7 +138,7 @@ class HtmlNode:
         end_tag = f"</{self.tag}>"
         
         
-        if (self.tag not in NEWLINE_TAGS and len(children.strip( "\n " )) <= 300) or self.tag in INLINE_TAGS:
+        if (self.tag not in NEWLINE_TAGS and len(children.strip()) <= 300) or self.tag in INLINE_TAGS:
             
             children = re.sub(r"\s+", " ", children)
             # Workaround to get superscript and subscript displayed right

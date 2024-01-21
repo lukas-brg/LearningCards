@@ -1,4 +1,5 @@
 
+This table of contents was auto-generated. The feature can either be set in the config as default behaviour or it can be enabled for a single file by using the `--toc` flag.
 
 **Note:** This file was copied from https://markdown-it.github.io/, and has been modified to adequately demonstrate the markdown syntax supported by this software.
 
@@ -55,6 +56,8 @@ __This is bold text__
 ==This is marked text==
 
 _This is italic text_
+
+*This is italic text*
 
 ~~Strikethrough~~
 

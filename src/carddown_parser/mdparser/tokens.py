@@ -211,7 +211,7 @@ class RightArrowToken(InlineToken):
     no_content = True
 
     def to_html(self) -> HtmlNode:
-        return HtmlNode("span", "&#10230;")
+        return HtmlNode("span", "&#8594;")
     
 
 class LatexToken(InlineToken):
