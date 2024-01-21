@@ -50,6 +50,8 @@
 ```
 **This is bold text**
 
+__This is bold text__
+
 ==This is marked text==
 
 _This is italic text_
@@ -61,9 +63,13 @@ _This text tests **nested** fontstyles_
 
 **This is bold text**
 
+__This is bold text__
+
 ==This is marked text==
 
 _This is italic text_
+
+*This is italic text*
 
 ~~Strikethrough~~
 
@@ -390,6 +396,13 @@ Second Term
   - [x] Task lists can also be nested
 
 ## Latex Equations
+
+```
+Inline latex equations \(forall x \in X, \quad \exists y \leq \epsilon\)
+```
+
+Inline latex equations \(\forall x \in X, \quad \exists y \leq \epsilon\)
+
 
 ```
 $$\int^b_a \frac{1}{3}x^3$$

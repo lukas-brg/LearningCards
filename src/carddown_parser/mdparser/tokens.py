@@ -26,7 +26,7 @@ class InlineToken(ABC):
        For maximum control a subclass may override the `create` and `to_html` methods.
     """
     tag: str
-    pattern: str
+    patterns: list[str]
 
     # in case of wanting to match a pattern before the actual token starts, set number of chars before token here
     pre_chars: int = 0
@@ -89,7 +89,7 @@ class InlineToken(ABC):
 
 class LinkToken(InlineToken):
     tag = "a"
-    pattern = r"(?:^|[^!])\[(.*?)\]\((.*?)(?:\s*\"(.*?)\")?\)"
+    patterns = [r"(?:^|[^!])\[(.*?)\]\((.*?)(?:\s*\"(.*?)\")?\)"]
     
     def to_html(self):
         url = self.match.group(2)
@@ -113,44 +113,54 @@ class LinkToken(InlineToken):
 class ImageToken(InlineToken):
     tag = "img"
     no_content = True
-    pattern = r"!\[(.*?)\]\((.*?)(?:\s*\"(.*?)\")?\)"
+    patterns = [r"!\[(.*?)\]\((.*?)(?:\s*\"(.*?)\")?\)"]
 
     def to_html(self):
         title = self.match.group(3) or ""
         alt = self.match.group(1)
         src = self.match.group(2)
-        
-        return SelfClosingTag(self.tag, alt=alt, src=src, title=title, width=500)
+        max_width = f"max-width: {config.document.image_max_width}"
+        return SelfClosingTag(self.tag, alt=alt, src=src, title=title, style=max_width)
 
 
 
 class AutomaticLinkToken(InlineToken):
     tag = "a"
-    pattern = r"(?:^|[^(])(https?://[^\s,]+)"
+    patterns = [r"(?:^|[^(])(https?://[^\s,]+)"]
     no_content = True
 
     def to_html(self):
         url = self.match.group(1)
         return HtmlNode(self.tag, url, href=url)
 
+
   
 class BoldToken(InlineToken):
-    tag = "b"
-    pattern = r"\*\*(.+?)\*\*"
+    tag = "strong"
+    patterns = [
+        r"\*\*(.+?)\*\*", 
+        r"__(.+?)__"
+    ]
+    
 
 
 class EmphToken(InlineToken):
     tag = "em"
-    pattern = r"\_([^\_\[\]:/]+)\_"
+    patterns = [
+        r"(?:^|[^_])_([^_\[\]:/]+)\_",
+        r"(?:^|[^\*])\*([^\*]+)\*"
+    ]
+    
 
-
+   
 class StrikeToken(InlineToken):
     tag = "s"
-    pattern = r"~~(.+?)~~"
+    patterns = [r"~~(.+?)~~"]
    
+
 class CodeToken(InlineToken):
     tag = "code"
-    pattern = r"`([^`]+)`"
+    patterns = [r"`([^`]+)`"]
     parse_content = False
 
   
@@ -162,12 +172,11 @@ class CodeToken(InlineToken):
 
 class PrettyPrintCodeToken(InlineToken):
     tag = "code"
-    pattern = r"```([^`]+)```"
+    patterns = [r"```([^`]+)```"]
     parse_content = False
 
     properties = {
         "id" : "inline",
-     
         "set_class" : "prettyprint inline"
     }
 
@@ -176,29 +185,29 @@ class PrettyPrintCodeToken(InlineToken):
 class SubscriptToken(InlineToken):
     tag = "sub"
     pre_chars = 1
-    pattern = r"[\S]~([^~]+)~"
+    patterns = [r"[\S]~([^~]+)~"]
 
    
 class SuperscriptToken(InlineToken):
     tag = "sup"
-    pattern =  r"\^([^\^]+)\^"
+    patterns =  [r"\^([^\^]+)\^"]
 
 
 class HorizontalRuleToken(InlineToken):
     tag = "hr"
-    pattern = r"^[*-]{3}\s*$"
+    patterns = [r"^[*-]{3}\s*$"]
     no_content = True
     self_closing = True
 
 
 class HighlightToken(InlineToken):
     tag = "mark"
-    pattern = r"==([^=]+)=="
+    patterns = [r"==([^=]+)=="]
     
 
 class RightArrowToken(InlineToken):
     
-    pattern = r"-->"
+    patterns =  [r"-->"]
     no_content = True
 
     def to_html(self) -> HtmlNode:
@@ -206,7 +215,7 @@ class RightArrowToken(InlineToken):
     
 
 class LatexToken(InlineToken):
-    pattern = r"(\$\$.+?\$\$)"
+    patterns = [r"(\$\$.+?\$\$)"]
     parse_content = False
     tag = "span"
 
@@ -216,7 +225,7 @@ class LatexToken(InlineToken):
 
 
 class FootNoteReferenceToken(InlineToken):
-    pattern = r"\[\^(\S+)\]($|[^:])"
+    patterns = [r"\[\^(\S+)\]($|[^:])"]
     tag = "a"
     no_content = True
 
@@ -231,7 +240,7 @@ class FootNoteReferenceToken(InlineToken):
     
 
 class EmojiToken(InlineToken):
-    pattern = r"(:[a-zA-Z0-9_\-]+:)"
+    patterns = [r"(:[a-zA-Z0-9_\-]+:)"]
     parse_content = False
 
     def to_html(self) -> HtmlNode:

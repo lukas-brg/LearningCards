@@ -20,6 +20,7 @@ align = "center"
 body_class = "markdown-body"
 default_theme = "dark"
 indent_html = 2
+image_max_width = "80%"
 lang = "en"
 margin = 50
 open_file = false

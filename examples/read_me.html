@@ -47,7 +47,7 @@
     <p>An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements. <br/></p>
     <p><br/> <br/></p>
     <h1 id="h-561f0a3d">Installation</h1>
-    <p>This project requires <b>Python 3.10 or higher</b> to be installed on your system. <br/></p>
+    <p>This project requires <strong>Python 3.10 or higher</strong> to be installed on your system. <br/></p>
     <p>Clone this repository and run this in the project top-level directory: <br/></p>
     <div class="multiline" id="code-div_dad0f26d18">
       <code name="multiline-code-block" id="code-block_dad0f26d18">pip&nbsp;install&nbsp;. <br/></code>
@@ -60,7 +60,7 @@
       </div>
     </div>
     <p>After installation the application can be started from anywhere by running <code class="inline">carddown ...args</code> in the command line. <br/></p>
-    <p><b>Note:</b> <br/> On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work: <br/></p>
+    <p><strong>Note:</strong> <br/> On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work: <br/></p>
     <div class="multiline" id="code-div_a1bfe99c27">
       <code name="multiline-code-block" id="code-block_a1bfe99c27">python3&nbsp;-m&nbsp;pip&nbsp;install&nbsp;--upgrade&nbsp;pip <br/></code>
       <div class="copy-notification" id="copy-notification_a1bfe99c27">
@@ -99,7 +99,7 @@
     </div>
     <p><br/> <br/></p>
     <p>Additionally there are a number of flags and parameters: <br/></p>
-    <p><b>Flags:</b> <br/></p>
+    <p><strong>Flags:</strong> <br/></p>
     <ul>
       <li><code class="inline">--cards</code> / <code class="inline">-c</code> <span>&#10230;</span> Renders the cards only, no markdown</li>
       <li><code class="inline">--shuffle</code> / <code class="inline">-s</code> <span>&#10230;</span> Render the cards only in a random order</li>
@@ -107,7 +107,7 @@
       <li><code class="inline">--open</code> / <code class="inline">-o</code> <span>&#10230;</span> Opens the output file with default webbrowser</li>
       <li><code class="inline">--toc</code> <span>&#10230;</span> Automatically generates a table of contents based on the headings</li>
     </ul>
-    <p><b>Parameters:</b> <br/></p>
+    <p><strong>Parameters:</strong> <br/></p>
     <ul>
       <li><code class="inline">--lang</code> <span>&#10230;</span> Specifies language. Currently 'de' and 'en' are supported</li>
       <li><code class="inline">--theme</code> <span>&#10230;</span> Choose theme out of 'light', 'dark', 'raw', 'none'</li>
@@ -171,7 +171,7 @@
       </div>
       <hr/>
     </div>
-    <p><b>Note:</b> This format where there is no <code class="inline">{END}</code> tag works for every card type. <br/></p>
+    <p><strong>Note:</strong> This format where there is no <code class="inline">{END}</code> tag works for every card type. <br/></p>
     <p><br/> <br/></p>
     <h4 id="h-69ad71fe">Multiple Choice Card</h4>
     <div class="card MultipleChoiceCard" id="2">
@@ -219,7 +219,7 @@
     <p>The answer is contained inside <code class="inline">{CURLY_BRACES}</code>. If there are none, the whole back side will be regarded as the correct answer. <br/></p>
     <p><br/> <br/></p>
     <p>
-      <b>Note</b>
+      <strong>Note</strong>
       : You can find some more practical examples in
       <a href="https://raw.githubusercontent.com/lukas-brg/LearningCards/main/examples/cards.md" title="">examples/cards.md</a>
       and look at the result by downloading
@@ -485,10 +485,6 @@
             .footnote > a,
             .toc-link {
                 text-decoration: none;
-            }
-
-            .multiline {
-                margin-bottom: 35px;
             }
 
             .multiline {

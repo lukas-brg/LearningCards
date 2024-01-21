@@ -86,15 +86,15 @@ def find_tokens(line: str) -> dict[int, InlineToken]:
     """
     tokens = {}
 
+    
     for TokenType in get_token_types():
-     
-        matches = re.finditer(TokenType.pattern, line)
-        
-        for match in matches:
-            token = TokenType.create(match)
-            if token.start == 0 or line[token.start-1] != "\\":
-                tokens[token.start] = token
-                          
+        for pattern in TokenType.patterns:
+            matches = re.finditer(pattern, line)
+            for match in matches:
+                token = TokenType.create(match)
+                if token.start == 0 or line[token.start-1] != "\\":
+                    tokens[token.start] = token
+ 
     return tokens
 
 
@@ -210,7 +210,7 @@ def parse_list(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     spaces = leading_whitespaces(lines[start])
   
     end = _parse_list(lines, start, spaces, list, tag)
-    return (list, end)
+    return list, end
 
 
 
@@ -245,7 +245,7 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     copy_notification = HtmlNode("div", get_locals()["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")
     
     code_div = HtmlNode("div", code, copy_notification, copy_btn, copy_notification, set_class="multiline", id=f"code-div_{id_hash}")
-    return (code_div, end+1)
+    return code_div, end+1
 
     
 
@@ -312,7 +312,7 @@ def parse_table(lines: list[str], start: int) -> tuple[HtmlNode, int]:
         cols = [
                 HtmlNode("td", *parse_inline(col.strip()), **align) 
                 for col, align in zip(row_matches, alignments)
-            ]
+        ]
         
         tr.add_children(*cols)
         tbody.add_children(tr)

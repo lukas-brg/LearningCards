@@ -74,7 +74,7 @@ class DocumentConfig(Subconfig):
     toc_include_cards = True
     toc_max_heading_cards = 1
     toc_show_back_headings_cards = False
-    
+    image_max_width = "80%"
     align = "center"
     indent_html = 2
     margin = 45 # If centered each side will get a value of margin/2, if left aligned, the right side will get margin
