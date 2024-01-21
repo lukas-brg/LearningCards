@@ -1,9 +1,9 @@
 from __future__ import annotations
-import  re, textwrap
+import textwrap
 from typing import Generator
 from ..errors import try_read_file
 from ..config import get_config
-from bs4 import BeautifulSoup
+
 
 config = get_config()
 
@@ -132,7 +132,7 @@ class HtmlNode:
     def __str__(self, depth=1, indent=False):
         start_tag = f"<{self.tag}{self._props_str()}>"
         end_tag = f"</{self.tag}>"
-        indentation = '  ' * depth
+        indentation = ' ' * config.document.indent_html * depth
 
         if not indent and self.tag in NEWLINE_TAGS:
             children_str = "".join(c.__str__(depth+1) + "\n" for c in self.children)

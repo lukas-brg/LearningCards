@@ -1,5 +1,5 @@
 import re, traceback
-from typing import Generator, Callable
+from typing import Callable
 
 
 from ..config import get_config, ENABLE_DEBUG

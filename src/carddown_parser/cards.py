@@ -159,13 +159,7 @@ class QuestionCard(LearningCard):
                 lines = string.splitlines(True)
                 front = lines[0]
                 back = "".join(lines[1:])
-            
             else:
-                # front = split_card[0]
-               
-                # """ The split pattern produces the following split [front, back_heading, back_text], so the last two
-                # are joined to get the backside."""
-                # back = "".join(split_card[1:])
                 front, back = split_card
             return QuestionCard(front, back)
 
