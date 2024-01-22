@@ -13,7 +13,7 @@ def clean_string(string):
 
 
 
-def find_subclasses(cls: type):
+def find_subclasses(cls: type) -> list[type]:
     """ Recursively searches for every direct and indirect subclass of `cls` """
     def _find(cls):
         for subcls in cls.__subclasses__():

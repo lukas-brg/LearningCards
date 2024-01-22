@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 import re
 
 from abc import ABC
-
+from functools import lru_cache
 from .mdparser.htmltree import HtmlNode, SelfClosingTag
 from .mdparser import parse_markdown
 from .mdparser.utils import find_subclasses
@@ -21,6 +23,8 @@ class LearningCard(ABC):
    
     collapse = True
     card_count = 0 
+
+    __card_types: list[type[LearningCard]]|None = None
 
 
     def __init__(self, front: str, back: str):
@@ -95,12 +99,13 @@ class LearningCard(ABC):
 
     @staticmethod
     def get_all_card_types():
-        return find_subclasses(LearningCard)
-      
+        if not LearningCard.__card_types:
+            LearningCard.__card_types = find_subclasses(LearningCard)
+        return LearningCard.__card_types
 
 
     @staticmethod
-    def get_card_type(string) -> type["LearningCard"] | None:
+    def get_card_type(string) -> type[LearningCard] | None:
         """Returns class of matching LearningCard Type if any"""
         for CardType in LearningCard.get_all_card_types():
             
