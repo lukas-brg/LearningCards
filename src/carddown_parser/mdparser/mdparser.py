@@ -93,7 +93,7 @@ def find_tokens(line: str) -> dict[int, InlineToken]:
                 token = TokenType.create(match)
                 if token.start == 0 or line[token.start-1] != "\\":
                     tokens[token.start] = token
-                     
+
     return tokens
 
 
@@ -242,7 +242,16 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     copy_btn.properties["data-clipboard-target"] = f"#{code.properties['id']}"
     copy_notification = HtmlNode("div", get_locals()["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")
     
-    code_div = HtmlNode("div", HtmlNode("pre", code, ), copy_notification, copy_btn, copy_notification, id=f"code-div_{id_hash}", set_class="multiline")
+    code_div = HtmlNode(
+            	    "div", 
+                    HtmlNode("pre", code), 
+                    copy_notification, 
+                    copy_btn,
+                    copy_notification, 
+                    id=f"code-div_{id_hash}", 
+                    set_class="multiline"
+    )
+    
     return code_div, end+1
 
     
@@ -424,7 +433,7 @@ def parse_footnotes(lines: list[str], start: int) -> tuple[HtmlNode, int]:
             id = f"footnote-{text}"
             text += ":"
             
-            a = HtmlNode("a", "&#8617;", href=href)
+            a = HtmlNode("a", " &#8617;", href=href)
             
             footnote_links.append(a)
      
@@ -475,21 +484,22 @@ def parse_blockrule(parse_func: Callable, start: int, lines: list[str], **kwargs
     except Exception as e:
         if ENABLE_DEBUG:
             traceback.print_exc()
-        print(f"Warning: Failed to parse blockrule '{parse_func.__name__.replace('parse_', '')}'.")
+        print(f"Warning: Failed to parse blockrule '{parse_func.__name__.replace('parse_', '')}'. {type(e).__name__}: {e}")
         return HtmlNode("span",  SelfClosingTag("br"), TextNode(lines[start], preserve_whitespace=True)), start+1
 
 
 
 def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) -> list[HtmlNode]:
-    parsed_elems = []
-    i = 0
-    p = HtmlNode("p")
     
     if isinstance(markdown, str):
         lines = markdown.splitlines(False)
     else:
         lines = markdown
 
+    parsed_elems = []
+    i = 0
+    p = HtmlNode("p")
+    
     while i < len(lines):
         line = lines[i].rstrip()
         
@@ -518,7 +528,6 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             parsed_elems.append(list)
         
         elif is_table(line):
-            #table, i = parse_table(lines, i)
             table, i = parse_blockrule(parse_func=parse_table, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(table)

@@ -129,29 +129,29 @@ class HtmlNode:
         return s
 
 
-    def __str__(self, depth=1, indent=False):
+    def __str__(self, depth=1, inline=False):
         start_tag = f"<{self.tag}{self._props_str()}>"
         end_tag = f"</{self.tag}>"
         indentation = ' ' * config.document.indent_html * depth
 
-        if not indent and self.tag in NEWLINE_TAGS:
+        if not inline and self.tag in NEWLINE_TAGS:
             children_str = "".join(c.__str__(depth+1) + "\n" for c in self.children)
             return  f"{indentation}{start_tag}\n{children_str}{indentation}{end_tag}"
         else:
-            indentation = indentation if not indent else ""
-            children_str = ''.join(c.__str__(depth, indent=True) for c in self.children)
+            indentation = indentation if not inline else ""
+            children_str = ''.join(c.__str__(depth, inline=True) for c in self.children)
             return f"{indentation}{start_tag}{children_str}{end_tag}"
     
 
 class SelfClosingTag(HtmlNode):
    
-    def __str__(self, depth=0, indent=False):
+    def __str__(self, depth=0, inline=False):
         
         indentation = ' '* depth * config.document.indent_html 
         children_str = " ".join(str(c) for c in self.children)
         children_str = " " + children_str if len(children_str.strip()) > 0 else ""
         
-        if indent:
+        if inline:
             return f"<{self.tag}{self._props_str()}{children_str}/>"
 
         return f"{indentation}<{self.tag}{self._props_str()}{children_str}/>"
@@ -169,8 +169,8 @@ class TextNode(HtmlNode):
         self.properties = {}
   
         
-    def __str__(self, depth=0, indent=False): 
-        if indent:
+    def __str__(self, depth=0, inline=False): 
+        if inline:
             return self.text
         else:
             return ' ' * depth * config.document.indent_html + self.text

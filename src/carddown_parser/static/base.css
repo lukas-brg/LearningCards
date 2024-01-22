@@ -193,7 +193,7 @@ h3 > a,
 h4 > a,
 h5 > a,
 h6 > a,
-.footnote > a,
+.footnote-paragraph > a,
 .toc-link {
     text-decoration: none;
 }

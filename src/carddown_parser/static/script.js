@@ -27,6 +27,17 @@ const locals = LOCALS[lang];
 const toc_up = '<i class="fa-solid fa-chevron-up"></i>';
 const toc_down = '<i class="fa-solid fa-chevron-down"></i>';
 
+const body = document.body;
+const style = getComputedStyle(body);
+const textColor = style.color;
+const greenColor = lightOrDark(textColor) == "dark" ? "green" : "lime";
+const redColor = "red";
+
+// light mode color: rgb(36, 41, 47)
+// dark mode color: rgb(201, 209, 217)
+
+const CHECK_MARK = "&#10004;";
+
 var tocBtn = document.getElementById("toc-btn");
 if (tocBtn) {
     var content = document.getElementsByClassName("toc-content")[0];
@@ -75,17 +86,6 @@ for (let card of document.getElementsByClassName("card")) {
         btn.classList.remove("focused");
     });
 }
-
-const body = document.body;
-const style = getComputedStyle(body);
-const textColor = style.color;
-const greenColor = lightOrDark(textColor) == "dark" ? "green" : "lime";
-const redColor = "red";
-
-// light mode color: rgb(36, 41, 47)
-// dark mode color: rgb(201, 209, 217)
-
-const CHECK_MARK = "&#10004;";
 
 function multiOnClick(btn) {
     let form = btn.parentElement;

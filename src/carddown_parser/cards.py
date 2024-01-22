@@ -103,6 +103,7 @@ class LearningCard(ABC):
     def get_card_type(string) -> type["LearningCard"] | None:
         """Returns class of matching LearningCard Type if any"""
         for CardType in LearningCard.get_all_card_types():
+            
             if CardType.matches(string):
                 return CardType
         return None

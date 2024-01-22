@@ -15,17 +15,14 @@ def clean_string(string):
 
 def find_subclasses(cls: type):
     """ Recursively searches for every direct and indirect subclass of `cls` """
-    
-    def _find(cls, classes):
+    def _find(cls):
         for subcls in cls.__subclasses__():
-            classes.append(subcls)
-            _find(subcls, classes)
+            yield subcls
+            yield from _find(subcls)
+          
+    return list(_find(cls))
     
-    classes = []
-    _find(cls, classes)
-    
-    return classes
-
+ 
 
 def get_hash(*data: any, max_length=None) -> str:
     data_str = ''.join(str(d) for d in data)
@@ -51,7 +48,6 @@ def multiline_strip(lines: list[str]) -> list[str]:
     return lines
 
 
-
     
 
 def find_line(lines, start, function, negate=False):
@@ -61,6 +57,3 @@ def find_line(lines, start, function, negate=False):
             end = i
             break
     return end
-
-
-    
