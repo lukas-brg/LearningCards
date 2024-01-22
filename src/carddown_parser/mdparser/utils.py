@@ -1,5 +1,7 @@
 import hashlib, re
 
+from itertools import dropwhile, takewhile
+
 from ..config import get_config
 
 
@@ -9,8 +11,7 @@ config = get_config()
 def clean_string(string):
     return re.sub(r'[^a-zA-Z0-9]', '', string).lower()
 
-def enumerate_at(collection, start):
-    return enumerate(collection[start:], start)
+
 
 def find_subclasses(cls: type):
     """ Recursively searches for every direct and indirect subclass of `cls` """
@@ -42,22 +43,16 @@ def leading_whitespaces(string: str):
 
 
 
-def multiline_strip(lines):
-
-    while lines:
-        if lines[0].strip() == "":
-            del lines[0]
-        else:
-            break
-    
-    while lines:
-        if lines[-1].strip() == "":
-            del lines[-1]
-        else:
-            break
-
+def multiline_strip(lines: list[str]) -> list[str]:
+    lines = list(dropwhile(lambda line: line.strip() == "", lines))
+    lines.reverse()
+    lines = list(dropwhile(lambda line: line.strip() == "", lines))
+    lines.reverse()
     return lines
 
+
+
+    
 
 def find_line(lines, start, function, negate=False):
     end = len(lines)
@@ -68,3 +63,4 @@ def find_line(lines, start, function, negate=False):
     return end
 
 
+    

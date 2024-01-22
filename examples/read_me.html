@@ -61,39 +61,50 @@
     </div>
     <p>After installation the application can be started from anywhere by running <code class="inline">carddown ...args</code> in the command line.<br/></p>
     <p><strong>Note:</strong><br/>On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work:<br/></p>
-    <div id="code-div_a1bfe99c27" class="multiline">
-      <pre><code name="multiline-code-block" id="code-block_a1bfe99c27">python3 -m pip install --upgrade pip</code></pre>
-      <div class="copy-notification" id="copy-notification_a1bfe99c27">
+    <div id="code-div_abb9cdd529" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_abb9cdd529">python3 -m pip install --upgrade pip</code></pre>
+      <div class="copy-notification" id="copy-notification_abb9cdd529">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_a1bfe99c27" data-clipboard-target="#code-block_a1bfe99c27"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_a1bfe99c27">
+      <button class="btn-copy" id="copy-button_abb9cdd529" data-clipboard-target="#code-block_abb9cdd529"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_abb9cdd529">
+        Copied!
+      </div>
+    </div>
+    <p>Alternatively, you can manually execute the <code class="inline">carddown.py</code> script located in the top-level directory to use carddown without installation.<br/></p>
+    <div id="code-div_e18a6ac735" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_e18a6ac735">python carddown.py ...args</code></pre>
+      <div class="copy-notification" id="copy-notification_e18a6ac735">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_e18a6ac735" data-clipboard-target="#code-block_e18a6ac735"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_e18a6ac735">
         Copied!
       </div>
     </div>
     <p><br/><br/></p>
     <h1 id="h-0a4e4c29">Usage</h1>
     <p>At the very least you need to provide a path to an input file:<br/></p>
-    <div id="code-div_893fa68c38" class="multiline">
-      <pre><code name="multiline-code-block" id="code-block_893fa68c38">carddown [INPUT_FILE]</code></pre>
-      <div class="copy-notification" id="copy-notification_893fa68c38">
+    <div id="code-div_3715849446" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_3715849446">carddown [INPUT_FILE]</code></pre>
+      <div class="copy-notification" id="copy-notification_3715849446">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_893fa68c38" data-clipboard-target="#code-block_893fa68c38"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_893fa68c38">
+      <button class="btn-copy" id="copy-button_3715849446" data-clipboard-target="#code-block_3715849446"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_3715849446">
         Copied!
       </div>
     </div>
     <p>A corresponding HTML file is then created in the same directory as the input file and all the default parameters are applied.<br/></p>
     <p><br/><br/></p>
     <p>It is also possible to specify the path to the output file and its name:<br/></p>
-    <div id="code-div_61248bce48" class="multiline">
-      <pre><code name="multiline-code-block" id="code-block_61248bce48">carddown [INPUT_FILE] [OUTPUT_FILE?]</code></pre>
-      <div class="copy-notification" id="copy-notification_61248bce48">
+    <div id="code-div_68d1a9e056" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_68d1a9e056">carddown [INPUT_FILE] [OUTPUT_FILE?]</code></pre>
+      <div class="copy-notification" id="copy-notification_68d1a9e056">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_61248bce48" data-clipboard-target="#code-block_61248bce48"><i class="fa-regular fa-copy"></i></button>
-      <div class="copy-notification" id="copy-notification_61248bce48">
+      <button class="btn-copy" id="copy-button_68d1a9e056" data-clipboard-target="#code-block_68d1a9e056"><i class="fa-regular fa-copy"></i></button>
+      <div class="copy-notification" id="copy-notification_68d1a9e056">
         Copied!
       </div>
     </div>
@@ -131,7 +142,7 @@
       </ul>
       <li>The end of a card is defined by using the {END} tag:</li>
       <ul>
-        <li>The <code class="inline">{END}</code> tag can be omitted for subsequent cards or when a card is at the end of file.</li>
+        <li>The <code class="inline">{END}</code> tag can be omitted for consecutive cards or when a card is at the end of file.</li>
       </ul>
     </ol>
     <p><br/><br/></p>
@@ -171,7 +182,7 @@
       </div>
       <hr/>
     </div>
-    <p><strong>Note:</strong> This format where there is no <code class="inline">{END}</code> tag works for every card type.<br/></p>
+    <p><strong>Note:</strong> This format where there is no <code class="inline">{BACK}</code> tag works for every card type.<br/></p>
     <p><br/><br/></p>
     <h4 id="h-69ad71fe">Multiple Choice Card</h4>
     <div class="card MultipleChoiceCard" id="2">
@@ -947,7 +958,7 @@
                 }
 
                 @media only screen 
-                and (max-device-width: 480px) and (orientation: portrait) {
+                and (max-width: 480px) and (orientation: portrait) {
                     .markdown-body {
                         width: 90%;
                         font-size: 25px;      
@@ -1038,7 +1049,7 @@
                 });
             }
 
-            const body = document.querySelector(".markdown-body");
+            const body = document.body;
             const style = getComputedStyle(body);
             const textColor = style.color;
             const greenColor = lightOrDark(textColor) == "dark" ? "green" : "lime";

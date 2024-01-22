@@ -6,7 +6,7 @@ from ..config import get_config, ENABLE_DEBUG
 from .tokens import InlineToken
 from .htmltree import HtmlNode, SelfClosingTag, WhiteSpaceNode, TextNode
 from ..errors import try_read_file, MarkdownSyntaxError, show_warning_msg
-from .utils import leading_whitespaces, multiline_strip, find_line, enumerate_at, get_hash
+from .utils import leading_whitespaces, multiline_strip, find_line, get_hash
 from ..config import get_locals
 
 config = get_config()
@@ -60,6 +60,7 @@ get_heading_elem    = lambda h      : HtmlNode(HEADINGS[h])
 
 token_types = None
 
+
 def get_token_types() -> list[InlineToken]:
     """Make sure list of TokenTypes to be parsed is only computed once for efficiency"""
     global token_types
@@ -67,7 +68,6 @@ def get_token_types() -> list[InlineToken]:
         token_types = [TokenType for TokenType in InlineToken.get_all_token_types() if TokenType.__name__ not in config.mdparser.ignore_inline_tokens]
     return token_types
     
-
 
 
 def is_def(lines: list[str], i: int) -> bool:
@@ -86,7 +86,6 @@ def find_tokens(line: str) -> dict[int, InlineToken]:
     """
     tokens = {}
 
-    
     for TokenType in get_token_types():
         for pattern in TokenType.patterns:
             matches = re.finditer(pattern, line)
@@ -94,7 +93,7 @@ def find_tokens(line: str) -> dict[int, InlineToken]:
                 token = TokenType.create(match)
                 if token.start == 0 or line[token.start-1] != "\\":
                     tokens[token.start] = token
- 
+                     
     return tokens
 
 
@@ -127,8 +126,6 @@ def parse_inline(line: str) -> list[HtmlNode]:
     tokens = find_tokens(line)
     temp_container = HtmlNode("container")
     
-
-
     if not tokens:
         temp_container.add_children(line)
     else:
@@ -299,8 +296,8 @@ def parse_table(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     num_cols = len(top_row_cols)
 
     tbody = HtmlNode("tbody")
-    
-    for i, line in enumerate_at(lines, start+2):
+    i = start + 2
+    for i, line in enumerate(lines[start+2:], start+2):
         if not is_table(line):
             break
         
@@ -328,7 +325,7 @@ def parse_def(lines: list[str], start: int) -> tuple[HtmlNode, int]:
    
     dl = HtmlNode("dl")
     i = start
-    for i, line in enumerate_at(lines, start):
+    for i, line in enumerate(lines[start:], start):
     
         if line.strip() == "":
             i += 1
@@ -406,7 +403,7 @@ def parse_footnotes(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     footnote_div = HtmlNode("div", set_class="footnote")
     footnote_links = []
    
-    for i, line in enumerate_at(lines, start):
+    for i, line in enumerate(lines[start:], start):
      
         if line.strip() == "":
             continue

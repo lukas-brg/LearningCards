@@ -919,7 +919,7 @@ Berlin
                 }
 
                 @media only screen 
-                and (max-device-width: 480px) and (orientation: portrait) {
+                and (max-width: 480px) and (orientation: portrait) {
                     .markdown-body {
                         width: 90%;
                         font-size: 25px;      
@@ -1010,7 +1010,7 @@ Berlin
                 });
             }
 
-            const body = document.querySelector(".markdown-body");
+            const body = document.body;
             const style = getComputedStyle(body);
             const textColor = style.color;
             const greenColor = lightOrDark(textColor) == "dark" ? "green" : "lime";

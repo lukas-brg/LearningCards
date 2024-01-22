@@ -76,7 +76,7 @@ for (let card of document.getElementsByClassName("card")) {
     });
 }
 
-const body = document.querySelector(".markdown-body");
+const body = document.body;
 const style = getComputedStyle(body);
 const textColor = style.color;
 const greenColor = lightOrDark(textColor) == "dark" ? "green" : "lime";

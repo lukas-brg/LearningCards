@@ -36,13 +36,13 @@ def get_args():
     parser.add_argument("-sh", "--show-answers", action="store_false", dest="collapse", help="Removes the option to collapse answers", default=None)
     parser.add_argument("--hide-answers", action="store_true", dest="collapse", default=None)
     parser.add_argument("--theme", default=None, required=False, help=f"Available themes: {list(config.document.themes.keys())}")
-    parser.add_argument("-t", "--title", required=False, help="Choose a document title. If ommited one is generated automatically using the file name")
+    parser.add_argument("-t", "--title", required=False, help="Choose a document title. If omitted one is generated automatically using the file name")
     parser.add_argument("--toc", required=False, action="store_true", dest="toc", default=None, help="Automatically generates a table of contents")
     parser.add_argument("--no-toc", required=False, action="store_false", dest="toc")
     parser.add_argument("--toc-lvl", required=False, help="Specifies the maximun heading level displayed in the table of contents", type=int)
     parser.add_argument("--css", default=None, required=False, help="Include your own css file")
     parser.add_argument("--margin",  required=False, type=int)
-    parser.add_argument("--export", required=False, help="Export to 'pdf or 'json'")
+    parser.add_argument("--export", required=False, help="Export to 'json'")
     parser.add_argument("--lang", required=False)
 
     parser.add_argument("--rec", "-r", required=False, action="store_true", default=False, help="Recursively traverses directory tree and converty any '.md' file into an '.html' file")
@@ -138,6 +138,7 @@ def try_parse_file(filepath: str,):
         sys.exit()
     return parser
 
+
 def export(args):
     args.collapsible = False
 
@@ -146,28 +147,28 @@ def export(args):
         input_file, output_file, name = get_filepaths(args, "json")
         parser = try_parse_file(input_file)
         parser.cards.to_json(output_file, include_styles=args.styles)
+        print(f"Sucessfully exported '{input_file}' to '{output_file}'")
     
-    elif args.export == "pdf":
-        config.cardloader.collapse = False
+    # elif args.export == "pdf":
+    #     config.cardloader.collapse = False
     
-        input_file, output_file, name = get_filepaths(args, "pdf")
-        title = get_title(args, name)
-        styles = load_theme("pdf")
+    #     input_file, output_file, name = get_filepaths(args, "pdf")
+    #     title = get_title(args, name)
+    #     styles = load_theme("pdf")
         
-        parser = try_parse_file(parser, input_file)
+    #     parser = try_parse_file(input_file)
         
-        html = HtmlFile(style_files=styles, title=title, lang=config.document.lang)
-        if args.shuffle:
-            parser.cards.shuffle()
+    #     html = HtmlFile(style_files=styles, title=title, lang=config.document.lang)
+    #     if args.shuffle:
+    #         parser.cards.shuffle()
 
-        if args.cards:
-            html.body.add_children(*parser.get_cards())
-        else:
-            html.body.add_children(*parser.get_cards_and_markdown())
+    #     if args.cards:
+    #         html.body.add_children(*parser.get_cards())
+    #     else:
+    #         html.body.add_children(*parser.get_cards_and_markdown())
 
-        pdfkit.from_string(str(html), output_file)
+    #     pdfkit.from_string(str(html), output_file)
 
-    print(f"Sucessfully exported '{input_file}' to '{output_file}'")
 
 
 
@@ -198,7 +199,7 @@ def alignment_css(margin, align):
     }}
 
     @media only screen 
-    and (max-device-width: 480px) and (orientation: portrait) {{
+    and (max-width: 480px) and (orientation: portrait) {{
         .{config.document.body_class} {{
             width: 90%;
             font-size: 25px;      

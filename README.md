@@ -22,6 +22,8 @@ pip install .
 
 After installation the application can be started from anywhere by running `carddown ...args` in the command line.
 
+
+
 **Note:**
 On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work:
 
@@ -29,6 +31,11 @@ On Ubuntu 22.04 there have been some issues with setuptools, so you might need t
 python3 -m pip install --upgrade pip
 ```
 
+Alternatively, you can manually execute the `carddown.py` script located in the top-level directory to use carddown without installation.
+
+```
+python carddown.py ...args
+```
 
 <br/>
 
@@ -86,7 +93,7 @@ The learning card specific syntax uses three types of tags, all of which are wra
 2. The `{BACK}` tag marks the point where the back side begins.
    - If this tag is omitted, only the H1 heading makes up the front side, the rest will be on the back side
 3. The end of a card is defined by using the {END} tag:
-   - The `{END}` tag can be omitted for subsequent cards or when a card is at the end of file.
+   - The `{END}` tag can be omitted for consecutive cards or when a card is at the end of file.
 
 <br/>
 
@@ -124,7 +131,7 @@ The rest will appear on the back side
 {END}
 ```
 
-**Note:** This format where there is no `{END}` tag works for every card type.
+**Note:** This format where there is no `{BACK}` tag works for every card type.
 
 
 
