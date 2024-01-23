@@ -24,8 +24,7 @@ version = "1.0.0"
 carddown = "carddown_parser:main"
 carddown-config = "carddown_parser:carddown_config"
 
-# ... other project metadata fields as listed in:
-#     https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+
 
 [tool.setuptools]
 package-dir = { "" = "src" }

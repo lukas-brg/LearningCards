@@ -53,22 +53,16 @@ class FileParser:
             tag = node.tag
     
             if tag in [f"h{i}" for i in range(1,7)]:
-                text = node.get_inner_text()
-            
-                if "id" not in node.properties:
-                    text_cleaned = clean_string(text)
-                    hash = get_hash(text_cleaned, max_length=8)
-                  
-                else:
-                    id = node.properties["id"]
-                    id_cleaned = clean_string(id)
-                    hash = get_hash(id_cleaned)
+
+                id = node.properties.get("id", node.get_inner_text())
+                hash = get_hash(clean_string(id), max_length=8)
                 
                 if hash in hashes:
                     hashes[hash] += 1
                     hash += str(hashes[hash])
                 else:
                     hashes[hash] = 0
+                
                 id = f"h-{hash}"
                 node.properties["id"] = id
 
