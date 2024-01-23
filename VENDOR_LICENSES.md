@@ -1,6 +1,5 @@
 # Licenses:
 
-- [Licenses:](#licenses)
 - [GitHub Markdown CSS](#github-markdown-css)
 - [Google Prettify](#google-prettify)
 - [clipboard.js](#clipboardjs)
