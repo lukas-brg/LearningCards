@@ -89,7 +89,7 @@ def load_theme(theme):
 
 def load_scripts():
     static_folder = get_static_folder()
-    libs_js = os.path.join(static_folder, "libs", "libs.min.js")
+    libs_js = os.path.join(static_folder, "libs.min.js")
     config.document.scripts.append(libs_js)
     scripts = [os.path.join(static_folder, script) for script in reversed(config.document.scripts)]
     return scripts
@@ -235,7 +235,7 @@ def to_html(args):
 
     if config.document.standalone is True:
         static_folder = get_static_folder()
-        mathjax_path = os.path.join(static_folder, "libs", "mathjax.min.js")
+        mathjax_path = os.path.join(static_folder, "mathjax.min.js")
         with open(mathjax_path, "r") as f:
             mathjax_script = f.read()
         mathjax_include = f'<script id="MathJax-script">\n{mathjax_script}\n</script>'
