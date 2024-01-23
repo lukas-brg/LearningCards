@@ -32,25 +32,17 @@ class HtmlNode:
 
 
     def remove_from_tree(self):
-        if not self.parent:
-            return
-        
         self.parent.children.remove(self)
         self.parent = None
 
     
     def replace_in_tree(self, node: HtmlNode|str):
-        if not self.parent:
-            return
-        
+     
         if isinstance(node, str):
             node = TextNode(node)
 
-        for i, c in enumerate(self.parent.children):
-            if c is self:
-                self.parent.children[i] = node
-                break
-        
+        index_self = self.parent.children.index(self)
+        self.parent.children[index_self] = node
         node.parent = self.parent
         self.parent = None
 

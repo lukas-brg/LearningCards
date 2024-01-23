@@ -238,7 +238,6 @@ def to_html(args):
         mathjax_path = os.path.join(static_folder, "libs", "mathjax.min.js")
         with open(mathjax_path, "r") as f:
             mathjax_script = f.read()
-  
         mathjax_include = f'<script id="MathJax-script">\n{mathjax_script}\n</script>'
     else:
         mathjax_include = '<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>'
