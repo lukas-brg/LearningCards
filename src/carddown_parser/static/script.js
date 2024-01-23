@@ -1,3 +1,5 @@
+
+
 const LOCALS = {
     de: {
         show_backside: "Rückseite einblenden",
@@ -24,13 +26,21 @@ const lang = document.documentElement.lang;
 
 const locals = LOCALS[lang];
 
-const toc_up = '<i class="fa-solid fa-chevron-up"></i>';
-const toc_down = '<i class="fa-solid fa-chevron-down"></i>';
+const toc_up =
+    '<svg xmlns="http://www.w3.org/2000/svg" class="icon toc-icon toc-up" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>';
+
+const toc_down =
+    '<svg xmlns="http://www.w3.org/2000/svg" class="icon toc-icon toc-down" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>';
+//const toc_up = '<i class="fa-solid fa-chevron-up"></i>';
+
+let copy = '<svg xmlns="http://www.w3.org/2000/svg" class="icon copy-icon" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M384 336H192c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16l140.1 0L400 115.9V320c0 8.8-7.2 16-16 16zM192 384H384c35.3 0 64-28.7 64-64V115.9c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1H192c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H256c35.3 0 64-28.7 64-64V416H272v32c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192c0-8.8 7.2-16 16-16H96V128H64z"/></svg>';
+//const toc_down = '<i class="fa-solid fa-chevron-down"></i>';
 
 const body = document.body;
 const style = getComputedStyle(body);
 const textColor = style.color;
 const greenColor = lightOrDark(textColor) == "dark" ? "green" : "lime";
+console.log(greenColor);
 const redColor = "red";
 
 // light mode color: rgb(36, 41, 47)
@@ -38,9 +48,16 @@ const redColor = "red";
 
 const CHECK_MARK = "&#10004;";
 
+
+for(let icon of document.querySelectorAll(".btn-copy")){
+    icon.innerHTML = copy;
+}
+
 var tocBtn = document.getElementById("toc-btn");
 if (tocBtn) {
     var content = document.getElementsByClassName("toc-content")[0];
+    tocBtn.innerHTML = toc_up;
+    tocBtn.style.fill = "white";
     content.style.display = "block";
 
     tocBtn.addEventListener("click", () => {
@@ -187,7 +204,7 @@ function initializeClipboard(button) {
         notification.style.display = "block";
 
         setTimeout(function () {
-            event.trigger.innerHTML = originalText;
+            event.trigger.innerHTML = copy;
             event.trigger.style.color = "";
             notification.style.display = "none";
         }, 1500);
@@ -233,3 +250,5 @@ function lightOrDark(color) {
         return "dark";
     }
 }
+
+

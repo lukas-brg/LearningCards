@@ -32,6 +32,7 @@ toc_max_heading = 6
 toc_include_cards = false
 toc_max_heading_cards = 1
 toc_show_back_headings_cards = false
+standalone = false
 
     [document.themes]
     light = [ "base.css", "light.css",]

@@ -236,9 +236,9 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
 
     code.properties["id"] = "code-block_" + id_hash
     
-    copy_icon = HtmlNode("i", set_class="fa-regular fa-copy")
     
-    copy_btn = HtmlNode("button", copy_icon, set_class="btn-copy", id=f"copy-button_{id_hash}")
+    # The btn text is supposed to get replaced by an icon in js
+    copy_btn = HtmlNode("button", "Copy", set_class="btn-copy", id=f"copy-button_{id_hash}")
     copy_btn.properties["data-clipboard-target"] = f"#{code.properties['id']}"
     copy_notification = HtmlNode("div", get_locals()["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")
     
@@ -247,7 +247,6 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
                     HtmlNode("pre", code), 
                     copy_notification, 
                     copy_btn,
-                    copy_notification, 
                     id=f"code-div_{id_hash}", 
                     set_class="multiline"
     )

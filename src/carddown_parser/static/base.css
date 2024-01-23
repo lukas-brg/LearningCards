@@ -21,6 +21,13 @@
     background-color: transparent;
 }
 
+.toc-icon {
+    fill: #909aa6;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+}
+
 #toc-btn:hover {
     background-color: #30363d;
     border-radius: 5px;
@@ -69,15 +76,24 @@ body h2 {
     cursor: pointer;
 }
 
+
+
 .btn-copy:hover {
     background-color: #30363d;
 }
 
+.copy-icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    fill:#a3aeba;
+}
+
+
 .copy-notification {
     display: none;
     position: absolute;
-    background-color: #6e7681;
-    color: white;
+ 
     padding: 6px;
     padding-left: 10px;
     padding-right: 10px;
@@ -156,10 +172,6 @@ input[type="text"] {
     border-left: 0.3em solid #696b6e;
 }
 
-.copy-icon {
-    shape-rendering: crispEdges;
-}
-
 .content,
 .multicontent,
 .answer-content {
@@ -186,6 +198,8 @@ table {
 a {
     text-decoration: underline;
 }
+
+
 
 h1 > a,
 h2 > a,

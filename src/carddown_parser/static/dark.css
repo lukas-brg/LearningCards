@@ -22,6 +22,32 @@
     color: #7b848e;
 }
 
+.copy-notification {
+    
+    background-color: #6e7681;
+    color: white;
+   
+
+}
+
+.copy-notification::before {
+   
+    border-color: transparent transparent transparent #6e7681;
+   
+}
+
+
+.toc-icon {
+    fill: #909aa6;
+   
+}
+
+#toc-btn:hover {
+    background-color: #30363d;
+    border-radius: 5px;
+}
+
+
 /*
 source: https://github.com/sindresorhus/github-markdown-css/tree/main
 

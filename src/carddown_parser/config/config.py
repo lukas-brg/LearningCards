@@ -78,6 +78,7 @@ class DocumentConfig(Subconfig):
     indent_html = 2
     margin = 45 # If centered each side will get a value of margin/2, if left aligned, the right side will get margin
     static_folder = "./static"
+    standalone = False
     body_class = "markdown-body"
     _base = "base.css"
     _light = "light.css"
@@ -281,4 +282,7 @@ def load_configs(args):
         if margin < 0 or margin >= 100:
             print(f"Warning: margin parameter expects a positive number in range [0...100.] (margin={args.margin} given). Disregarding...")
         else:
-            config.document.margin = margin       
+            config.document.margin = margin     
+
+    if args.standalone is not None:
+        config.document.standalone = args.standalone  

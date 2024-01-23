@@ -1,11 +1,10 @@
 import os, sys, argparse, traceback, re
-import pdfkit
 import webbrowser
 
 from .config.config import load_configs, Config, CFG_PATHS, ENABLE_DEBUG, APP_CONFIG_PATH, USR_CONFIG_PATH
 from .mdparser.htmltree import HtmlFile
 from .fileparser import FileParser
-from .errors import MarkdownSyntaxError, show_exception_msg, show_warning_msg, CardSyntaxError, debug_print
+from .errors import MarkdownSyntaxError, show_exception_msg, show_warning_msg, CardSyntaxError, debug_print, try_read_file
 
 
 config = Config.get_config()
@@ -58,7 +57,12 @@ def get_args():
     parser.add_argument("--config", required=False, help="Include your own config file")
     parser.add_argument("-o", "--open", action="store_true", dest="open", help="Opens the output file in default browser", default=None)
     parser.add_argument("--no-open", action="store_false", dest="open")
-  
+    
+    parser.add_argument("--standalone", action="store_true", help="""Include every depedencies directly in the output HTML File, so every bit of functionality will still work without internet access.
+                        Though, this increases the filssize. Without this option the depedencies will be loaded from the internet, basic markdown rendering still works without internet, however.
+                        """)
+
+
     parser.add_argument("input_file", nargs='?') 
     parser.add_argument("output_file", nargs='?')
     
@@ -85,7 +89,10 @@ def load_theme(theme):
 
 def load_scripts():
     static_folder = get_static_folder()
-    return [os.path.join(static_folder, script) for script in config.document.scripts]
+    libs_js = os.path.join(static_folder, "libs", "libs.min.js")
+    config.document.scripts.append(libs_js)
+    scripts = [os.path.join(static_folder, script) for script in reversed(config.document.scripts)]
+    return scripts
 
 
 def get_filepaths(args, output_file_extension):
@@ -122,7 +129,6 @@ def get_title(args, name):
     if args.title:
         return args.title
     else:
-        #return ' '.join(x.capitalize() or '_' for x in name.split('_'))
         return ' '.join((group.capitalize() if group[0].isalpha() else group) for group in re.findall('([a-zA-Z]+|[0-9]+)', name))
 
 
@@ -227,7 +233,18 @@ def to_html(args):
     
     align_style = alignment_css(config.document.margin, config.document.align)
 
-    html = HtmlFile(scripts, style_files=styles, title=title, style_str=align_style, lang=config.document.lang)
+    if config.document.standalone is True:
+        static_folder = get_static_folder()
+        mathjax_path = os.path.join(static_folder, "libs", "mathjax.min.js")
+        with open(mathjax_path, "r") as f:
+            mathjax_script = f.read()
+  
+        mathjax_include = f'<script id="MathJax-script">\n{mathjax_script}\n</script>'
+    else:
+        mathjax_include = '<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>'
+        
+    html = HtmlFile(scripts, style_files=styles, title=title, style_str=align_style, lang=config.document.lang, head_str=mathjax_include)
+        
 
     if args.cards:
         html.body.add_children(*parser.get_cards(shuffle=args.shuffle))

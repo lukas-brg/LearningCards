@@ -143,7 +143,7 @@ The rest will appear on the back side
 
 # Multiple Choice Card {MULTI}
 
-This card contains displays multiple choices of which one or more have to be marked as correct.
+This card displays multiple choices of which one or more have to be marked as correct.
 
 {BACK}
 

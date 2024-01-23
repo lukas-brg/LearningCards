@@ -207,36 +207,33 @@ class HtmlFile:
         style = "\n".join(try_read_file(style_path) for style_path in self.style_files)
         script = "\n".join(try_read_file(script_path) for script_path in self.script_files)
         
-        script_section = f"""
-    <script>
-{textwrap.indent(script, ' ' * 12)}
-{textwrap.indent(self.script_str, ' ' * 12)}
-    </script>
-"""
         style_section = f"""
     <style>
 {textwrap.indent(style, ' ' * 12)}
 {textwrap.indent(self.style_str, ' ' * 12)}
     </style>
 """
-        
+        script_section = f"""
+    <script>
+{textwrap.indent(script, ' ' * 12)}
+{textwrap.indent(self.script_str, ' ' * 12)}
+    </script>
+"""
+    
         self.body.add_children(style_section, script_section)
 
-     
-
+    
         return f"""
 <!DOCTYPE html>
 <html lang="{self.lang}">
     <head>
         <meta charset="{self.charset}">
         <title>{self.title}</title>
-        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css&amp;skin=default"></script>
+        
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/16.0.0/octicons.min.css">
+        
         {self.head_str} 
+    
     </head>
 
 {self.body}
