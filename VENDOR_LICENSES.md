@@ -7,7 +7,7 @@
 - [Font-Awesome](#font-awesome)
   
 
-This project incorporates various external libraries, including stylesheets, authored by different individuals and released under various licenses. 
+This project incorporates various external libraries authored by different individuals and released under various licenses. 
 The licensing information for each library is included below.
 
 # GitHub Markdown CSS
