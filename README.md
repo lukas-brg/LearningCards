@@ -80,6 +80,23 @@ Additionally there are a number of flags and parameters:
 
 `carddown -h/--help` lists every available flag and parameter.
 
+
+The flags and parameters always come before the file paths.
+
+```
+carddown --FLAG_1 --PARAM_2 VALUE_2 INPUT_PATH OUTPUT_PATH
+```
+
+Here are some examples that are used to render the example files:
+
+```
+carddown examples/cards.md
+carddown --toc --toc-lvl 3 examples/markdown_test.md 
+carddown --toc examples/read_me.md
+carddown --toc --toc-lvl 3 --theme light examples/markdown_test.md examples/markdown_test_light_theme.html
+```
+
+
 <br/>
 
 ## Learning Cards
