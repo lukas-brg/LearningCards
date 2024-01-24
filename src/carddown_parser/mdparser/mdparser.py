@@ -6,7 +6,7 @@ from ..config import get_config, ENABLE_DEBUG
 from .tokens import InlineToken
 from .htmltree import HtmlNode, SelfClosingTag, WhiteSpaceNode, TextNode
 from ..errors import try_read_file, MarkdownSyntaxError, show_warning_msg
-from .utils import leading_whitespaces, multiline_strip, find_line, get_hash
+from .utils import leading_whitespaces, multiline_strip, find_line, make_id_hash
 from ..config import get_locals
 
 config = get_config()
@@ -136,7 +136,7 @@ def parse_inline(line: str) -> list[HtmlNode]:
 
 
 def handle_tasklist_item(line: str, parent: HtmlNode):
-    hash = get_hash(line, max_length=8)
+    hash = make_id_hash(line, limit_len=8)
     id=f"task_list_checkbox-{hash}" 
     line = line.strip()
     
@@ -232,7 +232,7 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
 
     code.add_children("\n".join(code_lines)) 
 
-    id_hash = get_hash(code.get_inner_text(), start, max_length=8) + str(start)
+    id_hash = make_id_hash(code.get_inner_text(), limit_len=8)
 
     code.properties["id"] = "code-block_" + id_hash
     

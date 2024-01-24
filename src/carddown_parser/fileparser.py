@@ -2,7 +2,7 @@ import random, json, re
 from .mdparser import parse_markdown
 from .mdparser.htmltree import  SelfClosingTag, HtmlNode, TextNode
 
-from .mdparser.utils import get_hash, clean_string
+from .mdparser.utils import make_id_hash, clean_string
 from .cards import LearningCard
 from .errors import try_read_file, show_warning_msg
 from .config import get_config, get_locals
@@ -55,7 +55,7 @@ class FileParser:
             if tag in [f"h{i}" for i in range(1,7)]:
 
                 id = node.properties.get("id", node.get_inner_text())
-                hash = get_hash(clean_string(id), max_length=8)
+                hash = make_id_hash("h", clean_string(id), limit_len=8)
                 
                 if hash in hashes:
                     hashes[hash] += 1

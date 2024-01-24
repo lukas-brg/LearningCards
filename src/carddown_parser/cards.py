@@ -6,7 +6,7 @@ from abc import ABC
 from functools import lru_cache
 from .mdparser.htmltree import HtmlNode, SelfClosingTag
 from .mdparser import parse_markdown
-from .mdparser.utils import find_subclasses
+from .mdparser.utils import find_subclasses, make_id_hash
 from .errors import CardSyntaxError
 from .config import get_config, get_local, get_locals
 
@@ -250,18 +250,19 @@ class MultipleChoiceCard(QuestionCard):
                 line = line.replace(self.multi_correct, "")
                 value = "correct"
             
+            id = f"choice_{make_id_hash(line, limit_len=8)}"
+            
             choice = SelfClosingTag(
                     "input",
                     set_class="choice",
                     type="checkbox", 
-                    id=f"choice{choice_id}", 
-                    name=f"choice{choice_id}", 
+                    id=id,
                     value=value, 
                     autocomplete="off"
             )
             
             inline_elems = parse_markdown(line, paragraph=False)
-            label = HtmlNode("label", *inline_elems, name="label", set_for=f"choice{choice_id}")
+            label = HtmlNode("label", *inline_elems, name="label", set_for=id)
             multi_div.add_children(choice, label)
         
         submit = SelfClosingTag(

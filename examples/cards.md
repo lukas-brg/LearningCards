@@ -63,6 +63,15 @@ What is 1+1?
 - [x] 2
 - [ ] 3
 
+
+
+# What is 1+1? {MULTI}
+
+- [ ] 1
+- [x] 2
+- [ ] 3
+
+
 # What is the capital city of Germany? {ANSWER}
 
 Berlin

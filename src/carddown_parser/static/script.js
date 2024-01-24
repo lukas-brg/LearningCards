@@ -107,8 +107,8 @@ for (let card of document.getElementsByClassName("card")) {
 function multiOnClick(btn) {
     let form = btn.parentElement;
 
-    let choices = form.getElementsByClassName("choice");
-    let content = form.getElementsByClassName("multicontent")[0];
+    let choices = form.querySelectorAll(".choice");
+    let content = form.querySelector(".multicontent");
 
     btn.classList.toggle("active");
     let clicked = btn.classList.contains("active");
@@ -187,7 +187,6 @@ function answerOnClick(btn) {
 }
 
 function initializeClipboard(button) {
-    let originalText = button.innerHTML;
     let clipboard = new ClipboardJS(button, {
         target: function (trigger) {
             return trigger.parentElement.querySelector("code");

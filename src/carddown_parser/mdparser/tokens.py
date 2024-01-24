@@ -6,7 +6,7 @@ from carddown_parser.mdparser.htmltree import HtmlNode
 from ..config import get_config
 
 from .htmltree import HtmlNode, SelfClosingTag, TextNode
-from .utils import find_subclasses, get_hash, clean_string
+from .utils import find_subclasses, make_id_hash, clean_string
 
 
 with open(os.path.join(os.path.dirname(__file__), "emojis.json"), encoding="utf-8") as f:
@@ -106,7 +106,7 @@ class LinkToken(InlineToken):
             self.parse_content = False
 
         if url.startswith("#"):
-            url = "#h-" + get_hash(clean_string(url[1:]), max_length=8)
+            url = "#h-" + make_id_hash("h", clean_string(url[1:]), limit_len=8, ensure_unique=False)
 
         elif not url.startswith("http"):
             url = "http://" + url

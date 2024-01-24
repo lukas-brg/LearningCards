@@ -24,14 +24,31 @@ def find_subclasses(cls: type) -> list[type]:
     
  
 
-def get_hash(*data: any, max_length=None) -> str:
+__hashes = {}
+
+def make_id_hash(*data: any, limit_len=None, ensure_unique=True) -> str:
+    
     data_str = ''.join(str(d) for d in data)
     hash = hashlib.sha256(data_str.encode("utf-8")).hexdigest()
     len_hash = len(hash)
-    end = max_length or len_hash
+    end = limit_len or len_hash
     end = min(end, len_hash)
+    hash = hash[:end]
     
-    return hash[:end]
+    counter = __hashes.setdefault(hash, 0)
+    
+    if not ensure_unique:
+        return hash
+
+    if counter == 0:
+        unique_hash = hash
+    else:
+        unique_hash = hash + str(counter)
+
+    __hashes[hash] += 1
+    return unique_hash
+     
+
 
 
 def leading_whitespaces(string: str):
