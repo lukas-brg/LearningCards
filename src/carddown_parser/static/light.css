@@ -1,9 +1,9 @@
 .multiline {
-    background-color: rgb(243, 243, 255);
+    background-color: #f6f8fa;
 }
 
 .inline {
-    background-color: #eef;
+    background-color: #eff1f3
 }
 
 .focused {
@@ -62,7 +62,7 @@
 }
 
 #toc-btn:hover {
-    background-color: #d0d9e5;
+    background-color: #eaeff5;
     border-radius: 5px;
 }
 
@@ -286,6 +286,14 @@ The above copyright notice and this permission notice shall be included in all c
     border: 0;
 }
 
+
+
+
+
+
+
+
+
 .markdown-body input {
     font: inherit;
 
@@ -445,10 +453,6 @@ The above copyright notice and this permission notice shall be included in all c
     color: #57606a;
 }
 
-.markdown-body p {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
 
 .markdown-body blockquote {
     margin: 0;
@@ -457,70 +461,6 @@ The above copyright notice and this permission notice shall be included in all c
     border-left: 0.25em solid #d0d7de;
 }
 
-.markdown-body ul,
-.markdown-body ol {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 2em;
-}
-
-.markdown-body ol ol,
-.markdown-body ul ol {
-    list-style-type: lower-roman;
-}
-
-.markdown-body ul ul ol,
-.markdown-body ul ol ol,
-.markdown-body ol ul ol,
-.markdown-body ol ol ol {
-    list-style-type: lower-alpha;
-}
-
-.markdown-body ul.no-list,
-.markdown-body ol.no-list {
-    padding: 0;
-    list-style-type: none;
-}
-
-.markdown-body ol[type="a"] {
-    list-style-type: lower-alpha;
-}
-
-.markdown-body ol[type="A"] {
-    list-style-type: upper-alpha;
-}
-
-.markdown-body ol[type="i"] {
-    list-style-type: lower-roman;
-}
-
-.markdown-body ol[type="I"] {
-    list-style-type: upper-roman;
-}
-
-.markdown-body ol[type="1"] {
-    list-style-type: decimal;
-}
-
-.markdown-body div > ol:not([type]) {
-    list-style-type: decimal;
-}
-
-.markdown-body ul ul,
-.markdown-body ul ol,
-.markdown-body ol ol,
-.markdown-body ol ul {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.markdown-body li > p {
-    margin-top: 16px;
-}
-
-.markdown-body li + li {
-    margin-top: 0.25em;
-}
 
 .markdown-body hr::before {
     display: table;

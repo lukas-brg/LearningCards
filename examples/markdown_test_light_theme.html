@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Cards</title>
+        <title>Markdown Test</title>
         
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         
@@ -12,242 +12,491 @@
     </head>
 
   <body class="markdown-body">
-    <div class="card QuestionCard" id="0">
-      <div class="front QuestionCard">
-        <h1 id="h-790c8161">A card must begin with an h1 heading and the start tag</h1>
-        <p>This is the front side of the card<br/></p>
-      </div>
-      <div class="back QuestionCard">
-        <button class="collapsible card-btn">Show Backside</button>
-        <div class="content">
-          <div class="answer">
-            <h2 id="h-596dd66a">The backside begins after the back tag</h2>
-            <p>This text is on the back side.<br/></p>
-          </div>
-        </div>
-        <br/>
-      </div>
-      <hr/>
-    </div>
-    <div class="card QuestionCard" id="1">
-      <div class="front QuestionCard">
-        <h1 id="h-76ecc015">Only this heading is displayed on the front side</h1>
-      </div>
-      <div class="back QuestionCard">
-        <button class="collapsible card-btn">Show Backside</button>
-        <div class="content">
-          <div class="answer">
-            <p>The rest appears on the back side<br/></p>
-          </div>
-        </div>
-        <br/>
-      </div>
-      <hr/>
-    </div>
-    <div class="card QuestionCard" id="2">
-      <div class="front QuestionCard">
-        <h1 id="h-9fe40645">Both the <em>front</em> and the <strong>back</strong> of the card can use the whole markdown syntax</h1>
-        <p><em>Here</em> is some <em><strong>example</strong></em> text to test <strong>multiple</strong> fontstyles in <em>one</em> line.<br/></p>
-      </div>
-      <div class="back QuestionCard">
-        <button class="collapsible card-btn">Show Backside</button>
-        <div class="content">
-          <div class="answer">
-            <ol start="1">
-              <li>list</li>
-              <li>list 2</li>
-              <li>list 3</li>
-            </ol>
-            <div id="code-div_cccffba96" class="multiline">
-              <pre><code class="prettyprint lang-js" name="multiline-code-block" id="code-block_cccffba96">let i = 0;</code></pre>
-              <div class="copy-notification" id="copy-notification_cccffba96">
-                Copied!
-              </div>
-              <button class="btn-copy" id="copy-button_cccffba96" data-clipboard-target="#code-block_cccffba96">Copy</button>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th style="text-align:left"><b>a</b></th>
-                  <th style="text-align:left"><b>b</b></th>
-                  <th style="text-align:left"><b>c</b></th>
-                  <th style="text-align:left"><b>d</b></th>
-                  <th style="text-align:left"><b>e</b></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="text-align:left">1</td>
-                  <td style="text-align:left">2</td>
-                  <td style="text-align:left">3</td>
-                  <td style="text-align:left">4</td>
-                  <td style="text-align:left">5</td>
-                </tr>
-                <tr>
-                  <td style="text-align:left">6</td>
-                  <td style="text-align:left">7</td>
-                  <td style="text-align:left">8</td>
-                  <td style="text-align:left">9</td>
-                  <td style="text-align:left">10</td>
-                </tr>
-                <tr>
-                  <td style="text-align:left">11</td>
-                  <td style="text-align:left">12</td>
-                  <td style="text-align:left">13</td>
-                  <td style="text-align:left">14</td>
-                  <td style="text-align:left">15</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <br/>
-      </div>
-      <hr/>
-    </div>
-    <div class="card QuestionCard" id="3">
-      <div class="front QuestionCard">
-        <h1 id="h-5b8ebb28">What is 1+1?</h1>
-      </div>
-      <div class="back QuestionCard">
-        <button class="collapsible card-btn">Show Backside</button>
-        <div class="content">
-          <div class="answer">
-            <p>1+1=2<br/></p>
-          </div>
-        </div>
-        <br/>
-      </div>
-      <hr/>
-    </div>
-    <div class="card QuestionCard" id="4">
-      <div class="front QuestionCard">
-        <h1 id="h-f0ba0d23">Card Heading</h1>
-        <p>What is 1+1?<br/></p>
-      </div>
-      <div class="back QuestionCard">
-        <button class="collapsible card-btn">Show Backside</button>
-        <div class="content">
-          <div class="answer">
-            <h1 id="h-320cb83d">This is the answer:</h1>
-            <p>1+1=2<br/></p>
-          </div>
-        </div>
-        <br/>
-      </div>
-      <hr/>
-    </div>
-    <div class="card AnswerCard" id="5">
-      <div class="front AnswerCard">
-        <h1 id="h-5b8ebb281">What is 1+1?</h1>
-      </div>
-      <div class="back AnswerCard">
-        <div class="answer">
-          <form action="javascript:void(0);">
-            <input type="text" class="answer-input" name="answer_field5" autocomplete="off"/>
-            <br/>
-            <input value="Check Answer" type="submit" class="answer-btn card-btn" id="answer_btn5" onclick="answerOnClick(this)"/>
-          </form>
-          <div class="answer-content" name="answer_content5">
-            <p>1+1=<span name="answer5" class="answer-span">2</span></p>
-          </div>
-        </div>
-      </div>
-      <hr/>
-    </div>
-    <div class="card MultipleChoiceCard" id="6">
-      <div class="front MultipleChoiceCard">
-        <h1 id="h-5b8ebb282">What is 1+1?</h1>
-      </div>
-      <div class="back MultipleChoiceCard">
-        <div class="answer">
-          <form class="multi" name="multiform6" action="javascript:void(0)">
-            <input class="choice" type="checkbox" id="choice6" name="choice6" value="incorrect" autocomplete="off"/>
-            <label name="label" for="choice6">1<br/></label>
-            <input class="choice" type="checkbox" id="choice7" name="choice7" value="correct" autocomplete="off"/>
-            <label name="label" for="choice7">2<br/></label>
-            <input class="choice" type="checkbox" id="choice8" name="choice8" value="incorrect" autocomplete="off"/>
-            <label name="label" for="choice8">3<br/></label>
-            <br/>
-            <input value="Check Answer" id="multi_btn6" type="submit" class="multi-btn card-btn" onclick="multiOnClick(this)"/>
-            <div class="multicontent">
-            </div>
-          </form>
-        </div>
-      </div>
-      <hr/>
-    </div>
-    <div class="card AnswerCard" id="7">
-      <div class="front AnswerCard">
-        <h1 id="h-761598a9">What is the capital city of Germany?</h1>
-      </div>
-      <div class="back AnswerCard">
-        <div class="answer">
-          <form action="javascript:void(0);">
-            <input type="text" class="answer-input" name="answer_field7" autocomplete="off"/>
-            <br/>
-            <input value="Check Answer" type="submit" class="answer-btn card-btn" id="answer_btn7" onclick="answerOnClick(this)"/>
-          </form>
-          <div class="answer-content" name="answer_content7">
-            <p><span name="answer7" class="answer-span">
-Berlin
-
-
-</span></p>
-          </div>
-        </div>
-      </div>
-      <hr/>
-    </div>
-    <div class="card QuestionCard" id="8">
-      <div class="front QuestionCard">
-        <h1 id="h-aa326622">What is a famous quote by Mahatma Gandhi?</h1>
-      </div>
-      <div class="back QuestionCard">
-        <button class="collapsible card-btn">Show Backside</button>
-        <div class="content">
-          <div class="answer">
-            <div class="blockquote-div">
-              <blockquote><p>You must be the change you wish to see in the world.<br/></p></blockquote>
-            </div>
-          </div>
-        </div>
-        <br/>
-      </div>
-      <hr/>
-    </div>
-    <h1 id="h-e3b8a055">Regular Markdown</h1>
-    <ol start="1">
-      <li>Ordered list 1</li>
-      <ul>
-        <li>unordered sublist1</li>
-        <li>unordered sublist2</li>
-        <ol start="1">
-          <li>ordered subsublist1</li>
-          <li>ordered subsublist2</li>
-        </ol>
-        <ul>
-          <li>unordered subsublist1</li>
-          <li>unordered subsublist2</li>
+    <div class="toc">
+      <span><h1>Table Of Contents<button id="toc-btn"><i class="fa-solid fa-chevron-up"></i></button></h1></span>
+      <div class="toc-content">
+        <ul class="toc-ul">
+          <li><a href="#h-7ca1ec69" class="toc-link">h1 Heading</a></li>
+          <ul class="toc-ul">
+            <li><a href="#h-45493491" class="toc-link">h2 Heading</a></li>
+            <ul class="toc-ul">
+              <li><a href="#h-b2c689cf" class="toc-link">h3 Heading</a></li>
+            </ul>
+            <li><a href="#h-1dc9a05a" class="toc-link">Horizontal Rules</a></li>
+            <li><a href="#h-b46cb694" class="toc-link">Fontstyles</a></li>
+            <li><a href="#h-a2857004" class="toc-link">Blockquotes</a></li>
+            <li><a href="#h-4c14c4a4" class="toc-link">Lists</a></li>
+            <li><a href="#h-5694d08a" class="toc-link">Code</a></li>
+            <li><a href="#h-d98a034f" class="toc-link">Tables</a></li>
+            <li><a href="#h-eef8b9fd" class="toc-link">Links</a></li>
+            <ul class="toc-ul">
+              <li><a href="#h-ac8d72f4" class="toc-link">Linking to headings</a></li>
+              <li><a href="#h-d9f4ca7c" class="toc-link">Custom IDs</a></li>
+            </ul>
+            <li><a href="#h-21b2eed1" class="toc-link">Images</a></li>
+            <li><a href="#h-92cd10e6" class="toc-link">Plugins</a></li>
+            <ul class="toc-ul">
+              <li><a href="#h-6cbffa61" class="toc-link">Emojies</a></li>
+              <li><a href="#h-43b8f800" class="toc-link">Subscript / Superscript</a></li>
+              <li><a href="#h-9caca8ac" class="toc-link">Footnotes</a></li>
+              <li><a href="#h-d8259c6f" class="toc-link">Definition lists</a></li>
+            </ul>
+            <li><a href="#h-2e859cfb" class="toc-link">Task lists</a></li>
+            <li><a href="#h-c4ecac84" class="toc-link">Latex Equations</a></li>
+          </ul>
+          <li><a href="#h-7ca1ec691" class="toc-link">H1 Heading</a></li>
         </ul>
-        <li>unordered sublist 3</li>
+      </div>
+    </div>
+    <p>This table of contents was auto-generated. The feature can either be set in the config as default behaviour or it can be enabled for a single file by using the <code class="inline">--toc</code> flag.<br/></p>
+    <p><strong>Note:</strong> This file was copied from <a href="https://markdown-it.github.io/">https://markdown-it.github.io/</a>, and has been modified to adequately demonstrate the markdown syntax supported by this software.<br/></p>
+    <div id="code-div_e67cbe0f5" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_e67cbe0f5"># h1 Heading 
+
+## h2 Heading
+
+### h3 Heading
+
+#### h4 Heading
+
+##### h5 Heading
+
+###### h6 Heading</code></pre>
+      <div class="copy-notification" id="copy-notification_e67cbe0f5">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_e67cbe0f5" data-clipboard-target="#code-block_e67cbe0f5">Copy</button>
+    </div>
+    <h1 id="h-7ca1ec69">h1 Heading</h1>
+    <h2 id="h-45493491">h2 Heading</h2>
+    <h3 id="h-b2c689cf">h3 Heading</h3>
+    <h4 id="h-d49a4883">h4 Heading</h4>
+    <h5 id="h-817863bf">h5 Heading</h5>
+    <h6 id="h-fa69c4a4">h6 Heading</h6>
+    <h2 id="h-1dc9a05a">Horizontal Rules</h2>
+    <div id="code-div_057c8eae37" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_057c8eae37">---
+
+***</code></pre>
+      <div class="copy-notification" id="copy-notification_057c8eae37">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_057c8eae37" data-clipboard-target="#code-block_057c8eae37">Copy</button>
+    </div>
+    <hr/>
+    <br/>
+    <hr/>
+    <br/>
+    <h2 id="h-b46cb694">Fontstyles</h2>
+    <div id="code-div_5270616d50" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_5270616d50">**This is bold text**
+
+__This is bold text__
+
+==This is marked text==
+
+_This is italic text_
+
+*This is italic text*
+
+~~Strikethrough~~
+
+_This text tests **nested** fontstyles_</code></pre>
+      <div class="copy-notification" id="copy-notification_5270616d50">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_5270616d50" data-clipboard-target="#code-block_5270616d50">Copy</button>
+    </div>
+    <p><strong>This is bold text</strong><br/></p>
+    <p><strong>This is bold text</strong><br/></p>
+    <p><mark>This is marked text</mark><br/></p>
+    <p><em>This is italic text</em><br/></p>
+    <p><em>This is italic text</em><br/></p>
+    <p><s>Strikethrough</s><br/></p>
+    <p><em>This text tests <strong>nested</strong> fontstyles</em><br/></p>
+    <h2 id="h-a2857004">Blockquotes</h2>
+    <div id="code-div_d136832a82" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_d136832a82">> A blockquote starts with `>` symbol
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...</code></pre>
+      <div class="copy-notification" id="copy-notification_d136832a82">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_d136832a82" data-clipboard-target="#code-block_d136832a82">Copy</button>
+    </div>
+    <div class="blockquote-div">
+      <blockquote><p>A blockquote starts with <code class="inline">></code> symbol<br/>Blockquotes can also be nested...<br/></p><blockquote><p>...by using additional greater-than signs right next to each other...<br/></p></blockquote></blockquote>
+    </div>
+    <h2 id="h-4c14c4a4">Lists</h2>
+    <p><strong>Unordered</strong><br/></p>
+    <div id="code-div_7d632a6098" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_7d632a6098">+ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    * Ac tristique libero volutpat at
+    + Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
++ Very easy!</code></pre>
+      <div class="copy-notification" id="copy-notification_7d632a6098">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_7d632a6098" data-clipboard-target="#code-block_7d632a6098">Copy</button>
+    </div>
+    <ul>
+      <li>Create a list by starting a line with <code class="inline">+</code>, <code class="inline">-</code>, or <code class="inline">*</code></li>
+      <li>Sub-lists are made by indenting 2 spaces:</li>
+      <ul>
+        <li>Marker character change forces new list start:</li>
         <ul>
-          <li>unordered subsublist1</li>
-          <li>unordered subsublist2</li>
+          <li>Ac tristique libero volutpat at</li>
+          <li>Facilisis in pretium nisl aliquet</li>
+          <li>Nulla volutpat aliquam velit</li>
         </ul>
       </ul>
-      <li>ordered list 2</li>
-      <li>ordered list 3</li>
-      <ol start="1">
-        <li>ordered sublist1</li>
-        <li>odered sublist2</li>
-      </ol>
-    </ol>
-    <ul>
-      <li>unordered list 1</li>
-      <li>unordered list 2</li>
+      <li>Very easy!</li>
     </ul>
-    <p><em>Here</em> is some <em><strong>example</strong></em> text to test <strong>multiple</strong> fontstyles in <em>one</em> line<br/></p>
+    <p><strong>Ordered</strong><br/></p>
+    <div id="code-div_4858dcf3119" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_4858dcf3119">1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+
+1. You can use sequential numbers...
+1. ...or keep all the numbers as `1.`</code></pre>
+      <div class="copy-notification" id="copy-notification_4858dcf3119">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_4858dcf3119" data-clipboard-target="#code-block_4858dcf3119">Copy</button>
+    </div>
+    <ol start="1">
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>Consectetur adipiscing elit</li>
+      <li>Integer molestie lorem at massa</li>
+      <li>You can use sequential numbers...</li>
+      <li>...or keep all the numbers as <code class="inline">1.</code></li>
+    </ol>
+    <p>Start numbering with offset:<br/></p>
+    <div id="code-div_c3411417138" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_c3411417138">3.  foo
+    1. baz
+    2. test
+1. bar</code></pre>
+      <div class="copy-notification" id="copy-notification_c3411417138">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_c3411417138" data-clipboard-target="#code-block_c3411417138">Copy</button>
+    </div>
+    <ol start="3">
+      <li>foo</li>
+      <ol start="1">
+        <li>baz</li>
+        <li>test</li>
+      </ol>
+      <li>bar</li>
+    </ol>
+    <p><strong>Unordered and ordered lists can also be mixed:</strong><br/></p>
+    <div id="code-div_356eb601154" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_356eb601154">+ Create a list by starting a line with `+`, `-`, or `*`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    1. Lorem ipsum dolor sit amet
+    2. Consectetur adipiscing elit
+    3. Integer molestie lorem at massa
++ Very easy!</code></pre>
+      <div class="copy-notification" id="copy-notification_356eb601154">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_356eb601154" data-clipboard-target="#code-block_356eb601154">Copy</button>
+    </div>
+    <ul>
+      <li>Create a list by starting a line with <code class="inline">+</code>, <code class="inline">-</code>, or <code class="inline">*</code></li>
+      <li>Sub-lists are made by indenting 2 spaces:</li>
+      <ul>
+        <li>Marker character change forces new list start:</li>
+        <ol start="1">
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li>
+          <li>Integer molestie lorem at massa</li>
+        </ol>
+      </ul>
+      <li>Very easy!</li>
+    </ul>
+    <h2 id="h-5694d08a">Code</h2>
+    <p>Inline <code class="inline">code</code><br/></p>
+    <p>Block code "fences"<br/></p>
+    <div id="code-div_56b09862181" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_56b09862181">  ```
+  Sample text here...
+  ```</code></pre>
+      <div class="copy-notification" id="copy-notification_56b09862181">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_56b09862181" data-clipboard-target="#code-block_56b09862181">Copy</button>
+    </div>
+    <div id="code-div_9a3c7014187" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_9a3c7014187">Sample text here...</code></pre>
+      <div class="copy-notification" id="copy-notification_9a3c7014187">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_9a3c7014187" data-clipboard-target="#code-block_9a3c7014187">Copy</button>
+    </div>
+    <p>Syntax highlighting<br/></p>
+    <div id="code-div_67850ac8193" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_67850ac8193">  ```js
+  var foo = function (bar) {
+    return bar++;
+  };
+  ```</code></pre>
+      <div class="copy-notification" id="copy-notification_67850ac8193">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_67850ac8193" data-clipboard-target="#code-block_67850ac8193">Copy</button>
+    </div>
+    <div id="code-div_d41bff51201" class="multiline">
+      <pre><code class="prettyprint lang-js" name="multiline-code-block" id="code-block_d41bff51201">var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));</code></pre>
+      <div class="copy-notification" id="copy-notification_d41bff51201">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_d41bff51201" data-clipboard-target="#code-block_d41bff51201">Copy</button>
+    </div>
+    <h2 id="h-d98a034f">Tables</h2>
+    <div id="code-div_64329be1211" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_64329be1211">| Default Alignment| Left Alignment    | Center Alignment   | Right Alignment |
+| ---------------- | :---------------- | :----------------: | --------------: |
+| False            | Python Hat        |   True             | 23.99           |
+| True             | SQL Hat           |   True             | 23.99           |
+| True             | Codecademy Tee    |  False             | 19.99           |
+| False            | Codecademy Hoodie |  False             | 42.99           |</code></pre>
+      <div class="copy-notification" id="copy-notification_64329be1211">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_64329be1211" data-clipboard-target="#code-block_64329be1211">Copy</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:left"><b>Default Alignment</b></th>
+          <th style="text-align:left"><b>Left Alignment</b></th>
+          <th style="text-align:center"><b>Center Alignment</b></th>
+          <th style="text-align:right"><b>Right Alignment</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left">False</td>
+          <td style="text-align:left">Python Hat</td>
+          <td style="text-align:center">True</td>
+          <td style="text-align:right">23.99</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">True</td>
+          <td style="text-align:left">SQL Hat</td>
+          <td style="text-align:center">True</td>
+          <td style="text-align:right">23.99</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">True</td>
+          <td style="text-align:left">Codecademy Tee</td>
+          <td style="text-align:center">False</td>
+          <td style="text-align:right">19.99</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">False</td>
+          <td style="text-align:left">Codecademy Hoodie</td>
+          <td style="text-align:center">False</td>
+          <td style="text-align:right">42.99</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="h-eef8b9fd">Links</h2>
+    <div id="code-div_d6428c43229" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_d6428c43229">[link text](http://dev.nodeca.com)
+
+[link with title](http://nodeca.github.io/pica/demo/ "title text!")
+
+Autoconverted link https://github.com/nodeca/pica </code></pre>
+      <div class="copy-notification" id="copy-notification_d6428c43229">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_d6428c43229" data-clipboard-target="#code-block_d6428c43229">Copy</button>
+    </div>
+    <p><a href="http://dev.nodeca.com" title="">link text</a><br/></p>
+    <p><a href="http://nodeca.github.io/pica/demo/" title="title text!">link with title</a><br/></p>
+    <p>Autoconverted link <a href="https://github.com/nodeca/pica">https://github.com/nodeca/pica</a><br/></p>
+    <h3 id="h-ac8d72f4">Linking to headings</h3>
+    <p>You can also link to headings of this document. For this to work all the alphanumeric characters that make up the heading text need to be present in the link. The links are also not case sensitive.<br/></p>
+    <div id="code-div_4752b597249" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_4752b597249">[Link to first H1 Heading](#h1heading)
+
+[Another link to first H1 Heading](#h1-heading)</code></pre>
+      <div class="copy-notification" id="copy-notification_4752b597249">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_4752b597249" data-clipboard-target="#code-block_4752b597249">Copy</button>
+    </div>
+    <p><a href="#h-7ca1ec69" title="">Link to first H1 Heading</a><br/></p>
+    <p><a href="#h-7ca1ec69" title="">Another link to first H1 Heading</a><br/></p>
+    <h3 id="h-d9f4ca7c">Custom IDs</h3>
+    <div id="code-div_49f0c86e261" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_49f0c86e261">#### Headings can have a custom ID {#custom_id}
+
+The custom ID can be used to [Link](#custom_id) to the heading.</code></pre>
+      <div class="copy-notification" id="copy-notification_49f0c86e261">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_49f0c86e261" data-clipboard-target="#code-block_49f0c86e261">Copy</button>
+    </div>
+    <h4 id="h-7218b6a8">Headings can have a custom ID </h4>
+    <p>The custom ID can be used to <a href="#h-7218b6a8" title="">Link</a> to the heading.<br/></p>
+    <h2 id="h-21b2eed1">Images</h2>
+    <div id="code-div_32bb5e19279" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_32bb5e19279">![Minion](https://octodex.github.com/images/minion.png)
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")</code></pre>
+      <div class="copy-notification" id="copy-notification_32bb5e19279">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_32bb5e19279" data-clipboard-target="#code-block_32bb5e19279">Copy</button>
+    </div>
+    <img alt="Minion" src="https://octodex.github.com/images/minion.png" title="" style="max-width: 80%"/>
+    <br/>
+    <img alt="Stormtroopocat" src="https://octodex.github.com/images/stormtroopocat.jpg" title="The Stormtroopocat" style="max-width: 80%"/>
+    <br/>
+    <h2 id="h-92cd10e6">Plugins</h2>
+    <p>The killer feature of <code class="inline">markdown-it</code> is very effective support of<br/><a href="https://www.npmjs.org/browse/keyword/markdown-it-plugin" title="">syntax plugins</a>.<br/></p>
+    <h3 id="h-6cbffa61"><a href="https://github.com/markdown-it/markdown-it-emoji" title="">Emojies</a></h3>
+    <div id="code-div_c8f12d7e299" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_c8f12d7e299">Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:</code></pre>
+      <div class="copy-notification" id="copy-notification_c8f12d7e299">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_c8f12d7e299" data-clipboard-target="#code-block_c8f12d7e299">Copy</button>
+    </div>
+    <p>Classic markup: &#128521; &#129392; &#128546; &#129394; &#128518; &#128523;<br/></p>
+    <h3 id="h-43b8f800">Subscript / Superscript</h3>
+    <div id="code-div_b75b51b2311" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_b75b51b2311">- 19^th^
+- H~2~O</code></pre>
+      <div class="copy-notification" id="copy-notification_b75b51b2311">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_b75b51b2311" data-clipboard-target="#code-block_b75b51b2311">Copy</button>
+    </div>
+    <ul>
+      <li>19<sup>th</sup></li>
+      <li>H<sub>2</sub>O</li>
+    </ul>
+    <h3 id="h-9caca8ac">Footnotes</h3>
+    <div id="code-div_90890dc8325" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_90890dc8325">Footnote 1 link[^first].
+
+Footnote 2 link[^second].</code></pre>
+      <div class="copy-notification" id="copy-notification_90890dc8325">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_90890dc8325" data-clipboard-target="#code-block_90890dc8325">Copy</button>
+    </div>
+    <p>Footnote 1 link<sup><a href="#footnote-first" class="footnote-ref" id="ref-first">[1]</a></sup>.<br/></p>
+    <p>Footnote 2 link<sup><a href="#footnote-second" class="footnote-ref" id="ref-second">[2]</a></sup>.<br/></p>
+    <p>The corresponding footnotes look like this:<br/></p>
+    <div id="code-div_cf007d07339" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_cf007d07339">[^first]: Footnotes _can have markup_
+
+    and multiple paragraphs.
+
+[^second]: Footnote text.</code></pre>
+      <div class="copy-notification" id="copy-notification_cf007d07339">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_cf007d07339" data-clipboard-target="#code-block_cf007d07339">Copy</button>
+    </div>
+    <div id="code-div_c39f5770356" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_c39f5770356">Footnotes are enumerated by their order in the document, regardless of their text[^1].
+
+[^1]: The footnotes can be split up across the document
+    Though they are always displayed at the bottom</code></pre>
+      <div class="copy-notification" id="copy-notification_c39f5770356">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_c39f5770356" data-clipboard-target="#code-block_c39f5770356">Copy</button>
+    </div>
+    <p>Footnotes are enumerated by their order in the document, regardless of their text<sup><a href="#footnote-1" class="footnote-ref" id="ref-1">[3]</a></sup>.<br/></p>
+    <h3 id="h-d8259c6f">Definition lists</h3>
+    <div id="code-div_3a8e5b2a371" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_3a8e5b2a371">First Term
+: This is the definition of the first term.
+
+Second Term
+: This is one definition of the second term.
+: This is another definition of the second term.</code></pre>
+      <div class="copy-notification" id="copy-notification_3a8e5b2a371">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_3a8e5b2a371" data-clipboard-target="#code-block_3a8e5b2a371">Copy</button>
+    </div>
+    <dl><b><dt>First Term</dt></b><dd>This is the definition of the first term.</dd><br/><b><dt>Second Term</dt></b><dd>This is one definition of the second term.</dd><dd>This is another definition of the second term.</dd><br/></dl>
+    <h2 id="h-2e859cfb">Task lists</h2>
+    <div id="code-div_fd4de89c389" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_fd4de89c389">- [x] This list item is checked
+- [ ] This list item is unchecked 
+  - [x] Task lists can also be nested</code></pre>
+      <div class="copy-notification" id="copy-notification_fd4de89c389">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_fd4de89c389" data-clipboard-target="#code-block_fd4de89c389">Copy</button>
+    </div>
+    <ul>
+      <input type="checkbox" id="task_list_checkbox-c9b74b7f" autocomplete="off" checked/>
+      <label for="task_list_checkbox-c9b74b7f">This list item is checked</label>
+      <br/>
+      <input type="checkbox" id="task_list_checkbox-8d8243ab" autocomplete="off"/>
+      <label for="task_list_checkbox-8d8243ab">This list item is unchecked</label>
+      <br/>
+      <ul>
+        <input type="checkbox" id="task_list_checkbox-656e201b" autocomplete="off" checked/>
+        <label for="task_list_checkbox-656e201b">Task lists can also be nested</label>
+        <br/>
+      </ul>
+    </ul>
+    <h2 id="h-c4ecac84">Latex Equations</h2>
+    <div id="code-div_c5bcc507402" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_c5bcc507402">Inline latex equations \(forall x \in X, \quad \exists y \leq \epsilon\)</code></pre>
+      <div class="copy-notification" id="copy-notification_c5bcc507402">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_c5bcc507402" data-clipboard-target="#code-block_c5bcc507402">Copy</button>
+    </div>
+    <p>Inline latex equations \(\forall x \in X, \quad \exists y \leq \epsilon\)<br/></p>
+    <div id="code-div_fbcd01f9409" class="multiline">
+      <pre><code name="multiline-code-block" id="code-block_fbcd01f9409">$$\int^b_a \frac{1}{3}x^3$$
+
+$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$</code></pre>
+      <div class="copy-notification" id="copy-notification_fbcd01f9409">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_fbcd01f9409" data-clipboard-target="#code-block_fbcd01f9409">Copy</button>
+    </div>
+    <p><span class="latex-equation">$$\int^b_a \frac{1}{3}x^3$$</span><br/></p>
+    <p><span class="latex-equation">$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$</span><br/></p>
+    <h1 id="h-7ca1ec691">H1 Heading</h1>
+    <p>This heading's purpose is to test whether the links in the table of contents still work with duplicate headings. Links to "H1 Heading" will only link to the first one, however.<br/>If you want to link to this specific heading, you need to use a custom id.<br/></p>
+    <div class="footnotes-div">
+      <div class="footnote">
+        <p class="footnote-paragraph"><span id="footnote-first">1.</span> Footnotes <em>can have markup</em></p>
+        <p class="footnote-paragraph">&nbsp;&nbsp;&nbsp;    and multiple paragraphs.<a href="#ref-first"> &#8617;</a></p>
+      </div>
+      <div class="footnote">
+        <p class="footnote-paragraph"><span id="footnote-second">2.</span> Footnote text.<a href="#ref-second"> &#8617;</a></p>
+      </div>
+      <div class="footnote">
+        <p class="footnote-paragraph"><span id="footnote-1">3.</span> The footnotes can be split up across the document</p>
+        <p class="footnote-paragraph">&nbsp;&nbsp;&nbsp;    Though they are always displayed at the bottom<a href="#ref-1"> &#8617;</a></p>
+      </div>
+    </div>
     
     <style>
             /*
@@ -553,43 +802,62 @@ Berlin
             }
 
             .multiline {
-                background-color: #161b22;
+                background-color: #f6f8fa;
+            }
+
+            .inline {
+                background-color: #eff1f3
             }
 
             .focused {
-                background-color: #403f47;
+                background-color: #c9c9c9;
             }
 
+            .active,
             .collapsible:hover,
             .multi-btn:hover,
             .answer-btn:hover {
-                background-color: #1c73e4;
-            }
-
-            .active {
-                background-color: #0060df;
+                background-color: #bbd3ec;
             }
 
             .footnotes-div {
-                border-top: 1px solid #21262d;
-                border-bottom: 1px solid #21262d;
-                color: #7b848e;
+                border-top: 1px solid hsla(210, 18%, 87%, 1);
+                border-bottom: 1px solid hsla(210, 18%, 87%, 1);
+                color: #3e4042;
             }
+
+
+
+            .btn-copy {
+   
+                color: #a3aeba;
+  
+            }
+
+
+
+            .btn-copy:hover {
+                background-color:  #d0d9e5;
+            }
+
+            .copy-icon {
+   
+                fill:#8f98a2;
+            }
+
 
             .copy-notification {
-    
-                background-color: #6e7681;
-                color: white;
    
-
+                background-color: #30363d;
+                color: white;
+  
             }
+
 
             .copy-notification::before {
    
-                border-color: transparent transparent transparent #6e7681;
-   
+                border-color: transparent transparent transparent #30363d;
             }
-
 
             .toc-icon {
                 fill: #909aa6;
@@ -597,9 +865,10 @@ Berlin
             }
 
             #toc-btn:hover {
-                background-color: #30363d;
+                background-color: #eaeff5;
                 border-radius: 5px;
             }
+
 
 
             /*
@@ -617,13 +886,14 @@ Berlin
 
 
             */
+
             .markdown-body h1,
             .markdown-body h2,
             .markdown-body h3,
             .markdown-body h4,
             .markdown-body h5,
             .markdown-body h6 {
-                margin-top: 34px;
+                margin-top: 24px;
                 margin-bottom: 16px;
                 font-weight: 600;
                 line-height: 1.25;
@@ -633,17 +903,13 @@ Berlin
                 font-weight: 600;
                 padding-bottom: 0.3em;
                 font-size: 1.5em;
-                border-bottom: 1px solid #21262d;
-            }
-
-            .toc-content {
-                border-bottom: 1px solid #21262d;
+                border-bottom: 1px solid hsla(210, 18%, 87%, 1);
             }
 
             .card h2,
             .front h2,
             .back h2 {
-                border-bottom: 0px solid #17191d;
+                border-bottom: 0px solid #21262d;
             }
 
             .markdown-body h3 {
@@ -664,69 +930,68 @@ Berlin
             .markdown-body h6 {
                 font-weight: 600;
                 font-size: 0.85em;
-                color: #8b949e;
+                color: #57606a;
             }
 
-            @media (prefers-color-scheme: dark) {
+            @media (prefers-color-scheme: light) {
                 .markdown-body {
-                    color-scheme: dark;
-                    --color-prettylights-syntax-comment: #8b949e;
-                    --color-prettylights-syntax-constant: #79c0ff;
-                    --color-prettylights-syntax-entity: #d2a8ff;
-                    --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
-                    --color-prettylights-syntax-entity-tag: #7ee787;
-                    --color-prettylights-syntax-keyword: #ff7b72;
-                    --color-prettylights-syntax-string: #a5d6ff;
-                    --color-prettylights-syntax-variable: #ffa657;
-                    --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
-                    --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
-                    --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
-                    --color-prettylights-syntax-carriage-return-text: #f0f6fc;
-                    --color-prettylights-syntax-carriage-return-bg: #b62324;
-                    --color-prettylights-syntax-string-regexp: #7ee787;
-                    --color-prettylights-syntax-markup-list: #f2cc60;
-                    --color-prettylights-syntax-markup-heading: #1f6feb;
-                    --color-prettylights-syntax-markup-italic: #c9d1d9;
-                    --color-prettylights-syntax-markup-bold: #c9d1d9;
-                    --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
-                    --color-prettylights-syntax-markup-deleted-bg: #67060c;
-                    --color-prettylights-syntax-markup-inserted-text: #aff5b4;
-                    --color-prettylights-syntax-markup-inserted-bg: #033a16;
-                    --color-prettylights-syntax-markup-changed-text: #ffdfb6;
-                    --color-prettylights-syntax-markup-changed-bg: #5a1e02;
-                    --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
-                    --color-prettylights-syntax-markup-ignored-bg: #1158c7;
-                    --color-prettylights-syntax-meta-diff-range: #d2a8ff;
-                    --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
-                    --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
-                    --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
-                    --color-fg-default: #c9d1d9;
-                    --color-fg-muted: #8b949e;
-                    --color-fg-subtle: #6e7681;
-                    --color-canvas-default: #0d1117;
-                    --color-canvas-subtle: #161b22;
-                    --color-border-default: #30363d;
-                    --color-border-muted: #21262d;
-                    --color-neutral-muted: rgba(110, 118, 129, 0.4);
-                    --color-accent-fg: #58a6ff;
-                    --color-accent-emphasis: #1f6feb;
-                    --color-attention-subtle: rgba(187, 128, 9, 0.15);
-                    --color-danger-fg: #f85149;
+                    color-scheme: light;
+                    --color-prettylights-syntax-comment: #6e7781;
+                    --color-prettylights-syntax-constant: #0550ae;
+                    --color-prettylights-syntax-entity: #8250df;
+                    --color-prettylights-syntax-storage-modifier-import: #24292f;
+                    --color-prettylights-syntax-entity-tag: #116329;
+                    --color-prettylights-syntax-keyword: #cf222e;
+                    --color-prettylights-syntax-string: #0a3069;
+                    --color-prettylights-syntax-variable: #953800;
+                    --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+                    --color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+                    --color-prettylights-syntax-invalid-illegal-bg: #82071e;
+                    --color-prettylights-syntax-carriage-return-text: #f6f8fa;
+                    --color-prettylights-syntax-carriage-return-bg: #cf222e;
+                    --color-prettylights-syntax-string-regexp: #116329;
+                    --color-prettylights-syntax-markup-list: #3b2300;
+                    --color-prettylights-syntax-markup-heading: #0550ae;
+                    --color-prettylights-syntax-markup-italic: #24292f;
+                    --color-prettylights-syntax-markup-bold: #24292f;
+                    --color-prettylights-syntax-markup-deleted-text: #82071e;
+                    --color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+                    --color-prettylights-syntax-markup-inserted-text: #116329;
+                    --color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+                    --color-prettylights-syntax-markup-changed-text: #953800;
+                    --color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+                    --color-prettylights-syntax-markup-ignored-text: #eaeef2;
+                    --color-prettylights-syntax-markup-ignored-bg: #0550ae;
+                    --color-prettylights-syntax-meta-diff-range: #8250df;
+                    --color-prettylights-syntax-brackethighlighter-angle: #57606a;
+                    --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+                    --color-prettylights-syntax-constant-other-reference-link: #0a3069;
+                    --color-fg-default: #24292f;
+                    --color-fg-muted: #57606a;
+                    --color-fg-subtle: #6e7781;
+                    --color-canvas-default: #ffffff;
+                    --color-canvas-subtle: #f6f8fa;
+                    --color-border-default: #d0d7de;
+                    --color-border-muted: hsla(210, 18%, 87%, 1);
+                    --color-neutral-muted: rgba(175, 184, 193, 0.2);
+                    --color-accent-fg: #0969da;
+                    --color-accent-emphasis: #0969da;
+                    --color-attention-subtle: #fff8c5;
+                    --color-danger-fg: #cf222e;
                 }
             }
 
             .markdown-body {
-                color-scheme: dark;
                 -ms-text-size-adjust: 100%;
                 -webkit-text-size-adjust: 100%;
                 margin: 0;
-                color: #dbe2ea;
-                background-color: #0d1117;
+                color: #24292f;
+                background-color: #ffffff;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
                     Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
                 font-size: 16px;
                 line-height: 1.5;
-                word-wrap: break-word;
+                word-wrap: normal;
             }
 
             .markdown-body .octicon {
@@ -750,28 +1015,9 @@ Berlin
                 mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
             }
 
-            .markdown-body details,
-            .markdown-body figcaption,
-            .markdown-body figure {
-                display: block;
-            }
-
-            .markdown-body summary {
-                display: list-item;
-            }
-
-            .markdown-body [hidden] {
-                display: none !important;
-            }
-
             .markdown-body a {
                 background-color: transparent;
-                color: #58a6ff;
-            }
-
-            .markdown-body abbr[title] {
-                border-bottom: none;
-                text-decoration: underline dotted;
+                color: #0969da;
             }
 
             .markdown-body b,
@@ -788,12 +1034,12 @@ Berlin
                 font-weight: 600;
                 padding-bottom: 0.3em;
                 font-size: 2em;
-                border-bottom: 1px solid #21262d;
+                border-bottom: 1px solid hsla(210, 18%, 87%, 1);
             }
 
             .markdown-body mark {
-                background-color: rgba(187, 128, 9, 0.25);
-                color: #c9d1d9;
+                background-color: #fff8c5;
+                color: #24292f;
             }
 
             .markdown-body small {
@@ -820,7 +1066,7 @@ Berlin
                 border-style: none;
                 max-width: 100%;
                 box-sizing: content-box;
-                background-color: #0d1117;
+                background-color: #ffffff;
             }
 
             .markdown-body code,
@@ -831,144 +1077,197 @@ Berlin
                 font-size: 1em;
             }
 
-            .markdown-body figure {
-                margin: 1em 40px;
-            }
-
             .markdown-body hr {
                 box-sizing: content-box;
                 overflow: hidden;
                 background: transparent;
-                border-bottom: 1px solid #21262d;
-                height: 0.25em;
+                border-bottom: 1px solid hsla(210, 18%, 87%, 1);
+                height: 0.2em;
                 padding: 0;
                 margin: 24px 0;
-                background-color: #30363d;
+                background-color: #959ca3;
                 border: 0;
             }
 
-            /*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
-            .prettyprint {
-                background: #161b22;
-                font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco,
-                    Consolas, monospace;
-                border: 0 !important;
+
+
+
+
+
+
+
+
+            .markdown-body input {
+                font: inherit;
+
+                overflow: visible;
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
             }
 
-            .inline {
-                background-color: #2f3640;
+            .markdown-body [type="button"],
+            .markdown-body [type="reset"],
+            .markdown-body [type="submit"] {
+                -webkit-appearance: button;
             }
 
-            .pln {
-                color: #e6e9ed;
+            .markdown-body [type="checkbox"],
+            .markdown-body [type="radio"] {
+                box-sizing: border-box;
+                padding: 0;
             }
 
-            /* Specify class=linenums on a pre to get line numbering */
-            ol.linenums {
-                margin-top: 0;
-                margin-bottom: 0;
-                color: #656d78;
+            .markdown-body [type="number"]::-webkit-inner-spin-button,
+            .markdown-body [type="number"]::-webkit-outer-spin-button {
+                height: auto;
             }
 
-            li.L0,
-            li.L1,
-            li.L2,
-            li.L3,
-            li.L4,
-            li.L5,
-            li.L6,
-            li.L7,
-            li.L8,
-            li.L9 {
-                padding-left: 1em;
-                background-color: #2f3640;
-                list-style-type: decimal;
+            .markdown-body [type="search"]::-webkit-search-cancel-button,
+            .markdown-body [type="search"]::-webkit-search-decoration {
+                -webkit-appearance: none;
             }
 
-            @media screen {
-                /* string content */
+            .markdown-body ::-webkit-input-placeholder {
+                color: inherit;
+                opacity: 0.54;
+            }
 
-                .str {
-                    color: #ffce54;
-                }
+            .markdown-body ::-webkit-file-upload-button {
+                -webkit-appearance: button;
+                font: inherit;
+            }
 
-                /* keyword */
+            .markdown-body a:hover {
+                text-decoration: underline;
+            }
 
-                .kwd {
-                    color: #4fc1e9;
-                }
+            .markdown-body ::placeholder {
+                color: #6e7781;
+                opacity: 1;
+            }
 
-                /* comment */
+            .markdown-body hr::before {
+                display: table;
+                content: "";
+            }
 
-                .com {
-                    color: #656d78;
-                }
+            .markdown-body hr::after {
+                display: table;
+                clear: both;
+                content: "";
+            }
 
-                /* type name */
+            .markdown-body table {
+                border-spacing: 0;
+                border-collapse: collapse;
+                display: block;
+                width: max-content;
+                max-width: 100%;
+                overflow: auto;
+            }
 
-                .typ {
-                    color: #4fc1e9;
-                }
+            .markdown-body td,
+            .markdown-body th {
+                padding: 0;
+            }
 
-                /* literal value */
+            .markdown-body details summary {
+                cursor: pointer;
+            }
 
-                .lit {
-                    color: #ac92ec;
-                }
+            .markdown-body details:not([open]) > *:not(summary) {
+                display: none !important;
+            }
 
-                /* punctuation */
+            .markdown-body a:focus,
+            .markdown-body [role="button"]:focus,
+            .markdown-body input[type="radio"]:focus,
+            .markdown-body input[type="checkbox"]:focus {
+                outline: 2px solid #0969da;
+                outline-offset: -2px;
+                box-shadow: none;
+            }
 
-                .pun {
-                    color: #e6e9ed;
-                }
+            .markdown-body a:focus:not(:focus-visible),
+            .markdown-body [role="button"]:focus:not(:focus-visible),
+            .markdown-body input[type="radio"]:focus:not(:focus-visible),
+            .markdown-body input[type="checkbox"]:focus:not(:focus-visible) {
+                outline: solid 1px transparent;
+            }
 
-                /* lisp open bracket */
+            .markdown-body a:focus-visible,
+            .markdown-body [role="button"]:focus-visible,
+            .markdown-body input[type="radio"]:focus-visible,
+            .markdown-body input[type="checkbox"]:focus-visible {
+                outline: 2px solid #0969da;
+                outline-offset: -2px;
+                box-shadow: none;
+            }
 
-                .opn {
-                    color: #e6e9ed;
-                }
+            .markdown-body a:not([class]):focus,
+            .markdown-body a:not([class]):focus-visible,
+            .markdown-body input[type="radio"]:focus,
+            .markdown-body input[type="radio"]:focus-visible,
+            .markdown-body input[type="checkbox"]:focus,
+            .markdown-body input[type="checkbox"]:focus-visible {
+                outline-offset: 0;
+            }
 
-                /* lisp close bracket */
+            .markdown-body kbd {
+                display: inline-block;
+                padding: 3px 5px;
+                font: 11px ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+                    Liberation Mono, monospace;
+                line-height: 10px;
+                color: #24292f;
+                vertical-align: middle;
+                background-color: #f6f8fa;
+                border: solid 1px rgba(175, 184, 193, 0.2);
+                border-bottom-color: rgba(175, 184, 193, 0.2);
+                border-radius: 6px;
+                box-shadow: inset 0 -1px 0 rgba(175, 184, 193, 0.2);
+            }
 
-                .clo {
-                    color: #e6e9ed;
-                }
+            .markdown-body h2 {
+                font-weight: 600;
+                padding-bottom: 0.3em;
+                font-size: 1.5em;
+            }
 
-                /* markup tag name */
+            .markdown-body h3 {
+                font-weight: 600;
+                font-size: 1.25em;
+            }
 
-                .tag {
-                    color: #ed5565;
-                }
+            .markdown-body h4 {
+                font-weight: 600;
+                font-size: 1em;
+            }
 
-                /* markup attribute name */
+            .markdown-body h5 {
+                font-weight: 600;
+                font-size: 0.875em;
+            }
 
-                .atn {
-                    color: #a0d468;
-                }
+            .markdown-body h6 {
+                font-weight: 600;
+                font-size: 0.85em;
+                color: #57606a;
+            }
 
-                /* markup attribute value */
 
-                .atv {
-                    color: #ffce54;
-                }
+            .markdown-body blockquote {
+                margin: 0;
+                padding: 0 1em;
+                color: #57606a;
+                border-left: 0.25em solid #d0d7de;
+            }
 
-                /* declaration */
 
-                .dec {
-                    color: #ac92ec;
-                }
-
-                /* variable name */
-
-                .var {
-                    color: #e6e9ed;
-                }
-
-                /* function name */
-
-                .fun {
-                    color: #e6e9ed;
-                }
+            .markdown-body hr::before {
+                display: table;
+                content: "";
             }
 
             .markdown-body hr::before {
@@ -1003,22 +1302,21 @@ Berlin
             .markdown-body table th,
             .markdown-body table td {
                 padding: 6px 13px;
-                border: 1px solid var(--color-border-default);
+                border: 1px solid #d0d7de;
             }
 
             .markdown-body table tr {
                 background-color: var(--color-canvas-default);
-                border-top: 1px solid var(--color-border-muted);
+                border-top: 1px solid hsla(210, 18%, 87%, 1);
             }
 
             .markdown-body table tr:nth-child(2n) {
-                background-color: var(--color-canvas-subtle);
+                background-color: #f6f8fa;
             }
 
             .markdown-body table img {
                 background-color: transparent;
             }
-
 
                 .markdown-body { 
                     width: 53%;    
