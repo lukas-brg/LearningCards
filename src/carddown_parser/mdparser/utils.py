@@ -1,6 +1,6 @@
 import hashlib, re
 
-from itertools import dropwhile, takewhile
+from itertools import dropwhile
 
 from ..config import get_config
 

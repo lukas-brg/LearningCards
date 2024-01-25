@@ -175,9 +175,28 @@ Start numbering with offset:
 
 Inline `code`
 
+**Indented code blocks**
 
 
-Block code "fences"
+
+```
+Every line that is indented by 4 spaces or more will be displayed as a code block. This type of codeblock does not support indentation within the code. For that you have to use fenced code blocks.
+
+    This is a line of code
+      This is another line of code
+
+This is normal text.
+
+```
+
+Every line that is indented by 4 spaces or more will be displayed as a code block. This type of codeblock does not support indentation within the code. For that you have to use fenced code blocks.
+
+    This is a line of code
+      This is another line of code
+
+This is normal text.
+
+**Block code "fences"**
 
 ```
   ```
@@ -188,6 +207,8 @@ Block code "fences"
 ```
 Sample text here...
 ```
+
+
 
 Syntax highlighting
 
@@ -401,23 +422,41 @@ Second Term
 ## Latex Equations
 
 ```
-Inline latex equations \(forall x \in X, \quad \exists y \leq \epsilon\)
-```
+Inline latex equation \(\forall x \in X, \quad \exists y \leq \epsilon\)
 
-Inline latex equations \(\forall x \in X, \quad \exists y \leq \epsilon\)
-
+Another inline equation \(\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}\)
 
 ```
-$$\int^b_a \frac{1}{3}x^3$$
+
+Inline latex equation \(\forall x \in X, \quad \exists y \leq \epsilon\)
+
+Another inline equation \(\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}\)
+
+
+
+```
+$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$
+
+$$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}$$
+``` 
+
+
 
 $$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$
-```
 
-$$\int^b_a \frac{1}{3}x^3$$
 
-$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$
+
+$$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}$$
+
+
+
+
 
 # H1 Heading
 
 This heading's purpose is to test whether the links in the table of contents still work with duplicate headings. Links to "H1 Heading" will only link to the first one, however.
 If you want to link to this specific heading, you need to use a custom id.
+
+
+
+

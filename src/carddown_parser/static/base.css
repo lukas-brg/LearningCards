@@ -24,6 +24,10 @@ The above copyright notice and this permission notice shall be included in all c
     line-height: 1.5;
     word-wrap: break-word;
 }
+.footnote-ref {
+    font-size: 1.1em;
+}
+
 
 .toc {
     margin-bottom: 50px;
@@ -250,6 +254,10 @@ h6 > a,
   font-size: 1em;
 }
 
+.markdown-body .code-block-container {
+    overflow-x: auto;
+}
+
 .markdown-body hr {
     box-sizing: content-box;
     overflow: hidden;
@@ -299,3 +307,5 @@ h6 > a,
 .markdown-body ol[type="1"] {
     list-style-type: decimal;
 }
+
+

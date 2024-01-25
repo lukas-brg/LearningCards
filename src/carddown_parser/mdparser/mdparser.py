@@ -53,7 +53,10 @@ is_unchecked    = lambda line : line.startswith(UNCHECKED_PATTERN)
 is_task_list    = lambda line : is_checked(line) or is_unchecked(line)
 is_block_quote  = lambda line : line.lstrip().startswith(">")
 
-is_multiline_code   = lambda string : re.match(r"^```\s*(\S*)$", string.rstrip())
+is_codeblock_fenced   = lambda string : re.match(r"^```\s*(\S*)$", string.rstrip())
+is_codeblock_indented = lambda string : leading_whitespaces(string) >= 4 or string.strip() == ""
+in_codeblock_indented = lambda string : leading_whitespaces(string) == 4
+
 
 get_heading_elem    = lambda h      : HtmlNode(HEADINGS[h])
 
@@ -213,17 +216,8 @@ def parse_list(lines: list[str], start: int) -> tuple[HtmlNode, int]:
 
 
 
-def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
-    lang = lines[start].strip().replace("```", "")
-    end = find_line(lines, start+1, function=is_multiline_code)
-    code_lines = multiline_strip(lines[start+1:end])
-    
-    if end == len(lines):
-        show_warning_msg(f"Unclosed multiline code detected. (line {start+1}-{end})")
-    
+def make_code_block_elem(code_lines: list[str], lang: str):
     name="multiline-code-block"
-    
-    
     if config.mdparser.prettyprint_multiline_code or lang != "":
         lang_str = f" lang-{lang}" if lang else ""
         code = HtmlNode("code", set_class=f"prettyprint{lang_str}", name=name)
@@ -241,17 +235,43 @@ def parse_multiline_code(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     copy_btn = HtmlNode("button", "Copy", set_class="btn-copy", id=f"copy-button_{id_hash}")
     copy_btn.properties["data-clipboard-target"] = f"#{code.properties['id']}"
     copy_notification = HtmlNode("div", get_locals()["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")
-    
+    code_container = HtmlNode("div", HtmlNode("pre", code), set_class="code-block-container")
     code_div = HtmlNode(
             	    "div", 
-                    HtmlNode("pre", code), 
+                    code_container,
                     copy_notification, 
                     copy_btn,
                     id=f"code-div_{id_hash}", 
                     set_class="multiline"
     )
+
+    return code_div
+
+
+def parse_codeblock_fenced(lines: list[str], start: int) -> tuple[HtmlNode, int]:
+    lang = lines[start].strip().replace("```", "")
+    end = find_line(lines, start+1, function=is_codeblock_fenced)
+    code_lines =  multiline_strip(lines[start+1:end])
     
+    if end == len(lines):
+        show_warning_msg(f"Unclosed multiline code detected. (line {start+1}-{end})")
+    
+    code_div = make_code_block_elem(code_lines, lang)
+   
     return code_div, end+1
+
+
+def parse_codeblock_indented(lines: list[str], start: int) -> tuple[HtmlNode, int]:
+  
+    end = find_line(lines, start+1, function=is_codeblock_indented, negate=True)
+    code_lines =  [line.strip() for line in multiline_strip(lines[start:end])]
+    
+    if end == len(lines):
+        show_warning_msg(f"Unclosed multiline code detected. (line {start+1}-{end})")
+    
+    code_div = make_code_block_elem(code_lines, lang="")
+   
+    return code_div, end
 
     
 
@@ -515,11 +535,15 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             parsed_elems.append(heading)
             i += 1
 
-        elif is_multiline_code(line):
-            code, i = parse_blockrule(parse_func=parse_multiline_code, lines=lines, start=i)
+        elif is_codeblock_fenced(line):
+            code, i = parse_blockrule(parse_func=parse_codeblock_fenced, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(code)
             
+        elif is_codeblock_indented(line):
+            code, i = parse_blockrule(parse_func=parse_codeblock_indented, lines=lines, start=i)
+            p = append_paragraph(parsed_elems, p, paragraph)
+            parsed_elems.append(code)
         
         elif is_list(line): # List
             list, i = parse_blockrule(parse_func=parse_list, lines=lines, start=i)

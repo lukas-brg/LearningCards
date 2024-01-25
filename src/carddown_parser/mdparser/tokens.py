@@ -195,12 +195,12 @@ class PrettyPrintCodeToken(InlineToken):
 class SubscriptToken(InlineToken):
     tag = "sub"
     pre_chars = 1
-    patterns = [r"[\S]~([^~]+)~"]
+    patterns = [r"[\S]~([^~\\\{\}]+)~"]
 
    
 class SuperscriptToken(InlineToken):
     tag = "sup"
-    patterns =  [r"\^([^\^]+)\^"]
+    patterns =  [r"\^([^\^\\\{\}]+)\^"]
 
 
 class HorizontalRuleToken(InlineToken):

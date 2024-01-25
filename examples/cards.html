@@ -59,7 +59,9 @@
               <li>list 3</li>
             </ol>
             <div id="code-div_ecbbe1fc" class="multiline">
-              <pre><code class="prettyprint lang-js" name="multiline-code-block" id="code-block_ecbbe1fc">let i = 0;</code></pre>
+              <div class="code-block-container">
+                <pre><code class="prettyprint lang-js" name="multiline-code-block" id="code-block_ecbbe1fc">let i = 0;</code></pre>
+              </div>
               <div class="copy-notification" id="copy-notification_ecbbe1fc">
                 Copied!
               </div>
@@ -298,6 +300,10 @@ Berlin
                 line-height: 1.5;
                 word-wrap: break-word;
             }
+            .footnote-ref {
+                font-size: 1.1em;
+            }
+
 
             .toc {
                 margin-bottom: 50px;
@@ -524,6 +530,10 @@ Berlin
               font-size: 1em;
             }
 
+            .markdown-body .code-block-container {
+                overflow-x: auto;
+            }
+
             .markdown-body hr {
                 box-sizing: content-box;
                 overflow: hidden;
@@ -573,6 +583,8 @@ Berlin
             .markdown-body ol[type="1"] {
                 list-style-type: decimal;
             }
+
+
 
             .multiline {
                 background-color: #161b22;
