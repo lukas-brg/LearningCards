@@ -241,30 +241,30 @@ _This text tests **nested** fontstyles_</code></pre>
     <h2 id="h-75f9fcd7">Code</h2>
     <p>Inline <code class="inline">code</code><br/></p>
     <p><strong>Indented code blocks</strong><br/></p>
-    <div id="code-div_444f469c" class="multiline">
+    <div id="code-div_0602a286" class="multiline">
       <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_444f469c">Every line that is indented by 4 spaces or more will be displayed as a code block. This type of codeblock does not support indentation within the code. For that you have to use fenced code blocks.
+        <pre><code name="multiline-code-block" id="code-block_0602a286">Every line that is indented by 4 spaces or more will be displayed as a code block. The lines of code will keep their relative indentation.
 
     This is a line of code
       This is another line of code
 
 This is normal text.</code></pre>
       </div>
-      <div class="copy-notification" id="copy-notification_444f469c">
+      <div class="copy-notification" id="copy-notification_0602a286">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_444f469c" data-clipboard-target="#code-block_444f469c">Copy</button>
+      <button class="btn-copy" id="copy-button_0602a286" data-clipboard-target="#code-block_0602a286">Copy</button>
     </div>
-    <p>Every line that is indented by 4 spaces or more will be displayed as a code block. This type of codeblock does not support indentation within the code. For that you have to use fenced code blocks.<br/></p>
-    <div id="code-div_76a2ae5e" class="multiline">
+    <p>Every line that is indented by 4 spaces or more will be displayed as a code block. The lines of code will keep their relative indentation.<br/></p>
+    <div id="code-div_07db36f7" class="multiline">
       <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_76a2ae5e">This is a line of code
-This is another line of code</code></pre>
+        <pre><code name="multiline-code-block" id="code-block_07db36f7">This is a line of code
+  This is another line of code</code></pre>
       </div>
-      <div class="copy-notification" id="copy-notification_76a2ae5e">
+      <div class="copy-notification" id="copy-notification_07db36f7">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_76a2ae5e" data-clipboard-target="#code-block_76a2ae5e">Copy</button>
+      <button class="btn-copy" id="copy-button_07db36f7" data-clipboard-target="#code-block_07db36f7">Copy</button>
     </div>
     <p>This is normal text.<br/></p>
     <p><strong>Block code "fences"</strong><br/></p>
@@ -839,6 +839,8 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
 
             .markdown-body .code-block-container {
                 overflow-x: auto;
+                margin-right: 2.5em;
+
             }
 
             .markdown-body hr {

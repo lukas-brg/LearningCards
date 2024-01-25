@@ -256,6 +256,8 @@ h6 > a,
 
 .markdown-body .code-block-container {
     overflow-x: auto;
+    margin-right: 2.5em;
+
 }
 
 .markdown-body hr {

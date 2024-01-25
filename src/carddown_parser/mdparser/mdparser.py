@@ -54,7 +54,7 @@ is_task_list    = lambda line : is_checked(line) or is_unchecked(line)
 is_block_quote  = lambda line : line.lstrip().startswith(">")
 
 is_codeblock_fenced   = lambda line : re.match(r"^```\s*(\S*)$", line.rstrip())
-is_codeblock_indented = lambda line : leading_whitespaces(line) >= 4 or line.strip() == ""
+is_codeblock_indented = lambda line : leading_whitespaces(line) >= 4 or line.strip() == "" or line.startswith("\t")
 
 
 token_types = None
@@ -262,9 +262,10 @@ def parse_codeblock_fenced(lines: list[str], start: int) -> tuple[HtmlNode, int]
 
 
 def parse_codeblock_indented(lines: list[str], start: int) -> tuple[HtmlNode, int]:
-  
+    remove_indentation = lambda line : re.sub(r"^(\t|\s{4})", "", line)
+    
     end = find_line(lines, start+1, function=is_codeblock_indented, negate=True)
-    code_lines =  [line.strip() for line in multiline_strip(lines[start:end])]
+    code_lines =  [remove_indentation(line) for line in multiline_strip(lines[start:end])]
     
     if end == len(lines):
         show_warning_msg(f"Unclosed multiline code detected. (line {start+1}-{end})")
