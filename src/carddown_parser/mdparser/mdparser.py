@@ -40,12 +40,12 @@ CHECKED_PATTERN = "- [x]"
 UNCHECKED_PATTERN = "- [ ]"
 
 
-is_ul       = lambda string : string.strip().startswith(tuple((list_token + ' ' for list_token in config.mdparser.list_item_chars)))
-is_ol       = lambda string : re.search(ORDERED_LIST_PATTERN, string.strip())
-is_dd       = lambda string : re.search(DEF_PATTERN, string)
-is_list     = lambda string : is_ul(string) or is_ol(string) 
-is_table    = lambda string : re.search(TABLE_PATTERN, string)
-is_heading  = lambda string : re.search(HEADING_PATTERN, string)
+is_ul       = lambda line : line.strip().startswith(tuple((list_token + ' ' for list_token in config.mdparser.list_item_chars)))
+is_ol       = lambda line : re.search(ORDERED_LIST_PATTERN, line.strip())
+is_dd       = lambda line : re.search(DEF_PATTERN, line)
+is_list     = lambda line : is_ul(line) or is_ol(line) 
+is_table    = lambda line : re.search(TABLE_PATTERN, line)
+is_heading  = lambda line : re.search(HEADING_PATTERN, line)
 
 is_checked      = lambda line : line.startswith(CHECKED_PATTERN)
 is_footnote     = lambda line : re.search(FOOTNOTE_PATTERN, line)
@@ -53,12 +53,8 @@ is_unchecked    = lambda line : line.startswith(UNCHECKED_PATTERN)
 is_task_list    = lambda line : is_checked(line) or is_unchecked(line)
 is_block_quote  = lambda line : line.lstrip().startswith(">")
 
-is_codeblock_fenced   = lambda string : re.match(r"^```\s*(\S*)$", string.rstrip())
-is_codeblock_indented = lambda string : leading_whitespaces(string) >= 4 or string.strip() == ""
-in_codeblock_indented = lambda string : leading_whitespaces(string) == 4
-
-
-get_heading_elem    = lambda h      : HtmlNode(HEADINGS[h])
+is_codeblock_fenced   = lambda line : re.match(r"^```\s*(\S*)$", line.rstrip())
+is_codeblock_indented = lambda line : leading_whitespaces(line) >= 4 or line.strip() == ""
 
 
 token_types = None
@@ -71,6 +67,10 @@ def get_token_types() -> list[InlineToken]:
         token_types = [TokenType for TokenType in InlineToken.get_all_token_types() if TokenType.__name__ not in config.mdparser.ignore_inline_tokens]
     return token_types
     
+
+
+def get_heading_node(heading_marker: str) -> HtmlNode:
+    return HtmlNode(HEADINGS[heading_marker])
 
 
 def is_def(lines: list[str], i: int) -> bool:
@@ -381,7 +381,7 @@ def parse_def(lines: list[str], start: int) -> tuple[HtmlNode, int]:
 
 def parse_heading(line: str) -> HtmlNode:
     h, line = line.split(' ', 1)
-    heading = get_heading_elem(h)
+    heading = get_heading_node(h)
     
     if id_match := re.search(HEADING_ID_PATTERN, line):
         id = id_match.group(1)
