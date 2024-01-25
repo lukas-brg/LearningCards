@@ -207,8 +207,8 @@ def alignment_css(margin, align):
     @media only screen 
     and (max-width: 480px) and (orientation: portrait) {{
         .{config.document.body_class} {{
-            width: 90%;
-            font-size: 25px;      
+            width: 95%;
+ 
         }}
   
     }}
