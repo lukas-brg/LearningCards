@@ -220,9 +220,9 @@ def make_code_block_elem(code_lines: list[str], lang: str):
     name="multiline-code-block"
     if config.mdparser.prettyprint_multiline_code or lang != "":
         lang_str = f" lang-{lang}" if lang else ""
-        code = HtmlNode("code", set_class=f"prettyprint{lang_str}", name=name)
+        code = HtmlNode("code", set_class=f"code-block prettyprint{lang_str}")
     else:
-        code = HtmlNode("code", name=name)
+        code = HtmlNode("code", name=name, set_class="code-block")
 
     code.add_children("\n".join(code_lines)) 
 
@@ -236,9 +236,10 @@ def make_code_block_elem(code_lines: list[str], lang: str):
     copy_btn.properties["data-clipboard-target"] = f"#{code.properties['id']}"
     copy_notification = HtmlNode("div", get_locals()["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")
     code_container = HtmlNode("div", HtmlNode("pre", code), set_class="code-block-container")
+    scrollbar_container = HtmlNode("div", code_container, set_class="code-block-scrollbar-container")
     code_div = HtmlNode(
             	    "div", 
-                    code_container,
+                    scrollbar_container,
                     copy_notification, 
                     copy_btn,
                     id=f"code-div_{id_hash}", 
@@ -277,9 +278,9 @@ def parse_codeblock_indented(lines: list[str], start: int) -> tuple[HtmlNode, in
     
 
 def get_alignments(header: str) -> list[dict[str, str]]:
-    table_head_separator_pattern = r"^(\|[-\s]+)+"
+    table_head_separator_pattern = r"^(\|[:\-\s]+)+"
     table_cols_pattern = r"\|([^\|\n]+)"
-    
+
     if not re.search(table_head_separator_pattern, header):
         raise MarkdownSyntaxError("No Table header!")
     

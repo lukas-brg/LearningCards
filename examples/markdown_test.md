@@ -137,7 +137,7 @@ _This text tests **nested** fontstyles_
 Start numbering with offset:
 
 ```
-3.  foo
+3. foo
     1. baz
     2. test
 1. bar
@@ -309,14 +309,7 @@ The custom ID can be used to [Link](#custom_id) to the heading.
 
 
 
-
-## Plugins
-
-The killer feature of `markdown-it` is very effective support of
-[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
-
-
-### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+## [Emojies](https://github.com/markdown-it/markdown-it-emoji)
 
 ```
 Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
@@ -327,7 +320,7 @@ Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
 
 
 
-### Subscript / Superscript
+## Subscript / Superscript
 
 
 ```
@@ -341,7 +334,7 @@ Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
 
 
 
-### Footnotes
+## Footnotes
 
 
 ```
@@ -388,7 +381,7 @@ Footnotes are enumerated by their order in the document, regardless of their tex
 [^1]: The footnotes can be split up across the document
     Though they are always displayed at the bottom
 
-### Definition lists
+## Definition lists
 
 ```
 First Term

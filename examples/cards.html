@@ -59,8 +59,10 @@
               <li>list 3</li>
             </ol>
             <div id="code-div_ecbbe1fc" class="multiline">
-              <div class="code-block-container">
-                <pre><code class="prettyprint lang-js" name="multiline-code-block" id="code-block_ecbbe1fc">let i = 0;</code></pre>
+              <div class="code-block-scrollbar-container">
+                <div class="code-block-container">
+                  <pre><code class="code-block prettyprint lang-js" id="code-block_ecbbe1fc">let i = 0;</code></pre>
+                </div>
               </div>
               <div class="copy-notification" id="copy-notification_ecbbe1fc">
                 Copied!
@@ -350,8 +352,8 @@ Berlin
 
             .multiline {
                 margin: 0%;
-                border-radius: 2px;
-                padding-left: 1.5%;
+                border-radius: 1px;
+    
                 padding-top: 0.01em;
                 padding-bottom: 0.01em;
                 position: relative;
@@ -361,7 +363,28 @@ Berlin
                 box-sizing: border-box;
                 margin-top: 2%;
                 margin-bottom: 2%;
+                padding-right: 40px;
             }
+
+            .markdown-body .code-block-scrollbar-container {
+                overflow-x: auto;
+            }
+
+
+            .markdown-body .code-block-container {
+                margin-left: 20px;
+            }
+
+
+
+            .markdown-body code,
+            .markdown-body kbd,
+            .markdown-body pre,
+            .markdown-body samp {
+              font-family: monospace;
+              font-size: 1em;
+            }
+
 
             .btn-copy {
                 position: absolute;
@@ -522,19 +545,6 @@ Berlin
 
 
 
-            .markdown-body code,
-            .markdown-body kbd,
-            .markdown-body pre,
-            .markdown-body samp {
-              font-family: monospace;
-              font-size: 1em;
-            }
-
-            .markdown-body .code-block-container {
-                overflow-x: auto;
-                margin-right: 40px;
-
-            }
 
             .markdown-body hr {
                 box-sizing: content-box;

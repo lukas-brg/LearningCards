@@ -48,8 +48,10 @@
     <p>This project requires <strong>Python 3.10 or higher</strong> to be installed on your system.<br/></p>
     <p>Clone this repository and run this in the project top-level directory:<br/></p>
     <div id="code-div_93723d72" class="multiline">
-      <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_93723d72">pip install .</code></pre>
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_93723d72">pip install .</code></pre>
+        </div>
       </div>
       <div class="copy-notification" id="copy-notification_93723d72">
         Copied!
@@ -59,8 +61,10 @@
     <p>After installation the application can be started from anywhere by running <code class="inline">carddown ...args</code> in the command line.<br/></p>
     <p><strong>Note:</strong><br/>On Ubuntu 22.04 there have been some issues with setuptools, so you might need to update your pip for the installation to work:<br/></p>
     <div id="code-div_eb4786f4" class="multiline">
-      <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_eb4786f4">python3 -m pip install --upgrade pip</code></pre>
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_eb4786f4">python3 -m pip install --upgrade pip</code></pre>
+        </div>
       </div>
       <div class="copy-notification" id="copy-notification_eb4786f4">
         Copied!
@@ -69,8 +73,10 @@
     </div>
     <p>Alternatively, you can manually execute the <code class="inline">carddown.py</code> script located in the top-level directory to use carddown without installation.<br/></p>
     <div id="code-div_4b682b2b" class="multiline">
-      <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_4b682b2b">python carddown.py ...args</code></pre>
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_4b682b2b">python carddown.py ...args</code></pre>
+        </div>
       </div>
       <div class="copy-notification" id="copy-notification_4b682b2b">
         Copied!
@@ -81,8 +87,10 @@
     <h1 id="h-5b993042">Usage</h1>
     <p>At the very least you need to provide a path to an input file:<br/></p>
     <div id="code-div_cf31defa" class="multiline">
-      <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_cf31defa">carddown [INPUT_FILE]</code></pre>
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_cf31defa">carddown [INPUT_FILE]</code></pre>
+        </div>
       </div>
       <div class="copy-notification" id="copy-notification_cf31defa">
         Copied!
@@ -93,8 +101,10 @@
     <p><br/><br/></p>
     <p>It is also possible to specify the path to the output file and its name:<br/></p>
     <div id="code-div_1ce463be" class="multiline">
-      <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_1ce463be">carddown [INPUT_FILE] [OUTPUT_FILE?]</code></pre>
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_1ce463be">carddown [INPUT_FILE] [OUTPUT_FILE?]</code></pre>
+        </div>
       </div>
       <div class="copy-notification" id="copy-notification_1ce463be">
         Copied!
@@ -236,8 +246,10 @@
     <p>Carddown already uses an application config file located within the project directory. However, users can create their own config file.<br/></p>
     <p>For user convenience, a user config file containing the default settings can automatically be generated, at a location that is determined platform independently, by running the following command:<br/></p>
     <div id="code-div_91aace51" class="multiline">
-      <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_91aace51">carddown-config --make-usr </code></pre>
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_91aace51">carddown-config --make-usr </code></pre>
+        </div>
       </div>
       <div class="copy-notification" id="copy-notification_91aace51">
         Copied!
@@ -249,8 +261,10 @@
     <h3 id="h-94a728fb">Undoing the Configurations made</h3>
     <p>If you want to restore the defaults, you can either run<br/><code class="inline">carddown-config --make-usr</code> again and choose to overwrite the existing config file to bring it back to its defaults or remove the user config file entirely by running:<br/></p>
     <div id="code-div_66428904" class="multiline">
-      <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_66428904">carddown-config --rm-usr</code></pre>
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_66428904">carddown-config --rm-usr</code></pre>
+        </div>
       </div>
       <div class="copy-notification" id="copy-notification_66428904">
         Copied!
@@ -262,8 +276,10 @@
     <p>When using carddown to render a Markdown file, you can use the <code class="inline">--config [CONFIG_PATH]</code> parameter to use a custom config file and apply it just to this specific markdown file.<br/></p>
     <p>Example:<br/></p>
     <div id="code-div_384033fa" class="multiline">
-      <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_384033fa">carddown --config [CONFIG_PATH] [MARKDOWN_PATH] [OUTPUT_PATH?]</code></pre>
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_384033fa">carddown --config [CONFIG_PATH] [MARKDOWN_PATH] [OUTPUT_PATH?]</code></pre>
+        </div>
       </div>
       <div class="copy-notification" id="copy-notification_384033fa">
         Copied!
@@ -272,8 +288,10 @@
     </div>
     <p>To create such a config file easily, there is a command which can generate a default config file at any given location:<br/></p>
     <div id="code-div_96cd898a" class="multiline">
-      <div class="code-block-container">
-        <pre><code name="multiline-code-block" id="code-block_96cd898a">carddown-config --make [PATH?]</code></pre>
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_96cd898a">carddown-config --make [PATH?]</code></pre>
+        </div>
       </div>
       <div class="copy-notification" id="copy-notification_96cd898a">
         Copied!
@@ -359,8 +377,8 @@
 
             .multiline {
                 margin: 0%;
-                border-radius: 2px;
-                padding-left: 1.5%;
+                border-radius: 1px;
+    
                 padding-top: 0.01em;
                 padding-bottom: 0.01em;
                 position: relative;
@@ -370,7 +388,28 @@
                 box-sizing: border-box;
                 margin-top: 2%;
                 margin-bottom: 2%;
+                padding-right: 40px;
             }
+
+            .markdown-body .code-block-scrollbar-container {
+                overflow-x: auto;
+            }
+
+
+            .markdown-body .code-block-container {
+                margin-left: 20px;
+            }
+
+
+
+            .markdown-body code,
+            .markdown-body kbd,
+            .markdown-body pre,
+            .markdown-body samp {
+              font-family: monospace;
+              font-size: 1em;
+            }
+
 
             .btn-copy {
                 position: absolute;
@@ -531,19 +570,6 @@
 
 
 
-            .markdown-body code,
-            .markdown-body kbd,
-            .markdown-body pre,
-            .markdown-body samp {
-              font-family: monospace;
-              font-size: 1em;
-            }
-
-            .markdown-body .code-block-container {
-                overflow-x: auto;
-                margin-right: 40px;
-
-            }
 
             .markdown-body hr {
                 box-sizing: content-box;
