@@ -220,6 +220,7 @@ class HtmlFile:
 <html lang="{self.lang}">
     <head>
         <meta charset="{self.charset}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{self.title}</title>
         
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
