@@ -28,6 +28,11 @@
             <li><a href="#h-a7739d4c" class="toc-link">Blockquotes</a></li>
             <li><a href="#h-98452660" class="toc-link">Lists</a></li>
             <li><a href="#h-75f9fcd7" class="toc-link">Code</a></li>
+            <ul class="toc-ul">
+              <li><a href="#h-d9b25e67" class="toc-link">Inline Code</a></li>
+              <li><a href="#h-ab3e496d" class="toc-link">Indented code blocks</a></li>
+              <li><a href="#h-aa130078" class="toc-link">Block code "fences"</a></li>
+            </ul>
             <li><a href="#h-2a5eab48" class="toc-link">Tables</a></li>
             <li><a href="#h-ec91c4db" class="toc-link">Links</a></li>
             <ul class="toc-ul">
@@ -253,8 +258,20 @@ _This text tests **nested** fontstyles_</code></pre>
       <li>Very easy!</li>
     </ul>
     <h2 id="h-75f9fcd7">Code</h2>
+    <h3 id="h-d9b25e67">Inline Code</h3>
+    <div id="code-div_10e007b3" class="multiline">
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_10e007b3">Inline `code`</code></pre>
+        </div>
+      </div>
+      <div class="copy-notification" id="copy-notification_10e007b3">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_10e007b3" data-clipboard-target="#code-block_10e007b3">Copy</button>
+    </div>
     <p>Inline <code class="inline">code</code><br/></p>
-    <p><strong>Indented code blocks</strong><br/></p>
+    <h3 id="h-ab3e496d">Indented code blocks</h3>
     <div id="code-div_0602a286" class="multiline">
       <div class="code-block-scrollbar-container">
         <div class="code-block-container">
@@ -285,7 +302,7 @@ This is normal text.</code></pre>
       <button class="btn-copy" id="copy-button_07db36f7" data-clipboard-target="#code-block_07db36f7">Copy</button>
     </div>
     <p>This is normal text.<br/></p>
-    <p><strong>Block code "fences"</strong><br/></p>
+    <h3 id="h-aa130078">Block code "fences"</h3>
     <div id="code-div_9a679d8a" class="multiline">
       <div class="code-block-scrollbar-container">
         <div class="code-block-container">
@@ -310,7 +327,8 @@ This is normal text.</code></pre>
       </div>
       <button class="btn-copy" id="copy-button_27cccf7a" data-clipboard-target="#code-block_27cccf7a">Copy</button>
     </div>
-    <p>Syntax highlighting<br/></p>
+    <h4 id="h-2aad5587">Syntax highlighting</h4>
+    <p>Specify the language after the code block opening fences, 'auto' is also accepted.<br/></p>
     <div id="code-div_96e04923" class="multiline">
       <div class="code-block-scrollbar-container">
         <div class="code-block-container">
@@ -391,6 +409,48 @@ console.log(foo(5));</code></pre>
           <td style="text-align:left">Codecademy Hoodie</td>
           <td style="text-align:center">False</td>
           <td style="text-align:right">42.99</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>The exact width of the columns does not need to be consistent, only the number of columns does.<br/></p>
+    <div id="code-div_afae10a2" class="multiline">
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_afae10a2">| Column A| Column B   | Column C   |
+| -------- | ------------ | ---------------- |
+| 1            | 7  |   13             |
+|  3        |9   |   15             |
+| 5            | 11 |  17             |</code></pre>
+        </div>
+      </div>
+      <div class="copy-notification" id="copy-notification_afae10a2">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_afae10a2" data-clipboard-target="#code-block_afae10a2">Copy</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:left"><b>Column A</b></th>
+          <th style="text-align:left"><b>Column B</b></th>
+          <th style="text-align:left"><b>Column C</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:left">1</td>
+          <td style="text-align:left">7</td>
+          <td style="text-align:left">13</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">3</td>
+          <td style="text-align:left">9</td>
+          <td style="text-align:left">15</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">5</td>
+          <td style="text-align:left">11</td>
+          <td style="text-align:left">17</td>
         </tr>
       </tbody>
     </table>
@@ -739,7 +799,7 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
             .markdown-body pre,
             .markdown-body samp {
               font-family: monospace;
-              font-size: 1em;
+              font-size: 0.95em;
             }
 
 
@@ -1226,13 +1286,7 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
                 background-color: #0d1117;
             }
 
-            .markdown-body code,
-            .markdown-body kbd,
-            .markdown-body pre,
-            .markdown-body samp {
-                font-family: monospace;
-                font-size: 1em;
-            }
+
 
             .markdown-body figure {
                 margin: 1em 40px;
@@ -1449,6 +1503,16 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
                     .markdown-body {
                         width: 95%;
  
+                    }
+
+                    /* Adjust font size for code blocks on smartphones */
+                    .markdown-body pre {
+                        font-size: 14px; /* Adjust the font size as needed */
+                    }
+
+                    /* Adjust font size for tables on smartphones */
+                    .markdown-body table {
+                        font-size: 14px; /* Adjust the font size as needed */
                     }
   
                 }

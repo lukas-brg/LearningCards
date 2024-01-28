@@ -408,7 +408,7 @@
             .markdown-body pre,
             .markdown-body samp {
               font-family: monospace;
-              font-size: 1em;
+              font-size: 0.95em;
             }
 
 
@@ -895,13 +895,7 @@
                 background-color: #0d1117;
             }
 
-            .markdown-body code,
-            .markdown-body kbd,
-            .markdown-body pre,
-            .markdown-body samp {
-                font-family: monospace;
-                font-size: 1em;
-            }
+
 
             .markdown-body figure {
                 margin: 1em 40px;
@@ -1118,6 +1112,16 @@
                     .markdown-body {
                         width: 95%;
  
+                    }
+
+                    /* Adjust font size for code blocks on smartphones */
+                    .markdown-body pre {
+                        font-size: 14px; /* Adjust the font size as needed */
+                    }
+
+                    /* Adjust font size for tables on smartphones */
+                    .markdown-body table {
+                        font-size: 14px; /* Adjust the font size as needed */
                     }
   
                 }

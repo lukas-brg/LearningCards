@@ -173,9 +173,15 @@ Start numbering with offset:
 
 ## Code
 
+### Inline Code
+
+```
+Inline `code`
+```
+
 Inline `code`
 
-**Indented code blocks**
+### Indented code blocks
 
 
 
@@ -196,7 +202,9 @@ Every line that is indented by 4 spaces or more will be displayed as a code bloc
 
 This is normal text.
 
-**Block code "fences"**
+### Block code "fences"
+
+
 
 ```
   ```
@@ -210,7 +218,9 @@ Sample text here...
 
 
 
-Syntax highlighting
+#### Syntax highlighting
+
+Specify the language after the code block opening fences, 'auto' is also accepted.
 
 ```
   ```js
@@ -245,6 +255,25 @@ console.log(foo(5));
 | True             | SQL Hat           |   True             | 23.99           |
 | True             | Codecademy Tee    |  False             | 19.99           |
 | False            | Codecademy Hoodie |  False             | 42.99           |
+
+
+The exact width of the columns does not need to be consistent, only the number of columns does.
+
+```
+| Column A| Column B   | Column C   |
+| -------- | ------------ | ---------------- |
+| 1            | 7  |   13             |
+|  3        |9   |   15             |
+| 5            | 11 |  17             |
+```
+
+
+| Column A| Column B   | Column C   |
+| -------- | ------------ | ---------------- |
+| 1            | 7  |   13             |
+|  3        |9   |   15             |
+| 5            | 11 |  17             |
+
 
 ## Links
 

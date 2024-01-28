@@ -210,6 +210,16 @@ def alignment_css(margin, align):
             width: 95%;
  
         }}
+
+        /* Adjust font size for code blocks on smartphones */
+        .{config.document.body_class} pre {{
+            font-size: 14px; /* Adjust the font size as needed */
+        }}
+
+        /* Adjust font size for tables on smartphones */
+        .{config.document.body_class} table {{
+            font-size: 14px; /* Adjust the font size as needed */
+        }}
   
     }}
 
