@@ -237,7 +237,7 @@ carddown-config --rm-usr
 
 ### Using a Custom Configuration to Render a Single File
 
-When using carddown to reder a Markdown file, you can use the `--config [CONFIG_PATH]` parameter to use a custom config file and apply it just to this specific markdown file.
+When using carddown to render a Markdown file, you can use the `--config [CONFIG_PATH]` parameter to use a custom config file and apply it just to this specific markdown file.
 
 Example:
 
