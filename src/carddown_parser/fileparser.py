@@ -44,25 +44,16 @@ class FileParser:
 
 
     def make_heading_ids(self, root_node: HtmlNode):
-       
-        hashes = {}
-        
+        is_heading_tag = lambda tag : tag in [f"h{i}" for i in range(1,7)]
         headings = []
         
         for node in root_node:
-            tag = node.tag
-    
-            if tag in [f"h{i}" for i in range(1,7)]:
+           
+            if is_heading_tag(node.tag):
 
                 id = node.properties.get("id", node.get_inner_text())
-                hash = make_id_hash("h", clean_string(id), limit_len=8)
-                
-                if hash in hashes:
-                    hashes[hash] += 1
-                    hash += str(hashes[hash])
-                else:
-                    hashes[hash] = 0
-                
+                hash = make_id_hash("h", clean_string(id), limit_len=8, ensure_unique=True)
+               
                 id = f"h-{hash}"
                 node.properties["id"] = id
 
