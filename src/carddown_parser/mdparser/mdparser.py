@@ -143,12 +143,12 @@ def handle_tasklist_item(line: str, parent: HtmlNode):
     id=f"task_list_checkbox-{hash}" 
     line = line.strip()
     
+    check_box = SelfClosingTag("input", type="checkbox", id=id, autocomplete="off")
     if is_checked(line):
-        check_box = SelfClosingTag("input", "checked", type="checkbox", id=id, autocomplete="off")
         line = line.replace(CHECKED_PATTERN, "").strip()
+        check_box.boolean_attributes.add("checked")
         
     else:
-        check_box = SelfClosingTag("input", type="checkbox", id=id, autocomplete="off")
         line = line.replace(UNCHECKED_PATTERN, "").strip()
     
     if config.mdparser.checkbox_disabled:

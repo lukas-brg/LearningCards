@@ -107,16 +107,13 @@ for (let card of document.getElementsByClassName("card")) {
 function multiOnClick(btn) {
     let form = btn.parentElement;
 
-    let choices = form.querySelectorAll(".choice");
+    let choices = Array.from(form.querySelectorAll(".choice"));
     let content = form.querySelector(".multicontent");
 
     btn.classList.toggle("active");
     let clicked = btn.classList.contains("active");
 
-    let noneSelected = true;
-    for (let item of choices) {
-        if (item.checked) noneSelected = false;
-    }
+    let noneSelected = !choices.some(checkbox => checkbox.checked);
 
     if (noneSelected && clicked) {
         btn.classList.toggle("active");

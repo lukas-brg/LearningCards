@@ -22,6 +22,7 @@ class HtmlNode:
         self.add_children(*children) 
         self.properties = properties
         self.parent: HtmlNode = None
+        self.boolean_attributes: set[str] = set()
 
 
     def __iter__(self):
@@ -121,8 +122,11 @@ class HtmlNode:
         return s
 
 
+    def _boolean_attr_str(self) -> str:
+        return "".join(" " + attr for attr in self.boolean_attributes)
+
     def __str__(self, depth=1, inline=False):
-        start_tag = f"<{self.tag}{self._props_str()}>"
+        start_tag = f"<{self.tag}{self._props_str()}{self._boolean_attr_str()}>"
         end_tag = f"</{self.tag}>"
         indentation = ' ' * config.document.indent_html * depth
 
@@ -140,13 +144,12 @@ class SelfClosingTag(HtmlNode):
     def __str__(self, depth=0, inline=False):
         
         indentation = ' '* depth * config.document.indent_html 
-        children_str = " ".join(str(c) for c in self.children)
-        children_str = " " + children_str if len(children_str.strip()) > 0 else ""
+        tag = f"<{self.tag}{self._props_str()}{self._boolean_attr_str()}/>"
         
         if inline:
-            return f"<{self.tag}{self._props_str()}{children_str}/>"
+            return tag
 
-        return f"{indentation}<{self.tag}{self._props_str()}{children_str}/>"
+        return indentation + tag
 
 
 class TextNode(HtmlNode):
