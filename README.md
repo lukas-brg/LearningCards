@@ -6,6 +6,8 @@ It is able to render arbitrary markdown files that may or may not contain any le
 
 An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements.
 
+To take a look at carddown's Markdown capabilities you can download
+ [examples/markdown_test.html](./examples/markdown_test.html) and open it in a web browser. It is an auto-generated output file that showcases the supported Markdown syntax.
 
 <br/>
 
