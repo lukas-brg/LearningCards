@@ -8,8 +8,11 @@ from ..config import get_config
 
 config = get_config()
 
-def clean_string(string):
-    return re.sub(r'[^a-zA-Z0-9]', '', string).lower()
+def sanitize_string(string):
+    string = string.strip().lower()
+    string = re.sub(r"[^a-z0-9\s]", "", string)
+    string = re.sub(r"\s+", "-", string)
+    return string
 
 
 

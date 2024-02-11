@@ -211,14 +211,14 @@ def alignment_css(margin, align):
  
         }}
 
-        /* Adjust font size for code blocks on smartphones */
+        
         .{config.document.body_class} pre {{
-            font-size: 14px; /* Adjust the font size as needed */
+            font-size: 14px; 
         }}
 
-        /* Adjust font size for tables on smartphones */
+       
         .{config.document.body_class} table {{
-            font-size: 14px; /* Adjust the font size as needed */
+            font-size: 14px; 
         }}
   
     }}

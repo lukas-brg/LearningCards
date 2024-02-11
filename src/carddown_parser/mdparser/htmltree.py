@@ -15,12 +15,12 @@ HTML_WHITESPACE = "&nbsp;"
 
 class HtmlNode:
     
-    def __init__(self, tag: str, *children: HtmlNode|str, **properties: str):
+    def __init__(self, tag: str, *children: HtmlNode|str, **attributes: str):
     
         self.tag = tag
         self.children: list[HtmlNode] = []
         self.add_children(*children) 
-        self.properties = properties
+        self.attributes = attributes
         self.parent: HtmlNode = None
         self.boolean_attributes: set[str] = set()
 
@@ -65,21 +65,21 @@ class HtmlNode:
                 self.children.append(c)
     
     
-    def search_parents_by_property(self, tag=None, substring_search=True, find_all=True, **props) -> Generator[HtmlNode]:
+    def search_parents_by_attribute(self, tag=None, substring_search=True, find_all=True, **attrs) -> Generator[HtmlNode]:
         current_node = self
         
         while current_node is not None:
 
-            for prop, val in props.items():
-                if prop in current_node.properties and (tag is None or current_node.tag == tag):
-                    current_node_prop = current_node.properties[prop]
-                    if current_node_prop == val:
+            for attr, val in attrs.items():
+                if attr in current_node.attributes and (tag is None or current_node.tag == tag):
+                    current_node_attr = current_node.attributes[attr]
+                    if current_node_attr == val:
                         yield current_node
     
                         if not find_all:
                             return
                     
-                    elif substring_search and val in current_node_prop.lower():
+                    elif substring_search and val in current_node_attr.lower():
                         yield current_node
                         
                         if not find_all:
@@ -89,15 +89,15 @@ class HtmlNode:
             
  
 
-    def search_by_property(self, prop: str, value: str, substring_search=True, find_all=True) -> Generator[HtmlNode]:
+    def search_by_attribute(self, attr: str, value: str, substring_search=True, find_all=True) -> Generator[HtmlNode]:
         
         for node in self:
-            if prop in node.properties:
-                if node.properties[prop] == value:
+            if attr in node.attributes:
+                if node.attributes[attr] == value:
                     yield node
                     if not find_all:
                         return
-                elif substring_search and value in node.properties[prop]:
+                elif substring_search and value in node.attributes[attr]:
                     yield node
                     if not find_all:
                         return
@@ -113,9 +113,9 @@ class HtmlNode:
         return self.get_inner_text().strip() != ""
 
 
-    def _props_str(self) -> str:
+    def _attr_str(self) -> str:
         s = ""
-        for key, value in self.properties.items():
+        for key, value in self.attributes.items():
             if key.startswith("set_"):  # Reserved keywords like 'class' are prefixed with 'set_'
                 key = key[4:]  # e.g. HtmlNode("div", set_class="content")
             s += f' {key}="{value}"'
@@ -126,7 +126,7 @@ class HtmlNode:
         return "".join(" " + attr for attr in self.boolean_attributes)
 
     def __str__(self, depth=1, inline=False):
-        start_tag = f"<{self.tag}{self._props_str()}{self._boolean_attr_str()}>"
+        start_tag = f"<{self.tag}{self._attr_str()}{self._boolean_attr_str()}>"
         end_tag = f"</{self.tag}>"
         indentation = ' ' * config.document.indent_html * depth
 
@@ -144,7 +144,7 @@ class SelfClosingTag(HtmlNode):
     def __str__(self, depth=0, inline=False):
         
         indentation = ' '* depth * config.document.indent_html 
-        tag = f"<{self.tag}{self._props_str()}{self._boolean_attr_str()}/>"
+        tag = f"<{self.tag}{self._attr_str()}{self._boolean_attr_str()}/>"
         
         if inline:
             return tag
@@ -161,7 +161,7 @@ class TextNode(HtmlNode):
         self.tag = "text"
         self.children = []
         self.text: str = text
-        self.properties = {}
+        self.attributes = {}
   
         
     def __str__(self, depth=0, inline=False): 

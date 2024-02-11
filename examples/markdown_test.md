@@ -126,6 +126,7 @@ _This text tests **nested** fontstyles_
 1. You can use sequential numbers...
 1. ...or keep all the numbers as `1.`
 ```
+
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
 3. Integer molestie lorem at massa
@@ -293,19 +294,31 @@ Autoconverted link https://github.com/nodeca/pica
 Autoconverted link https://github.com/nodeca/pica 
 
 
-### Linking to headings
+### Linking to Headings
 
-You can also link to headings of this document. For this to work all the alphanumeric characters that make up the heading text need to be present in the link. The links are also not case sensitive.
+You can create links to headings within this document using the following rules:
+
+- Remove all non-alphanumeric characters from the heading text.
+- Replace single and consecutive spaces with one dash `-`.
+- Convert the text to all-lowercase.
+
+If duplicate headings exist and you want to link to them, append `-[COUNT]` to the end of the link, where `COUNT=1` refers to the first duplicate.
+
 
 ```
-[Link to first H1 Heading](#h1heading)
+[Link to first H1 Heading](#h1-heading)
 
-[Another link to first H1 Heading](#h1-heading)
+[Link to second H1 Heading](#h1-heading-1)
+
+[Link to this section's heading](#linking-to-headings)
 ```
 
-[Link to first H1 Heading](#h1heading)
 
-[Another link to first H1 Heading](#h1-heading)
+[Link to first H1 Heading](#h1-heading)
+
+[Link to second H1 Heading](#h1-heading-1)
+
+[Link to this section's heading](#linking-to-headings)
 
 ### Custom IDs
 
@@ -474,10 +487,9 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
 
 
 
-# H1 Heading
+# h1 Heading
 
-This heading's purpose is to test whether the links in the table of contents still work with duplicate headings. Links to "H1 Heading" will only link to the first one, however.
-If you want to link to this specific heading, you need to use a custom id.
+This heading's purpose is to test whether the links in the table of contents still work with duplicate headings and to demonstrate how linking to duplicate headings works.
 
 
 

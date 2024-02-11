@@ -69,7 +69,7 @@ def test_link_token():
     assert len(tokens) == 1
     token = tokens[0]
     link = token.to_html()
-    assert link.properties["href"] == "https://www.google.de"
+    assert link.attributes["href"] == "https://www.google.de"
     assert token.start == 0
     assert token.content_start == 1
     assert token.content_end == 5

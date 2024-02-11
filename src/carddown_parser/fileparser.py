@@ -2,7 +2,7 @@ import random, json, re
 from .mdparser import parse_markdown
 from .mdparser.htmltree import  SelfClosingTag, HtmlNode, TextNode
 
-from .mdparser.utils import make_id_hash, clean_string
+from .mdparser.utils import make_id_hash, sanitize_string
 from .cards import LearningCard
 from .errors import try_read_file, show_warning_msg
 from .config import get_config, get_locals
@@ -46,21 +46,25 @@ class FileParser:
     def make_heading_ids(self, root_node: HtmlNode):
         is_heading_tag = lambda tag : tag in [f"h{i}" for i in range(1,7)]
         headings = []
-        
+        heading_ids = {}
         for node in root_node:
            
             if is_heading_tag(node.tag):
+                
+                if "id" not in node.attributes:
+                    id = sanitize_string(node.get_inner_text())
+                    count = heading_ids.setdefault(id, 0)
+                    heading_ids[id] += 1
+                    if count != 0:
+                        id += f"-{count}"
 
-                id = node.properties.get("id", node.get_inner_text())
-                hash = make_id_hash("h", clean_string(id), limit_len=8, ensure_unique=True)
-               
-                id = f"h-{hash}"
-                node.properties["id"] = id
+                    node.attributes["id"] = id
+
 
                 headings.append(node)
         
         # The headings are stored for efficiency as they are needed to make the table of contents
-        self.headings = headings
+        self.headings: list[HtmlNode] = headings
             
     
 
@@ -98,10 +102,10 @@ class FileParser:
     
             if tag in headings:
     
-                if in_card_back := any(node.search_parents_by_property(set_class="back")):
+                if in_card_back := any(node.search_parents_by_attribute(set_class="back")):
                     in_card = True
                 else:
-                    in_card = any(node.search_parents_by_property(set_class="card"))
+                    in_card = any(node.search_parents_by_attribute(set_class="card"))
 
                 if in_card and not config.document.toc_include_cards:
                     continue
@@ -116,7 +120,7 @@ class FileParser:
                     continue
                 
                 
-                href = f"#{node.properties['id']}"
+                href = f"#{node.attributes['id']}"
                 
                 if in_card: 
                     if heading_lvl == 1:
@@ -203,8 +207,8 @@ class FileParser:
         else:
             root_node = HtmlNode("root", *self.html)
 
-        refs = root_node.search_by_property("set_class", "footnote-ref")
-        footnote_divs = list(root_node.search_by_property("set_class", "footnotes-div"))
+        refs = root_node.search_by_attribute("set_class", "footnote-ref")
+        footnote_divs = list(root_node.search_by_attribute("set_class", "footnotes-div"))
         
 
         for footnote_div in footnote_divs:
@@ -215,12 +219,12 @@ class FileParser:
         display_div = HtmlNode("div", set_class="footnotes-div")
 
         for count, fn_ref in enumerate(refs, 1):
-            fn_text = fn_ref.properties["id"].replace("ref-", "")
+            fn_text = fn_ref.attributes["id"].replace("ref-", "")
            
             fn_ref.children[0].replace_in_tree(TextNode(f"[{count}]"))
             fn_id = f"footnote-{fn_text}"
 
-            fn = next(div_container.search_by_property("id", fn_id, substring_search=False, find_all=False))
+            fn = next(div_container.search_by_attribute("id", fn_id, substring_search=False, find_all=False))
             fn_container = fn.parent.parent
             fn.children[0].replace_in_tree(f"{count}.")
             display_div.add_children(fn_container)

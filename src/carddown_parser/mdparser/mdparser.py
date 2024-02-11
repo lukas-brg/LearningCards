@@ -152,7 +152,7 @@ def handle_tasklist_item(line: str, parent: HtmlNode):
         line = line.replace(UNCHECKED_PATTERN, "").strip()
     
     if config.mdparser.checkbox_disabled:
-        check_box.properties["disabled"] = "disabled"
+        check_box.attributes["disabled"] = "disabled"
     
     line = parse_inline(line)
     label = HtmlNode("label", *line, set_for=id)
@@ -228,12 +228,12 @@ def make_code_block_elem(code_lines: list[str], lang: str):
 
     id_hash = make_id_hash(code.get_inner_text(), limit_len=8)
 
-    code.properties["id"] = "code-block_" + id_hash
+    code.attributes["id"] = "code-block_" + id_hash
     
     
     # The btn text is supposed to get replaced by an icon in js
     copy_btn = HtmlNode("button", "Copy", set_class="btn-copy", id=f"copy-button_{id_hash}")
-    copy_btn.properties["data-clipboard-target"] = f"#{code.properties['id']}"
+    copy_btn.attributes["data-clipboard-target"] = f"#{code.attributes['id']}"
     copy_notification = HtmlNode("div", get_locals()["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")
     code_container = HtmlNode("div", HtmlNode("pre", code), set_class="code-block-container")
     scrollbar_container = HtmlNode("div", code_container, set_class="code-block-scrollbar-container")
@@ -387,7 +387,7 @@ def parse_heading(line: str) -> HtmlNode:
     
     if id_match := re.search(HEADING_ID_PATTERN, line):
         id = id_match.group(1)
-        heading.properties["id"] = id
+        heading.attributes["id"] = id
         line = re.sub(HEADING_ID_PATTERN, "", line)
 
     inline_elems = parse_inline(line)

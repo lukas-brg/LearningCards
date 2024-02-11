@@ -6,7 +6,7 @@ from carddown_parser.mdparser.htmltree import HtmlNode
 from ..config import get_config
 
 from .htmltree import HtmlNode, SelfClosingTag, TextNode
-from .utils import find_subclasses, make_id_hash, clean_string
+from .utils import find_subclasses, make_id_hash, sanitize_string
 
 
 with open(os.path.join(os.path.dirname(__file__), "emojis.json"), encoding="utf-8") as f:
@@ -40,7 +40,7 @@ class InlineToken(ABC):
 
     no_content = False
 
-    properties = {}
+    attributes = {}
 
     def __init__(self, start, content_start: int, content_end: int, content: str, end: int, match: Match):
         self.start = start
@@ -82,7 +82,7 @@ class InlineToken(ABC):
       
             
     def to_html(self) -> HtmlNode:
-        return HtmlNode(self.tag, **self.properties) if not self.self_closing else SelfClosingTag(self.tag, **self.properties)
+        return HtmlNode(self.tag, **self.attributes) if not self.self_closing else SelfClosingTag(self.tag, **self.attributes)
     
 
 
@@ -105,10 +105,9 @@ class LinkToken(InlineToken):
             self.content_start, self.content_end = self.match.span(2)
             self.parse_content = False
 
-        if url.startswith("#"):
-            url = "#h-" + make_id_hash("h", clean_string(url[1:]), limit_len=8, ensure_unique=False)
+     
 
-        elif not url.startswith("http"):
+        if not url.startswith("#") and not url.startswith("http"):
             url = "http://" + url
         
         
@@ -177,7 +176,7 @@ class CodeToken(InlineToken):
     def to_html(self) -> HtmlNode:
         if config.mdparser.prettyprint_inline_code:
             return HtmlNode(self.tag, set_class="prettyprint inline")
-        return HtmlNode(self.tag, **self.properties, set_class="inline")
+        return HtmlNode(self.tag, **self.attributes, set_class="inline")
 
 
 class PrettyPrintCodeToken(InlineToken):
@@ -185,7 +184,7 @@ class PrettyPrintCodeToken(InlineToken):
     patterns = [r"```([^`]+)```"]
     parse_content = False
 
-    properties = {
+    attributes = {
         "id" : "inline",
         "set_class" : "prettyprint inline"
     }
@@ -229,7 +228,7 @@ class LatexToken(InlineToken):
     parse_content = False
     tag = "span"
 
-    properties = {
+    attributes = {
         "set_class" : "latex-equation"
     }
 
