@@ -107,7 +107,7 @@ The Learning cards are split into a front side and a back side. The front side c
 
 The learning card specific syntax uses three types of tags, all of which are wrapped in `{CURLY_BRACES}`:
 
-1. Every card starts with a start tag, that is at the end of an H1 heading, which serves as the card title.
+1. Every card starts with an h1 heading, that ends with the card's start tag
    - The exact tag depends on the learning card type
 2. The `{BACK}` tag marks the point where the back side begins.
    - If this tag is omitted, only the H1 heading makes up the front side, the rest will be on the back side
