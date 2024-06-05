@@ -16,16 +16,6 @@ def get_static_folder():
     return os.path.join(PACKAGE_DIR, config.document.static_folder) if not os.path.isabs(config.document.static_folder) else config.document.static_folder
 
 
-def get_next_filename(filepath):
-    filename, file_extension = os.path.splitext(filepath)
-    base_filename = filename
-    count = 1
-    while os.path.exists(f"{base_filename}({count}){file_extension}"):
-        count += 1
-    return f"{base_filename}({count}){file_extension}"
-
-
-
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -176,55 +166,6 @@ def export(args):
     #     pdfkit.from_string(str(html), output_file)
 
 
-
-
-def alignment_css(margin, align):
-    width = 100 - margin
-    width_fhd = int(width / 100 * 1920)
-
-    return f"""
-    .{config.document.body_class} {{ 
-        width: {width}%;    
-
-        margin-right: auto;
-        margin-left: {'auto' if align == "center" else '15px'};
-    }}
-    
-    @media only screen and (max-width: {width_fhd}px) {{
-        .{config.document.body_class} {{
-            width: 92%;
-        }}
-    }}
-    
-    @media only screen and (min-width: {width_fhd+1}px) and (max-width: 1920px){{
-        .{config.document.body_class} {{
-            width: {width_fhd}px;
-            max-width: 92%;
-      
-        }}
-    }}
-
-    @media only screen 
-    and (max-width: 480px) and (orientation: portrait) {{
-        .{config.document.body_class} {{
-            width: 95%;
- 
-        }}
-
-        
-        .{config.document.body_class} pre {{
-            font-size: 14px; 
-        }}
-
-       
-        .{config.document.body_class} table {{
-            font-size: 14px; 
-        }}
-  
-    }}
-
-    """
-
     
 
 def to_html(args):
@@ -241,7 +182,6 @@ def to_html(args):
     if css_path := args.css:
         styles.append(css_path)
     
-    align_style = alignment_css(config.document.margin, config.document.align)
 
     if config.document.standalone is True:
         static_folder = get_static_folder()
@@ -252,7 +192,8 @@ def to_html(args):
     else:
         mathjax_include = '<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>'
         
-    html = HtmlFile(scripts, style_files=styles, title=title, style_str=align_style, lang=config.document.lang, head_str=mathjax_include)
+    html = HtmlFile(scripts, style_files=styles, title=title, lang=config.document.lang, head_str=mathjax_include)
+    html.set_alignment(config.document.margin, config.document.align)
         
 
     if args.cards:

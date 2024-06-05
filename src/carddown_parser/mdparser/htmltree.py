@@ -189,6 +189,7 @@ class HtmlFile:
         self.script_str = script_str
         self.charset = charset
         self.lang = lang
+        self._align_str = ""
 
     def __str__(self):    
         return self.create_document()
@@ -198,13 +199,62 @@ class HtmlFile:
         with open(filepath, 'w') as f:
             f.write(str(self))
 
+
+    def set_alignment(self, margin, align):
+        width = 100 - margin
+        width_fhd = int(width / 100 * 1920)
+
+        self._align_str = f"""
+        .{config.document.body_class} {{ 
+            width: {width}%;    
+
+            margin-right: auto;
+            margin-left: {'auto' if align == "center" else '15px'};
+        }}
+        
+        @media only screen and (max-width: {width_fhd}px) {{
+            .{config.document.body_class} {{
+                width: 92%;
+            }}
+        }}
+        
+        @media only screen and (min-width: {width_fhd+1}px) and (max-width: 1920px){{
+            .{config.document.body_class} {{
+                width: {width_fhd}px;
+                max-width: 92%;
+        
+            }}
+        }}
+
+        @media only screen 
+        and (max-width: 480px) and (orientation: portrait) {{
+            .{config.document.body_class} {{
+                width: 95%;
+    
+            }}
+
+            
+            .{config.document.body_class} pre {{
+                font-size: 14px; 
+            }}
+
+        
+            .{config.document.body_class} table {{
+                font-size: 14px; 
+            }}
+    
+        }}
+
+        """
+
     def create_document(self) -> str:
         style = "\n".join(try_read_file(style_path) for style_path in self.style_files)
         script = "\n".join(try_read_file(script_path) for script_path in self.script_files)
-        
+
         style_section = f"""
     <style>
 {textwrap.indent(style, ' ' * 12)}
+{textwrap.indent(self._align_str, ' ' * 12)}
 {textwrap.indent(self.style_str, ' ' * 12)}
     </style>
 """
@@ -238,3 +288,6 @@ class HtmlFile:
 
 </html>
 """
+    
+
+
