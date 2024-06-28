@@ -216,7 +216,7 @@ def parse_list(lines: list[str], start: int) -> tuple[HtmlNode, int]:
 
 
 
-def make_code_block_elem(code_lines: list[str], lang: str):
+def make_codeblock_elem(code_lines: list[str], lang: str):
     name="multiline-code-block"
     if config.mdparser.prettyprint_multiline_code or lang != "":
         lang_str = f" lang-{lang}" if lang else ""
@@ -257,7 +257,7 @@ def parse_codeblock_fenced(lines: list[str], start: int) -> tuple[HtmlNode, int]
     if end == len(lines):
         show_warning_msg(f"Unclosed multiline code detected. (line {start+1}-{end})")
     
-    code_div = make_code_block_elem(code_lines, lang)
+    code_div = make_codeblock_elem(code_lines, lang)
    
     return code_div, end+1
 
@@ -271,7 +271,7 @@ def parse_codeblock_indented(lines: list[str], start: int) -> tuple[HtmlNode, in
     if end == len(lines):
         show_warning_msg(f"Unclosed multiline code detected. (line {start+1}-{end})")
     
-    code_div = make_code_block_elem(code_lines, lang="")
+    code_div = make_codeblock_elem(code_lines, lang="")
    
     return code_div, end
 
@@ -399,7 +399,7 @@ def get_blockquote_depth(line: str) -> int:
     return len(line.strip()) - len(line.strip().lstrip(">"))
 
 
-def parse_block_quote(lines: list[str], start: int, depth=1) -> tuple[HtmlNode, int]:
+def parse_blockquote(lines: list[str], start: int, depth=1) -> tuple[HtmlNode, int]:
     blockquote = HtmlNode("blockquote")
     i = start
     text = ""
@@ -411,7 +411,7 @@ def parse_block_quote(lines: list[str], start: int, depth=1) -> tuple[HtmlNode, 
         if not is_block_quote(line) or line_depth < depth:
             break
         if line_depth > depth:
-            new_quote, i = parse_block_quote(lines, i, line_depth)
+            new_quote, i = parse_blockquote(lines, i, line_depth)
             paragraph = HtmlNode("p", *parse_markdown(text, paragraph=False))
             blockquote.add_children(paragraph, new_quote)
             text = ""
@@ -563,7 +563,7 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             parsed_elems.append(dl)
 
         elif is_block_quote(line):
-            quote, i = parse_blockrule(parse_func=parse_block_quote, lines=lines, start=i, depth=get_blockquote_depth(line))
+            quote, i = parse_blockrule(parse_func=parse_blockquote, lines=lines, start=i, depth=get_blockquote_depth(line))
             div = HtmlNode("div", quote, set_class="blockquote-div")
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(div)

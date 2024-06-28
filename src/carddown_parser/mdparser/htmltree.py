@@ -21,7 +21,7 @@ class HtmlNode:
         self.children: list[HtmlNode] = []
         self.add_children(*children) 
         self.attributes = attributes
-        self.parent: HtmlNode = None
+        self.parent: HtmlNode|None = None
         self.boolean_attributes: set[str] = set()
 
 
@@ -191,16 +191,13 @@ class HtmlFile:
         self.lang = lang
         self._align_str = ""
 
-    def __str__(self):    
-        return self.create_document()
-    
 
     def save(self, filepath: str):
         with open(filepath, 'w') as f:
             f.write(str(self))
 
 
-    def set_alignment(self, margin, align):
+    def set_alignment(self, margin: int, align: str):
         width = 100 - margin
         width_fhd = int(width / 100 * 1920)
 
@@ -247,7 +244,7 @@ class HtmlFile:
 
         """
 
-    def create_document(self) -> str:
+    def __str__(self) -> str:
         style = "\n".join(try_read_file(style_path) for style_path in self.style_files)
         script = "\n".join(try_read_file(script_path) for script_path in self.script_files)
 
@@ -276,7 +273,7 @@ class HtmlFile:
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{self.title}</title>
         
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
         
         {self.head_str} 
     
@@ -284,10 +281,6 @@ class HtmlFile:
 
 {self.body}
 
-
-
 </html>
 """
     
-
-
