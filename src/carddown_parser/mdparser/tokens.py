@@ -105,11 +105,8 @@ class LinkToken(InlineToken):
             self.content_start, self.content_end = self.match.span(2)
             self.parse_content = False
 
-     
-
-        if not url.startswith("#") and not url.startswith("http"):
+        if not url.startswith("#") and not url.startswith("http") and not url.startswith("./"):
             url = "http://" + url
-        
         
         return HtmlNode(self.tag, href=url, title=title)
 

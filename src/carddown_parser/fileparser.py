@@ -201,7 +201,7 @@ class FileParser:
 
 
     def process_footnotes(self, cards_only=False) -> list[HtmlNode]:
-        
+
         if cards_only:
             root_node = HtmlNode("root", *self.cards.get_cards_html())
         else:

@@ -180,7 +180,7 @@ The answer is contained inside `{CURLY_BRACES}`. If there are none, the whole ba
 
 <br/>
 
-**Note**: You can find some more practical examples in [examples/cards.md](https://raw.githubusercontent.com/lukas-brg/LearningCards/main/examples/cards.md) and look at the result by downloading [examples/cards.html](./examples/cards.html) and opening it in a web browser.
+**Note**: You can find some more practical examples in [examples/cards.md](./cards.md) and look at the result by downloading [examples/cards.html](./cards.html) and opening it in a web browser.
 
 <br/>
 
