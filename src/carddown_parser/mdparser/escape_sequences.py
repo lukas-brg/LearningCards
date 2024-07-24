@@ -27,7 +27,7 @@ ESCAPE_SEQUENCES = {
             "intermediate": "!!!ESCAPE!HASH!!!",
             "display_text": "#"
     },
-     "\>": {
+    "\>": {
             "intermediate": "!!!ESCAPE!GT!!!",
             "display_text": ">"
     },
@@ -46,6 +46,10 @@ ESCAPE_SEQUENCES = {
     "\=": {
             "intermediate": "!!!ESCAPE!EQUAL!!!",
             "display_text": "="
+    },
+    "\`": {
+            "intermediate": "!!!ESCAPE!BACKTICK!!!",
+            "display_text": "`"
     },
     "\-": {
             "intermediate": "!!!ESCAPE!MINUS!!!",

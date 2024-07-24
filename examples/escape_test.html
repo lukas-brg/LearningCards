@@ -9,401 +9,29 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap">
 
-        <title>Markdown Test Light Theme</title>
+        <title>Escape Test</title>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> 
     
     </head>
 
   <body class="markdown-body">
-    <div class="toc">
-      <span><h1>Table Of Contents<button id="toc-btn"><i class="fa-solid fa-chevron-up"></i></button></h1></span>
-      <div class="toc-content">
-        <ul class="toc-ul">
-          <li><a href="#h1-heading" class="toc-link">h1 Heading</a></li>
-          <ul class="toc-ul">
-            <li><a href="#h2-heading" class="toc-link">h2 Heading</a></li>
-            <ul class="toc-ul">
-              <li><a href="#h3-heading" class="toc-link">h3 Heading</a></li>
-            </ul>
-            <li><a href="#horizontal-rules" class="toc-link">Horizontal Rules</a></li>
-            <li><a href="#fontstyles" class="toc-link">Fontstyles</a></li>
-            <li><a href="#blockquotes" class="toc-link">Blockquotes</a></li>
-            <li><a href="#escaping-markdown-syntax" class="toc-link">Escaping Markdown Syntax</a></li>
-            <li><a href="#lists" class="toc-link">Lists</a></li>
-            <li><a href="#code" class="toc-link">Code</a></li>
-            <ul class="toc-ul">
-              <li><a href="#inline-code" class="toc-link">Inline Code</a></li>
-              <li><a href="#indented-code-blocks" class="toc-link">Indented code blocks</a></li>
-              <li><a href="#block-code-fences" class="toc-link">Block code "fences"</a></li>
-            </ul>
-            <li><a href="#tables" class="toc-link">Tables</a></li>
-            <li><a href="#links" class="toc-link">Links</a></li>
-            <ul class="toc-ul">
-              <li><a href="#linking-to-headings" class="toc-link">Linking to Headings</a></li>
-              <li><a href="#custom-ids" class="toc-link">Custom IDs</a></li>
-            </ul>
-            <li><a href="#images" class="toc-link">Images</a></li>
-            <li><a href="#emojies" class="toc-link">Emojies</a></li>
-            <li><a href="#subscript-superscript" class="toc-link">Subscript / Superscript</a></li>
-            <li><a href="#footnotes" class="toc-link">Footnotes</a></li>
-            <li><a href="#definition-lists" class="toc-link">Definition lists</a></li>
-            <li><a href="#task-lists" class="toc-link">Task lists</a></li>
-            <li><a href="#latex-equations" class="toc-link">Latex Equations</a></li>
-          </ul>
-          <li><a href="#h1-heading-1" class="toc-link">h1 Heading</a></li>
-        </ul>
-      </div>
-    </div>
-    <p>This table of contents was auto-generated. The feature can either be set in the config as default behaviour or it can be enabled for a single file by using the <code class="inline">--toc</code> flag.<br/></p>
-    <p><strong>Note:</strong> This file was copied from <a href="https://markdown-it.github.io/">https://markdown-it.github.io/</a>, and has been modified to adequately demonstrate the markdown syntax supported by this software.<br/></p>
-    <div id="code-div_6724bad4" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_6724bad4"># h1 Heading 
-
-## h2 Heading
-
-### h3 Heading
-
-#### h4 Heading
-
-##### h5 Heading
-
-###### h6 Heading</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_6724bad4">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_6724bad4" data-clipboard-target="#code-block_6724bad4">Copy</button>
-    </div>
-    <h1 id="h1-heading">h1 Heading</h1>
-    <h2 id="h2-heading">h2 Heading</h2>
-    <h3 id="h3-heading">h3 Heading</h3>
-    <h4 id="h4-heading">h4 Heading</h4>
-    <h5 id="h5-heading">h5 Heading</h5>
-    <h6 id="h6-heading">h6 Heading</h6>
-    <h2 id="horizontal-rules">Horizontal Rules</h2>
-    <div id="code-div_e88508b4" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_e88508b4">---
-
-***</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_e88508b4">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_e88508b4" data-clipboard-target="#code-block_e88508b4">Copy</button>
-    </div>
-    <hr/>
-    <br/>
-    <hr/>
-    <br/>
-    <h2 id="fontstyles">Fontstyles</h2>
-    <div id="code-div_4978c21d" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_4978c21d">**This is bold text**
-
-__This is bold text__
-
-==This is marked text==
-
-_This is italic text_
-
-*This is italic text*
-
-~~Strikethrough~~
-
-_This text tests **nested** fontstyles_</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_4978c21d">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_4978c21d" data-clipboard-target="#code-block_4978c21d">Copy</button>
-    </div>
-    <p><strong>This is bold text</strong><br/></p>
-    <p><strong>This is bold text</strong><br/></p>
-    <p><mark>This is marked text</mark><br/></p>
-    <p><em>This is italic text</em><br/></p>
-    <p><em>This is italic text</em><br/></p>
-    <p><s>Strikethrough</s><br/></p>
-    <p><em>This text tests <strong>nested</strong> fontstyles</em><br/></p>
-    <h2 id="blockquotes">Blockquotes</h2>
-    <div id="code-div_41237419" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_41237419">> A blockquote starts with `>` symbol
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_41237419">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_41237419" data-clipboard-target="#code-block_41237419">Copy</button>
-    </div>
-    <div class="blockquote-div">
-      <blockquote><p>A blockquote starts with <code class="inline">></code> symbol<br/>Blockquotes can also be nested...<br/></p><blockquote><p>...by using additional greater-than signs right next to each other...<br/></p></blockquote></blockquote>
-    </div>
-    <h2 id="escaping-markdown-syntax">Escaping Markdown Syntax</h2>
-    <div id="code-div_c4b6b78c" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_c4b6b78c">This \*should\* be displayed as plain text.</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_c4b6b78c">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_c4b6b78c" data-clipboard-target="#code-block_c4b6b78c">Copy</button>
-    </div>
-    <p>This *should* be displayed as plain text.<br/></p>
-    <h2 id="lists">Lists</h2>
-    <p><strong>Unordered</strong><br/></p>
-    <div id="code-div_c70fbcb7" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_c70fbcb7">+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-+ Very easy!</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_c70fbcb7">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_c70fbcb7" data-clipboard-target="#code-block_c70fbcb7">Copy</button>
-    </div>
-    <ul>
-      <li>Create a list by starting a line with <code class="inline">+</code>, <code class="inline">-</code>, or <code class="inline">*</code></li>
-      <li>Sub-lists are made by indenting 2 spaces:</li>
-      <ul>
-        <li>Marker character change forces new list start:</li>
-        <ul>
-          <li>Ac tristique libero volutpat at</li>
-          <li>Facilisis in pretium nisl aliquet</li>
-          <li>Nulla volutpat aliquam velit</li>
-        </ul>
-      </ul>
-      <li>Very easy!</li>
-    </ul>
-    <p><strong>Ordered</strong><br/></p>
-    <div id="code-div_78158ab7" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_78158ab7">1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_78158ab7">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_78158ab7" data-clipboard-target="#code-block_78158ab7">Copy</button>
-    </div>
-    <ol start="1">
-      <li>Lorem ipsum dolor sit amet</li>
-      <li>Consectetur adipiscing elit</li>
-      <li>Integer molestie lorem at massa</li>
-      <li>You can use sequential numbers...</li>
-      <li>...or keep all the numbers as <code class="inline">1.</code></li>
-    </ol>
-    <p>Start numbering with offset:<br/></p>
-    <div id="code-div_33935a28" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_33935a28">3. foo
-    1. baz
-    2. test
-1. bar</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_33935a28">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_33935a28" data-clipboard-target="#code-block_33935a28">Copy</button>
-    </div>
-    <ol start="3">
-      <li>foo</li>
-      <ol start="1">
-        <li>baz</li>
-        <li>test</li>
-      </ol>
-      <li>bar</li>
-    </ol>
-    <p><strong>Unordered and ordered lists can also be mixed:</strong><br/></p>
-    <div id="code-div_90f8f147" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_90f8f147">+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    1. Lorem ipsum dolor sit amet
-    2. Consectetur adipiscing elit
-    3. Integer molestie lorem at massa
-+ Very easy!</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_90f8f147">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_90f8f147" data-clipboard-target="#code-block_90f8f147">Copy</button>
-    </div>
-    <ul>
-      <li>Create a list by starting a line with <code class="inline">+</code>, <code class="inline">-</code>, or <code class="inline">*</code></li>
-      <li>Sub-lists are made by indenting 2 spaces:</li>
-      <ul>
-        <li>Marker character change forces new list start:</li>
-        <ol start="1">
-          <li>Lorem ipsum dolor sit amet</li>
-          <li>Consectetur adipiscing elit</li>
-          <li>Integer molestie lorem at massa</li>
-        </ol>
-      </ul>
-      <li>Very easy!</li>
-    </ul>
-    <h2 id="code">Code</h2>
-    <h3 id="inline-code">Inline Code</h3>
-    <div id="code-div_10e007b3" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_10e007b3">Inline `code`</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_10e007b3">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_10e007b3" data-clipboard-target="#code-block_10e007b3">Copy</button>
-    </div>
-    <p>Inline <code class="inline">code</code><br/></p>
-    <h3 id="indented-code-blocks">Indented code blocks</h3>
-    <div id="code-div_0602a286" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_0602a286">Every line that is indented by 4 spaces or more will be displayed as a code block. The lines of code will keep their relative indentation.
-
-    This is a line of code
-      This is another line of code
-
-This is normal text.</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_0602a286">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_0602a286" data-clipboard-target="#code-block_0602a286">Copy</button>
-    </div>
-    <p>Every line that is indented by 4 spaces or more will be displayed as a code block. The lines of code will keep their relative indentation.<br/></p>
-    <div id="code-div_07db36f7" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_07db36f7">This is a line of code
-  This is another line of code</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_07db36f7">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_07db36f7" data-clipboard-target="#code-block_07db36f7">Copy</button>
-    </div>
-    <p>This is normal text.<br/></p>
-    <h3 id="block-code-fences">Block code "fences"</h3>
-    <div id="code-div_9a679d8a" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_9a679d8a">  ```
-  Sample text here...
-  ```</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_9a679d8a">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_9a679d8a" data-clipboard-target="#code-block_9a679d8a">Copy</button>
-    </div>
-    <div id="code-div_27cccf7a" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_27cccf7a">Sample text here...</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_27cccf7a">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_27cccf7a" data-clipboard-target="#code-block_27cccf7a">Copy</button>
-    </div>
-    <h4 id="syntax-highlighting">Syntax highlighting</h4>
-    <p>Specify the language after the code block opening fences, 'auto' is also accepted.<br/></p>
-    <div id="code-div_96e04923" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_96e04923">  ```js
-  var foo = function (bar) {
-    return bar++;
-  };
-  ```</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_96e04923">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_96e04923" data-clipboard-target="#code-block_96e04923">Copy</button>
-    </div>
-    <div id="code-div_c08782b0" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code class="code-block prettyprint lang-js" id="code-block_c08782b0">var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_c08782b0">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_c08782b0" data-clipboard-target="#code-block_c08782b0">Copy</button>
-    </div>
-    <h2 id="tables">Tables</h2>
-    <div id="code-div_4c62ee16" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_4c62ee16">| Default Alignment| Left Alignment    | Center Alignment   | Right Alignment |
-| ---------------- | :---------------- | :----------------: | --------------: |
-| False            | Python Hat        |   True             | 23.99           |
-| True             | SQL Hat           |   True             | 23.99           |
-| True             | Codecademy Tee    |  False             | 19.99           |
-| False            | Codecademy Hoodie |  False             | 42.99           |</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_4c62ee16">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_4c62ee16" data-clipboard-target="#code-block_4c62ee16">Copy</button>
-    </div>
+    <h1 id="escape-test">Escape test</h1>
+    <p># H1 Heading<br/>#### H4 Heading<br/></p>
+    <p>_This text tests **nested** fontstyles_<br/></p>
+    <p>> A blockquote starts with `>` symbol<br/>> Blockquotes can also be nested...<br/>>> ...by using additional greater-than signs right next to each other...<br/></p>
+    <p>```<br/>This shoud not be a code block!<br/>```<br/></p>
     <table>
       <thead>
         <tr>
-          <th style="text-align:left"><b>Default Alignment</b></th>
-          <th style="text-align:left"><b>Left Alignment</b></th>
-          <th style="text-align:center"><b>Center Alignment</b></th>
-          <th style="text-align:right"><b>Right Alignment</b></th>
+          <th style="text-align:left"><b><code class="inline">Default  | Alignment</code></b></th>
+          <th style="text-align:left"><b>Left |  Alignment</b></th>
+          <th style="text-align:center"><b>Center  | Alignment</b></th>
+          <th style="text-align:right"><b>Right |  Alignment</b></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="text-align:left">False</td>
+          <td style="text-align:left">False     \n</td>
           <td style="text-align:left">Python Hat</td>
           <td style="text-align:center">True</td>
           <td style="text-align:right">23.99</td>
@@ -416,306 +44,20 @@ console.log(foo(5));</code></pre>
         </tr>
         <tr>
           <td style="text-align:left">True</td>
-          <td style="text-align:left">Codecademy Tee</td>
+          <td style="text-align:left">Codecademy |  Tee</td>
           <td style="text-align:center">False</td>
           <td style="text-align:right">19.99</td>
         </tr>
         <tr>
           <td style="text-align:left">False</td>
-          <td style="text-align:left">Codecademy Hoodie</td>
+          <td style="text-align:left">Codecademy |  Hoodie</td>
           <td style="text-align:center">False</td>
           <td style="text-align:right">42.99</td>
         </tr>
       </tbody>
     </table>
-    <p>The exact width of the columns does not need to be consistent, only the number of columns does.<br/></p>
-    <div id="code-div_afae10a2" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_afae10a2">| Column A| Column B   | Column C   |
-| -------- | ------------ | ---------------- |
-| 1            | 7  |   13             |
-|  3        |9   |   15             |
-| 5            | 11 |  17             |</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_afae10a2">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_afae10a2" data-clipboard-target="#code-block_afae10a2">Copy</button>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th style="text-align:left"><b>Column A</b></th>
-          <th style="text-align:left"><b>Column B</b></th>
-          <th style="text-align:left"><b>Column C</b></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align:left">1</td>
-          <td style="text-align:left">7</td>
-          <td style="text-align:left">13</td>
-        </tr>
-        <tr>
-          <td style="text-align:left">3</td>
-          <td style="text-align:left">9</td>
-          <td style="text-align:left">15</td>
-        </tr>
-        <tr>
-          <td style="text-align:left">5</td>
-          <td style="text-align:left">11</td>
-          <td style="text-align:left">17</td>
-        </tr>
-      </tbody>
-    </table>
-    <h2 id="links">Links</h2>
-    <div id="code-div_550a9d21" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_550a9d21">[link text](http://dev.nodeca.com)
-
-[link with title](http://nodeca.github.io/pica/demo/ "title text!")
-
-Autoconverted link https://github.com/nodeca/pica </code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_550a9d21">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_550a9d21" data-clipboard-target="#code-block_550a9d21">Copy</button>
-    </div>
-    <p><a href="http://dev.nodeca.com" title="">link text</a><br/></p>
-    <p><a href="http://nodeca.github.io/pica/demo/" title="title text!">link with title</a><br/></p>
-    <p>Autoconverted link <a href="https://github.com/nodeca/pica">https://github.com/nodeca/pica</a><br/></p>
-    <h3 id="linking-to-headings">Linking to Headings</h3>
-    <p>You can create links to headings within this document using the following rules:<br/></p>
-    <ul>
-      <li>Remove all non-alphanumeric characters from the heading text.</li>
-      <li>Replace single and consecutive spaces with one dash <code class="inline">-</code>.</li>
-      <li>Convert the text to all-lowercase.</li>
-    </ul>
-    <p>If duplicate headings exist and you want to link to them, append <code class="inline">-[COUNT]</code> to the end of the link, where <code class="inline">COUNT=1</code> refers to the first duplicate.<br/></p>
-    <div id="code-div_e2ad4bbc" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_e2ad4bbc">[Link to first H1 Heading](#h1-heading)
-
-[Link to second H1 Heading](#h1-heading-1)
-
-[Link to this section's heading](#linking-to-headings)</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_e2ad4bbc">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_e2ad4bbc" data-clipboard-target="#code-block_e2ad4bbc">Copy</button>
-    </div>
-    <p><a href="#h1-heading" title="">Link to first H1 Heading</a><br/></p>
-    <p><a href="#h1-heading-1" title="">Link to second H1 Heading</a><br/></p>
-    <p><a href="#linking-to-headings" title="">Link to this section's heading</a><br/></p>
-    <h3 id="custom-ids">Custom IDs</h3>
-    <div id="code-div_f608c48b" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_f608c48b">#### Headings can have a custom ID {#custom_id}
-
-The custom ID can be used to [Link](#custom_id) to the heading.</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_f608c48b">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_f608c48b" data-clipboard-target="#code-block_f608c48b">Copy</button>
-    </div>
-    <h4 id="custom_id">Headings can have a custom ID </h4>
-    <p>The custom ID can be used to <a href="#custom_id" title="">Link</a> to the heading.<br/></p>
-    <h2 id="images">Images</h2>
-    <div id="code-div_093a83ba" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_093a83ba">![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_093a83ba">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_093a83ba" data-clipboard-target="#code-block_093a83ba">Copy</button>
-    </div>
-    <img alt="Minion" src="https://octodex.github.com/images/minion.png" title="" style="max-width: 80%"/>
-    <br/>
-    <img alt="Stormtroopocat" src="https://octodex.github.com/images/stormtroopocat.jpg" title="The Stormtroopocat" style="max-width: 80%"/>
-    <br/>
-    <h2 id="emojies"><a href="https://github.com/markdown-it/markdown-it-emoji" title="">Emojies</a></h2>
-    <div id="code-div_180d9ed5" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_180d9ed5">Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_180d9ed5">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_180d9ed5" data-clipboard-target="#code-block_180d9ed5">Copy</button>
-    </div>
-    <p>Classic markup: &#128521; &#129392; &#128546; &#129394; &#128518; &#128523;<br/></p>
-    <h2 id="subscript-superscript">Subscript / Superscript</h2>
-    <div id="code-div_d1c52a55" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_d1c52a55">- 19^th^
-- H~2~O</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_d1c52a55">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_d1c52a55" data-clipboard-target="#code-block_d1c52a55">Copy</button>
-    </div>
-    <ul>
-      <li>19<sup>th</sup></li>
-      <li>H<sub>2</sub>O</li>
-    </ul>
-    <h2 id="footnotes">Footnotes</h2>
-    <div id="code-div_9cb64286" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_9cb64286">Footnote 1 link[^first].
-
-Footnote 2 link[^second].</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_9cb64286">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_9cb64286" data-clipboard-target="#code-block_9cb64286">Copy</button>
-    </div>
-    <p>Footnote 1 link<sup><a href="#footnote-first" class="footnote-ref" id="ref-first">[1]</a></sup>.<br/></p>
-    <p>Footnote 2 link<sup><a href="#footnote-second" class="footnote-ref" id="ref-second">[2]</a></sup>.<br/></p>
-    <p>The corresponding footnotes look like this:<br/></p>
-    <div id="code-div_d3a292b2" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_d3a292b2">[^first]: Footnotes _can have markup_
-
-    and multiple paragraphs.
-
-[^second]: Footnote text.</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_d3a292b2">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_d3a292b2" data-clipboard-target="#code-block_d3a292b2">Copy</button>
-    </div>
-    <div id="code-div_1a3f1712" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_1a3f1712">Footnotes are enumerated by their order in the document, regardless of their text[^1].
-
-[^1]: The footnotes can be split up across the document
-    Though they are always displayed at the bottom</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_1a3f1712">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_1a3f1712" data-clipboard-target="#code-block_1a3f1712">Copy</button>
-    </div>
-    <p>Footnotes are enumerated by their order in the document, regardless of their text<sup><a href="#footnote-1" class="footnote-ref" id="ref-1">[3]</a></sup>.<br/></p>
-    <h2 id="definition-lists">Definition lists</h2>
-    <div id="code-div_f4f558cc" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_f4f558cc">First Term
-: This is the definition of the first term.
-
-Second Term
-: This is one definition of the second term.
-: This is another definition of the second term.</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_f4f558cc">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_f4f558cc" data-clipboard-target="#code-block_f4f558cc">Copy</button>
-    </div>
-    <dl><b><dt>First Term</dt></b><dd>This is the definition of the first term.</dd><br/><b><dt>Second Term</dt></b><dd>This is one definition of the second term.</dd><dd>This is another definition of the second term.</dd><br/></dl>
-    <h2 id="task-lists">Task lists</h2>
-    <div id="code-div_00ba3b40" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_00ba3b40">- [x] This list item is checked
-- [ ] This list item is unchecked 
-  - [x] Task lists can also be nested</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_00ba3b40">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_00ba3b40" data-clipboard-target="#code-block_00ba3b40">Copy</button>
-    </div>
-    <ul>
-      <input type="checkbox" id="task_list_checkbox-c9b74b7f" autocomplete="off" checked/>
-      <label for="task_list_checkbox-c9b74b7f">This list item is checked</label>
-      <br/>
-      <input type="checkbox" id="task_list_checkbox-8d8243ab" autocomplete="off"/>
-      <label for="task_list_checkbox-8d8243ab">This list item is unchecked</label>
-      <br/>
-      <ul>
-        <input type="checkbox" id="task_list_checkbox-656e201b" autocomplete="off" checked/>
-        <label for="task_list_checkbox-656e201b">Task lists can also be nested</label>
-        <br/>
-      </ul>
-    </ul>
-    <h2 id="latex-equations">Latex Equations</h2>
-    <div id="code-div_c983c160" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_c983c160">Inline latex equation \(\forall x \in X, \quad \exists y \leq \epsilon\)
-
-Another inline equation \(\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}\)</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_c983c160">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_c983c160" data-clipboard-target="#code-block_c983c160">Copy</button>
-    </div>
-    <p>Inline latex equation (\forall x \in X, \quad \exists y \leq \epsilon)<br/></p>
-    <p>Another inline equation (\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi})<br/></p>
-    <div id="code-div_622234d6" class="multiline">
-      <div class="code-block-scrollbar-container">
-        <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_622234d6">$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$
-
-$$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}$$</code></pre>
-        </div>
-      </div>
-      <div class="copy-notification" id="copy-notification_622234d6">
-        Copied!
-      </div>
-      <button class="btn-copy" id="copy-button_622234d6" data-clipboard-target="#code-block_622234d6">Copy</button>
-    </div>
-    <p><span class="latex-equation">$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$</span><br/></p>
-    <p><span class="latex-equation">$$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}$$</span><br/></p>
-    <h1 id="h1-heading-1">h1 Heading</h1>
-    <p>This heading's purpose is to test whether the links in the table of contents still work with duplicate headings and to demonstrate how linking to duplicate headings works.<br/></p>
-    <div class="footnotes-div">
-      <div class="footnote">
-        <p class="footnote-paragraph"><span id="footnote-first">1.</span> Footnotes <em>can have markup</em></p>
-        <p class="footnote-paragraph">&nbsp;&nbsp;&nbsp;    and multiple paragraphs.<a href="#ref-first"> &#8617;</a></p>
-      </div>
-      <div class="footnote">
-        <p class="footnote-paragraph"><span id="footnote-second">2.</span> Footnote text.<a href="#ref-second"> &#8617;</a></p>
-      </div>
-      <div class="footnote">
-        <p class="footnote-paragraph"><span id="footnote-1">3.</span> The footnotes can be split up across the document</p>
-        <p class="footnote-paragraph">&nbsp;&nbsp;&nbsp;    Though they are always displayed at the bottom<a href="#ref-1"> &#8617;</a></p>
-      </div>
-    </div>
+    <p>[link text](http://dev.nodeca.com)<br/>[link text](http://dev.nodeca.com)<br/></p>
+    <p>![Minion](<a href="https://octodex.github.com/images/minion.png)">https://octodex.github.com/images/minion.png)</a><br/></p>
     
     <style>
             /*
@@ -1040,63 +382,58 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
 
 
 
-            .multiline {
-                background-color: #f6f8fa;
+            .markdown-body{
+                color-scheme: dark;
             }
 
-            .inline {
-                background-color: #eff1f3
+
+
+
+
+            .multiline {
+                background-color: #161b22;
             }
 
             .focused {
-                background-color: #c9c9c9;
+                background-color: #403f47;
             }
 
-            .active,
+
+            .collapsible,
+            .multi-btn,
+            .answer-btn {
+                background-color: #2b2a33;
+            }
             .collapsible:hover,
             .multi-btn:hover,
             .answer-btn:hover {
-                background-color: #bbd3ec;
+                background-color: #1c73e4;
+            }
+
+            .active {
+                background-color: #0060df;
             }
 
             .footnotes-div {
-                border-top: 1px solid hsla(210, 18%, 87%, 1);
-                border-bottom: 1px solid hsla(210, 18%, 87%, 1);
-                color: #3e4042;
+                border-top: 1px solid #21262d;
+                border-bottom: 1px solid #21262d;
+                color: #7b848e;
             }
-
-
-
-            .btn-copy {
-   
-                color: #a3aeba;
-  
-            }
-
-
-
-            .btn-copy:hover {
-                background-color:  #d0d9e5;
-            }
-
-            .copy-icon {
-   
-                fill:#8f98a2;
-            }
-
 
             .copy-notification {
-   
-                background-color: #30363d;
+    
+                background-color: #6e7681;
                 color: white;
-  
-            }
+   
 
+            }
 
             .copy-notification::before {
    
-                border-color: transparent transparent transparent #30363d;
+                border-color: transparent transparent transparent #6e7681;
+   
             }
+
 
             .toc-icon {
                 fill: #909aa6;
@@ -1104,10 +441,9 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
             }
 
             #toc-btn:hover {
-                background-color: #eaeff5;
+                background-color: #30363d;
                 border-radius: 5px;
             }
-
 
 
             /*
@@ -1126,13 +462,63 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
 
             */
 
+
+
+            .markdown-body {
+                color-scheme: dark;
+                --color-prettylights-syntax-comment: #8b949e;
+                --color-prettylights-syntax-constant: #79c0ff;
+                --color-prettylights-syntax-entity: #d2a8ff;
+                --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+                --color-prettylights-syntax-entity-tag: #7ee787;
+                --color-prettylights-syntax-keyword: #ff7b72;
+                --color-prettylights-syntax-string: #a5d6ff;
+                --color-prettylights-syntax-variable: #ffa657;
+                --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+                --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+                --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+                --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+                --color-prettylights-syntax-carriage-return-bg: #b62324;
+                --color-prettylights-syntax-string-regexp: #7ee787;
+                --color-prettylights-syntax-markup-list: #f2cc60;
+                --color-prettylights-syntax-markup-heading: #1f6feb;
+                --color-prettylights-syntax-markup-italic: #c9d1d9;
+                --color-prettylights-syntax-markup-bold: #c9d1d9;
+                --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+                --color-prettylights-syntax-markup-deleted-bg: #67060c;
+                --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+                --color-prettylights-syntax-markup-inserted-bg: #033a16;
+                --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+                --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+                --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+                --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+                --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+                --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+                --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+                --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+                --color-fg-default: #c9d1d9;
+                --color-fg-muted: #8b949e;
+                --color-fg-subtle: #6e7681;
+                --color-canvas-default: #0d1117;
+                --color-canvas-subtle: #161b22;
+                --color-border-default: #30363d;
+                --color-border-muted: #21262d;
+                --color-neutral-muted: rgba(110, 118, 129, 0.4);
+                --color-accent-fg: #58a6ff;
+                --color-accent-emphasis: #1f6feb;
+                --color-attention-subtle: rgba(187, 128, 9, 0.15);
+                --color-danger-fg: #f85149;
+            }
+
+
+
             .markdown-body h1,
             .markdown-body h2,
             .markdown-body h3,
             .markdown-body h4,
             .markdown-body h5,
             .markdown-body h6 {
-                margin-top: 24px;
+                margin-top: 34px;
                 margin-bottom: 16px;
                 font-weight: 600;
                 line-height: 1.25;
@@ -1142,13 +528,17 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
                 font-weight: 600;
                 padding-bottom: 0.3em;
                 font-size: 1.5em;
-                border-bottom: 1px solid hsla(210, 18%, 87%, 1);
+                border-bottom: 1px solid #21262d;
+            }
+
+            .toc-content {
+                border-bottom: 1px solid #21262d;
             }
 
             .card h2,
             .front h2,
             .back h2 {
-                border-bottom: 0px solid #21262d;
+                border-bottom: 0px solid #17191d;
             }
 
             .markdown-body h3 {
@@ -1169,68 +559,23 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
             .markdown-body h6 {
                 font-weight: 600;
                 font-size: 0.85em;
-                color: #57606a;
+                color: #8b949e;
             }
 
 
-            .markdown-body {
-                color-scheme: light;
-                --color-prettylights-syntax-comment: #6e7781;
-                --color-prettylights-syntax-constant: #0550ae;
-                --color-prettylights-syntax-entity: #8250df;
-                --color-prettylights-syntax-storage-modifier-import: #24292f;
-                --color-prettylights-syntax-entity-tag: #116329;
-                --color-prettylights-syntax-keyword: #cf222e;
-                --color-prettylights-syntax-string: #0a3069;
-                --color-prettylights-syntax-variable: #953800;
-                --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
-                --color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
-                --color-prettylights-syntax-invalid-illegal-bg: #82071e;
-                --color-prettylights-syntax-carriage-return-text: #f6f8fa;
-                --color-prettylights-syntax-carriage-return-bg: #cf222e;
-                --color-prettylights-syntax-string-regexp: #116329;
-                --color-prettylights-syntax-markup-list: #3b2300;
-                --color-prettylights-syntax-markup-heading: #0550ae;
-                --color-prettylights-syntax-markup-italic: #24292f;
-                --color-prettylights-syntax-markup-bold: #24292f;
-                --color-prettylights-syntax-markup-deleted-text: #82071e;
-                --color-prettylights-syntax-markup-deleted-bg: #ffebe9;
-                --color-prettylights-syntax-markup-inserted-text: #116329;
-                --color-prettylights-syntax-markup-inserted-bg: #dafbe1;
-                --color-prettylights-syntax-markup-changed-text: #953800;
-                --color-prettylights-syntax-markup-changed-bg: #ffd8b5;
-                --color-prettylights-syntax-markup-ignored-text: #eaeef2;
-                --color-prettylights-syntax-markup-ignored-bg: #0550ae;
-                --color-prettylights-syntax-meta-diff-range: #8250df;
-                --color-prettylights-syntax-brackethighlighter-angle: #57606a;
-                --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
-                --color-prettylights-syntax-constant-other-reference-link: #0a3069;
-                --color-fg-default: #24292f;
-                --color-fg-muted: #57606a;
-                --color-fg-subtle: #6e7781;
-                --color-canvas-default: #ffffff;
-                --color-canvas-subtle: #f6f8fa;
-                --color-border-default: #d0d7de;
-                --color-border-muted: hsla(210, 18%, 87%, 1);
-                --color-neutral-muted: rgba(175, 184, 193, 0.2);
-                --color-accent-fg: #0969da;
-                --color-accent-emphasis: #0969da;
-                --color-attention-subtle: #fff8c5;
-                --color-danger-fg: #cf222e;
-            }
-
 
             .markdown-body {
+                color-scheme: dark;
                 -ms-text-size-adjust: 100%;
                 -webkit-text-size-adjust: 100%;
                 margin: 0;
-                color: #24292f;
-                background-color: #ffffff;
+                color: #dbe2ea;
+                background-color: #0d1117;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
                     Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
                 font-size: 16px;
                 line-height: 1.5;
-                word-wrap: normal;
+                word-wrap: break-word;
             }
 
             .markdown-body .octicon {
@@ -1254,9 +599,28 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
                 mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
             }
 
+            .markdown-body details,
+            .markdown-body figcaption,
+            .markdown-body figure {
+                display: block;
+            }
+
+            .markdown-body summary {
+                display: list-item;
+            }
+
+            .markdown-body [hidden] {
+                display: none !important;
+            }
+
             .markdown-body a {
                 background-color: transparent;
-                color: #0969da;
+                color: #58a6ff;
+            }
+
+            .markdown-body abbr[title] {
+                border-bottom: none;
+                text-decoration: underline dotted;
             }
 
             .markdown-body b,
@@ -1273,12 +637,12 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
                 font-weight: 600;
                 padding-bottom: 0.3em;
                 font-size: 2em;
-                border-bottom: 1px solid hsla(210, 18%, 87%, 1);
+                border-bottom: 1px solid #21262d;
             }
 
             .markdown-body mark {
-                background-color: #fff8c5;
-                color: #24292f;
+                background-color: rgba(187, 128, 9, 0.25);
+                color: #c9d1d9;
             }
 
             .markdown-body small {
@@ -1305,196 +669,149 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
                 border-style: none;
                 max-width: 100%;
                 box-sizing: content-box;
-                background-color: #ffffff;
+                background-color: #0d1117;
             }
 
+
+
+            .markdown-body figure {
+                margin: 1em 40px;
+            }
 
             .markdown-body hr {
                 box-sizing: content-box;
                 overflow: hidden;
                 background: transparent;
-                border-bottom: 1px solid hsla(210, 18%, 87%, 1);
-                height: 0.2em;
+                border-bottom: 1px solid #21262d;
+                height: 0.25em;
                 padding: 0;
                 margin: 24px 0;
-                background-color: #959ca3;
+                background-color: #30363d;
                 border: 0;
             }
 
-
-
-
-            .markdown-body input {
-                font: inherit;
-
-                overflow: visible;
-                font-family: inherit;
-                font-size: inherit;
-                line-height: inherit;
+            /*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
+            .prettyprint {
+                background: #161b22;
+                font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco,
+                    Consolas, monospace;
+                border: 0 !important;
             }
 
-            .markdown-body [type="button"],
-            .markdown-body [type="reset"],
-            .markdown-body [type="submit"] {
-                -webkit-appearance: button;
+            .inline {
+                background-color: #2f3640;
             }
 
-            .markdown-body [type="checkbox"],
-            .markdown-body [type="radio"] {
-                box-sizing: border-box;
-                padding: 0;
+            .pln {
+                color: #e6e9ed;
             }
 
-            .markdown-body [type="number"]::-webkit-inner-spin-button,
-            .markdown-body [type="number"]::-webkit-outer-spin-button {
-                height: auto;
+            /* Specify class=linenums on a pre to get line numbering */
+            ol.linenums {
+                margin-top: 0;
+                margin-bottom: 0;
+                color: #656d78;
             }
 
-            .markdown-body [type="search"]::-webkit-search-cancel-button,
-            .markdown-body [type="search"]::-webkit-search-decoration {
-                -webkit-appearance: none;
+            li.L0,
+            li.L1,
+            li.L2,
+            li.L3,
+            li.L4,
+            li.L5,
+            li.L6,
+            li.L7,
+            li.L8,
+            li.L9 {
+                padding-left: 1em;
+                background-color: #2f3640;
+                list-style-type: decimal;
             }
 
-            .markdown-body ::-webkit-input-placeholder {
-                color: inherit;
-                opacity: 0.54;
-            }
+            @media screen {
+                /* string content */
 
-            .markdown-body ::-webkit-file-upload-button {
-                -webkit-appearance: button;
-                font: inherit;
-            }
+                .str {
+                    color: #ffce54;
+                }
 
-            .markdown-body a:hover {
-                text-decoration: underline;
-            }
+                /* keyword */
 
-            .markdown-body ::placeholder {
-                color: #6e7781;
-                opacity: 1;
-            }
+                .kwd {
+                    color: #4fc1e9;
+                }
 
-            .markdown-body hr::before {
-                display: table;
-                content: "";
-            }
+                /* comment */
 
-            .markdown-body hr::after {
-                display: table;
-                clear: both;
-                content: "";
-            }
+                .com {
+                    color: #656d78;
+                }
 
-            .markdown-body table {
-                border-spacing: 0;
-                border-collapse: collapse;
-                display: block;
-                width: max-content;
-                max-width: 100%;
-                overflow: auto;
-            }
+                /* type name */
 
-            .markdown-body td,
-            .markdown-body th {
-                padding: 0;
-            }
+                .typ {
+                    color: #4fc1e9;
+                }
 
-            .markdown-body details summary {
-                cursor: pointer;
-            }
+                /* literal value */
 
-            .markdown-body details:not([open]) > *:not(summary) {
-                display: none !important;
-            }
+                .lit {
+                    color: #ac92ec;
+                }
 
-            .markdown-body a:focus,
-            .markdown-body [role="button"]:focus,
-            .markdown-body input[type="radio"]:focus,
-            .markdown-body input[type="checkbox"]:focus {
-                outline: 2px solid #0969da;
-                outline-offset: -2px;
-                box-shadow: none;
-            }
+                /* punctuation */
 
-            .markdown-body a:focus:not(:focus-visible),
-            .markdown-body [role="button"]:focus:not(:focus-visible),
-            .markdown-body input[type="radio"]:focus:not(:focus-visible),
-            .markdown-body input[type="checkbox"]:focus:not(:focus-visible) {
-                outline: solid 1px transparent;
-            }
+                .pun {
+                    color: #e6e9ed;
+                }
 
-            .markdown-body a:focus-visible,
-            .markdown-body [role="button"]:focus-visible,
-            .markdown-body input[type="radio"]:focus-visible,
-            .markdown-body input[type="checkbox"]:focus-visible {
-                outline: 2px solid #0969da;
-                outline-offset: -2px;
-                box-shadow: none;
-            }
+                /* lisp open bracket */
 
-            .markdown-body a:not([class]):focus,
-            .markdown-body a:not([class]):focus-visible,
-            .markdown-body input[type="radio"]:focus,
-            .markdown-body input[type="radio"]:focus-visible,
-            .markdown-body input[type="checkbox"]:focus,
-            .markdown-body input[type="checkbox"]:focus-visible {
-                outline-offset: 0;
-            }
+                .opn {
+                    color: #e6e9ed;
+                }
 
-            .markdown-body kbd {
-                display: inline-block;
-                padding: 3px 5px;
-                font: 11px ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
-                    Liberation Mono, monospace;
-                line-height: 10px;
-                color: #24292f;
-                vertical-align: middle;
-                background-color: #f6f8fa;
-                border: solid 1px rgba(175, 184, 193, 0.2);
-                border-bottom-color: rgba(175, 184, 193, 0.2);
-                border-radius: 6px;
-                box-shadow: inset 0 -1px 0 rgba(175, 184, 193, 0.2);
-            }
+                /* lisp close bracket */
 
-            .markdown-body h2 {
-                font-weight: 600;
-                padding-bottom: 0.3em;
-                font-size: 1.5em;
-            }
+                .clo {
+                    color: #e6e9ed;
+                }
 
-            .markdown-body h3 {
-                font-weight: 600;
-                font-size: 1.25em;
-            }
+                /* markup tag name */
 
-            .markdown-body h4 {
-                font-weight: 600;
-                font-size: 1em;
-            }
+                .tag {
+                    color: #ed5565;
+                }
 
-            .markdown-body h5 {
-                font-weight: 600;
-                font-size: 0.875em;
-            }
+                /* markup attribute name */
 
-            .markdown-body h6 {
-                font-weight: 600;
-                font-size: 0.85em;
-                color: #57606a;
-            }
+                .atn {
+                    color: #a0d468;
+                }
 
+                /* markup attribute value */
 
-            .markdown-body blockquote {
-                margin: 0;
-                padding: 0 1em;
-                color: #57606a;
-                border-left: 0.25em solid #d0d7de;
-            }
+                .atv {
+                    color: #ffce54;
+                }
 
+                /* declaration */
 
-            .markdown-body hr::before {
-                display: table;
-                content: "";
+                .dec {
+                    color: #ac92ec;
+                }
+
+                /* variable name */
+
+                .var {
+                    color: #e6e9ed;
+                }
+
+                /* function name */
+
+                .fun {
+                    color: #e6e9ed;
+                }
             }
 
             .markdown-body hr::before {
@@ -1529,21 +846,22 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
             .markdown-body table th,
             .markdown-body table td {
                 padding: 6px 13px;
-                border: 1px solid #d0d7de;
+                border: 1px solid var(--color-border-default);
             }
 
             .markdown-body table tr {
                 background-color: var(--color-canvas-default);
-                border-top: 1px solid hsla(210, 18%, 87%, 1);
+                border-top: 1px solid var(--color-border-muted);
             }
 
             .markdown-body table tr:nth-child(2n) {
-                background-color: #f6f8fa;
+                background-color: var(--color-canvas-subtle);
             }
 
             .markdown-body table img {
                 background-color: transparent;
             }
+
 
                     .markdown-body { 
                         width: 53%;    

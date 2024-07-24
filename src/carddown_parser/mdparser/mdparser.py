@@ -67,6 +67,16 @@ def escape_text(text: str):
     return text
 
 
+def unescape_text(root: HtmlNode):
+    for node in root:
+        if isinstance(node, TextNode):
+            for str, esc in ESCAPE_SEQUENCES.items():
+                if node.has_parent_with_tag("code"):
+                    node.text = node.text.replace(esc["intermediate"], str)
+                else:
+                    node.text = node.text.replace(esc["intermediate"], esc["display_text"])
+
+
 def get_token_types() -> list[InlineToken]:
     """Make sure list of TokenTypes to be parsed is only computed once for efficiency"""
     global token_types
@@ -132,7 +142,6 @@ def _parse_inline(line: str, tokens: dict[int, InlineToken], parent: HtmlNode, s
 
 def parse_inline(line: str) -> list[HtmlNode]:
     
-    line = escape_text(line)
     tokens = find_tokens(line)
     temp_container = HtmlNode("container")
     
@@ -323,8 +332,6 @@ def parse_table(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     head = HtmlNode("thead")
     top_row = HtmlNode("tr")
     table_cols_pattern = r"\|([^\|\n]+)"
-    escape = ESCAPE_SEQUENCES["\|"]
-    lines[start+1] = lines[start+1].replace("\|", escape["intermediate"])
    
     alignments = get_alignments(lines[start+1])
     top_row_matches = re.findall(table_cols_pattern, lines[start])
@@ -345,7 +352,6 @@ def parse_table(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     for i, line in enumerate(lines[start+2:], start+2):
         if not is_table(line):
             break
-        line = line.replace("\|", escape["intermediate"])
         tr = HtmlNode("tr")
         row_matches = re.findall(table_cols_pattern, line)
         
@@ -360,8 +366,13 @@ def parse_table(lines: list[str], start: int) -> tuple[HtmlNode, int]:
         tr.add_children(*cols)
         tbody.add_children(tr)
   
-    
+        
     table.add_children(tbody)
+
+    for node in table:
+        if isinstance(node, TextNode):
+            node.text = node.text.replace(ESCAPE_SEQUENCES["\|"]["intermediate"], "|")
+
     end = len(lines) if i >= len(lines) - 1 else i 
     return table, end
 
@@ -524,19 +535,14 @@ def parse_blockrule(parse_func: Callable, start: int, lines: list[str], **kwargs
         return HtmlNode("span",  SelfClosingTag("br"), TextNode(lines[start], preserve_whitespace=True)), start+1
 
 
-def unescape_text(root: HtmlNode):
-    for node in root:
-        if isinstance(node, TextNode):
-            for _, esc in ESCAPE_SEQUENCES.items():
-                node.text = node.text.replace(esc["intermediate"], esc["display_text"])
-
-
 def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) -> list[HtmlNode]:
     
     if isinstance(markdown, str):
+        markdown = escape_text(markdown)
         lines = markdown.splitlines(False)
     else:
-        lines = markdown
+        lines = [escape_text(line) for line in markdown]
+
 
     parsed_elems = []
     i = 0
@@ -556,8 +562,6 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             parsed_elems.append(HtmlNode("div", set_class="newpage"))
             i += 1
             continue
-
-        line = escape_text(line)
         
         if is_heading(line):  # Heading
             heading = parse_heading(line)

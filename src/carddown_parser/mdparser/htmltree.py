@@ -64,7 +64,17 @@ class HtmlNode:
                 c.parent = self
                 self.children.append(c)
     
+
+    def has_parent_with_tag(self, tag: str) -> bool:
+        current_node = self
+        
+        while current_node is not None:
+            if (tag == current_node.tag):
+                return True
+            current_node = current_node.parent
+        return False
     
+
     def search_parents_by_attribute(self, tag=None, substring_search=True, find_all=True, **attrs) -> Generator[HtmlNode]:
         current_node = self
         
