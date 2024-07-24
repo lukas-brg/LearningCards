@@ -15,17 +15,29 @@ ESCAPE_SEQUENCES = {
             "intermediate": "!!!ESCAPE!RPAREN!!!",
             "display_text": ")"
     },
-    "\]": {
-            "intermediate": "!!!ESCAPE!RBRACKET!!!",
-            "display_text": "]"
-    },
     "\[": {
             "intermediate": "!!!ESCAPE!LBRACKET!!!",
             "display_text": "["
     },
-    "\_": {
-            "intermediate": "!!!ESCAPE!UNDERSCORE!!!",
-            "display_text": "*"
+    "\]": {
+            "intermediate": "!!!ESCAPE!RBRACKET!!!",
+            "display_text": "]"
+    },
+    "\#": {
+            "intermediate": "!!!ESCAPE!HASH!!!",
+            "display_text": "#"
+    },
+     "\>": {
+            "intermediate": "!!!ESCAPE!GT!!!",
+            "display_text": ">"
+    },
+    "\+": {
+            "intermediate": "!!!ESCAPE!PLUS!!!",
+            "display_text": "+"
+    },
+    "\!": {
+            "intermediate": "!!!ESCAPE!BANG!!!",
+            "display_text": "!"
     },
     "\~": {
             "intermediate": "!!!ESCAPE!TILDE!!!",
