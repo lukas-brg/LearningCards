@@ -4,8 +4,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap">
+
         <title>Markdown Test</title>
-        
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> 
     
     </head>
@@ -24,6 +28,7 @@
             <li><a href="#horizontal-rules" class="toc-link">Horizontal Rules</a></li>
             <li><a href="#fontstyles" class="toc-link">Fontstyles</a></li>
             <li><a href="#blockquotes" class="toc-link">Blockquotes</a></li>
+            <li><a href="#escaping-markdown-syntax" class="toc-link">Escaping Markdown Syntax</a></li>
             <li><a href="#lists" class="toc-link">Lists</a></li>
             <li><a href="#code" class="toc-link">Code</a></li>
             <ul class="toc-ul">
@@ -144,6 +149,19 @@ _This text tests **nested** fontstyles_</code></pre>
     <div class="blockquote-div">
       <blockquote><p>A blockquote starts with <code class="inline">></code> symbol<br/>Blockquotes can also be nested...<br/></p><blockquote><p>...by using additional greater-than signs right next to each other...<br/></p></blockquote></blockquote>
     </div>
+    <h2 id="escaping-markdown-syntax">Escaping Markdown Syntax</h2>
+    <div id="code-div_ddc82890" class="multiline">
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_ddc82890">This \*should\* be displayed as plain text.</code></pre>
+        </div>
+      </div>
+      <div class="copy-notification" id="copy-notification_ddc82890">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_ddc82890" data-clipboard-target="#code-block_ddc82890">Copy</button>
+    </div>
+    <p>This *should* be displayed as plain text.<br/></p>
     <h2 id="lists">Lists</h2>
     <p><strong>Unordered</strong><br/></p>
     <div id="code-div_c70fbcb7" class="multiline">
@@ -666,8 +684,8 @@ Another inline equation \(\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}\)<
       </div>
       <button class="btn-copy" id="copy-button_a9d36eca" data-clipboard-target="#code-block_a9d36eca">Copy</button>
     </div>
-    <p>Inline latex equation \(\forall x \in X, \quad \exists y \leq \epsilon\)<br/></p>
-    <p>Another inline equation \(\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}\)<br/></p>
+    <p>Inline latex equation (\forall x \in X, \quad \exists y \leq \epsilon)<br/></p>
+    <p>Another inline equation (\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi})<br/></p>
     <div id="code-div_622234d6" class="multiline">
       <div class="code-block-scrollbar-container">
         <div class="code-block-container">

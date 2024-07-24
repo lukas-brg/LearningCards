@@ -21,6 +21,7 @@ body_class = "markdown-body"
 default_theme = "dark"
 indent_html = 2
 image_max_width = "80%"
+codeblock_copy_btn = true
 lang = "en"
 margin = 47
 open_file = false

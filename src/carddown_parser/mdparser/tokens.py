@@ -148,7 +148,6 @@ class BoldToken(InlineToken):
     ]
     
 
-
 class EmphToken(InlineToken):
     tag = "em"
     patterns = [
@@ -212,7 +211,6 @@ class HighlightToken(InlineToken):
     
 
 class RightArrowToken(InlineToken):
-    
     patterns =  [r"-->"]
     no_content = True
 

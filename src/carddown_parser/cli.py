@@ -1,6 +1,6 @@
 import os, sys, argparse, traceback, re
 import webbrowser
-
+import pdfkit
 from .config.config import load_configs, Config, CFG_PATHS, ENABLE_DEBUG, APP_CONFIG_PATH, USR_CONFIG_PATH
 from .mdparser.htmltree import HtmlFile
 from .fileparser import FileParser
@@ -138,35 +138,39 @@ def try_parse_file(filepath: str,):
 def export(args):
     args.collapsible = False
 
-    
     if args.export == "json":
         input_file, output_file, name = get_filepaths(args, "json")
         parser = try_parse_file(input_file)
         parser.cards.to_json(output_file, include_styles=args.styles)
         print(f"Sucessfully exported '{input_file}' to '{output_file}'")
     
-    # elif args.export == "pdf":
-    #     config.cardloader.collapse = False
-    
-    #     input_file, output_file, name = get_filepaths(args, "pdf")
-    #     title = get_title(args, name)
-    #     styles = load_theme("pdf")
+    elif args.export == "pdf":
+        config.cardloader.collapse = False
+        config.document.codeblock_copy_btn = False
+        input_file, output_file, name = get_filepaths(args, "pdf")
+        title = get_title(args, name)
+        styles = load_theme("pdf")
         
-    #     parser = try_parse_file(input_file)
+        parser = try_parse_file(input_file)
         
-    #     html = HtmlFile(style_files=styles, title=title, lang=config.document.lang)
-    #     if args.shuffle:
-    #         parser.cards.shuffle()
+        html = HtmlFile(style_files=styles, title=title, lang=config.document.lang)
+        if args.shuffle:
+            parser.cards.shuffle()
 
-    #     if args.cards:
-    #         html.body.add_children(*parser.get_cards())
-    #     else:
-    #         html.body.add_children(*parser.get_cards_and_markdown())
+        if args.cards:
+            html.body.add_children(*parser.get_cards())
+        else:
+            html.body.add_children(*parser.get_cards_and_markdown())
 
-    #     pdfkit.from_string(str(html), output_file)
+        html_str = str(html)
+
+        if ENABLE_DEBUG:
+            with open("pdf.html", "w") as f:
+                f.write(html_str)
+
+        pdfkit.from_string(html_str, output_file)
 
 
-    
 
 def to_html(args):
     

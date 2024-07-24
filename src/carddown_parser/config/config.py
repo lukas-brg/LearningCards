@@ -80,6 +80,7 @@ class DocumentConfig(Subconfig):
     static_folder = "./static"
     standalone = False
     body_class = "markdown-body"
+    codeblock_copy_btn=True
     _base = "base.css"
     _light = "light.css"
     _dark = "dark.css"

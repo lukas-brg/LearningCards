@@ -2,11 +2,12 @@ import re, traceback
 from typing import Callable
 
 
-from ..config import get_config, ENABLE_DEBUG
 from .tokens import InlineToken
 from .htmltree import HtmlNode, SelfClosingTag, WhiteSpaceNode, TextNode
-from ..errors import try_read_file, MarkdownSyntaxError, show_warning_msg
 from .utils import leading_whitespaces, multiline_strip, find_line, make_id_hash
+from .escape_sequences import ESCAPE_SEQUENCES
+from ..errors import try_read_file, MarkdownSyntaxError, show_warning_msg
+from ..config import get_config, ENABLE_DEBUG
 from ..config import get_locals
 
 config = get_config()
@@ -60,6 +61,12 @@ is_codeblock_indented = lambda line : leading_whitespaces(line) >= 4 or line.str
 token_types = None
 
 
+def escape_text(text: str):
+    for str, esc in ESCAPE_SEQUENCES.items():
+        text = text.replace(str, esc["intermediate"])
+    return text
+
+
 def get_token_types() -> list[InlineToken]:
     """Make sure list of TokenTypes to be parsed is only computed once for efficiency"""
     global token_types
@@ -67,7 +74,6 @@ def get_token_types() -> list[InlineToken]:
         token_types = [TokenType for TokenType in InlineToken.get_all_token_types() if TokenType.__name__ not in config.mdparser.ignore_inline_tokens]
     return token_types
     
-
 
 def get_heading_node(heading_marker: str) -> HtmlNode:
     return HtmlNode(HEADINGS[heading_marker])
@@ -94,8 +100,7 @@ def find_tokens(line: str) -> dict[int, InlineToken]:
             matches = re.finditer(pattern, line)
             for match in matches:
                 token = TokenType.create(match)
-                if token.start == 0 or line[token.start-1] != "\\":
-                    tokens[token.start] = token
+                tokens[token.start] = token
 
     return tokens
 
@@ -126,6 +131,8 @@ def _parse_inline(line: str, tokens: dict[int, InlineToken], parent: HtmlNode, s
 
 
 def parse_inline(line: str) -> list[HtmlNode]:
+    
+    line = escape_text(line)
     tokens = find_tokens(line)
     temp_container = HtmlNode("container")
     
@@ -157,7 +164,6 @@ def handle_tasklist_item(line: str, parent: HtmlNode):
     line = parse_inline(line)
     label = HtmlNode("label", *line, set_for=id)
     parent.add_children(check_box, label, SelfClosingTag("br"))
-
 
 
 
@@ -229,14 +235,21 @@ def make_codeblock_elem(code_lines: list[str], lang: str):
     id_hash = make_id_hash(code.get_inner_text(), limit_len=8)
 
     code.attributes["id"] = "code-block_" + id_hash
+    code_container = HtmlNode("div", HtmlNode("pre", code), set_class="code-block-container")
+    scrollbar_container = HtmlNode("div", code_container, set_class="code-block-scrollbar-container")
     
+    if config.document.codeblock_copy_btn is False:
+        return HtmlNode(
+            "div",
+            scrollbar_container,
+            id=f"code-div_{id_hash}", 
+            set_class="multiline"
+        )
     
     # The btn text is supposed to get replaced by an icon in js
     copy_btn = HtmlNode("button", "Copy", set_class="btn-copy", id=f"copy-button_{id_hash}")
     copy_btn.attributes["data-clipboard-target"] = f"#{code.attributes['id']}"
     copy_notification = HtmlNode("div", get_locals()["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")
-    code_container = HtmlNode("div", HtmlNode("pre", code), set_class="code-block-container")
-    scrollbar_container = HtmlNode("div", code_container, set_class="code-block-scrollbar-container")
     code_div = HtmlNode(
             	    "div", 
                     scrollbar_container,
@@ -310,6 +323,8 @@ def parse_table(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     head = HtmlNode("thead")
     top_row = HtmlNode("tr")
     table_cols_pattern = r"\|([^\|\n]+)"
+    escape = ESCAPE_SEQUENCES["\|"]
+    lines[start+1] = lines[start+1].replace("\|", escape["intermediate"])
    
     alignments = get_alignments(lines[start+1])
     top_row_matches = re.findall(table_cols_pattern, lines[start])
@@ -330,7 +345,7 @@ def parse_table(lines: list[str], start: int) -> tuple[HtmlNode, int]:
     for i, line in enumerate(lines[start+2:], start+2):
         if not is_table(line):
             break
-        
+        line = line.replace("\|", escape["intermediate"])
         tr = HtmlNode("tr")
         row_matches = re.findall(table_cols_pattern, line)
         
@@ -361,7 +376,7 @@ def parse_def(lines: list[str], start: int) -> tuple[HtmlNode, int]:
             i += 1
             dl.add_children(SelfClosingTag("br"))
             continue
-        
+
         if not is_dd(line):
             if i >= len(lines) - 2:
                 break
@@ -509,6 +524,12 @@ def parse_blockrule(parse_func: Callable, start: int, lines: list[str], **kwargs
         return HtmlNode("span",  SelfClosingTag("br"), TextNode(lines[start], preserve_whitespace=True)), start+1
 
 
+def unescape_text(root: HtmlNode):
+    for node in root:
+        if isinstance(node, TextNode):
+            for _, esc in ESCAPE_SEQUENCES.items():
+                node.text = node.text.replace(esc["intermediate"], esc["display_text"])
+
 
 def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) -> list[HtmlNode]:
     
@@ -530,6 +551,13 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             p = append_paragraph(parsed_elems, p, paragraph)
             i += 1
             continue
+        if line.rstrip() == "{\\newpage}":
+            p = append_paragraph(parsed_elems, p, paragraph)
+            parsed_elems.append(HtmlNode("div", set_class="newpage"))
+            i += 1
+            continue
+
+        line = escape_text(line)
         
         if is_heading(line):  # Heading
             heading = parse_heading(line)
@@ -582,11 +610,12 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
                     parsed_elems.extend([*inline_elems, SelfClosingTag("br")])
                 else:
                     parsed_elems.extend(inline_elems)
-        
             i += 1
+
     _ = append_paragraph(parsed_elems, p, paragraph)
-    
-    return parsed_elems
+    container = HtmlNode("container", *parsed_elems)
+    unescape_text(container)
+    return container.children
    
 
 

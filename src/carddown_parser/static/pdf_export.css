@@ -1,5 +1,52 @@
 .markdown-body {
     padding-left: 8%;
     padding-right: 8%;
-    font-size: 12px;
+    font-size: 12.5px;
+}
+
+
+.markdown-body code, pre {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace !important;
+
+}
+
+p code {
+   font-weight: 480;
+}
+
+.code-div {
+    font-weight: 680;
+}
+
+.inline {
+    white-space: nowrap;
+    padding-bottom: 0.10em;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    margin-top: 34px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.markdown-body table tr {
+    background-color: white !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.markdown-body table th,
+.markdown-body table td {
+    padding: 6px 13px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+
+.newpage {
+    page-break-after: always;
 }

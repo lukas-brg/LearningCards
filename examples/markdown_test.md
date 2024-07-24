@@ -90,7 +90,13 @@ _This text tests **nested** fontstyles_
 > Blockquotes can also be nested...
 >> ...by using additional greater-than signs right next to each other...
 
+## Escaping Markdown Syntax
 
+```
+This \*should\* be displayed as plain text.
+```
+
+This \*should\* be displayed as plain text.
 
 ## Lists
 
