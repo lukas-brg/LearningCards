@@ -169,6 +169,7 @@ def export(args):
                 f.write(html_str)
       
         pdfkit.from_string(html_str, output_file)
+        print(f"Sucessfully converted '{input_file}' to '{output_file}'")
 
 
 
@@ -181,6 +182,7 @@ def to_html(args):
     if not args.theme:
         args.theme = config.document.default_theme
     styles = load_theme(args.theme)
+
     title = get_title(args, name)
     
     if css_path := args.css:
