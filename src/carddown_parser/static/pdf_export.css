@@ -19,8 +19,13 @@ p code {
 }
 
 .inline {
-    white-space: nowrap;
+    overflow-wrap: anywhere; 
+    word-wrap: normal;
     padding-bottom: 0.10em;
+}
+
+code {
+    min-width: 80%;
 }
 
 .markdown-body h1,
@@ -50,3 +55,4 @@ p code {
 .newpage {
     page-break-after: always;
 }
+

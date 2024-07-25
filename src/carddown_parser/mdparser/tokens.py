@@ -158,6 +158,7 @@ class EmphToken(InlineToken):
     def on_create(self):
         self.start = self.content_start - 1
    
+
 class StrikeToken(InlineToken):
     tag = "s"
     patterns = [r"~~(.+?)~~"]
@@ -168,7 +169,6 @@ class CodeToken(InlineToken):
     patterns = [r"`([^`]+)`"]
     parse_content = False
 
-  
     def to_html(self) -> HtmlNode:
         if config.mdparser.prettyprint_inline_code:
             return HtmlNode(self.tag, set_class="prettyprint inline")
@@ -186,7 +186,6 @@ class PrettyPrintCodeToken(InlineToken):
     }
 
     
-   
 class SubscriptToken(InlineToken):
     tag = "sub"
     pre_chars = 1

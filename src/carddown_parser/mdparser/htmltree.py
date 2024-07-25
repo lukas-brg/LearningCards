@@ -279,6 +279,19 @@ class HtmlFile:
 <!DOCTYPE html>
 <html lang="{self.lang}">
     <head>
+
+        <script>
+            MathJax = {{
+            tex: {{
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']]
+            }},
+            svg: {{
+                fontCache: 'global'
+            }}
+            }};
+        </script>
+
         <meta charset="{self.charset}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">

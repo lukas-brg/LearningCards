@@ -246,3 +246,34 @@ function lightOrDark(color) {
         return "dark";
     }
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+            
+    function restoreEscapedDollarSigns(content) {
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = content;
+
+        function processNodes(node) {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+                if (node.tagName.toLowerCase() === 'code') {
+                    return;
+                }
+                for (let child of node.childNodes) {
+                    processNodes(child);
+                }
+            } else if (node.nodeType === Node.TEXT_NODE) {
+                node.textContent = node.textContent.replace(/\\\$/g, '$');
+            }
+        }
+
+        processNodes(tempElement);
+        return tempElement.innerHTML;
+    }
+
+    const markdownContainer = document.querySelector('.markdown-body');
+
+    MathJax.typesetPromise([markdownContainer]).then(() => {
+        markdownContainer.innerHTML = restoreEscapedDollarSigns(markdownContainer.innerHTML);
+    });
+});

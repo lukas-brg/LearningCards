@@ -462,18 +462,21 @@ Second Term
 
 ## Latex Equations
 
-```
-Inline latex equation \(\forall x \in X, \quad \exists y \leq \epsilon\)
-
-Another inline equation \(\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}\)
+### Inline Equations
 
 ```
+Inline latex equation $\forall x \in X, \quad \exists y \leq \epsilon\$
 
-Inline latex equation \(\forall x \in X, \quad \exists y \leq \epsilon\)
+Another inline equation $\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}$
 
-Another inline equation \(\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}\)
+```
+
+Inline latex equation $\forall x \in X, \quad \exists y \leq \epsilon$
+
+Another inline equation $\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}$
 
 
+### Block Equations
 
 ```
 $$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$
@@ -482,15 +485,29 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
 ``` 
 
 
-
 $$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$
-
-
 
 $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}$$
 
 
+### Escaping Latex Syntax
 
+If the Latex Syntax conflicts with something you want to be displayed, you can use backslashes to escape the `$`.
+**Note:** Within code elements Latex equations won't be rendered anyway, so you can use the `$` character safely there.
+
+
+
+```
+\$\forall x \in X, \quad \exists y \leq \epsilon\$
+
+\$\$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}\$\$
+```
+
+**This should not be rendered as an equation:**
+
+\$\forall x \in X, \quad \exists y \leq \epsilon\$
+
+\$\$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}\$\$
 
 
 # h1 Heading

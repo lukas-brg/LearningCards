@@ -25,5 +25,5 @@ This shoud not be a code block!
 \[link text](http://dev.nodeca.com)
 \[link text](http://dev.nodeca.com)
 
-\![Minion]\(https://octodex.github.com/images/minion.png)
+\!\[Minion](https://octodex.github.com/images/minion.png)
 

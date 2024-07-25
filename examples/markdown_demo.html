@@ -2,6 +2,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
+        <script>
+            MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+            };
+        </script>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,7 +22,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap">
 
-        <title>Markdown Test</title>
+        <title>Markdown Demo</title>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> 
     
     </head>
@@ -49,6 +62,11 @@
             <li><a href="#definition-lists" class="toc-link">Definition lists</a></li>
             <li><a href="#task-lists" class="toc-link">Task lists</a></li>
             <li><a href="#latex-equations" class="toc-link">Latex Equations</a></li>
+            <ul class="toc-ul">
+              <li><a href="#inline-equations" class="toc-link">Inline Equations</a></li>
+              <li><a href="#block-equations" class="toc-link">Block Equations</a></li>
+              <li><a href="#escaping-latex-syntax" class="toc-link">Escaping Latex Syntax</a></li>
+            </ul>
           </ul>
           <li><a href="#h1-heading-1" class="toc-link">h1 Heading</a></li>
         </ul>
@@ -671,21 +689,23 @@ Second Term
       </ul>
     </ul>
     <h2 id="latex-equations">Latex Equations</h2>
-    <div id="code-div_c983c160" class="multiline">
+    <h3 id="inline-equations">Inline Equations</h3>
+    <div id="code-div_17e6123f" class="multiline">
       <div class="code-block-scrollbar-container">
         <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_c983c160">Inline latex equation \(\forall x \in X, \quad \exists y \leq \epsilon\)
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_17e6123f">Inline latex equation $\forall x \in X, \quad \exists y \leq \epsilon\$
 
-Another inline equation \(\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}\)</code></pre>
+Another inline equation $\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}$</code></pre>
         </div>
       </div>
-      <div class="copy-notification" id="copy-notification_c983c160">
+      <div class="copy-notification" id="copy-notification_17e6123f">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_c983c160" data-clipboard-target="#code-block_c983c160">Copy</button>
+      <button class="btn-copy" id="copy-button_17e6123f" data-clipboard-target="#code-block_17e6123f">Copy</button>
     </div>
-    <p>Inline latex equation (\forall x \in X, \quad \exists y \leq \epsilon)<br/></p>
-    <p>Another inline equation (\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi})<br/></p>
+    <p>Inline latex equation $\forall x \in X, \quad \exists y \leq \epsilon$<br/></p>
+    <p>Another inline equation $\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}$<br/></p>
+    <h3 id="block-equations">Block Equations</h3>
     <div id="code-div_622234d6" class="multiline">
       <div class="code-block-scrollbar-container">
         <div class="code-block-container">
@@ -701,6 +721,24 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
     </div>
     <p><span class="latex-equation">$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$</span><br/></p>
     <p><span class="latex-equation">$$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}$$</span><br/></p>
+    <h3 id="escaping-latex-syntax">Escaping Latex Syntax</h3>
+    <p>If the Latex Syntax conflicts with something you want to be displayed, you can use backslashes to escape the <code class="inline">$</code>.<br/><strong>Note:</strong> Within code elements Latex equations won't be rendered anyway, so you can use the <code class="inline">$</code> character safely there.<br/></p>
+    <div id="code-div_1250f3db" class="multiline">
+      <div class="code-block-scrollbar-container">
+        <div class="code-block-container">
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_1250f3db">\$\forall x \in X, \quad \exists y \leq \epsilon\$
+
+\$\$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}\$\$</code></pre>
+        </div>
+      </div>
+      <div class="copy-notification" id="copy-notification_1250f3db">
+        Copied!
+      </div>
+      <button class="btn-copy" id="copy-button_1250f3db" data-clipboard-target="#code-block_1250f3db">Copy</button>
+    </div>
+    <p><strong>This should not be rendered as an equation:</strong><br/></p>
+    <p>\$\forall x \in X, \quad \exists y \leq \epsilon\$<br/></p>
+    <p>\$\$\frac{1}{2\pi i} \oint<em>\gamma \frac{f(z)}{z-z</em>0} \, dz = f(z<em>0) \cdot \sum</em>{n=0}^{\infty} \frac{1}{z<em>0 - a</em>n}\$\$<br/></p>
     <h1 id="h1-heading-1">h1 Heading</h1>
     <p>This heading's purpose is to test whether the links in the table of contents still work with duplicate headings and to demonstrate how linking to duplicate headings works.<br/></p>
     <div class="footnotes-div">
@@ -1896,6 +1934,36 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
                 }
             }
 
+
+            document.addEventListener("DOMContentLoaded", function() {
+            
+                function restoreEscapedDollarSigns(content) {
+                    const tempElement = document.createElement('div');
+                    tempElement.innerHTML = content;
+
+                    function processNodes(node) {
+                        if (node.nodeType === Node.ELEMENT_NODE) {
+                            if (node.tagName.toLowerCase() === 'code') {
+                                return;
+                            }
+                            for (let child of node.childNodes) {
+                                processNodes(child);
+                            }
+                        } else if (node.nodeType === Node.TEXT_NODE) {
+                            node.textContent = node.textContent.replace(/\\\$/g, '$');
+                        }
+                    }
+
+                    processNodes(tempElement);
+                    return tempElement.innerHTML;
+                }
+
+                const markdownContainer = document.querySelector('.markdown-body');
+
+                MathJax.typesetPromise([markdownContainer]).then(() => {
+                    markdownContainer.innerHTML = restoreEscapedDollarSigns(markdownContainer.innerHTML);
+                });
+            });
 
     </script>
 

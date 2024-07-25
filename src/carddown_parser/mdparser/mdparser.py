@@ -356,7 +356,7 @@ def parse_table(lines: list[str], start: int) -> tuple[HtmlNode, int]:
         row_matches = re.findall(table_cols_pattern, line)
         
         if len(row_matches) != num_cols:
-            raise MarkdownSyntaxError("Inconsistent number of columns in table.")
+            raise MarkdownSyntaxError(f"Inconsistent number of columns in table.\n'{line}'")
 
         cols = [
                 HtmlNode("td", *parse_inline(col.strip()), **align) 

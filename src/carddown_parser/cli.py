@@ -167,7 +167,7 @@ def export(args):
         if ENABLE_DEBUG:
             with open("pdf.html", "w") as f:
                 f.write(html_str)
-
+      
         pdfkit.from_string(html_str, output_file)
 
 
