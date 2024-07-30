@@ -151,21 +151,21 @@ _This text tests **nested** fontstyles_</code></pre>
     <p><s>Strikethrough</s><br/></p>
     <p><em>This text tests <strong>nested</strong> fontstyles</em><br/></p>
     <h2 id="blockquotes">Blockquotes</h2>
-    <div id="code-div_41237419" class="multiline">
+    <div id="code-div_377dbc0d" class="multiline">
       <div class="code-block-scrollbar-container">
         <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_41237419">> A blockquote starts with `>` symbol
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...</code></pre>
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_377dbc0d">&gt; A blockquote starts with `&gt;` symbol
+&gt; Blockquotes can also be nested...
+&gt;&gt; ...by using additional greater-than signs right next to each other...</code></pre>
         </div>
       </div>
-      <div class="copy-notification" id="copy-notification_41237419">
+      <div class="copy-notification" id="copy-notification_377dbc0d">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_41237419" data-clipboard-target="#code-block_41237419">Copy</button>
+      <button class="btn-copy" id="copy-button_377dbc0d" data-clipboard-target="#code-block_377dbc0d">Copy</button>
     </div>
     <div class="blockquote-div">
-      <blockquote><p>A blockquote starts with <code class="inline">></code> symbol<br/>Blockquotes can also be nested...<br/></p><blockquote><p>...by using additional greater-than signs right next to each other...<br/></p></blockquote></blockquote>
+      <blockquote><p>A blockquote starts with <code class="inline">&gt;</code> symbol<br/>Blockquotes can also be nested...<br/></p><blockquote><p>...by using additional greater-than signs right next to each other...<br/></p></blockquote></blockquote>
     </div>
     <h2 id="escaping-markdown-syntax">Escaping Markdown Syntax</h2>
     <div id="code-div_c4b6b78c" class="multiline">
@@ -337,18 +337,18 @@ This is normal text.</code></pre>
     </div>
     <p>This is normal text.<br/></p>
     <h3 id="block-code-fences">Block code "fences"</h3>
-    <div id="code-div_9a679d8a" class="multiline">
+    <div id="code-div_045b9db5" class="multiline">
       <div class="code-block-scrollbar-container">
         <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_9a679d8a">  ```
-  Sample text here...
-  ```</code></pre>
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_045b9db5">```
+Sample text here...
+```</code></pre>
         </div>
       </div>
-      <div class="copy-notification" id="copy-notification_9a679d8a">
+      <div class="copy-notification" id="copy-notification_045b9db5">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_9a679d8a" data-clipboard-target="#code-block_9a679d8a">Copy</button>
+      <button class="btn-copy" id="copy-button_045b9db5" data-clipboard-target="#code-block_045b9db5">Copy</button>
     </div>
     <div id="code-div_27cccf7a" class="multiline">
       <div class="code-block-scrollbar-container">
@@ -363,20 +363,20 @@ This is normal text.</code></pre>
     </div>
     <h4 id="syntax-highlighting">Syntax highlighting</h4>
     <p>Specify the language after the code block opening fences, 'auto' is also accepted.<br/></p>
-    <div id="code-div_96e04923" class="multiline">
+    <div id="code-div_ee28694c" class="multiline">
       <div class="code-block-scrollbar-container">
         <div class="code-block-container">
-          <pre><code name="multiline-code-block" class="code-block" id="code-block_96e04923">  ```js
-  var foo = function (bar) {
-    return bar++;
-  };
-  ```</code></pre>
+          <pre><code name="multiline-code-block" class="code-block" id="code-block_ee28694c">```js
+var foo = function (bar) {
+  return bar++;
+};
+```</code></pre>
         </div>
       </div>
-      <div class="copy-notification" id="copy-notification_96e04923">
+      <div class="copy-notification" id="copy-notification_ee28694c">
         Copied!
       </div>
-      <button class="btn-copy" id="copy-button_96e04923" data-clipboard-target="#code-block_96e04923">Copy</button>
+      <button class="btn-copy" id="copy-button_ee28694c" data-clipboard-target="#code-block_ee28694c">Copy</button>
     </div>
     <div id="code-div_c08782b0" class="multiline">
       <div class="code-block-scrollbar-container">
@@ -662,6 +662,7 @@ Second Term
     </div>
     <dl><b><dt>First Term</dt></b><dd>This is the definition of the first term.</dd><br/><b><dt>Second Term</dt></b><dd>This is one definition of the second term.</dd><dd>This is another definition of the second term.</dd><br/></dl>
     <h2 id="task-lists">Task lists</h2>
+    <p><code class="inline">&lt;div&gt;</code><br/></p>
     <div id="code-div_00ba3b40" class="multiline">
       <div class="code-block-scrollbar-container">
         <div class="code-block-container">
@@ -719,8 +720,8 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
       </div>
       <button class="btn-copy" id="copy-button_622234d6" data-clipboard-target="#code-block_622234d6">Copy</button>
     </div>
-    <p><span class="latex-equation">$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$</span><br/></p>
-    <p><span class="latex-equation">$$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}$$</span><br/></p>
+    <p>$$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$<br/></p>
+    <p>$$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}$$<br/></p>
     <h3 id="escaping-latex-syntax">Escaping Latex Syntax</h3>
     <p>If the Latex Syntax conflicts with something you want to be displayed, you can use backslashes to escape the <code class="inline">$</code>.<br/><strong>Note:</strong> Within code elements Latex equations won't be rendered anyway, so you can use the <code class="inline">$</code> character safely there.<br/></p>
     <div id="code-div_1250f3db" class="multiline">
@@ -929,10 +930,10 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
                 font-family: monospace !important;
 
                 border-radius: 5px;
-                padding-left: 0.2em;
-                padding-right: 0.2em;
-                padding-top: 0.11%;
-                padding-bottom: 0.18%;
+                padding-left: 0.35em;
+                padding-right: 0.35em;
+                padding-top: 0.125em;
+                padding-bottom: 0.125em;
                 display: inline;
             }
 
@@ -1269,6 +1270,12 @@ $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=
                 font-size: 16px;
                 line-height: 1.5;
                 word-wrap: normal;
+            }
+
+            .inline-latex svg {
+                fill: var(--color-fg-default);
+                transform: scale(1.3);
+                margin-left: 20px;
             }
 
             .markdown-body .octicon {

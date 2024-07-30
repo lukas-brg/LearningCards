@@ -212,12 +212,10 @@ This is normal text.
 ### Block code "fences"
 
 
+    ```
+    Sample text here...
+    ```
 
-```
-  ```
-  Sample text here...
-  ```
-```
 
 ```
 Sample text here...
@@ -229,13 +227,13 @@ Sample text here...
 
 Specify the language after the code block opening fences, 'auto' is also accepted.
 
-```
-  ```js
-  var foo = function (bar) {
-    return bar++;
-  };
-  ```
-```
+
+    ```js
+    var foo = function (bar) {
+      return bar++;
+    };
+    ```
+
 
 ```js
 var foo = function (bar) {
@@ -449,6 +447,9 @@ Second Term
 
 ## Task lists
 
+`<div>`
+
+
 ```
 - [x] This list item is checked
 - [ ] This list item is unchecked 
@@ -508,6 +509,7 @@ If the Latex Syntax conflicts with something you want to be displayed, you can u
 \$\forall x \in X, \quad \exists y \leq \epsilon\$
 
 \$\$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}\$\$
+
 
 
 # h1 Heading

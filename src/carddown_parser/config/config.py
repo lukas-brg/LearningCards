@@ -63,16 +63,18 @@ class CardloaderConfig(Subconfig):
     # output will be rendered anyway.
     length_warning = 30 
 
-
+FORMATS = ["html", "pdf"]
 
 class DocumentConfig(Subconfig):
         
     _key = "document"
     table_of_contents = True
+    format = "html"
     toc_max_heading = 3
     toc_include_cards = True
     toc_max_heading_cards = 1
     toc_show_back_headings_cards = False
+    prerender_latex = True
     image_max_width = "80%"
     align = "center"
     indent_html = 2
@@ -267,7 +269,10 @@ def load_configs(args):
             config.document.align = args.align
         else:
             print(f"Warning: Invalid aligh option '{args.align}'. Disregarding...")
-   
+    
+    if args.prerender_latex is not None:
+        config.document.prerender_latex = args.prerender_latex
+
     if args.open is not None:
         config.document.open_file = args.open
     

@@ -1,4 +1,10 @@
+from collections import OrderedDict
+
 ESCAPE_SEQUENCES = { 
+    r"\\": {
+            "intermediate": "!!!ESCAPE!BACKSLASH!!!",
+            "display_text": "\\"
+    },
     "\*": {
             "intermediate": "!!!ESCAPE!ASTR!!!",
             "display_text": r"*"
@@ -65,3 +71,5 @@ ESCAPE_SEQUENCES = {
             "display_text": '\\n'
     },
 }
+
+ESCAPE_SEQUENCES = OrderedDict(ESCAPE_SEQUENCES)

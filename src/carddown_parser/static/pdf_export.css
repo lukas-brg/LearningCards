@@ -21,7 +21,6 @@ p code {
 .inline {
     overflow-wrap: anywhere; 
     word-wrap: normal;
-    padding-bottom: 0.10em;
 }
 
 code {
@@ -42,13 +41,20 @@ code {
 
 .markdown-body table tr {
     background-color: white !important;
-    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(0, 0, 0, 1);
 }
 
 .markdown-body table th,
 .markdown-body table td {
     padding: 6px 13px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 1);
+}
+.markdown-body table {
+    border: 1px rgba(0, 0, 0, 1);
+}
+
+.markdown-body {
+    padding-top: 0;
 }
 
 
