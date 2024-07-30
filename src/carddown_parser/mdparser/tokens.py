@@ -1,4 +1,4 @@
-import json, os, io
+import json, os
 from abc import ABC
 from typing import Match
 from carddown_parser.mdparser.htmltree import HtmlNode
@@ -8,7 +8,6 @@ from ..config import get_config
 from .htmltree import HtmlNode, SelfClosingTag, TextNode
 from .utils import find_subclasses, make_id_hash, sanitize_string
 
-import matplotlib.pyplot as plt
 from .latex import latex_to_svg
 
 

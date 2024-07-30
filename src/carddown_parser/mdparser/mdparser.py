@@ -598,11 +598,12 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(latex)
         
+
         elif is_codeblock_indented(line):
             code, i = parse_blockrule(parse_func=parse_codeblock_indented, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(code)
-
+       
         elif is_codeblock_fenced(line):
             code, i = parse_blockrule(parse_func=parse_codeblock_fenced, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)

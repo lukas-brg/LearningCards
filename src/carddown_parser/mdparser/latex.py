@@ -16,13 +16,9 @@ def latex_to_svg(latex_code):
     print(payload)
 
     response = requests.post("https://www.quicklatex.com/latex3.f", data=payload)
-    if not response.text.startswith("0"):
-            error = "\n".join(
-                response.text.split("\r\n")[2:]
-            )  # First 2 lines are API error code and error image URL resp.
-    else:
-        svgurl = response.text.split("\n")[-1].split(" ")[0].replace("png", "svg")
-        svgtext = requests.get(svgurl, headers={"Accept-Encoding": "identity"}).text
+ 
+    svgurl = response.text.split("\n")[-1].split(" ")[0].replace("png", "svg")
+    svgtext = requests.get(svgurl, headers={"Accept-Encoding": "identity"}).text
     
     return svgtext.replace("\n", "")
 
