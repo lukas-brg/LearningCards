@@ -51,7 +51,7 @@ is_dd       = lambda line : re.search(DEF_PATTERN, line)
 is_hr       = lambda line : re.match(r"[*]{3,}|[-]{3,}", line.replace(" ", ""))
 is_list     = lambda line : is_ul(line) or is_ol(line) 
 is_table    = lambda line : re.search(TABLE_PATTERN, line)
-is_latex    = lambda line : config.document.prerender_latex and line.startswith("$$")
+is_latex    = lambda line : line.startswith("$$")
 is_heading  = lambda line : re.search(HEADING_PATTERN, line)
 
 is_checked      = lambda line : line.startswith(CHECKED_PATTERN)
@@ -540,14 +540,19 @@ def parse_latex(lines: list[str], start: int) -> HtmlNode:
         if line.endswith("$$"):
             latex_str = latex_str.strip()[:-2]
             break
+
     backslash_esc = ESCAPE_SEQUENCES[r"\\"]
     latex_str = latex_str.replace(backslash_esc["intermediate"], r"\\")
-    latex_str = latex_str.replace(" ", "")
+    if config.document.prerender_latex:
+        latex_str = latex_str.replace(" ", "")
+        svg_data = latex_to_svg(latex_code=latex_str)
+        node = HtmlNode("div", svg_data, set_class="latex block-latex")
+    else:
+        node = TextNode("$$" + latex_str + "$$")
     
-    svg_data = latex_to_svg(latex_code=latex_str)
     end = len(lines) if i+1 >= len(lines) - 1 else i+1
 
-    return HtmlNode("div", svg_data, set_class="latex block-latex"), end
+    return node, end
 
 
 def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) -> list[HtmlNode]:

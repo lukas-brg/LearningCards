@@ -479,13 +479,33 @@ Another inline equation $\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}$
 $$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$
 
 $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}$$
+
+$$
+\begin{align*}
+x^2 + y^2 &= 1 \\
+y &= \sqrt{1 - x^2} \\
+y &= 0
+\end{align*}
+$$
+
 ``` 
 
 
 $$\frac{n!}{k!(n-k)!} = \binom{n}{k}$$
 
+
+</br>
+
 $$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}$$
 
+</br>
+
+$$
+\begin{align*}
+x^2 + y^2 &= 1 \\
+y &= \sqrt{1 - x^2} \\
+\end{align*}
+$$
 
 ### Escaping Latex Syntax
 
