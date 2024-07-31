@@ -29,3 +29,14 @@ This shoud not be a code block!
 
 \!\[Minion](https://octodex.github.com/images/minion.png)
 
+<hr/>
+
+`<hr/>`
+
+```
+<hr/>
+```
+
+$$x<p>0, a</p>0$$
+
+\<hr/\>

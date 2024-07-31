@@ -97,20 +97,13 @@ def find_tokens(line: str) -> dict[int, InlineToken]:
     """
     tokens = {}
 
-    html_matches = re.finditer(HTML_PATTERN, line)
-    html_locations = [match.span() for match in html_matches]
 
     for TokenType in get_token_types():
         for pattern in TokenType.patterns:
             matches = re.finditer(pattern, line)
             for match in matches:
                 token = TokenType.create(match)
-                token_within_html = False
-                for start, end in html_locations:
-                    if token.start >= start and token.start < end:
-                        token_within_html = True
-                if token_within_html is False:
-                    tokens[token.start] = token
+                tokens[token.start] = token
 
     return tokens
 
@@ -550,6 +543,7 @@ def parse_latex(lines: list[str], start: int) -> HtmlNode:
     backslash_esc = ESCAPE_SEQUENCES[r"\\"]
     latex_str = latex_str.replace(backslash_esc["intermediate"], r"\\")
     latex_str = latex_str.replace(" ", "")
+    
     svg_data = latex_to_svg(latex_code=latex_str)
     end = len(lines) if i+1 >= len(lines) - 1 else i+1
 
@@ -584,7 +578,8 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             i += 1
             continue
         
-        if re.match(r"^</?\\?[a-zA-Z0-9-]+.*\\?/?>.*", line.lstrip()):
+        # if re.match(r"^</?\\?[a-zA-Z0-9-]+.*\\?/?>.*", line.lstrip()):
+        if re.match(r"^<.+>$", line.strip()):
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(line)
             i += 1

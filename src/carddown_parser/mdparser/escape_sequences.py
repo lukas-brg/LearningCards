@@ -37,9 +37,13 @@ ESCAPE_SEQUENCES = {
             "intermediate": "!!!ESCAPE!HASH!!!",
             "display_text": "#"
     },
+    "\<": {
+            "intermediate": "!!!ESCAPE!LT!!!",
+            "display_text": "&lt;"
+    },
     "\>": {
             "intermediate": "!!!ESCAPE!GT!!!",
-            "display_text": ">"
+            "display_text": "&gt;"
     },
     "\+": {
             "intermediate": "!!!ESCAPE!PLUS!!!",

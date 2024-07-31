@@ -87,6 +87,14 @@ class InlineToken(ABC):
         return HtmlNode(self.tag, **self.attributes) if not self.self_closing else SelfClosingTag(self.tag, **self.attributes)
     
 
+class InlineHtmlToken(InlineToken):
+    patterns = [
+        r"(<.+>)"
+    ]
+    no_content = True
+
+    def to_html(self) -> HtmlNode:
+        return TextNode(self.match.group(1))
 
 
 class LinkToken(InlineToken):
@@ -215,10 +223,13 @@ class InlineEquationToken(InlineToken):
     no_content = True
 
     def to_html(self) -> HtmlNode:
+        equation = self.match.group(1)
         if config.document.prerender_latex is False:
-            return TextNode(self.match.group(1))
+            equation = equation.replace("<", "&lt;")
+            equation = equation.replace(">", "&gt;")
+            return TextNode(equation)
     
-        svg_data = latex_to_svg(self.match.group(1)[1:-1])
+        svg_data = latex_to_svg(equation[1:-1])
         return HtmlNode("span", svg_data, set_class="latex inline-latex")
 
 
