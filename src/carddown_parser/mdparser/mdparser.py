@@ -538,7 +538,7 @@ def parse_latex(lines: list[str], start: int) -> HtmlNode:
         line = line.strip()
         latex_str += line
         if line.endswith("$$"):
-            latex_str = latex_str.strip()[:-2]
+            latex_str = latex_str[:-2]
             break
 
     backslash_esc = ESCAPE_SEQUENCES[r"\\"]
@@ -548,7 +548,8 @@ def parse_latex(lines: list[str], start: int) -> HtmlNode:
         svg_data = latex_to_svg(latex_code=latex_str)
         node = HtmlNode("div", svg_data, set_class="latex block-latex")
     else:
-        node = TextNode("$$" + latex_str + "$$")
+        latex_str = latex_str.replace("<", "&lt;").replace(">", "&gt;")
+        node = HtmlNode("div", "$$" + latex_str + "$$", set_class="latex block-latex")
     
     end = len(lines) if i+1 >= len(lines) - 1 else i+1
 

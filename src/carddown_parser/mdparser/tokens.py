@@ -228,9 +228,9 @@ class InlineEquationToken(InlineToken):
             equation = equation.replace("<", "&lt;")
             equation = equation.replace(">", "&gt;")
             return TextNode(equation)
-    
-        svg_data = latex_to_svg(equation[1:-1])
-        return HtmlNode("span", svg_data, set_class="latex inline-latex")
+        else:
+            svg_data = latex_to_svg(equation[1:-1])
+            return HtmlNode("span", svg_data, set_class="latex inline-latex")
 
 
 class FootNoteReferenceToken(InlineToken):
