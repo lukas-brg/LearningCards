@@ -1,6 +1,8 @@
 from __future__ import annotations
 import textwrap
+
 from typing import Generator
+
 from ..errors import try_read_file
 from ..config import get_config
 
@@ -65,11 +67,17 @@ class HtmlNode:
                 self.children.append(c)
     
 
+    def detach_children(self) -> list[HtmlNode]:
+        for child in self.children:
+            child.parent = None
+        return self.children
+
+
     def has_parent_with_tag(self, tag: str) -> bool:
         current_node = self
         
         while current_node is not None:
-            if (tag == current_node.tag):
+            if tag == current_node.tag:
                 return True
             current_node = current_node.parent
         return False

@@ -21,6 +21,8 @@ This shoud not be a code block!
 | False            | Codecademy \|  Hoodie |  False             | 42.99           |
 
 
+\*Test\*
+
 
 \[link text](http://dev.nodeca.com)
 \[link text](http://dev.nodeca.com)

@@ -213,11 +213,11 @@ This is normal text.
 
 
 
-```
-  ```
-  Sample text here...
-  ```
-```
+
+    ```
+    Sample text here...
+    ```
+
 
 ```
 Sample text here...
@@ -229,13 +229,13 @@ Sample text here...
 
 Specify the language after the code block opening fences, 'auto' is also accepted.
 
-```
-  ```js
-  var foo = function (bar) {
-    return bar++;
-  };
-  ```
-```
+
+    ```js
+    var foo = function (bar) {
+      return bar++;
+    };
+    ```
+
 
 ```js
 var foo = function (bar) {
@@ -374,7 +374,6 @@ Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
 ```
 - 19^th^
 - H~2~O
-
 ```
 
 - 19^th^
@@ -389,7 +388,6 @@ Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
 Footnote 1 link[^first].
 
 Footnote 2 link[^second].
-
 ```
 
 Footnote 1 link[^first].
@@ -399,14 +397,13 @@ Footnote 2 link[^second].
 
 The corresponding footnotes look like this:
 
-```
 
+```
 [^first]: Footnotes _can have markup_
 
     and multiple paragraphs.
 
 [^second]: Footnote text.
-
 ```
 
 

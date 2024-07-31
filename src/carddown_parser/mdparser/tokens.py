@@ -8,6 +8,8 @@ from ..config import get_config
 from .htmltree import HtmlNode, SelfClosingTag, TextNode
 from .utils import find_subclasses, make_id_hash, sanitize_string
 
+from .latex import latex_to_svg
+
 
 with open(os.path.join(os.path.dirname(__file__), "emojis.json"), encoding="utf-8") as f:
     emojis: dict[str, str] = json.load(f)
@@ -168,22 +170,17 @@ class CodeToken(InlineToken):
     tag = "code"
     patterns = [r"`([^`]+)`"]
     parse_content = False
+    no_content = True
 
     def to_html(self) -> HtmlNode:
+        code_str = self.match.group(1)
+        code_str = code_str.replace("<", "&lt;")
+        code_str = code_str.replace(">", "&gt;")
+        
         if config.mdparser.prettyprint_inline_code:
-            return HtmlNode(self.tag, set_class="prettyprint inline")
-        return HtmlNode(self.tag, **self.attributes, set_class="inline")
+            return HtmlNode(self.tag, code_str, set_class="prettyprint inline")
+        return HtmlNode(self.tag, code_str, **self.attributes, set_class="inline")
 
-
-class PrettyPrintCodeToken(InlineToken):
-    tag = "code"
-    patterns = [r"```([^`]+)```"]
-    parse_content = False
-
-    attributes = {
-        "id" : "inline",
-        "set_class" : "prettyprint inline"
-    }
 
     
 class SubscriptToken(InlineToken):
@@ -215,16 +212,20 @@ class RightArrowToken(InlineToken):
 
     def to_html(self) -> HtmlNode:
         return HtmlNode("span", "&#8594;")
-    
 
-class LatexToken(InlineToken):
-    patterns = [r"(\$\$.+?\$\$)"]
+
+class InlineEquationToken(InlineToken):
+    patterns = [r"(\$.+?\$)"]
     parse_content = False
     tag = "span"
+    no_content = True
 
-    attributes = {
-        "set_class" : "latex-equation"
-    }
+    def to_html(self) -> HtmlNode:
+        if config.document.prerender_latex is False:
+            return TextNode(self.match.group(1))
+    
+        svg_data = latex_to_svg(self.match.group(1)[1:-1])
+        return HtmlNode("span", svg_data, set_class="latex inline-latex")
 
 
 class FootNoteReferenceToken(InlineToken):

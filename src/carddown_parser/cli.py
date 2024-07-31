@@ -1,7 +1,7 @@
 import os, sys, argparse, traceback, re
 import webbrowser
 import pdfkit
-from .config.config import load_configs, Config, CFG_PATHS, ENABLE_DEBUG, APP_CONFIG_PATH, USR_CONFIG_PATH
+from .config.config import load_configs, Config, CFG_PATHS, ENABLE_DEBUG, APP_CONFIG_PATH, USR_CONFIG_PATH, FORMATS
 from .mdparser.htmltree import HtmlFile
 from .fileparser import FileParser
 from .errors import MarkdownSyntaxError, show_exception_msg, show_warning_msg, CardSyntaxError, debug_print, try_read_file
@@ -30,8 +30,11 @@ def get_args():
     parser.add_argument("--no-toc", required=False, action="store_false", dest="toc")
     parser.add_argument("--toc-lvl", required=False, help="Specifies the maximun heading level displayed in the table of contents", type=int)
     parser.add_argument("--css", default=None, required=False, help="Include your own css file")
+    parser.add_argument("--prerender-latex", default=None, action="store_true", required=False, help="""Renders Latex equations during parsing (requires Internet connection).
+                                                                                                                Defaults to true when converting to PDF.""")
     parser.add_argument("--margin",  required=False, type=int)
-    parser.add_argument("--export", required=False, help="Export to 'json'")
+    parser.add_argument("-f", "--format", required=False, default=None , help=f"Specify the format of the output file out of: {FORMATS}")
+    
     parser.add_argument("--lang", required=False)
 
     parser.add_argument("--rec", "-r", required=False, action="store_true", default=False, help="Recursively traverses directory tree and converty any '.md' file into an '.html' file")
@@ -135,41 +138,33 @@ def try_parse_file(filepath: str,):
     return parser
 
 
-def export(args):
-    args.collapsible = False
-
-    if args.export == "json":
-        input_file, output_file, name = get_filepaths(args, "json")
-        parser = try_parse_file(input_file)
-        parser.cards.to_json(output_file, include_styles=args.styles)
-        print(f"Sucessfully exported '{input_file}' to '{output_file}'")
+def to_pdf(args):
+    config.cardloader.collapse = False
+    config.document.prerender_latex = True
+    config.document.codeblock_copy_btn = False
+    input_file, output_file, name = get_filepaths(args, "pdf")
+    title = get_title(args, name)
+    styles = load_theme("pdf")
     
-    elif args.export == "pdf":
-        config.cardloader.collapse = False
-        config.document.codeblock_copy_btn = False
-        input_file, output_file, name = get_filepaths(args, "pdf")
-        title = get_title(args, name)
-        styles = load_theme("pdf")
-        
-        parser = try_parse_file(input_file)
-        
-        html = HtmlFile(style_files=styles, title=title, lang=config.document.lang)
-        if args.shuffle:
-            parser.cards.shuffle()
+    parser = try_parse_file(input_file)
+    
+    html = HtmlFile(style_files=styles, title=title, lang=config.document.lang)
+    if args.shuffle:
+        parser.cards.shuffle()
 
-        if args.cards:
-            html.body.add_children(*parser.get_cards())
-        else:
-            html.body.add_children(*parser.get_cards_and_markdown())
+    if args.cards:
+        html.body.add_children(*parser.get_cards())
+    else:
+        html.body.add_children(*parser.get_cards_and_markdown())
 
-        html_str = str(html)
+    html_str = str(html)
 
-        if ENABLE_DEBUG:
-            with open("pdf.html", "w") as f:
-                f.write(html_str)
-      
-        pdfkit.from_string(html_str, output_file)
-        print(f"Sucessfully converted '{input_file}' to '{output_file}'")
+    if ENABLE_DEBUG:
+        with open(f"{name}_pdf_export.html", "w") as f:
+            f.write(html_str)
+    
+    pdfkit.from_string(html_str, output_file)
+    print(f"Sucessfully converted '{input_file}' to '{output_file}'")
 
 
 
@@ -188,17 +183,19 @@ def to_html(args):
     if css_path := args.css:
         styles.append(css_path)
     
-
-    if config.document.standalone is True:
-        static_folder = get_static_folder()
-        mathjax_path = os.path.join(static_folder, "mathjax.min.js")
-        with open(mathjax_path, "r") as f:
-            mathjax_script = f.read()
-        mathjax_include = f'<script id="MathJax-script">\n{mathjax_script}\n</script>'
+    if config.document.prerender_latex:
+        html = HtmlFile(scripts, style_files=styles, title=title, lang=config.document.lang)
     else:
-        mathjax_include = '<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>'
-        
-    html = HtmlFile(scripts, style_files=styles, title=title, lang=config.document.lang, head_str=mathjax_include)
+        if config.document.standalone is True:
+            static_folder = get_static_folder()
+            mathjax_path = os.path.join(static_folder, "mathjax.min.js")
+            with open(mathjax_path, "r") as f:
+                mathjax_script = f.read()
+            mathjax_include = f'<script id="MathJax-script">\n{mathjax_script}\n</script>'
+        else:
+            mathjax_include = '<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>'
+            
+        html = HtmlFile(scripts, style_files=styles, title=title, lang=config.document.lang, head_str=mathjax_include)
     html.set_alignment(config.document.margin, config.document.align)
         
 
@@ -274,9 +271,7 @@ def carddown_config():
         dest = USR_CONFIG_PATH
         if not os.path.exists(dest):
             sys.exit()
-
         os.remove(dest)
-        
     else:
         parser.error("Need to specify an option")
 
@@ -293,7 +288,20 @@ def main():
     
     load_configs(args)
 
-    if args.export:
-        export(args)
-    else:
+    if args.format is None:
+        args.format = config.document.format
+        if (output := args.output_file) is not None:
+            _, extension = os.path.splitext(output) 
+            extension = extension.lstrip(".")
+            if extension in FORMATS:
+                args.format = extension
+            else:
+                print(f"Warning: file extension '{extension}' does not represent a valid format. Defaulting to '{config.document.format}'")
+
+    if args.format == "html":
         to_html(args)
+    elif args.format == "pdf":
+        to_pdf(args)
+    else:
+        print(f"Error: Unsupported format '{args.format}'. Please choose a format out of {FORMATS}")
+

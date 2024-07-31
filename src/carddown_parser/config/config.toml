@@ -16,6 +16,8 @@ file_extension_warning = true
 length_warning = 30
 
 [document]
+prerender_latex = false
+format = "html"
 align = "center"
 body_class = "markdown-body"
 default_theme = "dark"

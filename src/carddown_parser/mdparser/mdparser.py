@@ -3,9 +3,10 @@ from typing import Callable
 
 
 from .tokens import InlineToken
+from .latex import latex_to_svg
 from .htmltree import HtmlNode, SelfClosingTag, WhiteSpaceNode, TextNode
 from .utils import leading_whitespaces, multiline_strip, find_line, make_id_hash
-from .escape_sequences import ESCAPE_SEQUENCES
+from .escape_sequences import ESCAPE_SEQUENCES, escape_text, unescape_text_in_tree
 from ..errors import try_read_file, MarkdownSyntaxError, show_warning_msg
 from ..config import get_config, ENABLE_DEBUG
 from ..config import get_locals
@@ -46,6 +47,7 @@ is_ol       = lambda line : re.search(ORDERED_LIST_PATTERN, line.strip())
 is_dd       = lambda line : re.search(DEF_PATTERN, line)
 is_list     = lambda line : is_ul(line) or is_ol(line) 
 is_table    = lambda line : re.search(TABLE_PATTERN, line)
+is_latex    = lambda line : config.document.prerender_latex and line.startswith("$$")
 is_heading  = lambda line : re.search(HEADING_PATTERN, line)
 
 is_checked      = lambda line : line.startswith(CHECKED_PATTERN)
@@ -60,21 +62,6 @@ is_codeblock_indented = lambda line : leading_whitespaces(line) >= 4 or line.str
 
 token_types = None
 
-
-def escape_text(text: str):
-    for str, esc in ESCAPE_SEQUENCES.items():
-        text = text.replace(str, esc["intermediate"])
-    return text
-
-
-def unescape_text(root: HtmlNode):
-    for node in root:
-        if isinstance(node, TextNode):
-            for str, esc in ESCAPE_SEQUENCES.items():
-                if node.has_parent_with_tag("code"):
-                    node.text = node.text.replace(esc["intermediate"], str)
-                else:
-                    node.text = node.text.replace(esc["intermediate"], esc["display_text"])
 
 
 def get_token_types() -> list[InlineToken]:
@@ -238,8 +225,10 @@ def make_codeblock_elem(code_lines: list[str], lang: str):
         code = HtmlNode("code", set_class=f"code-block prettyprint{lang_str}")
     else:
         code = HtmlNode("code", name=name, set_class="code-block")
-
-    code.add_children("\n".join(code_lines)) 
+    code_str = "\n".join(code_lines)
+    code_str = code_str.replace("<", "&lt;")
+    code_str = code_str.replace(">", "&gt;")
+    code.add_children(code_str) 
 
     id_hash = make_id_hash(code.get_inner_text(), limit_len=8)
 
@@ -535,6 +524,25 @@ def parse_blockrule(parse_func: Callable, start: int, lines: list[str], **kwargs
         return HtmlNode("span",  SelfClosingTag("br"), TextNode(lines[start], preserve_whitespace=True)), start+1
 
 
+
+def parse_latex(lines: list[str], start: int) -> HtmlNode:
+    lines[start] = lines[start][2:]
+    latex_str = ""
+    for i, line in enumerate(lines[start:], start):
+        line = line.strip()
+        latex_str += line
+        if line.endswith("$$"):
+            latex_str = latex_str.strip()[:-2]
+            break
+    backslash_esc = ESCAPE_SEQUENCES[r"\\"]
+    latex_str = latex_str.replace(backslash_esc["intermediate"], r"\\")
+    latex_str = latex_str.replace(" ", "")
+    svg_data = latex_to_svg(latex_code=latex_str)
+    end = len(lines) if i+1 >= len(lines) - 1 else i+1
+
+    return HtmlNode("div", svg_data, set_class="latex block-latex"), end
+
+
 def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) -> list[HtmlNode]:
     
     if isinstance(markdown, str):
@@ -569,16 +577,21 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             parsed_elems.append(heading)
             i += 1
 
+        elif is_latex(line):
+            latex, i = parse_blockrule(parse_func=parse_latex, lines=lines, start=i)
+            p = append_paragraph(parsed_elems, p, paragraph)
+            parsed_elems.append(latex)
+
+        elif is_codeblock_indented(line):
+            code, i = parse_blockrule(parse_func=parse_codeblock_indented, lines=lines, start=i)
+            p = append_paragraph(parsed_elems, p, paragraph)
+            parsed_elems.append(code)
+       
         elif is_codeblock_fenced(line):
             code, i = parse_blockrule(parse_func=parse_codeblock_fenced, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(code)
             
-        elif is_codeblock_indented(line):
-            code, i = parse_blockrule(parse_func=parse_codeblock_indented, lines=lines, start=i)
-            p = append_paragraph(parsed_elems, p, paragraph)
-            parsed_elems.append(code)
-        
         elif is_list(line): # List
             list, i = parse_blockrule(parse_func=parse_list, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)
@@ -618,7 +631,7 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
 
     _ = append_paragraph(parsed_elems, p, paragraph)
     container = HtmlNode("container", *parsed_elems)
-    unescape_text(container)
+    unescape_text_in_tree(container)
     return container.children
    
 
