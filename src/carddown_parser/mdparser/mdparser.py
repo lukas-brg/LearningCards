@@ -42,9 +42,13 @@ CHECKED_PATTERN = "- [x]"
 UNCHECKED_PATTERN = "- [ ]"
 
 
+HTML_PATTERN = r"<([a-zA-Z0-9-]+)([^>/]*?)\s*/>|<([a-zA-Z0-9-]+)([^>]*)>(.*?)<\/\3>"
+
+
 is_ul       = lambda line : line.strip().startswith(tuple((list_token + ' ' for list_token in config.mdparser.list_item_chars)))
 is_ol       = lambda line : re.search(ORDERED_LIST_PATTERN, line.strip())
 is_dd       = lambda line : re.search(DEF_PATTERN, line)
+is_hr       = lambda line : re.match(r"[*]{3,}|[-]{3,}", line.replace(" ", ""))
 is_list     = lambda line : is_ul(line) or is_ol(line) 
 is_table    = lambda line : re.search(TABLE_PATTERN, line)
 is_latex    = lambda line : config.document.prerender_latex and line.startswith("$$")
@@ -86,18 +90,27 @@ def get_list_tag(line: str) -> str:
     return "ul" if is_ul(line) else "ol"
 
 
+
 def find_tokens(line: str) -> dict[int, InlineToken]:
     """Returns a dict containing all the tokens in a single line, 
         where the key is the start index of the token.
     """
     tokens = {}
 
+    html_matches = re.finditer(HTML_PATTERN, line)
+    html_locations = [match.span() for match in html_matches]
+
     for TokenType in get_token_types():
         for pattern in TokenType.patterns:
             matches = re.finditer(pattern, line)
             for match in matches:
                 token = TokenType.create(match)
-                tokens[token.start] = token
+                token_within_html = False
+                for start, end in html_locations:
+                    if token.start >= start and token.start < end:
+                        token_within_html = True
+                if token_within_html is False:
+                    tokens[token.start] = token
 
     return tokens
 
@@ -571,7 +584,12 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             i += 1
             continue
         
-        if is_heading(line):  # Heading
+        if re.match(r"^</?\\?[a-zA-Z0-9-]+.*\\?/?>.*", line.lstrip()):
+            p = append_paragraph(parsed_elems, p, paragraph)
+            parsed_elems.append(line)
+            i += 1
+        
+        elif is_heading(line):  # Heading
             heading = parse_heading(line)
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(heading)
@@ -591,7 +609,12 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             code, i = parse_blockrule(parse_func=parse_codeblock_fenced, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(code)
-            
+        
+        elif is_hr(line):
+            p = append_paragraph(parsed_elems, p, paragraph)
+            parsed_elems.append(SelfClosingTag("hr"))
+            i += 1
+        
         elif is_list(line): # List
             list, i = parse_blockrule(parse_func=parse_list, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)

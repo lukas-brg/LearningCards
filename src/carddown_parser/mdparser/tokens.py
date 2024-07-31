@@ -194,12 +194,6 @@ class SuperscriptToken(InlineToken):
     patterns =  [r"\^([^\^\\\{\}]+)\^"]
 
 
-class HorizontalRuleToken(InlineToken):
-    tag = "hr"
-    patterns = [r"^[*-]{3}\s*$"]
-    no_content = True
-    self_closing = True
-
 
 class HighlightToken(InlineToken):
     tag = "mark"

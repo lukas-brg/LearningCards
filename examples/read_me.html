@@ -59,7 +59,7 @@
     <p>Carddown is a terminal-based Markdown renderer that extends the Markdown syntax to support the inclusion of learning cards.<br/></p>
     <p>It is able to render arbitrary markdown files that may or may not contain any learning cards and supports the entire markdown syntax as specified <a href="https://www.markdownguide.org/cheat-sheet/" title="">here</a>.<br/></p>
     <p>An input Markdown file is converted into a standalone HTML file, which, when opened by a web browser, displays the learning cards and renders the Markdown elements.<br/></p>
-    <p><br/><br/></p>
+    <br/>
     <h1 id="installation">Installation</h1>
     <p>This project requires <strong>Python 3.10 or higher</strong> to be installed on your system.<br/></p>
     <p>Clone this repository and run this in the project top-level directory:<br/></p>
@@ -99,7 +99,7 @@
       </div>
       <button class="btn-copy" id="copy-button_4b682b2b" data-clipboard-target="#code-block_4b682b2b">Copy</button>
     </div>
-    <p><br/><br/></p>
+    <br/>
     <h1 id="usage">Usage</h1>
     <p>At the very least you need to provide a path to an input file:<br/></p>
     <div id="code-div_cf31defa" class="multiline">
@@ -114,7 +114,7 @@
       <button class="btn-copy" id="copy-button_cf31defa" data-clipboard-target="#code-block_cf31defa">Copy</button>
     </div>
     <p>A corresponding HTML file is then created in the same directory as the input file and all the default parameters are applied.<br/></p>
-    <p><br/><br/></p>
+    <br/>
     <p>It is also possible to specify the path to the output file and its name:<br/></p>
     <div id="code-div_1ce463be" class="multiline">
       <div class="code-block-scrollbar-container">
@@ -127,7 +127,7 @@
       </div>
       <button class="btn-copy" id="copy-button_1ce463be" data-clipboard-target="#code-block_1ce463be">Copy</button>
     </div>
-    <p><br/><br/></p>
+    <br/>
     <p>Additionally there are a number of flags and parameters:<br/></p>
     <p><strong>Flags:</strong><br/></p>
     <ul>
@@ -146,7 +146,7 @@
       <li><code class="inline">--title</code> <span>&#8594;</span>  Title of the HTML document. If this parameter is not provided, one will be generated based on the name of the input file.</li>
     </ul>
     <p><code class="inline">carddown -h/--help</code> lists every available flag and parameter.<br/></p>
-    <p><br/><br/></p>
+    <br/>
     <h2 id="learning-cards">Learning Cards</h2>
     <p>The Learning cards are split into a front side and a back side. The front side contains the question, while the back side, which is not revealed until a click on a button, contains the answer.<br/></p>
     <p>The learning card specific syntax uses three types of tags, all of which are wrapped in <code class="inline">{CURLY_BRACES}</code>:<br/></p>
@@ -164,7 +164,7 @@
         <li>The <code class="inline">{END}</code> tag can be omitted for consecutive cards or when a card is at the end of file.</li>
       </ul>
     </ol>
-    <p><br/><br/></p>
+    <br/>
     <h3 id="learning-card-types">Learning Card Types</h3>
     <p>There are three basic card types:<br/></p>
     <h4 id="standard-card">Standard Card</h4>
@@ -202,7 +202,7 @@
       <hr/>
     </div>
     <p><strong>Note:</strong> This format where there is no <code class="inline">{BACK}</code> tag works for every card type.<br/></p>
-    <p><br/><br/></p>
+    <br/>
     <h4 id="multiple-choice-card">Multiple Choice Card</h4>
     <div class="card MultipleChoiceCard" id="2">
       <div class="front MultipleChoiceCard">
@@ -227,7 +227,7 @@
       </div>
       <hr/>
     </div>
-    <p><br/><br/></p>
+    <br/>
     <h4 id="answer-card">Answer Card</h4>
     <p>This card includes a textbox in which the user must input an answer.<br/></p>
     <div class="card AnswerCard" id="3">
@@ -250,14 +250,14 @@
       <hr/>
     </div>
     <p>The answer is contained inside <code class="inline">{CURLY_BRACES}</code>. If there are none, the whole back side will be regarded as the correct answer.<br/></p>
-    <p><br/><br/></p>
+    <br/>
     <p><strong>Note</strong>: You can find some more practical examples in <a href="./cards.md" title="">examples/cards.md</a> and look at the result by downloading <a href="./cards.html" title="">examples/cards.html</a> and opening it in a web browser.<br/></p>
-    <p><br/><br/></p>
+    <br/>
     <h2 id="configuration">Configuration</h2>
     <p>Carddown uses <code class="inline">.toml</code> files for configuration and provides a second entry point called <code class="inline">carddown-config</code> to handle all things related to configuration.<br/></p>
     <p>A config file does not need to contain every available parameter. When using a custom config file, the parameters within it overwrite the defaults, while the remaining parameters follow the default settings.<br/></p>
     <p>Run <code class="inline">carddown-config --help</code> to list out every option regarding configuration.<br/></p>
-    <p><br/><br/></p>
+    <br/>
     <h3 id="creating-a-user-config-file">Creating a User Config File</h3>
     <p>Carddown already uses an application config file located within the project directory. However, users can create their own config file.<br/></p>
     <p>For user convenience, a user config file containing the default settings can automatically be generated, at a location that is determined platform independently, by running the following command:<br/></p>
@@ -273,7 +273,7 @@
       <button class="btn-copy" id="copy-button_91aace51" data-clipboard-target="#code-block_91aace51">Copy</button>
     </div>
     <p>The path to the config file will be a printed to the terminal, so you can open it and edit the parameters according to your needs. The file will automatically be loaded by carddown.<br/></p>
-    <p><br/><br/></p>
+    <br/>
     <h3 id="undoing-the-configurations-made">Undoing the Configurations made</h3>
     <p>If you want to restore the defaults, you can either run<br/><code class="inline">carddown-config --make-usr</code> again and choose to overwrite the existing config file to bring it back to its defaults or remove the user config file entirely by running:<br/></p>
     <div id="code-div_66428904" class="multiline">
@@ -287,7 +287,7 @@
       </div>
       <button class="btn-copy" id="copy-button_66428904" data-clipboard-target="#code-block_66428904">Copy</button>
     </div>
-    <p><br/><br/></p>
+    <br/>
     <h3 id="using-a-custom-configuration-to-render-a-single-file">Using a Custom Configuration to Render a Single File</h3>
     <p>When using carddown to render a Markdown file, you can use the <code class="inline">--config [CONFIG_PATH]</code> parameter to use a custom config file and apply it just to this specific markdown file.<br/></p>
     <p>Example:<br/></p>
