@@ -52,12 +52,9 @@ def make_id_hash(*data: any, limit_len=None, ensure_unique=True) -> str:
     return unique_hash
      
 
-
-
 def leading_whitespaces(string: str):
     string = string.replace("\t", " " * config.mdparser.tabsize)
     return len(string) - len(string.lstrip(' '))
-
 
 
 def multiline_strip(lines: list[str]) -> list[str]:
@@ -67,8 +64,6 @@ def multiline_strip(lines: list[str]) -> list[str]:
     lines.reverse()
     return lines
 
-
-    
 
 def find_line(lines, start, function, negate=False):
     end = len(lines)

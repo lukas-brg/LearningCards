@@ -212,6 +212,8 @@ This is normal text.
 ### Block code "fences"
 
 
+
+
     ```
     Sample text here...
     ```
@@ -227,13 +229,13 @@ Sample text here...
 
 Specify the language after the code block opening fences, 'auto' is also accepted.
 
-
-    ```js
-    var foo = function (bar) {
-      return bar++;
-    };
-    ```
-
+```
+  ```js
+  var foo = function (bar) {
+    return bar++;
+  };
+  ```
+```
 
 ```js
 var foo = function (bar) {
@@ -372,7 +374,6 @@ Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
 ```
 - 19^th^
 - H~2~O
-
 ```
 
 - 19^th^
@@ -387,7 +388,6 @@ Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
 Footnote 1 link[^first].
 
 Footnote 2 link[^second].
-
 ```
 
 Footnote 1 link[^first].
@@ -397,14 +397,13 @@ Footnote 2 link[^second].
 
 The corresponding footnotes look like this:
 
-```
 
+```
 [^first]: Footnotes _can have markup_
 
     and multiple paragraphs.
 
 [^second]: Footnote text.
-
 ```
 
 
@@ -446,9 +445,6 @@ Second Term
 : This is another definition of the second term.
 
 ## Task lists
-
-`<div>`
-
 
 ```
 - [x] This list item is checked
@@ -509,7 +505,6 @@ If the Latex Syntax conflicts with something you want to be displayed, you can u
 \$\forall x \in X, \quad \exists y \leq \epsilon\$
 
 \$\$\frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-z_0} \, dz = f(z_0) \cdot \sum_{n=0}^{\infty} \frac{1}{z_0 - a_n}\$\$
-
 
 
 # h1 Heading

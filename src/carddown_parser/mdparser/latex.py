@@ -5,15 +5,13 @@ def latex_to_svg(latex_code):
     params = {
             "formula": latex_code,
             "out": 2,  
-            "preamble": "\\usepackage{amsmath} \\usepackage{amsfonts} \\usepackage{amssymb} \\Huge",
-            "font-size": "30px",
+            "preamble": "\\usepackage{amsmath} \\usepackage{amsfonts} \\usepackage{amssymb}",
     }
 
     payload = urllib.parse.urlencode(
         params, 
         quote_via=urllib.parse.quote
     )  
-    print(payload)
 
     response = requests.post("https://www.quicklatex.com/latex3.f", data=payload)
  

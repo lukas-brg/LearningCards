@@ -6,7 +6,7 @@ from .tokens import InlineToken
 from .latex import latex_to_svg
 from .htmltree import HtmlNode, SelfClosingTag, WhiteSpaceNode, TextNode
 from .utils import leading_whitespaces, multiline_strip, find_line, make_id_hash
-from .escape_sequences import ESCAPE_SEQUENCES
+from .escape_sequences import ESCAPE_SEQUENCES, escape_text, unescape_text_in_tree
 from ..errors import try_read_file, MarkdownSyntaxError, show_warning_msg
 from ..config import get_config, ENABLE_DEBUG
 from ..config import get_locals
@@ -47,6 +47,7 @@ is_ol       = lambda line : re.search(ORDERED_LIST_PATTERN, line.strip())
 is_dd       = lambda line : re.search(DEF_PATTERN, line)
 is_list     = lambda line : is_ul(line) or is_ol(line) 
 is_table    = lambda line : re.search(TABLE_PATTERN, line)
+is_latex    = lambda line : config.document.prerender_latex and line.startswith("$$")
 is_heading  = lambda line : re.search(HEADING_PATTERN, line)
 
 is_checked      = lambda line : line.startswith(CHECKED_PATTERN)
@@ -61,23 +62,6 @@ is_codeblock_indented = lambda line : leading_whitespaces(line) >= 4 or line.str
 
 token_types = None
 
-
-def escape_text(text: str):
-    if config.document.prerender_latex is True:
-        ESCAPE_SEQUENCES["\$"] = {"intermediate" : "!!!ESCAPE!DOLLARSIGN!!!", "display_text" : "$"}
-    for str, esc in ESCAPE_SEQUENCES.items():
-        text = text.replace(str, esc["intermediate"])
-    return text
-
-
-def unescape_text(root: HtmlNode):
-    for node in root:
-        if isinstance(node, TextNode):
-            for str, esc in ESCAPE_SEQUENCES.items():
-                if node.has_parent_with_tag("code"):
-                    node.text = node.text.replace(esc["intermediate"], str)
-                else:
-                    node.text = node.text.replace(esc["intermediate"], esc["display_text"])
 
 
 def get_token_types() -> list[InlineToken]:
@@ -545,18 +529,18 @@ def parse_latex(lines: list[str], start: int) -> HtmlNode:
     lines[start] = lines[start][2:]
     latex_str = ""
     for i, line in enumerate(lines[start:], start):
+        line = line.strip()
         latex_str += line
-        if line.strip().endswith("$$"):
+        if line.endswith("$$"):
             latex_str = latex_str.strip()[:-2]
             break
     backslash_esc = ESCAPE_SEQUENCES[r"\\"]
     latex_str = latex_str.replace(backslash_esc["intermediate"], r"\\")
     latex_str = latex_str.replace(" ", "")
-    print(latex_str)
     svg_data = latex_to_svg(latex_code=latex_str)
     end = len(lines) if i+1 >= len(lines) - 1 else i+1
 
-    return HtmlNode("div", svg_data), end
+    return HtmlNode("div", svg_data, set_class="latex block-latex"), end
 
 
 def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) -> list[HtmlNode]:
@@ -593,11 +577,10 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             parsed_elems.append(heading)
             i += 1
 
-        elif config.document.prerender_latex and line.startswith("$$"):
+        elif is_latex(line):
             latex, i = parse_blockrule(parse_func=parse_latex, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(latex)
-        
 
         elif is_codeblock_indented(line):
             code, i = parse_blockrule(parse_func=parse_codeblock_indented, lines=lines, start=i)
@@ -609,7 +592,6 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(code)
             
-        
         elif is_list(line): # List
             list, i = parse_blockrule(parse_func=parse_list, lines=lines, start=i)
             p = append_paragraph(parsed_elems, p, paragraph)
@@ -649,7 +631,7 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
 
     _ = append_paragraph(parsed_elems, p, paragraph)
     container = HtmlNode("container", *parsed_elems)
-    unescape_text(container)
+    unescape_text_in_tree(container)
     return container.children
    
 

@@ -60,7 +60,6 @@ class FileParser:
 
                     node.attributes["id"] = id
 
-
                 headings.append(node)
         
         # The headings are stored for efficiency as they are needed to make the table of contents
@@ -100,7 +99,7 @@ class FileParser:
         for node in self.headings:
             tag = node.tag
     
-            if tag in headings:
+            if (heading_lvl := headings.get(tag)):
     
                 if in_card_back := any(node.search_parents_by_attribute(set_class="back")):
                     in_card = True
@@ -109,8 +108,6 @@ class FileParser:
 
                 if in_card and not config.document.toc_include_cards:
                     continue
-
-                heading_lvl = headings[tag]
         
                 text = node.get_inner_text()
                 

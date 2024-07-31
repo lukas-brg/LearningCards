@@ -220,46 +220,14 @@ class InlineEquationToken(InlineToken):
     tag = "span"
     no_content = True
 
-    attributes = {
-        "set_class" : "latex-inline-equation"
-    }
-
     def to_html(self) -> HtmlNode:
         if config.document.prerender_latex is False:
             return TextNode(self.match.group(1))
     
         svg_data = latex_to_svg(self.match.group(1)[1:-1])
-        return HtmlNode("span", svg_data, set_class="inline-latex")
+        return HtmlNode("span", svg_data, set_class="latex inline-latex")
 
 
-# class BlockEquationToken(InlineToken):
-#     patterns = [r"\$(\$.+?\$)\$"]
-#     parse_content = False
-#     tag = "span"
-#     no_content = True
-
-#     attributes = {
-#         "set_class" : "latex-block-equation"
-#     }
-
-#     def to_html(self) -> HtmlNode:
-#         if config.document.prerender_equations is False:
-#             return TextNode(self.match.group())
-        
-     
-#         fig, ax = plt.subplots(figsize=(6, 1))
-#         ax.text(0.5, 0.5, self.match.group(1), fontsize=20, va='center', ha='center')
-#         ax.axis('off')
-#         with io.StringIO() as buf:
-#             plt.savefig(buf, format='svg')
-#             svg_data = buf.getvalue()
-
-#        # print(svg_data)
-#         plt.close(fig)
-
-#         return HtmlNode("div", svg_data)
-
-    
 class FootNoteReferenceToken(InlineToken):
     patterns = [r"\[\^(\S+)\]($|[^:])"]
     tag = "a"
