@@ -229,13 +229,13 @@ Sample text here...
 
 Specify the language after the code block opening fences, 'auto' is also accepted.
 
-```
-  ```js
-  var foo = function (bar) {
-    return bar++;
-  };
-  ```
-```
+
+    ```js
+    var foo = function (bar) {
+      return bar++;
+    };
+    ```
+
 
 ```js
 var foo = function (bar) {
