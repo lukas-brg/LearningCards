@@ -34,6 +34,13 @@ class HtmlNode:
                 yield node
 
 
+    def parents(self) -> Generator[HtmlNode]:
+        current_node = self
+        while current_node is not None:
+            yield current_node
+            current_node = current_node.parent
+    
+
     def remove_from_tree(self):
         self.parent.children.remove(self)
         self.parent = None
@@ -74,20 +81,15 @@ class HtmlNode:
 
 
     def has_parent_with_tag(self, tag: str) -> bool:
-        current_node = self
-        
-        while current_node is not None:
+        for current_node in self.parents():
             if tag == current_node.tag:
                 return True
-            current_node = current_node.parent
         return False
     
 
     def search_parents_by_attribute(self, tag=None, substring_search=True, find_all=True, **attrs) -> Generator[HtmlNode]:
-        current_node = self
         
-        while current_node is not None:
-
+        for current_node in self.parents():
             for attr, val in attrs.items():
                 if attr in current_node.attributes and (tag is None or current_node.tag == tag):
                     current_node_attr = current_node.attributes[attr]
@@ -102,8 +104,6 @@ class HtmlNode:
                         
                         if not find_all:
                             return     
-            
-            current_node = current_node.parent    
             
  
 

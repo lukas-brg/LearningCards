@@ -584,7 +584,6 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
             i += 1
             continue
         
-        # if re.match(r"^</?\\?[a-zA-Z0-9-]+.*\\?/?>.*", line.lstrip()):
         if re.match(r"^<.+>$", line.strip()):
             p = append_paragraph(parsed_elems, p, paragraph)
             parsed_elems.append(line)

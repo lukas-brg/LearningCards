@@ -6,7 +6,7 @@ from carddown_parser.mdparser.htmltree import HtmlNode
 from ..config import get_config
 
 from .htmltree import HtmlNode, SelfClosingTag, TextNode
-from .utils import find_subclasses, make_id_hash, sanitize_string
+from .utils import find_subclasses
 
 from .latex import latex_to_svg
 
