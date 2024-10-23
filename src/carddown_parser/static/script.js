@@ -91,11 +91,10 @@ for (let card of document.getElementsByClassName("card")) {
     card.addEventListener("mouseover", () => {
         btn = card.querySelector(".card-btn");
         focused = document.activeElement;
-
-        if (!(focused.name === "answer_field" + card.id)) {
+        if (!(focused.name === "answer_field" + btn.id)) {
+            btn.classList.add("focused");
             btn.focus();
         }
-        btn.classList.add("focused");
     });
     card.addEventListener("mouseout", () => {
         btn = card.querySelector(".card-btn");

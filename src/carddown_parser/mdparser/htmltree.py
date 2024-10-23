@@ -143,6 +143,7 @@ class HtmlNode:
     def _boolean_attr_str(self) -> str:
         return "".join(" " + attr for attr in self.boolean_attributes)
 
+
     def __str__(self, depth=1, inline=False):
         start_tag = f"<{self.tag}{self._attr_str()}{self._boolean_attr_str()}>"
         end_tag = f"</{self.tag}>"

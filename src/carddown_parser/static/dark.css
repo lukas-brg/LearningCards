@@ -491,3 +491,8 @@ li.L9 {
 svg path {
     stroke-width: 5px;
 }
+
+
+.focused {
+    background-color: #403f47;
+}
