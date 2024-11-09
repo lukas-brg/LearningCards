@@ -81,10 +81,7 @@ class HtmlNode:
 
 
     def has_parent_with_tag(self, tag: str) -> bool:
-        for current_node in self.parents():
-            if tag == current_node.tag:
-                return True
-        return False
+        return any(tag == parent.tag for parent in self.parents())
     
 
     def search_parents_by_attribute(self, tag=None, substring_search=True, find_all=True, **attrs) -> Generator[HtmlNode]:

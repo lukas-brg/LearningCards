@@ -5,7 +5,7 @@ from .mdparser.htmltree import  SelfClosingTag, HtmlNode, TextNode
 from .mdparser.utils import make_id_hash, sanitize_string
 from .cards import LearningCard
 from .errors import try_read_file, show_warning_msg
-from .config import get_config, get_locals
+from .config import get_config, get_local
 
 config = get_config()
 
@@ -121,7 +121,7 @@ class FileParser:
                 
                 if in_card: 
                     if heading_lvl == 1:
-                        text = f"{get_locals()['card']}: " + text
+                        text = f"{get_local('card')}: " + text
                     heading_lvl += last_non_card_heading_lvl
                 else:
                     last_non_card_heading_lvl = heading_lvl
@@ -156,7 +156,7 @@ class FileParser:
             show_warning_msg("Something went wrong creating the table of contents")
             return []
         
-        heading = HtmlNode("h1", get_locals()["toc"], HtmlNode("button", HtmlNode("i", set_class="fa-solid fa-chevron-up"), id="toc-btn"))
+        heading = HtmlNode("h1", get_local("toc"), HtmlNode("button", HtmlNode("i", set_class="fa-solid fa-chevron-up"), id="toc-btn"))
         content_div = HtmlNode("div", *uls, set_class="toc-content")
         return [HtmlNode("div", HtmlNode("span", heading),  content_div, set_class="toc")]
 

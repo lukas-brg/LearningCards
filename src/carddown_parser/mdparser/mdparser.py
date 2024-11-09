@@ -655,7 +655,7 @@ def parse_markdown(markdown: list[str]|str, paragraph=True, add_linebreak=True) 
     _ = append_paragraph(parsed_elems, p, paragraph)
     container = HtmlNode("container", *parsed_elems)
     unescape_text_in_tree(container)
-    return container.children
+    return container.detach_children()
    
 
 
