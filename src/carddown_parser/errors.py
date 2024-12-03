@@ -13,9 +13,16 @@ def debug_print(*msg: str):
 
 def try_read_file(filepath: str, error_msg: str=None, exit=True) -> str:
     try:
-        with open(filepath, 'r') as file:
-            data = file.read()
-            return data
+        try:
+            with open(filepath, 'r') as file:
+                data = file.read()
+                return data
+        except UnicodeDecodeError as e:
+            with open(filepath, 'r', encoding="windows-1252") as file:
+                data = file.read()
+                return data
+
+    
     except OSError as e:
         if not error_msg:
             error_msg = f"Error: the file '{filepath}' doesn't exist"
