@@ -10,7 +10,7 @@
 \>\> ...by using additional greater-than signs right next to each other...
 
 \`\`\`
-This shoud not be a code block!
+This should not be a code block!
 \`\`\`
 
 | `Default  \| Alignment` | Left \|  Alignment    | Center  \| Alignment   | Right \|  Alignment |
