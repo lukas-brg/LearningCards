@@ -45,6 +45,12 @@ class HtmlNode:
         self.parent.children.remove(self)
         self.parent = None
 
+
+    def set_children(self, children: list[HtmlNode|str]):
+        for c in children:
+            c.parent = self
+        _ = self.detach_children()
+        self.children = children
     
     def replace_in_tree(self, node: HtmlNode|str):
      

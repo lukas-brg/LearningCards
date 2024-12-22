@@ -169,7 +169,6 @@ def to_pdf(args):
 
 
 def to_html(args):
-    
     input_file, output_file, name = get_filepaths(args, "html")
     
     parser = try_parse_file(input_file)

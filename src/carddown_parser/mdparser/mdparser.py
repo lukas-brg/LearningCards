@@ -2,7 +2,7 @@ import re, traceback
 from typing import Callable
 
 
-from .tokens import InlineToken
+from .tokens import InlineToken, LinkToken
 from .latex import latex_to_svg
 from .htmltree import HtmlNode, SelfClosingTag, WhiteSpaceNode, TextNode
 from .utils import leading_whitespaces, multiline_strip, find_line, make_id_hash
@@ -108,6 +108,37 @@ def find_tokens(line: str) -> dict[int, InlineToken]:
     return tokens
 
 
+def parse_link(line: str, start: int) -> HtmlNode:
+    bracket_count = 1
+    paren_count = 0
+    for i, char in enumerate(line[start+1:], start+1):
+        if char == "]":
+            bracket_count -= 1
+        elif char == "[":
+            bracket_count += 1
+        if bracket_count == 0:
+            break
+    content_end = i
+
+    for i, char in enumerate(line[content_end+1:], content_end+1):
+        if char == "(":
+            paren_count += 1
+        elif char == ")":
+            paren_count -= 1
+        if paren_count == 0:
+            break
+    
+    link_end = i+1
+    content = line[start+1:content_end]
+    content_elems = parse_inline(content)
+    link_contentless = line[start:start+1] + line[content_end:link_end]
+
+    link_match = re.match(LinkToken.patterns[0], link_contentless)
+    link_elem = LinkToken.create(link_match).to_html()
+    link_elem.set_children(content_elems)
+    return link_elem, link_end
+
+
 def _parse_inline(line: str, tokens: dict[int, InlineToken], parent: HtmlNode, start: int, end: int, parse_content=True):
 
     i = start
@@ -116,16 +147,18 @@ def _parse_inline(line: str, tokens: dict[int, InlineToken], parent: HtmlNode, s
     while i < end:
         
         if i in tokens and parse_content:
-        
+            
             parent.add_children(text)
             text = ""
             token = tokens[i]
-            elem = token.to_html()
             
-            _parse_inline(line, tokens, elem, token.content_start, token.content_end, token.parse_content)
-            parent.add_children(elem)
-          
-            i = token.end
+            if isinstance(token, LinkToken):
+                html_elem, i = parse_link(line, i)
+            else:
+                html_elem = token.to_html()
+                _parse_inline(line, tokens, html_elem, token.content_start, token.content_end, token.parse_content)
+                i = token.end
+            parent.add_children(html_elem)
         else:
             text += line[i]
             i += 1
