@@ -1,4 +1,5 @@
-import json, os
+import json
+import os
 from abc import ABC
 from typing import Match
 from carddown_parser.mdparser.htmltree import HtmlNode
@@ -16,7 +17,6 @@ with open(os.path.join(os.path.dirname(__file__), "emojis.json"), encoding="utf-
 
 
 config = get_config()
-
 
 
 class InlineToken(ABC):
@@ -51,29 +51,28 @@ class InlineToken(ABC):
         self.content = content
         self.end = end
         self.match = match
-        
-        self.on_create()
 
+        self.on_create()
 
     @classmethod
     def create(TokenType, match: Match):
         start, end = match.span()
         if TokenType.no_content:
-            content_start, content_end = end, end 
+            content_start, content_end = end, end
             content = None
         else:
             content_start, content_end = match.span(TokenType.content_group)
             content = match.group(TokenType.content_group)
-        
+
         return TokenType(
-            start = start + TokenType.pre_chars,
-            content_start = content_start,
-            content_end = content_end,
-            content = content,
-            end = end,
-            match = match
+            start=start + TokenType.pre_chars,
+            content_start=content_start,
+            content_end=content_end,
+            content=content,
+            end=end,
+            match=match
         )
-    
+
     def on_create(self):
         """This method can be overriden by a subclass, if it needs to modify anything about the token instance"""
         pass
@@ -81,11 +80,10 @@ class InlineToken(ABC):
     @staticmethod
     def get_all_token_types() -> list[type]:
         return find_subclasses(InlineToken)
-      
-            
+
     def to_html(self) -> HtmlNode:
         return HtmlNode(self.tag, **self.attributes) if not self.self_closing else SelfClosingTag(self.tag, **self.attributes)
-    
+
 
 class InlineHtmlToken(InlineToken):
     patterns = [
@@ -100,13 +98,13 @@ class InlineHtmlToken(InlineToken):
 class LinkToken(InlineToken):
     tag = "a"
     patterns = [r"(?:^|[^!])\[(.*?)\]\((.*?)(?:\s*\"(.*?)\")?\)"]
-    
+
     def on_create(self):
         # To make sure an ImageToken isn't matched, this token test for either the start of the line or a character that is not '!'
         # But since it can't be known which it is the start of the match doesn't necessarily equal the start of the token, so it is determined based on the content
         # The same is done for every token that needs to rule out a character before like this
         self.start = self.content_start - 1
-    
+
     def to_html(self):
         url = self.match.group(2)
         title = self.match.group(3) or ""
@@ -117,9 +115,8 @@ class LinkToken(InlineToken):
 
         if not url.startswith("#") and not url.startswith("http") and not url.startswith("./"):
             url = "http://" + url
-        
-        return HtmlNode(self.tag, href=url, title=title)
 
+        return HtmlNode(self.tag, href=url, title=title)
 
 
 class ImageToken(InlineToken):
@@ -135,7 +132,6 @@ class ImageToken(InlineToken):
         return SelfClosingTag(self.tag, alt=alt, src=src, title=title, style=max_width)
 
 
-
 class AutomaticLinkToken(InlineToken):
     tag = "a"
     patterns = [r"(?:^|[^(])(https?://[^\s,]+)"]
@@ -149,14 +145,13 @@ class AutomaticLinkToken(InlineToken):
         return HtmlNode(self.tag, url, href=url)
 
 
-  
 class BoldToken(InlineToken):
     tag = "strong"
     patterns = [
-        r"\*\*(.+?)\*\*", 
+        r"\*\*(.+?)\*\*",
         r"__(.+?)__"
     ]
-    
+
 
 class EmphToken(InlineToken):
     tag = "em"
@@ -164,15 +159,15 @@ class EmphToken(InlineToken):
         r"(?:^|[^_])_([^_\[\]:/]+)\_",
         r"(?:^|[^\*])\*([^\*]+)\*"
     ]
-    
+
     def on_create(self):
         self.start = self.content_start - 1
-   
+
 
 class StrikeToken(InlineToken):
     tag = "s"
     patterns = [r"~~(.+?)~~"]
-   
+
 
 class CodeToken(InlineToken):
     tag = "code"
@@ -184,32 +179,30 @@ class CodeToken(InlineToken):
         code_str = self.match.group(1)
         code_str = code_str.replace("<", "&lt;")
         code_str = code_str.replace(">", "&gt;")
-        
+
         if config.mdparser.prettyprint_inline_code:
             return HtmlNode(self.tag, code_str, set_class="prettyprint inline")
         return HtmlNode(self.tag, code_str, **self.attributes, set_class="inline")
 
 
-    
 class SubscriptToken(InlineToken):
     tag = "sub"
     pre_chars = 1
     patterns = [r"[\S]~([^~\\\{\}]+)~"]
 
-   
+
 class SuperscriptToken(InlineToken):
     tag = "sup"
-    patterns =  [r"\^([^\^\\\{\}]+)\^"]
-
+    patterns = [r"\^([^\^\\\{\}]+)\^"]
 
 
 class HighlightToken(InlineToken):
     tag = "mark"
     patterns = [r"==([^=]+)=="]
-    
+
 
 class RightArrowToken(InlineToken):
-    patterns =  [r"-->"]
+    patterns = [r"-->"]
     no_content = True
 
     def to_html(self) -> HtmlNode:
@@ -244,9 +237,10 @@ class FootNoteReferenceToken(InlineToken):
         text = self.match.group(1)
         href = f"#footnote-{text}"
         display_text = "[" + text + "]"
-        a = HtmlNode(self.tag, display_text, href=href, set_class="footnote-ref", id="ref-" + text)
+        a = HtmlNode(self.tag, display_text, href=href,
+                     set_class="footnote-ref", id="ref-" + text)
         return HtmlNode("sup", a)
-    
+
 
 class EmojiToken(InlineToken):
     patterns = [r"(:[a-zA-Z0-9_\-]+:)"]

@@ -1,17 +1,22 @@
-import sys, traceback
+import sys
+import traceback
 from .config.config import ENABLE_DEBUG
+
 
 def show_exception_msg(e: Exception):
     print(type(e).__name__ + ": " + str(e))
 
+
 def show_warning_msg(msg: str):
     print("Warning: " + msg)
+
 
 def debug_print(*msg: str):
     if ENABLE_DEBUG:
         print(*msg)
 
-def try_read_file(filepath: str, error_msg: str=None, exit=True) -> str:
+
+def try_read_file(filepath: str, error_msg: str = None, exit=True) -> str:
     try:
         try:
             with open(filepath, 'r') as file:
@@ -22,7 +27,6 @@ def try_read_file(filepath: str, error_msg: str=None, exit=True) -> str:
                 data = file.read()
                 return data
 
-    
     except OSError as e:
         if not error_msg:
             error_msg = f"Error: the file '{filepath}' doesn't exist"
@@ -32,7 +36,7 @@ def try_read_file(filepath: str, error_msg: str=None, exit=True) -> str:
             traceback.print_exc()
         if exit:
             sys.exit()
-    
+
     except Exception as e:
         print(f"Error: Something went wrong opening the file '{filepath}':")
         print(f"{type(e)}, {e}")
@@ -43,9 +47,9 @@ def try_read_file(filepath: str, error_msg: str=None, exit=True) -> str:
             sys.exit()
 
 
-
 class MarkdownSyntaxError(Exception):
     pass
+
 
 class CardSyntaxError(Exception):
     pass
