@@ -8,3 +8,6 @@ static_github/
 examples/test.md
 examples/test.html
 venv/
+out.txt
+temp.html
+*.pdf.html

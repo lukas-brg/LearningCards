@@ -10,7 +10,7 @@ from .utils import leading_whitespaces, multiline_strip, find_line, make_id_hash
 from .escape_sequences import ESCAPE_SEQUENCES, escape_text, unescape_text_in_tree
 from ..errors import try_read_file, MarkdownSyntaxError, show_warning_msg
 from ..config import get_config, ENABLE_DEBUG
-from ..config import get_locals
+from ..config import get_local
 
 config = get_config()
 
@@ -297,8 +297,13 @@ def make_codeblock_elem(code_lines: list[str], lang: str):
     copy_btn = HtmlNode("button", "Copy", set_class="btn-copy",
                         id=f"copy-button_{id_hash}")
     copy_btn.attributes["data-clipboard-target"] = f"#{code.attributes['id']}"
-    copy_notification = HtmlNode("div", get_locals(
-    )["copied"], set_class="copy-notification", id=f"copy-notification_{id_hash}")
+
+    copy_notification = HtmlNode(
+        "div", get_local("copied"),
+        set_class="copy-notification",
+        id=f"copy-notification_{id_hash}"
+    )
+
     code_div = HtmlNode(
         "div",
         scrollbar_container,

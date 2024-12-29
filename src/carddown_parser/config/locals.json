@@ -1,8 +1,8 @@
 {
     "de": {
-        "show_backside": "R&uuml;ckseite einblenden",
-        "hide_backside": "R&uuml;ckseite ausblenden",
-        "check_answer": "Pr&uuml;fen",
+        "show_backside": "Rückseite einblenden",
+        "hide_backside": "Rückseite ausblenden",
+        "check_answer": "Prüfen",
         "toc": "Inhaltsverzeichnis",
         "card": "Karte",
         "copied": "Kopiert!"
@@ -15,5 +15,94 @@
         "toc": "Table Of Contents",
         "card": "Card",
         "copied": "Copied!"
+    },
+    "fr": {
+        "show_backside": "Afficher le verso",
+        "hide_backside": "Cacher le verso",
+        "check_answer": "Vérifier la réponse",
+        "toc": "Table des matières",
+        "card": "Carte",
+        "copied": "Copié!"
+    },
+
+    "es": {
+        "show_backside": "Mostrar reverso",
+        "hide_backside": "Ocultar reverso",
+        "check_answer": "Comprobar respuesta",
+        "toc": "Tabla de contenidos",
+        "card": "Tarjeta",
+        "copied": "¡Copiado!"
+    },
+
+    "it": {
+        "show_backside": "Mostra il retro",
+        "hide_backside": "Nascondi il retro",
+        "check_answer": "Controlla la risposta",
+        "toc": "Indice",
+        "card": "Carta",
+        "copied": "Copiato!"
+    },
+
+    "pt": {
+        "show_backside": "Mostrar verso",
+        "hide_backside": "Ocultar verso",
+        "check_answer": "Verificar resposta",
+        "toc": "Índice",
+        "card": "Cartão",
+        "copied": "Copiado!"
+    },
+
+    "nl": {
+        "show_backside": "Achterkant tonen",
+        "hide_backside": "Achterkant verbergen",
+        "check_answer": "Controleer antwoord",
+        "toc": "Inhoudsopgave",
+        "card": "Kaart",
+        "copied": "Gekopieerd!"
+    },
+
+    "sv": {
+        "show_backside": "Visa baksidan",
+        "hide_backside": "Dölj baksidan",
+        "check_answer": "Kontrollera svar",
+        "toc": "Innehållsförteckning",
+        "card": "Kort",
+        "copied": "Kopierat!"
+    },
+
+    "ru": {
+        "show_backside": "Показать оборот",
+        "hide_backside": "Скрыть оборот",
+        "check_answer": "Проверить ответ",
+        "toc": "Оглавление",
+        "card": "Карточка",
+        "copied": "Скопировано!"
+    },
+
+    "ja": {
+        "show_backside": "裏面を表示",
+        "hide_backside": "裏面を隠す",
+        "check_answer": "答えを確認",
+        "toc": "目次",
+        "card": "カード",
+        "copied": "コピーしました!"
+    },
+
+    "zh": {
+        "show_backside": "显示背面",
+        "hide_backside": "隐藏背面",
+        "check_answer": "检查答案",
+        "toc": "目录",
+        "card": "卡片",
+        "copied": "已复制!"
+    },
+
+    "ar": {
+        "show_backside": "عرض الجهة الخلفية",
+        "hide_backside": "إخفاء الجهة الخلفية",
+        "check_answer": "تحقق من الإجابة",
+        "toc": "فهرس المحتويات",
+        "card": "بطاقة",
+        "copied": "تم النسخ!"
     }
 }

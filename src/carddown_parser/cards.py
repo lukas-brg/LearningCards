@@ -66,8 +66,8 @@ class LearningCard(ABC):
             parent.add_children(*content)
             return
 
-        btn = HtmlNode("button", get_locals()[
-                       "show_backside"], set_class="collapsible card-btn")
+        btn = HtmlNode("button", get_local("show_backside"),
+                       set_class="collapsible card-btn")
         content = HtmlNode("div", *content, set_class="content")
         parent.add_children(btn, content, SelfClosingTag('br'))
 

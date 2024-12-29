@@ -69,12 +69,11 @@ ESCAPE_SEQUENCES = {
         "intermediate": "!!!ESCAPE!MINUS!!!",
         "display_text": "-"
     },
-
     "\\|": {
         "intermediate": "!!!ESCAPE!PIPE!!!",
         "display_text": "|"
     },
-    r"\\n": {
+    r"\n": {
         "intermediate": "!!!ESCAPE!NEWLINE!!!",
         "display_text": '\\n'
     },

@@ -13,7 +13,7 @@ readme = "readme.md"
 
 requires-python = ">=3.10"
 dependencies = [
-   "pdfkit", "toml", "appdirs", "requests"
+   "pdfkit", "toml", "appdirs", "requests", "selenium"
 ]
 
 version = "1.0.0"
