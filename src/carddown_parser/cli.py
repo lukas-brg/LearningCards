@@ -11,6 +11,8 @@ from .mdparser.htmltree import HtmlFile
 from .fileparser import FileParser
 from .errors import MarkdownSyntaxError, show_exception_msg, show_warning_msg, CardSyntaxError, debug_print, try_read_file
 
+from .mdparser.latex import KatexRenderer, MathJaxRenderer, render_latex
+
 
 config = Config.get_config()
 
@@ -158,34 +160,6 @@ def try_parse_file(filepath: str,):
     return parser
 
 
-def render_latex(html_content: str):
-    from selenium import webdriver
-    from selenium.webdriver.chrome.service import Service
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-
-    with open("temp.html", "w", encoding="utf-8") as f:
-        f.write(html_content)
-
-    service = Service('/usr/bin/chromedriver')
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    driver = webdriver.Chrome(service=service, options=options)
-    path = "file://" + os.path.realpath(f.name)
-    driver.get(path)
-
-    WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, '.MJX-TEX'))
-    )
-    # time.sleep(5)
-
-    rendered_html = driver.page_source
-    driver.quit()
-    return rendered_html
-
-
 def to_pdf(args):
     config.cardloader.collapse = False
     config.document.prerender_latex = False
@@ -195,9 +169,12 @@ def to_pdf(args):
     styles = load_theme("pdf")
 
     parser = try_parse_file(input_file)
-    mathjax_include = '<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>'
-    html = HtmlFile(style_files=styles, head_str=mathjax_include,
+    renderer = KatexRenderer
+    html = HtmlFile(style_files=styles,
                     title=title, lang=config.document.lang)
+
+    renderer.attach_to_html(html)
+
     if args.shuffle:
         parser.cards.shuffle()
 
@@ -207,7 +184,7 @@ def to_pdf(args):
         html.body.add_children(*parser.get_cards_and_markdown())
 
     html_str = str(html)
-    html_str = render_latex(html_str)
+    html_str = render_latex(html_str, renderer)
     if ENABLE_DEBUG:
         with open(f"{name}.pdf.html", "w") as f:
             f.write(html_str)

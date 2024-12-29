@@ -481,18 +481,6 @@ li.L9 {
 
 
 
-.latex svg {
-    fill: var(--color-fg-default);
-    transform: scale(1.3);
-    margin-left: 20px;
-    stroke-width: 20px;
-}
-
-svg path {
-    stroke-width: 5px;
-}
-
-
 .focused {
     background-color: #403f47;
 }

@@ -62,3 +62,9 @@ code {
     page-break-after: always;
 }
 
+.katex .katex-mathml .mfrac {
+    font-size: 1em;
+}
+.katex .katex-mathml .katex-ellipsis {
+    font-size: 1em;
+}

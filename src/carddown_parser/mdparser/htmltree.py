@@ -190,7 +190,7 @@ class WhiteSpaceNode(TextNode):
 
 
 class HtmlFile:
-    def __init__(self, script_files=None, style_files=None, title="", style_str="", head_str="", script_str="", charset="utf-8", lang="en"):
+    def __init__(self, script_files=None, style_files=None, title="", style_str="", head_str="", script_str="",  head_script_str="", charset="utf-8", lang="en"):
         self.body = HtmlNode('body', set_class=config.document.body_class)
         self.script_files = script_files or []
         self.style_files = style_files or []
@@ -201,6 +201,7 @@ class HtmlFile:
         self.charset = charset
         self.lang = lang
         self._align_str = ""
+        self.head_script_str = head_script_str
 
     def save(self, filepath: str):
         with open(filepath, 'w') as f:
@@ -281,15 +282,9 @@ class HtmlFile:
     <head>
 
         <script>
-            MathJax = {{
-            tex: {{
-                inlineMath: [['$', '$']],
-                displayMath: [['$$', '$$']]
-            }},
-            svg: {{
-                fontCache: 'global'
-            }}
-            }};
+           
+
+            {self.head_script_str}
         </script>
 
         <meta charset="{self.charset}">
