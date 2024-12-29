@@ -11,7 +11,7 @@ from .mdparser.htmltree import HtmlFile
 from .fileparser import FileParser
 from .errors import MarkdownSyntaxError, show_exception_msg, show_warning_msg, CardSyntaxError, debug_print, try_read_file
 
-from .mdparser.latex import KatexRenderer, MathJaxRenderer, render_latex
+from .mdparser.latex import KatexRenderer, MathJaxRenderer, render_latex_webdriver
 
 
 config = Config.get_config()
@@ -184,12 +184,20 @@ def to_pdf(args):
         html.body.add_children(*parser.get_cards_and_markdown())
 
     html_str = str(html)
-    html_str = render_latex(html_str, renderer)
+    # html_str = render_latex_webdriver(html_str, renderer)
     if ENABLE_DEBUG:
         with open(f"{name}.pdf.html", "w") as f:
             f.write(html_str)
+    options = {
+        'enable-javascript': None,
+        'enable-local-file-access': None,
+        'javascript-delay': 2000,  # 2-second delay
+        'no-stop-slow-scripts': None,
+        'quiet': None,
 
-    pdfkit.from_string(html_str, output_file)
+    }
+    pdfkit.from_string(html_str, output_file, options=options)
+    # pdfkit.from_string(html_str, output_file)
     print(f"Sucessfully converted '{input_file}' to '{output_file}'")
 
 
@@ -311,8 +319,7 @@ def main():
     if args.shuffle:
         args.cards = True
 
-    debug_print("Started application")
-    debug_print("Args:", args)
+    debug_print("Started application in debug mode")
 
     load_configs(args)
 

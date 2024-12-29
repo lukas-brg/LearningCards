@@ -1,6 +1,6 @@
 import hashlib
 import re
-
+from collections import defaultdict
 from itertools import dropwhile
 
 from ..config import get_config
@@ -26,7 +26,7 @@ def find_subclasses(cls: type) -> list[type]:
     return list(_find(cls))
 
 
-__hashes = {}
+__hashes = defaultdict(int)
 
 
 def make_id_hash(*data: any, limit_len=None, ensure_unique=True) -> str:
@@ -38,16 +38,11 @@ def make_id_hash(*data: any, limit_len=None, ensure_unique=True) -> str:
     end = min(end, len_hash)
     hash = hash[:end]
 
-    counter = __hashes.setdefault(hash, 0)
-
     if not ensure_unique:
         return hash
 
-    if counter == 0:
-        unique_hash = hash
-    else:
-        unique_hash = hash + str(counter)
-
+    counter = __hashes[hash]
+    unique_hash = hash if counter == 0 else f"{hash}{counter}"
     __hashes[hash] += 1
     return unique_hash
 

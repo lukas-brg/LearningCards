@@ -281,11 +281,6 @@ class HtmlFile:
 <html lang="{self.lang}">
     <head>
 
-        <script>
-           
-
-            {self.head_script_str}
-        </script>
 
         <meta charset="{self.charset}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -296,6 +291,10 @@ class HtmlFile:
 
         <title>{self.title}</title>
         {self.head_str} 
+        <script>
+
+            {self.head_script_str}
+        </script>
     
     </head>
 
